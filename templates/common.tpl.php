@@ -13,8 +13,20 @@
 
     <header>
       <h1><a href="main_page.php">Maju</a></h1>
+        <div class="topnav">
+            <a class="active" href="#home"></a>
+            <input type="text" placeholder="Search..">
+        </div>
+        <div class="h_container">
+            <i id="heart" class="far fa-heart"></i>
+        </div>
+        <div id="section">
+            <?php
+            if ($_SESSION['id']) drawLogoutForm($_SESSION['name']);
+            else drawLoginForm();
+            ?>
+        </div>
     </header>
-  
     <main>
 <?php } ?>
 
