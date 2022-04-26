@@ -16,7 +16,8 @@ CREATE TABLE Restaurant (
     id INTEGER PRIMARY KEY,
     idUser  INTEGER REFERENCES User(id),
     name   TEXT,
-    address TEXT UNIQUE
+    address TEXT UNIQUE,
+    image TEXT DEFAULT "https://picsum.photos/600/300"
 );
 
 DROP TABLE IF EXISTS Category;
