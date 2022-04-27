@@ -54,7 +54,7 @@ CREATE TABLE Review (
     idRestaurant INTEGER REFERENCES Restaurant(id),
     idUser  INTEGER REFERENCES User(id),
     review TEXT,
-    raiting INTEGER
+    rating INTEGER
 );
 
 DROP TABLE IF EXISTS Comment;
