@@ -4,10 +4,10 @@
 ?>
 
 <?php function drawFilter(array $filters) { ?>
-    <section id="filterRestaurant">
-        <?php foreach ($filters as $filt) { ?>
+    <section id="filter">
+        <?php foreach ($filters as $filter) { ?>
             <header>
-                <input type="checkbox" name="vehicle" value="Bike"><a href="item.html"><?=$filt->name?></a>
+                <input type="checkbox" ><a href="item.html"><?=$filter->name?></a>
             </header>
         <?php } ?>
     </section>

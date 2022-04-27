@@ -19,10 +19,10 @@ class Filter {
       ');
         $stmt->execute(array());
         $filters = array();
-        while ($artist = $stmt->fetch()) {
+        while ($filter = $stmt->fetch()) {
             $filters[] = new Filter(
-                $artist['id'],
-                $artist['name']
+                $filter['id'],
+                $filter['name']
             );
         }
         return $filters;
