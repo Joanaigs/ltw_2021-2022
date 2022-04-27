@@ -20,12 +20,9 @@
         <div class="h_container">
             <i id="heart" class="far fa-heart"></i>
         </div>
-        <div id="section">
-            <?php
-            if ($_SESSION['id']) drawLogoutForm($_SESSION['name']);
-            else drawLoginForm();
-            ?>
-        </div>
+        <form>
+            <button type="submit"><a href="register.php">Login/Register</a></button>
+        </form>
     </header>
     <main>
 <?php } ?>
@@ -55,3 +52,5 @@
     <button type="submit">Logout</button>
   </form>
 <?php } ?>
+
+

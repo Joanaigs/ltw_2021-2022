@@ -5,12 +5,12 @@
 ?>
 
 <?php function drawRestaurants(array $restaurants) { ?>
-    <section id="news">
+    <section id="Restaurants">
         <?php foreach ($restaurants as $res) { ?>
             <header>
-                 <h1><a href="item.html"><?=$res['name']?></a></h1>
+                <h1><a href="item.html"><?=$res['name']?></a></h1>
             </header>
-            <img src=<?=$res['image']?> alt="">
+            <img src="https://picsum.photos/600/300?.<?=$res['name']?>"alt="">
         <?php } ?>
     </section>
 <?php } ?>
