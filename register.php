@@ -9,7 +9,7 @@
 
     $db = getDatabaseConnection();
 
-    drawLoginForm();
+    drawRegisterForm();
 
     $user = User::getUserWithPassword($db, $_POST['email'], $_POST['password']);
 
