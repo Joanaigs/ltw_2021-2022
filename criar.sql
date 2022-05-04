@@ -8,7 +8,6 @@ CREATE TABLE User (
     address TEXT,
     city TEXT,
     country TEXT,
-    postcode TEXT,
     phoneNumber TEXT
 );
 
@@ -95,9 +94,9 @@ CREATE TABLE CategoryRestaurant(
 );
 
 
-INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Joana Santos', 'dweferg@hotmail.com', '88888888', 'rua da joana', 'Porto', 'Portugal', '5050-444', '987876435');
-INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Mariana Carvalho', 'ajsdf@hotmail.com', '123456767', 'rua da mariana',  'Porto', 'Portugal', '5050-443', '923456435');
-INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Matilde Sequeira', 'jutyjeyt@hotmail.com', '9876543', 'rua da matilde',  'Porto', 'Portugal', '5050-442', '926796345');
+INSERT INTO User (username, email, password, address, city, country, phoneNumber) VALUES ('Joana Santos', 'dweferg@hotmail.com', '88888888', 'rua da joana, 4050-192 Porto', 'Porto', 'Portugal', '987876435');
+INSERT INTO User (username, email, password, address, city, country, phoneNumber) VALUES ('Mariana Carvalho', 'ajsdf@hotmail.com', '123456767', 'rua da mariana, 4100-092 Porto',  'Porto', 'Portugal', '923456435');
+INSERT INTO User (username, email, password, address, city, country, phoneNumber) VALUES ('Matilde Sequeira', 'jutyjeyt@hotmail.com', '9876543', 'rua da matilde, 5600-212 Porto',  'Porto', 'Portugal', '926796345');
 
 INSERT INTO Restaurant(idUser, name, address) VALUES (1, 'Lareira-Serralves', 'R. Jorge Reinel 7, 4150-436 Porto');
 INSERT INTO Restaurant(idUser, name, address) VALUES (2, 'Buri', 'R. Caldas Xavier 145, Porto');
