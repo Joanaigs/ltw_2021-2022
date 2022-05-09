@@ -2,13 +2,13 @@
   declare(strict_types = 1);
 
   class Restaurant {
-    public int $id;
+    public string $id;
     public string $idUser;
     public string $name;
     public string $address;
     public string $image;
 
-    public function __construct(int $id, string $idUser, string $name, string $address, string $image)
+    public function __construct(string $id, string $idUser, string $name, string $address, string $image)
     {
       $this->id = $id;
       $this->idUser=$idUser;
@@ -22,9 +22,56 @@
         SELECT *
         FROM Restaurant
       ');
-      $stmt->execute();
-      return $stmt->fetchAll();;
+        $stmt->execute();
+        $restaurants = array();
+
+        while ($restaurant = $stmt->fetch()) {
+            $restaurants[] = new Restaurant(
+                $restaurant['id'],
+                $restaurant['idUser'],
+                $restaurant['name'],
+                $restaurant['address'],
+                $restaurant['image']
+            );
+        }
+        return $restaurants;
     }
-  
+
+      static function searchRestaurants(PDO $db, string $search) : array {
+          $stmt = $db->prepare('SELECT * FROM Restaurant WHERE name LIKE ? ');
+          $stmt->execute(array('%'. $search . '%'));
+
+          $restaurants = array();
+
+          while ($restaurant = $stmt->fetch()) {
+              $restaurants[] = new Restaurant(
+                  $restaurant['id'],
+                  $restaurant['idUser'],
+                  $restaurant['name'],
+                  $restaurant['address'],
+                  $restaurant['image']
+              );
+          }
+          return $restaurants;
+      }
+      static function filterRestaurants(PDO $db, string $filter) : array {
+          $stmt = $db->prepare('SELECT * FROM Restaurant WHERE id in(
+        SELECT idRestaurant FROM CategoryRestaurant, Category  WHERE idCategory=id and name=? )
+ ');
+          $stmt->execute(array($filter));
+
+          $restaurants = array();
+
+          while ($restaurant = $stmt->fetch()) {
+              $restaurants[] = new Restaurant(
+                  $restaurant['id'],
+                  $restaurant['idUser'],
+                  $restaurant['name'],
+                  $restaurant['address'],
+                  $restaurant['image']
+              );
+          }
+          return $restaurants;
+      }
   }
 ?>
