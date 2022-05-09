@@ -188,5 +188,5 @@ INSERT INTO Dish(idRestaurant, name, price, idMeal) VALUES (4, 'Cerveja', 2.40, 
 INSERT INTO Dish(idRestaurant, name, price, idMeal) VALUES (4, 'Água', 1.25, 4);
 INSERT INTO Dish(idRestaurant, name, price, idMeal) VALUES (4, 'Refrigerante', 2.00, 4);
 
-INSERT INTO Orders(idDish, idUser, state) Values(1, 1, 'Received');
-INSERT INTO Orders(idDish, idUser, state) Values(10, 1, 'Preparing');
+INSERT INTO Orders(idDish, idUser, state) Values(1, 1, 'received');
+INSERT INTO Orders(idDish, idUser, state) Values(10, 1, 'preparing');

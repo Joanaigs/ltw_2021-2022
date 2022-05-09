@@ -5,12 +5,19 @@
 ?>
 
 <?php function drawRestaurants(array $restaurants) { ?>
-    <section id="Restaurants">
+    <header>
+        <h2>Artists</h2>
+        <input id="searchrest" type="text" placeholder="search">
+    </header>
+    <section id="restaurants">
         <?php foreach ($restaurants as $res) { ?>
-            <header>
-                <h1><a href="item.html"><?=$res['name']?></a></h1>
-            </header>
-            <img src="https://picsum.photos/600/300?.<?=$res['name']?>"alt="">
+            <article>
+                <header>
+                    <a href="item.html"><?=$res->name?></a>
+                </header>
+                <div class="heart" id=<?=$res->id?>></div>
+                <img src="https://picsum.photos/600/300?.<?=$res->name?>"alt="">
+            </article>
         <?php } ?>
     </section>
 <?php } ?>
