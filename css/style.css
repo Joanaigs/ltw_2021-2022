@@ -1,0 +1,40 @@
+.heart {
+    position: relative;
+}
+.heart:before {
+    position: absolute;
+    top: 0.5em;
+    left: 1.5em;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+    width: 1em;
+    height: 1.5em;
+    border-radius: 0.5em 0.5em 0 0;
+    background-color: #000000;
+    content: "";
+    cursor: pointer;
+    transition: background .4s;
+}
+.heart:after {
+    position: absolute;
+    top: 0.5em;
+    left: 0.5em;
+    transform: rotate(45deg);
+    transform-origin :100% 100%;
+    width: 1em;
+    height: 1.5em;
+    border-radius: 0.5em 0.5em 0 0;
+    background-color:  #000000;
+    content: "";
+    cursor: pointer;
+    transition: background .4s;
+}
+
+.heart.liked::before,
+.heart.liked::after {
+    background-color: #d65076;
+}
+.heart.liked {
+    animation: liked .4s ease;
+}
+
