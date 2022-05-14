@@ -44,5 +44,4 @@
             $error_msg = 'Por favor preencha todos os campos necessários.';
     }
 
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>

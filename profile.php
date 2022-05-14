@@ -13,7 +13,9 @@
 
     $db = getDatabaseConnection();
 
+    $user = User::getUser($db, 1); //$_SESSION['id']
 
     drawHeader();
-    drawProfileForm(getUser(db, 1));
+    drawProfile($user);
+    drawLatestOrders($db, $user);
     drawFooter();

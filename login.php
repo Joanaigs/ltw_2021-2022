@@ -11,12 +11,21 @@
 
     drawLoginForm();
 
-    $user = User::getUserWithPassword($db, $_POST['email'], $_POST['password']);
+    if (isset($_POST['LoginButton'])) {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
 
-    if ($user) {
-        $_SESSION['id'] = $user->id;
-        $_SESSION['username'] = $user->username;
+        if ($email != "" && $password != ""){
+            $user = User::getUserWithPassword($db, $email, $password);
+            if($user == null)
+                $error_msg = 'Não existe nenhuma conta com este email associado.';
+            else{
+                $_SESSION['id'] = $user->id;
+                $_SESSION['username'] = $user->username;
+                header('Location: ' . "main_page.php");
+            }
+        }
+        else
+            $error_msg = 'Por favor preencha os campos necessários.';
     }
-
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>

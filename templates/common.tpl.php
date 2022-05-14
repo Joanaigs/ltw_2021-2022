@@ -21,14 +21,17 @@
             <i id="heart" class="far fa-heart"></i>
         </div>
         <?php
-            if (isset($_SESSION['id'])) drawLogoutForm($_SESSION['name']);
-        ?>
-        <form>
-            <button type="submit"><a href="register.php">Registar</a></button>
-        </form>
-        <form>
-            <button type="submit"><a href="login.php">Iniciar sessão</a></button>
-        </form>
+            if (isset($_SESSION['id'])){?>
+                <input formaction="../logout.php" formmethod="get" type="submit" value="Terminar sessão"></input>
+            <?php }
+            else {?>
+                <form>
+                    <input formaction="../register.php" formmethod="get" type="submit" value="Registar"></input>
+                </form>
+                <form>
+                    <input formaction="../login.php" formmethod="get" type="submit" value="Iniciar sessão"></input>
+                </form>
+            <?php } ?>
     </header>
     <main>
 <?php } ?>
@@ -47,7 +50,7 @@
   <form action="login.php" method="post" class="login">
     <input type="text" name="email" placeholder="Email">
     <input type="text" name="password" placeholder="Palavra-passe">
-    <button type="submit">Login</button>
+    <button type="submit" name="LoginButton" formmethod="post">Entrar</button>
   </form>
 <?php } ?>
 
@@ -314,11 +317,5 @@
     </form>
 <?php } ?>
 
-<?php function drawLogoutForm(string $name) { ?>
-  <form action="logout.php" method="post" class="logout">
-    <a href="profile.php"><?=$name?></a>
-    <button type="submit">Logout</button>
-  </form>
-<?php } ?>
 
 
