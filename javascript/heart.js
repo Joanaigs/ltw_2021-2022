@@ -1,12 +1,19 @@
-const button = document.querySelector('.heart');
-console.log(button)
-button.addEventListener('click', async function () {
-    if (button.classList.contains("liked")) {
-        button.classList.remove("liked");
-    } else {
-        button.classList.add("liked");
-        //const response = await fetch('api_orderSates.php?state='+this.value +'&' + 'id='+stateOrders[i].name)
-        //console.log('api_orderSates.php?state='+this.value +'&' + 'id='+stateOrders[i].name)
-        //const orders = await response.json()
-    }
-});
+function heartsClick(){
+    const button = document.querySelectorAll('.heart');
+    console.log(button)
+    for(let i=0; i<button.length; i++) {
+        button[i].addEventListener('click', async function () {
+            if (button[i].classList.contains("liked")) {
+                button[i].classList.remove("liked");
+                const response = await fetch('api_favoriteRestaurant.php?add='+false +'&' + 'id='+this.id)
+                console.log('api_restaurantsFilter.php?add='+true +'&' + 'id='+this.id)
+                await response.json()
+            } else {
+                button[i].classList.add("liked");
+                const response = await fetch('api_favoriteRestaurant.php?add='+true +'&' + 'id='+this.id)
+                console.log('api_restaurantsFilter.php?add='+false +'&' + 'id='+this.id)
+                await response.json()
+            }
+        });
+    }}
+heartsClick();

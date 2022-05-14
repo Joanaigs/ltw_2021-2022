@@ -15,7 +15,7 @@ drawRestViewHeader();
 $orders=Order::getOrdersRestaurant($db,$idRestaurant);
 ?>
 <?php foreach ($orders as $order) { ?>
-    <a> <?php  echo $order->dishName?> </a>
+     <?php  echo $order->dishName?>
     <select id="states" name=<?=$order->id?>>
         <option value="preparing" <?php if($order->state  === 'preparing') echo "selected"; ?>>Preparing</option>
         <option value="received" <?php if($order->state == 'received') echo "selected"; ?>>Received</option>

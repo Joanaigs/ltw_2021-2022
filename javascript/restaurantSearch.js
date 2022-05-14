@@ -14,7 +14,8 @@ if (searchRestaurants) {
             link.textContent = restaurant.name
             const img = document.createElement('img')
             const div = document.createElement('div')
-            div.className='heart'
+            div.classList.add('heart')
+            div.id=restaurant.id;
             img.src = 'https://picsum.photos/600/300?' + restaurant.id
             article.appendChild(header)
             header.appendChild(link)
@@ -22,5 +23,6 @@ if (searchRestaurants) {
             article.appendChild(img)
             section.appendChild(article)
         }
+        heartsClick();
     })
 }

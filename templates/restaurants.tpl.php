@@ -6,7 +6,7 @@
 
 <?php function drawRestaurants(array $restaurants) { ?>
     <header>
-        <h2>Artists</h2>
+        <h2>Restaurantes</h2>
         <input id="searchrest" type="text" placeholder="search">
     </header>
     <section id="restaurants">
@@ -18,6 +18,7 @@
                 <div class="heart" id=<?=$res->id?>></div>
                 <img src="https://picsum.photos/600/300?.<?=$res->name?>"alt="">
             </article>
-        <?php } ?>
+        <?php }
+        ?>
     </section>
 <?php } ?>

@@ -15,7 +15,8 @@ for(let i=0; i<filterRestaurants.length; i++) {
                 link.textContent = restaurant.name
                 const img = document.createElement('img')
                 const div = document.createElement('div')
-                div.className='heart'
+                div.classList.add('heart')
+                div.id=restaurant.id;
                 img.src = 'https://picsum.photos/600/300?' + restaurant.id
                 article.appendChild(header)
                 header.appendChild(link)
@@ -23,6 +24,7 @@ for(let i=0; i<filterRestaurants.length; i++) {
                 article.appendChild(img)
                 section.appendChild(article)
             }
+            heartsClick();
         })
     }
 }
