@@ -29,7 +29,7 @@
                     <input formaction="../register.php" formmethod="get" type="submit" value="Registar"></input>
                 </form>
                 <form>
-                    <input formaction="../login.php" formmethod="get" type="submit" value="Iniciar sessão"></input>
+                    <input formaction="../login_register.php" formmethod="get" type="submit" value="Iniciar sessão"></input>
                 </form>
             <?php } ?>
     </header>
@@ -62,7 +62,7 @@
         <div class="container">
             <div class="forms-container">
                 <div class="signin-signup">
-                    <form action="../login.php" method="post" class="sign-in-form">
+                    <form action="../login_register.php" method="post" class="sign-in-form">
                         <h2 class="title">Iniciar sessão</h2>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
@@ -76,7 +76,7 @@
                     </form>
                 </div>
                 <div class="signup-signup">
-                    <form action="../login.php" method="post" class="sign-up-form">
+                    <form action="../login_register.php" method="post" class="sign-up-form">
                         <h2 class="title">Crie a sua nova conta</h2>
                         <div class="input-field">
                             <i class="fas fa-user"></i>

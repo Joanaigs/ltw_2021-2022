@@ -31,7 +31,7 @@
                         User::addNewUser($success, $db, $username, $email, $password, $phoneNumber, $address, $city, $country);
                     }
                     if ($success)?>
-                        A sua conta foi criada com sucesso. <a href="login.php">Clique aqui para iniciar sessão.</a>
+                        A sua conta foi criada com sucesso. <a href="login_register.php">Clique aqui para iniciar sessão.</a>
                     <?php $error_msg = 'Ocorreu um erro na criação da sua nova conta.';
                 }
                 else
