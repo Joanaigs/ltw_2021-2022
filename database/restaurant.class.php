@@ -73,5 +73,13 @@
           }
           return $restaurants;
       }
+      static function addfavoriteRestaurants(PDO $db, string $idRe, string $idUser)  {
+          $stmt = $db->prepare('INSERT INTO FavoriteRestaurant(idUser, idRestaurant) Values(?, ?)');
+          $stmt->execute(array($idUser, $idRe));
+      }
+      static function removefavoriteRestaurants(PDO $db, string $idRe, string $idUser)  {
+          $stmt = $db->prepare('DELETE FROM FavoriteRestaurant where idUser=? and idRestaurant=?' );
+          $stmt->execute(array($idUser, $idRe));
+      }
   }
 ?>
