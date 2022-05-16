@@ -90,6 +90,11 @@ CREATE TABLE CategoryRestaurant(
     idCategory INTEGER REFERENCES Category(id)
 );
 
+DROP TABLE IF EXISTS Cart;
+CREATE TABLE Cart(
+    idDish INTEGER REFERENCES Dish(id)
+);
+
 
 INSERT INTO User (username, mail, password, address) VALUES ('Joana Santos', 'dweferg@hotmail.com', '88888888', 'rua da joana');
 INSERT INTO User (username, mail, password, address) VALUES ('Mariana Carvalho', 'ajsdf@hotmail.com', '123456767', 'rua da mariana');
@@ -183,3 +188,10 @@ INSERT INTO Dish(idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (4, 'Bi
 INSERT INTO Dish(idRestaurant, name, price, idMeal) VALUES (4, 'Cerveja', 2.40, 4);
 INSERT INTO Dish(idRestaurant, name, price, idMeal) VALUES (4, 'Água', 1.25, 4);
 INSERT INTO Dish(idRestaurant, name, price, idMeal) VALUES (4, 'Refrigerante', 2.00, 4);
+
+
+INSERT INTO Cart(idDish) VALUES (1);
+INSERT INTO Cart(idDish) VALUES (3);
+INSERT INTO Cart(idDish) VALUES (5);
+INSERT INTO Cart(idDish) VALUES (7);
+INSERT INTO Cart(idDish) VALUES (11);
