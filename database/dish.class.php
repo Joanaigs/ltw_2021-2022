@@ -28,6 +28,7 @@
                 SELECT *
                 FROM Dish
                 WHERE idRestaurant = ?
+                Order by idMeal, name
             ');
 
             $stmt -> execute(array($id));
