@@ -23,7 +23,7 @@
     <main>
 <?php } ?>
 
-<?php function drawRestViewHeader() { ?>
+<?php function drawRestViewHeader($id) { ?>
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -48,10 +48,10 @@
         <i id="money" class="money"></i>
     </div>
     <div class=ordersSate">
-        <a href="soon.php">Order Sate</a>
+        <a href="state.php?id=<?=$id?>">Order Sate</a>
     </div>
     <div class=menu">
-        <a href="soon.php">Menu</a>
+        <a href="restView.php?id=<?=$id?>">Menu</a>
     </div>
 </header>
 <main>

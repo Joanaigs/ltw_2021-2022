@@ -9,11 +9,10 @@ require_once('templates/restaurants.tpl.php');
 $db = new PDO('sqlite:example.db');
 
 $idDish=$_GET['idDish'];
-drawRestViewHeader();
 $meals=Filter::getMeals($db);
 $dish=Dish::getDish($db, $idDish);
 $typeDishes=Filter::getTypeDish($db);
-
+drawRestViewHeader($dish->idRestaurant);
 ?>
 <form action="editDish.php?idDish=<?=$idDish?>" method="post" class="dish" enctype="multipart/form-data">
     <label for="photoDish">Photo:</label>

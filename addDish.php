@@ -9,7 +9,7 @@ require_once('templates/restaurants.tpl.php');
 $db = new PDO('sqlite:example.db');
 
 $idRestaurant=$_GET['idRestaurant'];
-drawRestViewHeader();
+drawRestViewHeader($idRestaurant);
 $dishes=Dish::getDishesRestaurant($db, $idRestaurant);
 $meals=Filter::getMeals($db);
 $typeDishes=Filter::getTypeDish($db);
