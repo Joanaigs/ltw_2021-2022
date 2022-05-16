@@ -48,7 +48,7 @@ CREATE TABLE Dish (
     name TEXT,
     price DOUBLE,
     photo TEXT DEFAULT "https://picsum.photos/600/300",
-    idTypeOfDish INTEGER REFERENCES TypeOfDish(id),
+    idTypeOfDish INTEGER REFERENCES TypeOfDish(id) DEFAULT 5,
     idMeal INTEGER REFERENCES Meal(id)
 );
 
@@ -117,6 +117,7 @@ INSERT INTO TypeOfDish(type) VALUES ('Carne');
 INSERT INTO TypeOfDish(type) VALUES ('Peixe');
 INSERT INTO TypeOfDish(type) VALUES ('Vegetariano');
 INSERT INTO TypeOfDish(type) VALUES ('Vegan');
+INSERT INTO TypeOfDish(type) VALUES ('Other');
 
 INSERT INTO Meal(name) VALUES ('Entrada');
 INSERT INTO Meal(name) VALUES ('Prato principal');
