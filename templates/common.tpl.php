@@ -8,8 +8,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <script src="javascript/heartDish.js" defer></script>
+      <script src="javascript/heart.js" defer></script>
       <link rel="stylesheet" href="css/style.css">
       <script src="javascript/scriptsMealFilter.js" defer></script>
+      <script src="javascript/restaurantFilter.js" defer></script>
+      <script src="javascript/restaurantSearch.js" defer></script>
   </head>
   <body>
 
