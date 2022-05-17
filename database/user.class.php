@@ -83,9 +83,8 @@
             $stmt->execute(array($email));
 
             if ($user = $stmt->fetch()) {
-                echo $user['password'] .  " " . $password;
-                if($password === $user['password']){
-                    echo 'sim';
+
+                if(md5($password) === $user['password']){
                     return new User(
                         intval($user['id']),
                         $user['username'],

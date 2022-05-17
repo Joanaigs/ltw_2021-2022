@@ -7,7 +7,7 @@
     <title></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+
   </head>
   <body>
 
@@ -40,7 +40,7 @@
     </main>
 
     <footer>
-      Best Restaurant &copy; 2022
+         &copy; Larica LTW 2021/2022 -All rights reserved
     </footer>
   </body>
 </html>
@@ -61,7 +61,7 @@
     <body>
         <div class="container">
             <div class="forms-container">
-                <div class="signin-signup">
+                <div class="signin">
                     <form action="../login_register.php" method="post" class="sign-in-form">
                         <h2 class="title">Iniciar sessão</h2>
                         <div class="input-field">
@@ -75,7 +75,7 @@
                         <input type="submit" name="LoginButton" class="btn solid" value="Entrar" formmethod="post">
                     </form>
                 </div>
-                <div class="signup-signup">
+                <div class="signup">
                     <form action="../login_register.php" method="post" class="sign-up-form">
                         <h2 class="title">Crie a sua nova conta</h2>
                         <div class="input-field">
@@ -365,7 +365,7 @@
                 <div class="content">
                     <h3>Não tem conta?</h3>
                     <br>
-                    <button id="sign-up-button" class="btn transparent" type="submit" name="RegisterButton" formmethod="post">Criar conta</button>
+                    <button id="sign-up-button" class="btn transparent">Criar conta</button>
                 </div>
                 <img src="../images/pizza_sharing.svg" alt="burger" class="image" />
             </div>
@@ -373,7 +373,7 @@
                 <div class="content">
                     <h3>Já tem conta?</h3>
                     <br>
-                    <button id="sign-in-button" class="btn transparent" type="submit">Iniciar sessão</button>
+                    <button id="sign-in-button" class="btn transparent">Iniciar sessão</button>
                 </div>
             </div>
         </div>
