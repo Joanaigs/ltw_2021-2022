@@ -121,6 +121,30 @@
             $stmt = $db->prepare('DELETE FROM FavoriteDish where idUser=? and idDish=?' );
             $stmt->execute(array($idUser, $idDi));
         }
+        static function isfavoriteDish(PDO $db, string $idDi, string $idUser)  {
+            $stmt = $db->prepare('SELECT Dish.id as id, idRestaurant, Dish.name as name, price, photo, idMeal, idTypeOfDish, Meal.name as mealName
+            FROM Dish, Meal, FavoriteDish WHERE FavoriteDish.idUser=? and FavoriteDish.idDish=? and FavoriteDish.idDish=Dish.id and idMeal=Meal.id');
+            $stmt->execute(array($idUser, $idDi));
+
+            $dishes = array();
+
+            while ($dish = $stmt->fetch()){
+                $dishes[] = new Dish(
+                    $dish['id'],
+                    $dish['idRestaurant'],
+                    $dish['name'],
+                    $dish['price'],
+                    $dish['photo'],
+                    $dish['idMeal'],
+                    $dish['idTypeOfDish'],
+                    $dish['mealName']
+                );
+            }
+            if(sizeof($dishes)>0)
+                return true;
+            else
+                return false;
+        }
     }
 
 
