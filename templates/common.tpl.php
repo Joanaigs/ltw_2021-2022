@@ -4,24 +4,40 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <title>Larica-Food Delivery Website</title>
+
       <script src="javascript/heartDish.js" defer></script>
       <script src="javascript/heart.js" defer></script>
       <link rel="stylesheet" href="css/style.css">
       <script src="javascript/scriptsMealFilter.js" defer></script>
       <script src="javascript/restaurantFilter.js" defer></script>
       <script src="javascript/restaurantSearch.js" defer></script>
+
   </head>
   <body>
-
     <header>
-      <h1><a href="main_page.php">Maju</a></h1>
-        <form>
-            <button type="submit"><a href="register.php">Login/Register</a></button>
-        </form>
+        <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
+        <nav class="navbar">
+            <a class="active" href="../main_page.php">Restaurantes</a>
+            <a href="#">Sobre</a>
+        </nav>
+        <div class="icons">
+            <i class="fas fa-bars" id="menu-bars"></i>
+            <a href="#" class="fas fa-heart"></a>
+            <a href="../profile.php" class="fas fa-user"></a>
+            <a href="#" class="fas fa-shopping-cart"></a>
+        </div>
     </header>
+    <button class="login-register-btn" onclick="window.location.href = '../login_register.php';">Entrar
+    </button>
+    <script src="../javascript/restaurantFilter.js" defer></script>
+    <script src="../javascript/heart.js" defer></script>
+    <script src="../javascript/restaurantSearch.js" defer></script>
+  <script src="../javascript/script.js/"></script>
+  </body>
     <main>
 <?php } ?>
 
@@ -41,7 +57,7 @@
 <body>
 
 <header>
-    <h1><a href="main_page.php">Maju</a></h1>
+    <h1><a href="main_page.php">Larica</a></h1>
 
     <form>
         <button type="submit"><a href="register.php">Login/Register</a></button>

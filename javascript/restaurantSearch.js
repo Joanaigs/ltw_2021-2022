@@ -1,4 +1,4 @@
-const searchRestaurants = document.querySelector('#searchrest')
+const searchRestaurants = document.querySelector('#searchRest')
 if (searchRestaurants) {
     searchRestaurants.addEventListener('input', async function() {
         const response = await fetch('api_restaurantsSearch.php?search=' + this.value)
@@ -25,4 +25,11 @@ if (searchRestaurants) {
         }
         heartsClick();
     })
+}
+
+const icon = document.querySelector('.search-icon');
+const search = document.querySelector('.search');
+
+icon.onclick = function (){
+    search.classList.toggle('active');
 }
