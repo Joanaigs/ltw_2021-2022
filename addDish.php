@@ -41,7 +41,7 @@ $typeDishes=Filter::getTypeDish($db);
 <?php
 if (isset($_POST["nameDish"], $_POST["priceDish"], $_POST['mealDish'], $_POST['typeDish'])){
     echo 2;
-    Dish::addDish($db, $_POST["nameDish"], $_POST["priceDish"], $_POST['mealDish'], $idRestaurant, $_POST['typeDish']);
+    Dish::addDish($db, $_POST["nameDish"], $_POST["priceDish"], $_POST['mealDish'], intval($idRestaurant), $_POST['typeDish']);
     header("Location: restView.php?id=$idRestaurant");
 }
 

@@ -15,6 +15,7 @@
 
 
         public function __construct(int $id, int $idRestaurant, string  $name, float $price, string $photo, int $idMeal, int $idTypeOfDish, string $meal){
+
             $this->id=$id;
             $this->idRestaurant = $idRestaurant;
             $this->name=$name;
@@ -62,7 +63,7 @@
             $stmt->execute();
             return $stmt->fetchAll();
         }
-        static function addDish(PDO $db, string $name, string $price, string $idMeal, string $idRest, string $idType)  {
+        static function addDish(PDO $db, string $name, string $price, string $idMeal, int $idRest, string $idType)  {
         $stmt = $db->prepare('INSERT INTO Dish(idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (?, ?, ?, ?, ?);');
         $stmt->execute(array($idRest, $name, $price, $idType, $idMeal));
         }

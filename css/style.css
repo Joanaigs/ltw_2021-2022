@@ -80,4 +80,37 @@
     background-color: #7F7F7F;
     transition: 0.2s;
 }
+/*minus*/
+.button_minus {
+    position: relative;
+    width: 35px;
+    height: 35px;
+    background: #fff;
+    cursor: pointer;
+    border: 2px solid #7F7F7F;
+}
+
+.button_minus:after {
+    content: '';
+    position: absolute;
+    transform: translate(-50%, -50%);
+    height: 4px;
+    width: 50%;
+    background: #7F7F7F;
+    top: 50%;
+    left: 50%;
+}
+
+
+.button_minus:hover:before,
+.button_minus:hover:after {
+    background: #fff;
+    transition: 0.2s;
+}
+
+.button_minus:hover {
+    background-color: #7F7F7F;
+    transition: 0.2s;
+}
+
 

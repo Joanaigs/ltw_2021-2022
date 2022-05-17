@@ -15,6 +15,7 @@ $dishes=Dish::getDishesRestaurant($db, $idRestaurant);
 <a href="addDish.php?idRestaurant=<?=$idRestaurant?>"><div class="button_plus"></div> </a>
 <?php foreach ($dishes as $dish) { ?>
     <a href="editDish.php?idDish=<?=$dish->id?>"><i class="fa fa-pencil" style="font-size:2em;color:gray"></i></a>
+    <a href="removeDish.php?idDish=<?=$dish->id?>&idRestaurant=<?=$idRestaurant?>"><div class="button_minus"></div> </a>
     <img src="https://picsum.photos/600/300?<?=$dish->name?>"alt="">
     <h3><?=$dish->name?></h3>
     <h4><?=$dish->price?></h4>
