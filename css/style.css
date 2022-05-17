@@ -1,0 +1,83 @@
+/*heart*/
+.heart {
+    position: relative;
+}
+.heart:before {
+    position: absolute;
+    top: 0.5em;
+    left: 1.5em;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+    width: 1em;
+    height: 1.5em;
+    border-radius: 0.5em 0.5em 0 0;
+    background-color: #000000;
+    content: "";
+    cursor: pointer;
+    transition: background .4s;
+}
+.heart:after {
+    position: absolute;
+    top: 0.5em;
+    left: 0.5em;
+    transform: rotate(45deg);
+    transform-origin :100% 100%;
+    width: 1em;
+    height: 1.5em;
+    border-radius: 0.5em 0.5em 0 0;
+    background-color:  #000000;
+    content: "";
+    cursor: pointer;
+    transition: background .4s;
+}
+
+.heart.liked::before,
+.heart.liked::after {
+    background-color: #d65076;
+}
+.heart.liked {
+    animation: liked .4s ease;
+}
+/*plus*/
+.button_plus {
+    position: relative;
+    width: 35px;
+    height: 35px;
+    background: #fff;
+    cursor: pointer;
+    border: 2px solid #7F7F7F;
+}
+
+.button_plus:after {
+    content: '';
+    position: absolute;
+    transform: translate(-50%, -50%);
+    height: 4px;
+    width: 50%;
+    background: #7F7F7F;
+    top: 50%;
+    left: 50%;
+}
+
+.button_plus:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #7F7F7F;
+    height: 50%;
+    width: 4px;
+}
+
+.button_plus:hover:before,
+.button_plus:hover:after {
+    background: #fff;
+    transition: 0.2s;
+}
+
+.button_plus:hover {
+    background-color: #7F7F7F;
+    transition: 0.2s;
+}
+
