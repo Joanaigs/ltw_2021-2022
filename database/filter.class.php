@@ -2,10 +2,10 @@
 declare(strict_types = 1);
 
 class Filter {
-    public string $id;
+    public int $id;
     public string $name;
 
-    public function __construct(string $id, string $name)
+    public function __construct(int $id, string $name)
     {
         $this->id = $id;
         $this->name=$name;

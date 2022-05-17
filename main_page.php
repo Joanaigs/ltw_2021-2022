@@ -20,5 +20,5 @@
     </div>
 <?php
   drawRestaurants($restaurants);
-  drawFooter();
+  //drawFooter();
 ?>
