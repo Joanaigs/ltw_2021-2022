@@ -10,7 +10,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Larica-Food Delivery Website</title>
-        <link rel="stylesheet" href="../css/style.css">
+
     </head>
     <body>
         <div class="search">
@@ -21,16 +21,16 @@
             <span class="clear" onclick="document.getElementById('searchRest').value=''"></span>
         </div>
         <script src="../javascript/restaurantSearch.js"></script>
-        <!--<section id="restaurants">
-            <?php //foreach ($restaurants as $res) { ?>
+        <section id="restaurants">
+            <?php foreach ($restaurants as $res) { ?>
                 <article>
                     <header>
-                        <a href="item.html"><?//=$res->name?></a>
+                        <a href="item.html"><?=$res->name?></a>
                     </header>
-                    <div class="heart" id=<?//=$res->id?>></div>
-                    <img src="https://picsum.photos/600/300?.<?//=$res->name?>"alt="">
+                    <div class="heart" id=<?=$res->id?>></div>
+                    <img src="https://picsum.photos/600/300?.<?=$res->name?>"alt="">
                 </article>
-            <?php //}
+            <?php }
             ?>
         </section>
 <?php } ?>
