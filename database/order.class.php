@@ -2,13 +2,13 @@
 declare(strict_types = 1);
 
 class Order {
-    public string $id;
-    public string $idDish;
-    public string $idUser;
+    public int $id;
+    public int $idDish;
+    public int $idUser;
     public string $state;
     public string $dishName;
 
-    public function __construct(string $id, string $idDish, string $idUser, string $state, string $dishName)
+    public function __construct(int $id, int $idDish, int $idUser, string $state, string $dishName)
     {
         $this->id = $id;
         $this->idDish = $idDish;
