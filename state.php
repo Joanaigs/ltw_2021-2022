@@ -11,7 +11,7 @@ $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $idRestaurant=$_GET['id'];
-drawRestViewHeader();
+drawRestViewHeader($idRestaurant);
 $orders=Order::getOrdersRestaurant($db,$idRestaurant);
 ?>
 <?php foreach ($orders as $order) { ?>

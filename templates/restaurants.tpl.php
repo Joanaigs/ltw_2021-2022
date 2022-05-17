@@ -4,6 +4,7 @@
   require_once('database/restaurant.class.php');
 ?>
 
+
 <?php function drawRestaurants(array $restaurants) { ?><!DOCTYPE html>
     <html lang="en-US">
     <head>
@@ -33,4 +34,36 @@
             <?php }
             ?>
         </section>
+
+
+
+<?php function drawRestaurant(PDO $db, Restaurant $restaurant, array $dishes){?>
+
+    <h2><?= $restaurant -> name?></h2>
+    <section id = "dishes">
+    <?php $meal=$dishes[0]->meal;?>
+    <h3 id="<?=$meal?>"><?=$meal?></h3>
+        <?php foreach ($dishes as $dish){?>
+            <article>
+                <?php if($dish->meal!=$meal){$meal=$dish->meal;?>
+                    <h3 id="<?=$meal?>"><?=$meal?></h3>
+                <?php } ?>
+                <?php if(isset( $_SESSION['id'])){
+                          $isFavorite=Dish::isfavoriteDish($db, $dish->id, $_SESSION['id']);
+                          if($isFavorite===true){?>
+                              <div class="heart liked" id=<?=$dish->id?>></div>
+                      <?php }}
+                      else{?>
+                        <div class="heart" id=<?=$dish->id?>></div>
+                    <?php } ?>
+                <div class="heart" id=<?=$dish->id?>></div>
+                <div class="addToCard" id=<?=$dish->id?>></div>
+                <img src="<?=$dish -> photo?>?id=<?=$dish->id?>" alt="">
+                <h4><?= $dish -> name?></h4>
+                <p class = "info"> <?= $dish -> price?></p>
+            </article>
+
+        <?php } ?>
+    </section>
+
 <?php } ?>

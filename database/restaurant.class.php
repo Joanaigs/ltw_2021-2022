@@ -37,6 +37,32 @@
         return $restaurants;
     }
 
+      static function getFavoriteRestaurants(PDO $db) : array {
+          $stmt = $db->prepare('
+        SELECT *
+        FROM FavoriteRestaurant
+      ');
+          $stmt->execute();
+          return $stmt->fetchAll();;
+      }
+
+
+      static function getRestaurant(PDO $db, string $id) : Restaurant {
+          $stmt = $db->prepare('SELECT *  FROM Restaurant WHERE id = ?');
+          $stmt->execute(array($id));
+
+          $restaurant = $stmt->fetch();
+
+          return new Restaurant(
+              $restaurant['id'],
+              $restaurant['idUser'],
+              $restaurant['name'],
+              $restaurant['address'],
+              $restaurant['image']
+          );
+      }
+
+
       static function searchRestaurants(PDO $db, string $search) : array {
           $stmt = $db->prepare('SELECT * FROM Restaurant WHERE name LIKE ? ');
           $stmt->execute(array('%'. $search . '%'));

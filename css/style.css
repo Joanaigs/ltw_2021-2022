@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 *{
@@ -26,6 +27,7 @@ html{
     scroll-padding-top: 5.5rem;
     scroll-behavior: smooth;
 }
+
 
 .heart {
     position: relative;
@@ -66,6 +68,81 @@ html{
 .heart.liked {
     animation: liked .4s ease;
 }
+/*plus*/
+.button_plus {
+    position: relative;
+    width: 35px;
+    height: 35px;
+    background: #fff;
+    cursor: pointer;
+    border: 2px solid #7F7F7F;
+}
+
+.button_plus:after {
+    content: '';
+    position: absolute;
+    transform: translate(-50%, -50%);
+    height: 4px;
+    width: 50%;
+    background: #7F7F7F;
+    top: 50%;
+    left: 50%;
+}
+
+.button_plus:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #7F7F7F;
+    height: 50%;
+    width: 4px;
+}
+
+.button_plus:hover:before,
+.button_plus:hover:after {
+    background: #fff;
+    transition: 0.2s;
+}
+
+.button_plus:hover {
+    background-color: #7F7F7F;
+    transition: 0.2s;
+}
+/*minus*/
+.button_minus {
+    position: relative;
+    width: 35px;
+    height: 35px;
+    background: #fff;
+    cursor: pointer;
+    border: 2px solid #7F7F7F;
+}
+
+.button_minus:after {
+    content: '';
+    position: absolute;
+    transform: translate(-50%, -50%);
+    height: 4px;
+    width: 50%;
+    background: #7F7F7F;
+    top: 50%;
+    left: 50%;
+}
+
+
+.button_minus:hover:before,
+.button_minus:hover:after {
+    background: #fff;
+    transition: 0.2s;
+}
+
+.button_minus:hover {
+    background-color: #7F7F7F;
+    transition: 0.2s;
+}
+
 
 header{
     position: fixed;
