@@ -2,13 +2,13 @@
   declare(strict_types = 1);
 
   class Restaurant {
-    public string $id;
-    public string $idUser;
+    public int $id;
+    public int $idUser;
     public string $name;
     public string $address;
     public string $image;
 
-    public function __construct(string $id, string $idUser, string $name, string $address, string $image)
+    public function __construct(int $id, int $idUser, string $name, string $address, string $image)
     {
       $this->id = $id;
       $this->idUser=$idUser;

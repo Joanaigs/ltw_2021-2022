@@ -3,18 +3,18 @@
     declare(strict_types = 1);
 
     class Dish{
-        public string $id;
-        public string $idRestaurant;
+        public int $id;
+        public int $idRestaurant;
         public string $name;
-        public string $price;
+        public float $price;
         public string $photo;
-        public string $idMeal;
-        public string $idTypeOfDish;
+        public int $idMeal;
+        public int $idTypeOfDish;
         public string $meal;
 
 
 
-        public function __construct(string $id, string $idRestaurant, string  $name, string $price, string $photo, string $idMeal, string $idTypeOfDish, string $meal){
+        public function __construct(int $id, int $idRestaurant, string  $name, float $price, string $photo, int $idMeal, int $idTypeOfDish, string $meal){
             $this->id=$id;
             $this->idRestaurant = $idRestaurant;
             $this->name=$name;
