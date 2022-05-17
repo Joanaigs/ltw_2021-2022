@@ -3,9 +3,13 @@ DROP TABLE IF EXISTS User;
 CREATE TABLE User (
     id INTEGER PRIMARY KEY,
     username TEXT,
-    mail TEXT UNIQUE,
+    email TEXT UNIQUE,
     password TEXT,
-    address TEXT
+    address TEXT,
+    city TEXT,
+    country TEXT,
+    postcode TEXT,
+    phoneNumber TEXT
 );
 
 
@@ -44,7 +48,7 @@ CREATE TABLE Dish (
     name TEXT,
     price DOUBLE,
     photo TEXT DEFAULT "https://picsum.photos/600/300",
-    idTypeOfDish INTEGER REFERENCES TypeOfDish(id),
+    idTypeOfDish INTEGER REFERENCES TypeOfDish(id) DEFAULT 5,
     idMeal INTEGER REFERENCES Meal(id)
 );
 
@@ -67,7 +71,7 @@ CREATE TABLE Comment (
 DROP TABLE IF EXISTS Orders;
 CREATE TABLE Orders (
     id INTEGER PRIMARY KEY,
-    idRestaurant INTEGER REFERENCES Restaurant(id),
+    idDish INTEGER REFERENCES Dish(id),
     idUser  INTEGER REFERENCES User(id),
     state TEXT
 );
@@ -91,9 +95,9 @@ CREATE TABLE CategoryRestaurant(
 );
 
 
-INSERT INTO User (username, mail, password, address) VALUES ('Joana Santos', 'dweferg@hotmail.com', '88888888', 'rua da joana');
-INSERT INTO User (username, mail, password, address) VALUES ('Mariana Carvalho', 'ajsdf@hotmail.com', '123456767', 'rua da mariana');
-INSERT INTO User (username, mail, password, address) VALUES ('Matilde Sequeira', 'jutyjeyt@hotmail.com', '9876543', 'rua da matilde');
+INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Joana Santos', 'dweferg@hotmail.com', '88888888', 'rua da joana', 'Porto', 'Portugal', '5050-444', '987876435');
+INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Mariana Carvalho', 'ajsdf@hotmail.com', '123456767', 'rua da mariana',  'Porto', 'Portugal', '5050-443', '923456435');
+INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Matilde Sequeira', 'jutyjeyt@hotmail.com', '9876543', 'rua da matilde',  'Porto', 'Portugal', '5050-442', '926796345');
 
 INSERT INTO Restaurant(idUser, name, address) VALUES (1, 'Lareira-Serralves', 'R. Jorge Reinel 7, 4150-436 Porto');
 INSERT INTO Restaurant(idUser, name, address) VALUES (2, 'Buri', 'R. Caldas Xavier 145, Porto');
@@ -113,6 +117,7 @@ INSERT INTO TypeOfDish(type) VALUES ('Carne');
 INSERT INTO TypeOfDish(type) VALUES ('Peixe');
 INSERT INTO TypeOfDish(type) VALUES ('Vegetariano');
 INSERT INTO TypeOfDish(type) VALUES ('Vegan');
+INSERT INTO TypeOfDish(type) VALUES ('Other');
 
 INSERT INTO Meal(name) VALUES ('Entrada');
 INSERT INTO Meal(name) VALUES ('Prato principal');
@@ -183,3 +188,6 @@ INSERT INTO Dish(idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (4, 'Bi
 INSERT INTO Dish(idRestaurant, name, price, idMeal) VALUES (4, 'Cerveja', 2.40, 4);
 INSERT INTO Dish(idRestaurant, name, price, idMeal) VALUES (4, 'Água', 1.25, 4);
 INSERT INTO Dish(idRestaurant, name, price, idMeal) VALUES (4, 'Refrigerante', 2.00, 4);
+
+INSERT INTO Orders(idDish, idUser, state) Values(1, 1, 'received');
+INSERT INTO Orders(idDish, idUser, state) Values(10, 1, 'preparing');

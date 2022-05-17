@@ -10,29 +10,30 @@ require_once('templates/restaurants.tpl.php');
 
 
 $db = $db = new PDO('sqlite:example.db');
-
-$restaurant = Restaurant::getRestaurant($db, intval($_GET['id']));
-$dishes = Dish::getDishesRestaurant($db, intval($_GET['id']));
-$filterItems = Filter::getFilterItems($db);
-
+$idRestaurant=$_GET['id'];
+$restaurant = Restaurant::getRestaurant($db,$idRestaurant);
+$dishes = Dish::getDishesRestaurant($db, $_GET['id']);
+$filterMeals = Filter::getMeals($db);
+$filterTypes=Filter::getTypeDish($db);
 drawHeader();
 
 ?>
 
-<h2>Filter</h2>
+<h2>Categotia:</h2>
+<?php foreach ($filterMeals as $item){?>
+    <a href="#<?=$item->name?>"><?=$item->name?></a>
+<?php } ?>
 
-<div class = "filter">
-    <?php foreach ($filterItems as $item){ ?>
-        <input type="checkbox" id = "option-<?=$item->name?>">
-        <label for = "option-<?=$item->name?>"><?=$item -> name?></label>
+</div>
+<h2>Tipo de Prato:</h2>
+<div id = "typeFilter">
+    <input type="radio" name =typeFilter value="all" id="<?=$idRestaurant?>" checked="checked"><label>All</label>
+    <?php foreach ($filterTypes as $item){ ?>
+        <input type="radio" name ="typeFilter" id="<?=$idRestaurant?>" value=<?=$item->id?> ><label><?=$item->name?></label>
     <?php } ?>
 </div>
 
-<script src="scriptsRestaurantFilter.js"></script>
-
-
-
 <?php
-drawRestaurant($restaurant,$dishes);
+drawRestaurant($restaurant, $dishes);
 drawFooter();
 ?>
