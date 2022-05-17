@@ -1,5 +1,5 @@
 function heartsClick(){
-    const button = document.querySelectorAll('.heart');
+    const button = document.querySelectorAll('#restaurants .heart');
     console.log(button)
     for(let i=0; i<button.length; i++) {
         button[i].addEventListener('click', async function () {

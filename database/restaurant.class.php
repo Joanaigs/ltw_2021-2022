@@ -47,7 +47,7 @@
       }
 
 
-      static function getRestaurant(PDO $db, int $id) : Restaurant {
+      static function getRestaurant(PDO $db, string $id) : Restaurant {
           $stmt = $db->prepare('SELECT *  FROM Restaurant WHERE id = ?');
           $stmt->execute(array($id));
 

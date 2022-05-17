@@ -10,10 +10,12 @@
         public string $photo;
         public int $idMeal;
         public int $idTypeOfDish;
+        public string $meal;
 
 
 
-        public function __construct(int $id, int $idRestaurant, string  $name, float $price, string $photo, int $idMeal, int $idTypeOfDish){
+        public function __construct(int $id, int $idRestaurant, string  $name, float $price, string $photo, int $idMeal, int $idTypeOfDish, string $meal){
+
             $this->id=$id;
             $this->idRestaurant = $idRestaurant;
             $this->name=$name;
@@ -21,13 +23,14 @@
             $this->photo=$photo;
             $this->idMeal=$idMeal;
             $this->idTypeOfDish=$idTypeOfDish;
+            $this->meal=$meal;
         }
 
         static public function getDishesRestaurant(PDO $db, string $id): array{
             $stmt = $db -> prepare('
-                SELECT *
-                FROM Dish
-                WHERE idRestaurant = ?
+                SELECT Dish.id as id, idRestaurant, Dish.name as name, price, photo, idMeal, idTypeOfDish, Meal.name as mealName
+                FROM Dish, Meal
+                WHERE idRestaurant = ? and idMeal=Meal.id
                 Order by idMeal, name
             ');
 
@@ -43,7 +46,8 @@
                     $dish['price'],
                     $dish['photo'],
                     $dish['idMeal'],
-                    $dish['idTypeOfDish']
+                    $dish['idTypeOfDish'],
+                    $dish['mealName']
                 );
             }
 
@@ -70,8 +74,8 @@
         static function getDish(PDO $db, string $id) : Dish
         {
             $stmt = $db->prepare('
-        SELECT *
-        FROM Dish where id=?
+        SELECT Dish.id as id, idRestaurant, Dish.name as name, price, photo, idMeal, idTypeOfDish, Meal.name as mealName
+        FROM Dish, Meal where Dish.id=? and idMeal=Meal.id
       ');
             $stmt->execute(array($id));
             $dish = $stmt->fetch();
@@ -82,8 +86,65 @@
                 $dish['price'],
                 $dish['photo'],
                 $dish['idMeal'],
-                $dish['idTypeOfDish']
+                $dish['idTypeOfDish'],
+                $dish['mealName']
             );
+        }
+
+        static function filterDish(PDO $db, $filter, $idRestaurant)
+        {
+            $stmt = $db->prepare('SELECT Dish.id as id, idRestaurant, Dish.name as name, price, photo, idMeal, idTypeOfDish, Meal.name as mealName
+            FROM Dish, Meal WHERE idTypeOfDish=? and idRestaurant=? and idMeal=Meal.id');
+            $stmt->execute(array($filter, $idRestaurant));
+
+            $dishes = array();
+
+            while ($dish = $stmt->fetch()){
+                $dishes[] = new Dish(
+                    $dish['id'],
+                    $dish['idRestaurant'],
+                    $dish['name'],
+                    $dish['price'],
+                    $dish['photo'],
+                    $dish['idMeal'],
+                    $dish['idTypeOfDish'],
+                    $dish['mealName']
+                );
+            }
+            return $dishes;
+        }
+
+        static function addfavoriteDish(PDO $db, string $idDi, string $idUser)  {
+            $stmt = $db->prepare('INSERT INTO FavoriteDish(idUser, idDish) Values(?, ?)');
+            $stmt->execute(array($idUser, $idDi));
+        }
+        static function removefavoriteDish(PDO $db, string $idDi, string $idUser)  {
+            $stmt = $db->prepare('DELETE FROM FavoriteDish where idUser=? and idDish=?' );
+            $stmt->execute(array($idUser, $idDi));
+        }
+        static function isfavoriteDish(PDO $db, string $idDi, string $idUser)  {
+            $stmt = $db->prepare('SELECT Dish.id as id, idRestaurant, Dish.name as name, price, photo, idMeal, idTypeOfDish, Meal.name as mealName
+            FROM Dish, Meal, FavoriteDish WHERE FavoriteDish.idUser=? and FavoriteDish.idDish=? and FavoriteDish.idDish=Dish.id and idMeal=Meal.id');
+            $stmt->execute(array($idUser, $idDi));
+
+            $dishes = array();
+
+            while ($dish = $stmt->fetch()){
+                $dishes[] = new Dish(
+                    $dish['id'],
+                    $dish['idRestaurant'],
+                    $dish['name'],
+                    $dish['price'],
+                    $dish['photo'],
+                    $dish['idMeal'],
+                    $dish['idTypeOfDish'],
+                    $dish['mealName']
+                );
+            }
+            if(sizeof($dishes)>0)
+                return true;
+            else
+                return false;
         }
     }
 
