@@ -15,6 +15,8 @@
       <script src="javascript/scriptsMealFilter.js" defer></script>
       <script src="javascript/restaurantFilter.js" defer></script>
       <script src="javascript/restaurantSearch.js" defer></script>
+      <script src="javascript/scriptFavorites.js" defer></script>
+
 
   </head>
   <body>

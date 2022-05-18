@@ -43,7 +43,18 @@
         FROM FavoriteRestaurant
       ');
           $stmt->execute();
-          return $stmt->fetchAll();;
+          $restaurants = array();
+
+          while ($restaurant = $stmt->fetch()) {
+              $restaurants[] = new Restaurant(
+                  $restaurant['id'],
+                  $restaurant['idUser'],
+                  $restaurant['name'],
+                  $restaurant['address'],
+                  $restaurant['image']
+              );
+          }
+          return $restaurants;
       }
 
 
