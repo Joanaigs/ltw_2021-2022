@@ -2,20 +2,22 @@
   declare(strict_types = 1);
 
   require_once('database/restaurant.class.php');
+  require_once ('database/filter.class.php');
   require_once('templates/common.tpl.php');
-  $db = $db = new PDO('sqlite:example.db');
+  require_once('templates/restaurants.tpl.php');
+  $db = new PDO('sqlite:example.db');
 
   $restaurants = Restaurant::getRestaurants($db);
+  $filterRestaurants= Filter::getFilterRestaurants($db);
   drawHeader();
   ?>
-  <section id="news">
-        <?php foreach ($restaurants as $res) { ?>
-            <header>
-                 <h1><a href="item.html"><?=$res['name']?></a></h1>
-            </header>
-            <img src=<?=$res['image']?> alt="">
-        <?php } ?>
-    </section>
-    <?php
+  <div id="filter">
+      <input type="radio" name =filter value="all" checked="checked"><label>All</label>
+        <?php foreach ($filterRestaurants as $filter) { ?>
+            <input type="radio" name =filter value=<?=$filter->name?> ><label><?=$filter->name?></label>
+                    <?php } ?>
+    </div>
+<?php
+  drawRestaurants($restaurants);
   drawFooter();
 ?>
