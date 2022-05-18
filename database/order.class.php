@@ -36,7 +36,6 @@ class Order {
                 $order['name']
             );
         }
-
         return $orders;
     }
     static function UpdateOrdersRestaurant(PDO $db, string $id, string $state) {

@@ -26,7 +26,7 @@
             <?php foreach ($restaurants as $res) { ?>
                 <article>
                     <header>
-                        <a href="item.html"><?=$res->name?></a>
+                        <a href="restaurant.php?id=<?=$res->id?>"><?=$res->name?></a>
                     </header>
                     <div class="heart" id=<?=$res->id?>></div>
                     <img src="https://picsum.photos/600/300?.<?=$res->name?>"alt="">
@@ -35,7 +35,7 @@
             ?>
         </section>
 
-
+<?php } ?>
 
 <?php function drawRestaurant(PDO $db, Restaurant $restaurant, array $dishes){?>
 

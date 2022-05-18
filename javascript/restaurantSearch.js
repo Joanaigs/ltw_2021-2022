@@ -10,7 +10,7 @@ if (searchRestaurants) {
             const article = document.createElement('article')
             const header = document.createElement('header')
             const link = document.createElement('a')
-            link.href = 'artist.php?id=' + restaurant.id
+            link.href = 'restaurant.php?id=' + restaurant.id
             link.textContent = restaurant.name
             const img = document.createElement('img')
             const div = document.createElement('div')
