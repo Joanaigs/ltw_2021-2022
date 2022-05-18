@@ -72,6 +72,7 @@ CREATE TABLE Comment (
 DROP TABLE IF EXISTS Orders;
 CREATE TABLE Orders (
     id INTEGER PRIMARY KEY,
+    idDish INTEGER REFERENCES Dish(id),
     idUser  INTEGER REFERENCES User(id),
     state TEXT
 );
@@ -98,5 +99,7 @@ DROP TABLE IF EXISTS Cart;
 CREATE TABLE Cart(
     idDish INTEGER REFERENCES Dish(id)
 );
+
+
 
 
