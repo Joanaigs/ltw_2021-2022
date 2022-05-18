@@ -10,7 +10,7 @@
         <?php foreach ($cart as $dish) { ?>
             <article id="item">
                 <?php $total += $dish->price?>
-                <p><?=$dish->name?>....<?=$dish->price?> €</p>
+                <p><?=$dish->name?></p><p><?=$dish->price?> €</p>
             </article>
 
         <?php } ?>
