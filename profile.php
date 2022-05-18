@@ -13,7 +13,7 @@
 
     $db = getDatabaseConnection();
 
-    $user = User::getUser($db, 1); //$_SESSION['id']
+    $user = User::getUser($db, $_SESSION['id']);
 
     drawHeader();
     drawProfile($user);

@@ -22,12 +22,20 @@
             $this->country = $country;
         }
 
-        function save($db){
-            $stmt = $db->prepare('
+        function save($db, string $password, string $confirm_password)
+        {
+            if ($password === $confirm_password) {
+                $stmt = $db->prepare('
+        UPDATE User SET username = ?, email = ?, phoneNumber = ?, address = ?, password = ?
+        WHERE id = ?');
+                $stmt->execute(array($this->username, $this->email, $this->phoneNumber, $this->address, $this->id, md5($password)));
+            }
+            else {
+                $stmt = $db->prepare('
         UPDATE User SET username = ?, email = ?, phoneNumber = ?, address = ?
         WHERE id = ?');
-
-            $stmt->execute(array($this->username, $this->email, $this->phoneNumber, $this->address, $this->id));
+                $stmt->execute(array($this->username, $this->email, $this->phoneNumber, $this->address, $this->id));
+            }
         }
 
         static function addNewUser(bool &$success, PDO $db, string $username, string $email, string $password, string $phoneNumber, string $address, string $city, string $country){

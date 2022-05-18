@@ -22,7 +22,7 @@
         $password = $_POST['password'];
         $password_confirm = $_POST['password_confirm'];
 
-        if ($username != "" && $password != "" && $password_confirm != "" && $address != ""){
+        if ($username !== "" && $password !== "" && $password_confirm !== "" && $address !== ""){
             if ($password === $password_confirm){
                 if ( strlen($password) >= 5 && strpbrk($password, "123456789") != false && strpbrk($password, "abcdefghijklmnopqrstuvwyxz") != false){
                     if(User::getUserWithEmail($db, $username, $email))
@@ -47,13 +47,14 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        if ($email != "" && $password != ""){
+        if ($email !== "" && $password !== ""){
             $user = User::getUserWithPassword($db, $email, $password);
             if($user == null)
                 $error_msg = 'Não existe nenhuma conta com este email associado.';
             else{
                 $_SESSION['id'] = $user->id;
                 $_SESSION['username'] = $user->username;
+                echo('entrou');
                 /*header('Location: ' . "main_page.php");
                 exit();*/
             }
