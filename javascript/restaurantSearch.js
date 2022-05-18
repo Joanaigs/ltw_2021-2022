@@ -1,7 +1,7 @@
 const searchRestaurants = document.querySelector('#searchRest')
 if (searchRestaurants) {
     searchRestaurants.addEventListener('input', async function() {
-        const response = await fetch('api_restaurantsSearch.php?search=' + this.value)
+        const response = await fetch('../api/api_restaurantsSearch.php?search=' + this.value)
         const restaurants = await response.json()
         const section = document.querySelector('#restaurants')
         section.innerHTML = ''
@@ -10,7 +10,7 @@ if (searchRestaurants) {
             const article = document.createElement('article')
             const header = document.createElement('header')
             const link = document.createElement('a')
-            link.href = 'restaurant.php?id=' + restaurant.id
+            link.href = '../restaurant.php?id=' + restaurant.id
             link.textContent = restaurant.name
             const img = document.createElement('img')
             const div = document.createElement('div')

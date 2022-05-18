@@ -5,11 +5,11 @@ function heartsDishClick(){
         button[i].addEventListener('click', async function () {
             if (button[i].classList.contains("liked")) {
                 button[i].classList.remove("liked");
-                const response = await fetch('api_favoriteDish.php?add='+false +'&' + 'id='+this.id)
+                const response = await fetch('../api/api_favoriteDish.php?add='+false +'&' + 'id='+this.id)
                 await response.json()
             } else {
                 button[i].classList.add("liked");
-                const response = await fetch('api_favoriteDish.php?add='+true +'&' + 'id='+this.id)
+                const response = await fetch('../api/api_favoriteDish.php?add='+true +'&' + 'id='+this.id)
                 await response.json()
             }
         });

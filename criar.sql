@@ -68,16 +68,10 @@ CREATE TABLE Comment (
     comment TEXT
 );
 
-DROP TABLE IF EXISTS PreviousOrders;
-CREATE TABLE PreviousOrders(
-    idOrder INTEGER REFERENCES Orders(id),
-    idUser INTEGER REFERENCES User(id)
-);
 
 DROP TABLE IF EXISTS Orders;
 CREATE TABLE Orders (
     id INTEGER PRIMARY KEY,
-    idDish INTEGER REFERENCES Dish(id),
     idUser  INTEGER REFERENCES User(id),
     state TEXT
 );
