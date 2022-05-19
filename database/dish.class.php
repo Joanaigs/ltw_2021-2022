@@ -156,5 +156,27 @@
             else
                 return false;
         }
+        static function dishOrder(PDO $db, int $idOrder)  {
+            $stmt = $db->prepare('SELECT distinct Dish.id as id, idRestaurant, Dish.name as name, price, photo, idMeal, idTypeOfDish, Meal.name as mealName
+            FROM Dish, Meal, DishOrder WHERE DishOrder.idOrder=? and DishOrder.idDish=Dish.id and idMeal=Meal.id');
+            $stmt->execute(array($idOrder));
+
+            $dishes = array();
+
+            while ($dish = $stmt->fetch()){
+                $dishes[] = new Dish(
+                    $dish['id'],
+                    $dish['idRestaurant'],
+                    $dish['name'],
+                    $dish['price'],
+                    $dish['photo'],
+                    $dish['idMeal'],
+                    $dish['idTypeOfDish'],
+                    $dish['mealName']
+                );
+            }
+            return $dishes;
+        }
     }
+
 ?>
