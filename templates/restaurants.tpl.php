@@ -11,7 +11,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Larica-Food Delivery Website</title>
-
     </head>
     <body>
         <div class="search">
@@ -39,7 +38,7 @@
 
 <?php function drawRestaurant(PDO $db, Restaurant $restaurant, array $dishes){?>
 
-    <h2><?= $restaurant -> name?></h2>
+    <h1><?= $restaurant -> name?></h1>
     <section id = "dishes">
     <?php $meal=$dishes[0]->meal;?>
     <h3 id="<?=$meal?>"><?=$meal?></h3>
@@ -62,8 +61,6 @@
                 <h4><?= $dish -> name?></h4>
                 <p class = "info"> <?= $dish -> price?></p>
             </article>
-
         <?php } ?>
     </section>
-
 <?php } ?>

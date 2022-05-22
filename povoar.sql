@@ -20,7 +20,7 @@ INSERT INTO TypeOfDish(type) VALUES ('Carne');
 INSERT INTO TypeOfDish(type) VALUES ('Peixe');
 INSERT INTO TypeOfDish(type) VALUES ('Vegetariano');
 INSERT INTO TypeOfDish(type) VALUES ('Vegan');
-INSERT INTO TypeOfDish(type) VALUES ('Other');
+INSERT INTO TypeOfDish(type) VALUES ('Outros');
 
 INSERT INTO Meal(name) VALUES ('Entrada');
 INSERT INTO Meal(name) VALUES ('Prato principal');
@@ -95,8 +95,6 @@ INSERT INTO Dish(idRestaurant, name, price, idMeal) VALUES (4, 'Refrigerante', 2
 INSERT INTO Orders(idDish, idUser, state) VALUES (1, 1, 'received');
 INSERT INTO Orders(idDish, idUser, state) VALUES (10, 1, 'preparing');
 
-INSERT INTO PreviousOrders(idOrder, idUser) VALUES (1,1);
-INSERT INTO PreviousOrders(idOrder, idUser) VALUES (2,1);
 
 INSERT INTO Cart(idDish) VALUES (1);
 INSERT INTO Cart(idDish) VALUES (3);
