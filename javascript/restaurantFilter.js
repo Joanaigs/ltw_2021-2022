@@ -2,8 +2,8 @@ const filterRestaurants = document.querySelectorAll('#filter input[type=\'radio\
 for(let i=0; i<filterRestaurants.length; i++) {
     if (filterRestaurants) {
         filterRestaurants[i].addEventListener('change', async function () {
-            const response = await fetch('api_restaurantsFilter.php?filter='+this.value +'&' + 'checked='+this.checked)
-            console.log('api_restaurantsFilter.php?filter='+this.value +'&' + 'checked='+this.checked);
+            const response = await fetch('../api/api_restaurantsFilter.php?filter='+this.value +'&' + 'checked='+this.checked)
+            console.log('../api/api_restaurantsFilter.php?filter='+this.value +'&' + 'checked='+this.checked);
             const restaurants = await response.json()
             const section = document.querySelector('#restaurants')
             section.innerHTML = ''
@@ -11,7 +11,7 @@ for(let i=0; i<filterRestaurants.length; i++) {
                 const article = document.createElement('article')
                 const header = document.createElement('header')
                 const link = document.createElement('a')
-                link.href = 'artist.php?id=' + restaurant.id
+                link.href = '../restaurant.php?id=' + restaurant.id
                 link.textContent = restaurant.name
                 const img = document.createElement('img')
                 const div = document.createElement('div')

@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <title>Larica-Food Delivery Website</title>
-
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />">
+      <link rel="stylesheet" href="../css/style.css">
       <script src="javascript/heartDish.js" defer></script>
       <script src="javascript/heart.js" defer></script>
       <script src="javascript/scriptsMealFilter.js" defer></script>
@@ -35,11 +36,13 @@
         <div class="icons">
             <i class="fas fa-bars" id="menu-bars"></i>
             <a href="#" class="fas fa-heart"></a>
+
             <a href="../profile.php" class="fas fa-user"></a>
             <a href="#" class="fas fa-shopping-cart"></a>
             <button class="login-register-btn" onclick="window.location.href = '../login_register.php';">Entrar</button>
         </div>
     </header>
+
   </body>
 <?php } ?>
 
@@ -62,7 +65,7 @@
     <h1><a href="main_page.php">Larica</a></h1>
 
     <form>
-        <button type="submit"><a href="register.php">Login/Register</a></button>
+        <button type="submit"><a href="main_page">Login/Register</a></button>
     </form>
     <div class="m_container">
         <i id="money" class="money"></i>

@@ -8,20 +8,18 @@ class Order {
     public string $state;
     public string $dishName;
 
-    public function __construct(int $id, int $idDish, int $idUser, string $state, string $dishName)
+    public function __construct(int $id, int $idUser, string $state)
     {
         $this->id = $id;
-        $this->idDish = $idDish;
         $this->idUser = $idUser;
         $this->state = $state;
-        $this->dishName= $dishName;
     }
 
     static function getOrdersRestaurant(PDO $db, string $id) : array {
         $stmt = $db->prepare('
-        SELECT Orders.id as id, Orders.idDish as idDish, Orders.idUser as idUser, state, Dish.name as name
-        FROM Orders, Dish
-        WHERE Dish.idRestaurant = ? and Orders.idDish=Dish.id
+        SELECT distinct Orders.id as id, Orders.idUser as idUser, state
+        FROM Orders, DishOrder, Dish
+        WHERE Dish.idRestaurant = ? and DishOrder.idDish=Dish.id and Orders.id=DishOrder.idOrder
       ');
         $stmt->execute(array($id));
 
@@ -30,13 +28,10 @@ class Order {
         while ($order = $stmt->fetch()) {
             $orders[] = new Order(
                 $order['id'],
-                $order['idDish'],
                 $order['idUser'],
-                $order['state'],
-                $order['name']
+                $order['state']
             );
         }
-
         return $orders;
     }
     static function UpdateOrdersRestaurant(PDO $db, string $id, string $state) {

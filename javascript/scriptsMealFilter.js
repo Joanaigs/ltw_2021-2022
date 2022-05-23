@@ -3,8 +3,8 @@ console.log(filterMeal);
 for(let i=0; i<filterMeal.length; i++) {
     if (filterMeal) {
         filterMeal[i].addEventListener('change', async function () {
-            const response = await fetch('api_mealFilter.php?filter='+this.value +'&' + 'checked='+this.checked+'&' + 'id=' + this.id)
-            console.log('api_mealFilter.php?filter='+this.value +'&' + 'checked='+this.checked +'&' + 'id=' + this.id);
+            const response = await fetch('../api/api_mealFilter.php?filter='+this.value +'&' + 'checked='+this.checked+'&' + 'id=' + this.id)
+            console.log('../api/api_mealFilter.php?filter='+this.value +'&' + 'checked='+this.checked +'&' + 'id=' + this.id);
             const meals = await response.json()
             const section = document.querySelector('#dishes')
             section.innerHTML = ''
