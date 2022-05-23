@@ -107,4 +107,3 @@ CREATE TABLE Cart(
     idUser INTEGER REFERENCES User(id)
 );
 
-

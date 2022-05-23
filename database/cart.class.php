@@ -2,16 +2,52 @@
 
 declare(strict_types = 1);
 
-class Cart{
+class Cart {
     public int $id;
-    public int $idDish;
+    public int $idRestaurant;
+    public string $name;
+    public float $price;
+    public string $photo;
+    public int $idMeal;
     public int $idUser;
 
-    public function __construct(int $id, int $idDish, int $idUser){
-
+    public function __construct(int $id, int $idRestaurant, int $idUser, string  $name, float $price, string $photo, int $idMeal)
+    {
         $this->id=$id;
-        $this->idDish=$idDish;
+        $this->idRestaurant = $idRestaurant;
+        $this->name=$name;
+        $this->price=$price;
+        $this->photo=$photo;
+        $this->idMeal=$idMeal;
         $this->idUser=$idUser;
+    }
+
+
+    static function getCart(PDO $db) : array {
+        $stmt = $db -> prepare('
+                
+                SELECT Dish.id, Dish.idRestaurant, Dish.name, Dish.price, Dish.photo, Dish.idMeal, idUser
+                FROM Dish, Cart
+                WHERE Dish.id = Cart.idDish;
+            ');
+
+        $stmt -> execute();
+
+        $cart = array();
+
+        while ($dish = $stmt->fetch()){
+            $cart[] = new Cart(
+                $dish['id'],
+                $dish['idRestaurant'],
+                $dish['idUser'],
+                $dish['name'],
+                $dish['price'],
+                $dish['photo'],
+                $dish['idMeal']
+            );
+        }
+
+        return $cart;
     }
 
     static function addToCart(PDO $db, string $idDi, string $idUser)  {
@@ -19,7 +55,9 @@ class Cart{
         $stmt->execute(array($idDi, $idUser));
     }
     static function findInCart(PDO $db, int $idDi, int $idUser)  {
-        $stmt = $db->prepare('SELECT * FROM Cart WHERE idUser=? and idDish=?');
+        $stmt = $db->prepare('SELECT Dish.id, Dish.idRestaurant, Dish.name, Dish.price, Dish.photo, Dish.idMeal, idUser 
+         FROM Cart, Dish 
+         WHERE idUser=? and idDish=? and Dish.id = Cart.idDish');
         $stmt->execute(array($idUser, $idDi));
 
         $cart = array();
@@ -27,8 +65,12 @@ class Cart{
         while ($c = $stmt->fetch()){
             $cart[] = new Cart(
                 $c['id'],
-                $c['idDish'],
-                $c['idUser']
+                $c['idRestaurant'],
+                $c['idUser'],
+                $c['name'],
+                $c['price'],
+                $c['photo'],
+                $c['idMeal']
             );
         }
         if(sizeof($cart)>0)
