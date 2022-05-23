@@ -6,7 +6,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <title>Larica-Food Delivery Website</title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />">
       <link rel="stylesheet" href="../css/style.css">
@@ -15,30 +16,34 @@
       <script src="javascript/scriptsMealFilter.js" defer></script>
       <script src="javascript/restaurantFilter.js" defer></script>
       <script src="javascript/restaurantSearch.js" defer></script>
+      <script src="javascript/script.js" defer></script>
 
   </head>
   <body>
     <header>
         <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
         <nav class="navbar">
+            <div class="search2">
+                <div class="search-icon2"></div>
+                <div class="input">
+                    <input id="searchRest2" type="text" placeholder="Procurar restaurantes">
+                </div>
+                <span class="clear2" onclick="document.getElementById('searchRest2').value=''"></span>
+            </div>
             <a class="active" href="../main_page.php">Restaurantes</a>
             <a href="#">Sobre</a>
         </nav>
         <div class="icons">
             <i class="fas fa-bars" id="menu-bars"></i>
             <a href="#" class="fas fa-heart"></a>
-            <a href="#" class="fas fa-user"></a>
+
+            <a href="../profile.php" class="fas fa-user"></a>
             <a href="#" class="fas fa-shopping-cart"></a>
+            <button class="login-register-btn" onclick="window.location.href = '../login_register.php';">Entrar</button>
         </div>
     </header>
-    <button class="login-register-btn" onclick="window.location.href = '../login_register.php';">Entrar
-    </button>
-    <script src="../javascript/restaurantFilter.js" defer></script>
-    <script src="../javascript/heart.js" defer></script>
-    <script src="../javascript/restaurantSearch.js" defer></script>
-  <script src="../javascript/script.js/"></script>
+
   </body>
-    <main>
 <?php } ?>
 
 <?php function drawRestViewHeader($id) { ?>
@@ -76,13 +81,33 @@
     <?php } ?>
 
 <?php function drawFooter() { ?>
-    </main>
+    <link rel="stylesheet" href="css/style.css">
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>Links</h3>
+                <a href="../main_page.php">Página inicial</a>
+                <a href="#">Sobre</a>
+                <a href="#">Carrinho</a>
+            </div>
 
-    <footer>
-      Best Restaurant &copy; 2022
-    </footer>
-  </body>
-</html>
+            <div class="box">
+                <h3>Contacte-nos</h3>
+                <a href="#">+351 909878987</a>
+                <a href="#">up202007620@edu.fe.up.pt</a>
+                <a href="#">up202007623@edu.fe.up.pt</a>
+                <a href="#">up202006279@edu.fe.up.pt</a>
+            </div>
+
+            <div class="box">
+                <h3>Siga-nos</h3>
+                <a href="https://github.com/matildesequeira">GitHub - @matildesequeira</a>
+                <a href="https://github.com/marianaosiecka">GitHub - @marianaosiecka</a>
+                <a href="https://github.com/Joanaigs">GitHub - @Joanaigs</a>
+            </div>
+        </div>
+        <div class="credit"> &copy; Larica LTW 2021/2022 - All rights reserved </div>
+    </section>
 <?php } ?>
 
 <?php function drawLoginForm() { ?>
