@@ -6,8 +6,10 @@
 
 
 <?php function drawRestaurants(array $restaurants) { ?><!DOCTYPE html>
+
     <div class="search1">
             <div class="search-icon1"></div>
+
             <div class="input">
                 <input id="searchRest1" type="text" placeholder="Procurar">
             </div>
@@ -32,15 +34,15 @@
 
 <?php function drawRestaurant(PDO $db, Restaurant $restaurant, array $dishes){?>
 
-    <h2><?= $restaurant -> name?></h2>
+    <h1><?= $restaurant -> name?></h1>
     <section id = "dishes">
     <?php $meal=$dishes[0]->meal;?>
-    <h3 id="<?=$meal?>"><?=$meal?></h3>
+    <h2 id="<?=$meal?>"><?=$meal?></h2>
         <?php foreach ($dishes as $dish){?>
-            <article>
                 <?php if($dish->meal!=$meal){$meal=$dish->meal;?>
-                    <h3 id="<?=$meal?>"><?=$meal?></h3>
+                    <h2 id="<?=$meal?>"><?=$meal?></h2>
                 <?php } ?>
+
                 <?php if(isset( $_SESSION['id'])){?>
                     <a href="addToCart.php?idDish=<?=$dish->id?>&idRestaurant=<?=$restaurant->id?>"><div class="button_plus"></div></a>
                     <?php $inCart=Cart::findInCart($db, $dish->id, $_SESSION['id']);
@@ -54,12 +56,11 @@
                               <div class="heart liked" id=<?=$dish->id?>></div>
 
                       <?php }}?>
-                <img src="<?=$dish -> photo?>?id=<?=$dish->id?>" alt="">
-                <h4><?= $dish -> name?></h4>
-                <p class = "info"> <?= $dish -> price?></p>
-            </article>
 
+                <img src="<?=$dish -> photo?>?id=<?=$dish->id?>" alt="">
+                <h3><?= $dish -> name?></h3>
+                <p class = "info"> <?= $dish -> price?> €</p>
+            </article>
         <?php } ?>
     </section>
-
 <?php } ?>
