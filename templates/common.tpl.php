@@ -9,7 +9,7 @@
 
       <title>Larica-Food Delivery Website</title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />">
-
+      <link rel="stylesheet" href="../css/style.css">
       <script src="javascript/heartDish.js" defer></script>
       <script src="javascript/heart.js" defer></script>
       <script src="javascript/scriptsMealFilter.js" defer></script>
@@ -33,10 +33,6 @@
     </header>
     <button class="login-register-btn" onclick="window.location.href = '../login_register.php';">Entrar
     </button>
-    <script src="../javascript/restaurantFilter.js" defer></script>
-    <script src="../javascript/heart.js" defer></script>
-    <script src="../javascript/restaurantSearch.js" defer></script>
-  <script src="../javascript/script.js/"></script>
   </body>
     <main>
 <?php } ?>

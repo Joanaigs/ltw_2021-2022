@@ -26,10 +26,10 @@ if (searchRestaurants) {
         heartsClick();
     })
 }
-
+/*
 const icon = document.querySelector('.search-icon');
 const search = document.querySelector('.search');
 
 icon.onclick = function (){
     search.classList.toggle('active');
-}
+}*/

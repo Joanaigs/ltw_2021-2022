@@ -21,7 +21,6 @@
             </div>
             <span class="clear" onclick="document.getElementById('searchRest').value=''"></span>
         </div>
-        <script src="../javascript/restaurantSearch.js"></script>
         <section id="restaurants">
             <?php foreach ($restaurants as $res) { ?>
                 <article>
@@ -48,6 +47,12 @@
                 <?php if($dish->meal!=$meal){$meal=$dish->meal;?>
                     <h3 id="<?=$meal?>"><?=$meal?></h3>
                 <?php } ?>
+                <a href="addToCart.php?idDish=<?=$dish->id?>&idRestaurant=<?=$restaurant->id?>"><div class="button_plus"></div></a>
+                <?php if(isset( $_SESSION['id'])){
+                    $inCart=Cart::findInCart($db, $dish->id, $_SESSION['id']);
+                    if($inCart===true){?>
+                        <a href="removeFromCart.php?idDish=<?=$dish->id?>&idRestaurant=<?=$restaurant->id?>"><div class="button_minus"></div> </a>
+                    <?php }} ?>
                 <?php if(isset( $_SESSION['id'])){
                           $isFavorite=Dish::isfavoriteDish($db, $dish->id, $_SESSION['id']);
                           if($isFavorite===true){?>
@@ -57,7 +62,6 @@
                         <div class="heart" id=<?=$dish->id?>></div>
                     <?php } ?>
                 <div class="heart" id=<?=$dish->id?>></div>
-                <div class="addToCard" id=<?=$dish->id?>></div>
                 <img src="<?=$dish -> photo?>?id=<?=$dish->id?>" alt="">
                 <h4><?= $dish -> name?></h4>
                 <p class = "info"> <?= $dish -> price?></p>
