@@ -14,12 +14,12 @@
 
     </head>
     <body>
-        <div class="search">
-            <div class="search-icon"></div>
+        <div class="search1">
+            <div class="search-icon1"></div>
             <div class="input">
-                <input id="searchRest" type="text" placeholder="Procurar">
+                <input id="searchRest1" type="text" placeholder="Procurar">
             </div>
-            <span class="clear" onclick="document.getElementById('searchRest').value=''"></span>
+            <span class="clear1" onclick="document.getElementById('searchRest1').value=''"></span>
         </div>
         <script src="../javascript/restaurantSearch.js"></script>
         <section id="restaurants">
@@ -35,7 +35,7 @@
             ?>
         </section>
 
-
+<?php } ?>
 
 <?php function drawRestaurant(PDO $db, Restaurant $restaurant, array $dishes){?>
 

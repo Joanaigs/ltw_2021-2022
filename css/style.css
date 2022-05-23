@@ -180,6 +180,10 @@ header .navbar a {
     color: #606060;
 }
 
+header .navbar .search2{
+    display: none;
+}
+
 header .navbar a:link { text-decoration: none; }
 header .navbar a:visited { text-decoration: none; }
 
@@ -232,7 +236,7 @@ header .icons #menu-bars{
     color: var(--accent-color);
 }
 
-.search{
+.search1, .search2{
     position: relative;
     width: 50px;
     height: 50px;
@@ -245,11 +249,11 @@ header .icons #menu-bars{
     overflow: hidden;
 }
 
-.search.active{
+.search1.active, .search2.active{
     width: 360px;
 }
 
-.search .search-icon{
+.search1 .search-icon1, .search2 .search-icon2{
     position: absolute;
     top: 0;
     left: 0;
@@ -264,7 +268,7 @@ header .icons #menu-bars{
     cursor: pointer;
 }
 
-.search .search-icon::before{
+.search1 .search-icon1::before, .search2 .search-icon2::before{
     content: '';
     position: absolute;
     width: 12px;
@@ -274,7 +278,7 @@ header .icons #menu-bars{
     transform: translate(-2px, -2px);
 }
 
-.search .search-icon::after{
+.search1 .search-icon1::after, .search2 .search-icon2::after{
     content: '';
     position: absolute;
     width: 3px;
@@ -283,7 +287,7 @@ header .icons #menu-bars{
     transform: translate(6px, 6px) rotate(315deg);
 }
 
-.search .input{
+.search1 .input, .search2 .input{
     position: relative;
     width: 300px;
     height: 60px;
@@ -293,12 +297,12 @@ header .icons #menu-bars{
     align-items: center;
 }
 
-.search .input input::placeholder{
+.search1 .input input::placeholder, .search2 .input input::placeholder{
     color: var(--light-color);
     opacity: 85%;
 }
 
-.search .input input{
+.search1 .input input, .search2 .input input{
     position: absolute;
     bottom: 0.5rem;
     width: 100%;
@@ -311,7 +315,7 @@ header .icons #menu-bars{
     background-color: var(--accent-color);
 }
 
-.clear{
+.clear1, .clear2{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -324,7 +328,7 @@ header .icons #menu-bars{
     align-items: center;
 }
 
-.clear::before{
+.clear1::before, .clear2::before{
     position: absolute;
     content: '';
     width: 2px;
@@ -333,7 +337,7 @@ header .icons #menu-bars{
     transform: rotate(45deg);
 }
 
-.clear::after{
+.clear1::after, .clear2::after{
     position: absolute;
     content: '';
     width: 2px;
@@ -388,11 +392,52 @@ header .icons #menu-bars{
         font-size: 2rem;
         background-color: var(--section-background-color);
     }
+
+    header .navbar .search2{
+        display: block;
+        width: 40px;
+        height: 40px;
+        top: 0;
+        left: -0.5rem;
+        padding: 1.5rem;
+        margin: 1.5rem;
+        box-shadow: none;
+    }
+
+    header .navbar .search2 .input{
+        bottom: 1rem;
+        height: 40px;
+        left: 40px;
+    }
+
+    header .navbar .search2 .search-icon2{
+        top: -0.7rem;
+        left: -0.5rem;
+    }
+
+    header .navbar .search2.active{
+        width:98%;
+    }
+
+    .search1 {
+        display: none;
+    }
 }
 
 @media (max-width: 991px) {
     html{
         font-size: 50%;
+    }
+
+    .search1{
+        width: 40px;
+        height: 40px;
+        left: 2rem;
+    }
+
+    .search1 .search-icon1{
+        top: -0.7rem;
+        left: -0.5rem;
     }
 }
 

@@ -6,21 +6,29 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <title>Larica-Food Delivery Website</title>
 
       <script src="javascript/heartDish.js" defer></script>
       <script src="javascript/heart.js" defer></script>
-      <link rel="stylesheet" href="css/style.css">
       <script src="javascript/scriptsMealFilter.js" defer></script>
       <script src="javascript/restaurantFilter.js" defer></script>
       <script src="javascript/restaurantSearch.js" defer></script>
+      <script src="javascript/script.js" defer></script>
 
   </head>
   <body>
     <header>
         <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
         <nav class="navbar">
+            <div class="search2">
+                <div class="search-icon2"></div>
+                <div class="input">
+                    <input id="searchRest2" type="text" placeholder="Procurar restaurantes">
+                </div>
+                <span class="clear2" onclick="document.getElementById('searchRest2').value=''"></span>
+            </div>
             <a class="active" href="../main_page.php">Restaurantes</a>
             <a href="#">Sobre</a>
         </nav>
@@ -33,10 +41,6 @@
     </header>
     <button class="login-register-btn" onclick="window.location.href = '../login_register.php';">Entrar
     </button>
-    <script src="../javascript/restaurantFilter.js" defer></script>
-    <script src="../javascript/heart.js" defer></script>
-    <script src="../javascript/restaurantSearch.js" defer></script>
-  <script src="../javascript/script.js/"></script>
   </body>
     <main>
 <?php } ?>
