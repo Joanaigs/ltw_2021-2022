@@ -413,6 +413,7 @@ body{
 .filter{
     margin: 50px;
     margin-left: 100px;
+    margin-top: 150px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -437,30 +438,34 @@ h2{
     text-decoration: none;
     font-size: 15px;
     padding-left: 20px;
-
 }
 
 #meal a:hover{
     color: #7F7F7F;
     text-decoration: underline;
-
 }
 
 #typeOfDish{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-
 }
 #typeOfDish label{
     padding-left: 20px;
     font-size: 15px;
     color: #444444;
-
 }
 
 #typeOfDish label:hover{
     color: #7F7F7F;
+}
 
+.page{
+    margin-top: 30px;
+}
+
+h1{
+    color: var(--dark-color);
+    font-size: 40px;
 }
 
