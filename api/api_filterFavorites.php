@@ -1,6 +1,6 @@
 <?php
 declare(strict_types = 1);
-
+session_start();
 require_once('../database/dish.class.php');
 require_once('../database/restaurant.class.php');
 require_once('../database/filter.class.php');
@@ -8,21 +8,14 @@ require_once('../templates/common.tpl.php');
 require_once('../templates/restaurants.tpl.php');
 
 $db = new PDO('sqlite:../example.db');
-
-$checked = $_GET['checked'];
-$array = array();
-if($_GET['filter']=="restaurants"){
-    $array['type'] = 'restautants';
-    $restaurants = Restaurant::getFavoriteRestaurants($db);
-    $array['array'] = $restaurants;
+if (isset($_SESSION['id'])) {
+    if ($_GET['filter'] == "restaurants") {
+        $array = Restaurant::getFavoriteRestaurants($db, $_SESSION['id']);
+    } else {
+        $array = Dish::getFavoriteDishes($db, $_SESSION['id']);
+    }
+    echo json_encode($array);
 }
-
-else{
-    $array['type'] = 'dishes';
-    $dishes = Dish::getFavoriteDishes($db, 1);
-    $array['array'] = $dishes;
-}
-
-echo json_encode($array);
+echo json_encode("nOne");
 
 ?>

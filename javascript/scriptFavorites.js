@@ -1,19 +1,17 @@
-const filterFavorites = document.querySelectorAll('#typeFilter input[type=\'radio\']')
+const filterFavorites = document.querySelectorAll('#favoriteFilter input[type=\'radio\']')
 console.log(filterFavorites);
 
 for (let i=0; i < filterFavorites.length; i++){
     if(filterFavorites){
         filterFavorites[i].addEventListener('change', async function (){
-            const response = await fetch('../api/api_filterFavorites.php?filter='+ this.value)
+
+            const response = await fetch('../api/api_filterFavorites.php?filter='+this.value)
             console.log('../api/api_filterFavorites.php?filter='+ this.value);
             const array = await response.json();
-
-            if (array['type'] === 'restaurants'){
-                const restaurants = array['array'];
-
-                const section = document.querySelector('#restaurants')
-                section.innerHTML = ''
-                for (const restaurant of restaurants) {
+            const section = document.querySelector('#favoritesPage')
+            section.innerHTML = ''
+            if (this.value === 'restaurants'){
+                for (const restaurant of array) {
                     const article = document.createElement('article')
                     const header = document.createElement('header')
                     const link = document.createElement('a')
@@ -34,25 +32,9 @@ for (let i=0; i < filterFavorites.length; i++){
 
 
             }else{
-                const meals = array['array'];
-
-                const section = document.querySelector('#dishes')
-                section.innerHTML = ''
-                let meal = meals[0].meal;
-                const h3=document.createElement('h3')
-                h3.id=meal
-                h3.textContent=meal
-                section.appendChild(h3)
-                for (const dish of meals) {
+                for (const dish of array) {
                     const article = document.createElement('article')
                     const img = document.createElement('img')
-                    if(dish.meal!==meal){
-                        meal=dish.meal
-                        const h3s=document.createElement('h3')
-                        h3s.id=meal
-                        h3s.textContent=meal
-                        article.appendChild(h3s)
-                    }
                     const h4 = document.createElement('h4')
                     h4.textContent=dish.name
                     img.src = 'https://picsum.photos/600/300?' + dish.id

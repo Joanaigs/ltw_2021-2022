@@ -58,7 +58,7 @@
         static function getFavoriteDishes(PDO $db, int $id) : array {
             $stmt = $db -> prepare('
                 SELECT Dish.id, Dish.idRestaurant, Dish.name, Dish.price, Dish.photo, Dish.idMeal,
-                       Dish.idTypeOfDish, Meal.name
+                       Dish.idTypeOfDish, Meal.name as mealName
                 FROM FavoriteDish, Dish, Meal
                 WHERE FavoriteDish.idDish == Dish.id AND FavoriteDish.idUser == ? AND Dish.idMeal == Meal.id
             ');
@@ -76,7 +76,7 @@
                     $dish['photo'],
                     $dish['idMeal'],
                     $dish['idTypeOfDish'],
-                    $dish['meal']
+                    $dish['mealName']
                 );
             }
 
