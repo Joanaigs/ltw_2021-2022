@@ -20,7 +20,7 @@
                 <article>
 
                     <h3>
-                        <a href="item.html"><?=$res->name?></a>
+                        <a href="restaurant.php?id=<?=$res->id?>"><?=$res->name?></a>
                     </h3>
 
                     <div class="heart" id=<?=$res->id?>></div>
