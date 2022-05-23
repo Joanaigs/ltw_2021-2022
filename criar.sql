@@ -77,6 +77,12 @@ CREATE TABLE Orders (
     state TEXT
 );
 
+DROP TABLE IF EXISTS DishOrder;
+CREATE TABLE DishOrder (
+    idDish INTEGER REFERENCES Dish(id),
+    idOrder INTEGER REFERENCES Orders(id)
+);
+
 DROP TABLE IF EXISTS FavoriteDish;
 CREATE TABLE FavoriteDish(
     idUser INTEGER REFERENCES User(id),
@@ -97,9 +103,8 @@ CREATE TABLE CategoryRestaurant(
 
 DROP TABLE IF EXISTS Cart;
 CREATE TABLE Cart(
-    idDish INTEGER REFERENCES Dish(id)
+    id INTEGER PRIMARY KEY,
+    idDish INTEGER REFERENCES Dish(id),
+    idUser INTEGER REFERENCES User(id)
 );
-
-
-
 

@@ -4,6 +4,7 @@ declare(strict_types = 1);
 session_start();
 require_once('database/restaurant.class.php');
 require_once('database/dish.class.php');
+require_once('database/cart.class.php');
 require_once('database/filter.class.php');
 require_once('templates/common.tpl.php');
 require_once('templates/restaurants.tpl.php');
@@ -18,22 +19,36 @@ $filterTypes=Filter::getTypeDish($db);
 drawHeader();
 
 ?>
+<div class="grid-container">
+    <div class = "filter">
+        <section id = "meal">
+            <h2>Categoria:</h2>
+            <?php foreach ($filterMeals as $item){?>
+                <a href="#<?=$item->name?>"><?=$item->name?></a>
+            <?php } ?>
+        </section>
 
-<h2>Categoria:</h2>
-<?php foreach ($filterMeals as $item){?>
-    <a href="#<?=$item->name?>"><?=$item->name?></a>
-<?php } ?>
+        <section id = "typeOfDish">
+            <h2>Tipo de Prato:</h2>
+            <label>
+                <input type="radio" name =typeFilter value="todos" id="<?=$idRestaurant?>" checked="checked"> Todos
+            </label>
+
+            <?php foreach ($filterTypes as $item){ ?>
+                <label>
+                    <input type="radio" name ="typeFilter" id="<?=$idRestaurant?>" value=<?=$item->id?>> <?=$item->name?>
+                </label>
+            <?php } ?>
+        </section>
+    </div>
+
+    <div class="page">
+        <?php
+        drawRestaurant($db, $restaurant, $dishes);
+        ?>
+    </div>
 
 </div>
-<h2>Tipo de Prato:</h2>
-<div id = "typeFilter">
-    <input type="radio" name =typeFilter value="all" id="<?=$idRestaurant?>" checked="checked"><label>All</label>
-    <?php foreach ($filterTypes as $item){ ?>
-        <input type="radio" name ="typeFilter" id="<?=$idRestaurant?>" value=<?=$item->id?> ><label><?=$item->name?></label>
-    <?php } ?>
-</div>
+<?php drawFooter();?>
 
-<?php
-drawRestaurant($db, $restaurant, $dishes);
-drawFooter();
-?>
+
