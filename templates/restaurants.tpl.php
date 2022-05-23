@@ -47,21 +47,19 @@
                 <?php if($dish->meal!=$meal){$meal=$dish->meal;?>
                     <h3 id="<?=$meal?>"><?=$meal?></h3>
                 <?php } ?>
-                <a href="addToCart.php?idDish=<?=$dish->id?>&idRestaurant=<?=$restaurant->id?>"><div class="button_plus"></div></a>
-                <?php if(isset( $_SESSION['id'])){
-                    $inCart=Cart::findInCart($db, $dish->id, $_SESSION['id']);
+                <?php if(isset( $_SESSION['id'])){?>
+                    <a href="addToCart.php?idDish=<?=$dish->id?>&idRestaurant=<?=$restaurant->id?>"><div class="button_plus"></div></a>
+                    <?php $inCart=Cart::findInCart($db, $dish->id, $_SESSION['id']);
                     if($inCart===true){?>
                         <a href="removeFromCart.php?idDish=<?=$dish->id?>&idRestaurant=<?=$restaurant->id?>"><div class="button_minus"></div> </a>
                     <?php }} ?>
-                <?php if(isset( $_SESSION['id'])){
+                <?php if(isset( $_SESSION['id'])){?>
+                        <div class="heart" id=<?=$dish->id?>></div><?php
                           $isFavorite=Dish::isfavoriteDish($db, $dish->id, $_SESSION['id']);
                           if($isFavorite===true){?>
                               <div class="heart liked" id=<?=$dish->id?>></div>
-                      <?php }}
-                      else{?>
-                        <div class="heart" id=<?=$dish->id?>></div>
-                    <?php } ?>
-                <div class="heart" id=<?=$dish->id?>></div>
+
+                      <?php }}?>
                 <img src="<?=$dish -> photo?>?id=<?=$dish->id?>" alt="">
                 <h4><?= $dish -> name?></h4>
                 <p class = "info"> <?= $dish -> price?></p>
