@@ -37,12 +37,10 @@
             <a href="#" class="fas fa-heart"></a>
             <a href="../profile.php" class="fas fa-user"></a>
             <a href="#" class="fas fa-shopping-cart"></a>
+            <button class="login-register-btn" onclick="window.location.href = '../login_register.php';">Entrar</button>
         </div>
     </header>
-    <button class="login-register-btn" onclick="window.location.href = '../login_register.php';">Entrar
-    </button>
   </body>
-    <main>
 <?php } ?>
 
 <?php function drawRestViewHeader($id) { ?>
@@ -80,13 +78,33 @@
     <?php } ?>
 
 <?php function drawFooter() { ?>
-    </main>
+    <link rel="stylesheet" href="css/style.css">
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>Links</h3>
+                <a href="../main_page.php">Página inicial</a>
+                <a href="#">Sobre</a>
+                <a href="#">Carrinho</a>
+            </div>
 
-    <footer>
-      Best Restaurant &copy; 2022
-    </footer>
-  </body>
-</html>
+            <div class="box">
+                <h3>Contacte-nos</h3>
+                <a href="#">+351 909878987</a>
+                <a href="#">up202007620@edu.fe.up.pt</a>
+                <a href="#">up202007623@edu.fe.up.pt</a>
+                <a href="#">up202006279@edu.fe.up.pt</a>
+            </div>
+
+            <div class="box">
+                <h3>Siga-nos</h3>
+                <a href="https://github.com/matildesequeira">GitHub - @matildesequeira</a>
+                <a href="https://github.com/marianaosiecka">GitHub - @marianaosiecka</a>
+                <a href="https://github.com/Joanaigs">GitHub - @Joanaigs</a>
+            </div>
+        </div>
+        <div class="credit"> &copy; Larica LTW 2021/2022 - All rights reserved </div>
+    </section>
 <?php } ?>
 
 <?php function drawLoginForm() { ?>

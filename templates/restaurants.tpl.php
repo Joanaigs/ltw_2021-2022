@@ -6,15 +6,7 @@
 
 
 <?php function drawRestaurants(array $restaurants) { ?><!DOCTYPE html>
-    <html lang="en-US">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Larica-Food Delivery Website</title>
-
-    </head>
-    <body>
-        <div class="search1">
+    <div class="search1">
             <div class="search-icon1"></div>
             <div class="input">
                 <input id="searchRest1" type="text" placeholder="Procurar">
@@ -25,9 +17,9 @@
         <section id="restaurants">
             <?php foreach ($restaurants as $res) { ?>
                 <article>
-                    <header>
+                    <h3>
                         <a href="item.html"><?=$res->name?></a>
-                    </header>
+                    </h3>
                     <div class="heart" id=<?=$res->id?>></div>
                     <img src="https://picsum.photos/600/300?.<?=$res->name?>"alt="">
                 </article>
