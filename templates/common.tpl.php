@@ -28,7 +28,7 @@
             <i class="fas fa-bars" id="menu-bars"></i>
             <a href="#" class="fas fa-heart"></a>
             <a href="#" class="fas fa-user"></a>
-            <a href="#" class="fas fa-shopping-cart"></a>
+            <a href="cart.php" class="fas fa-shopping-cart"></a>
         </div>
     </header>
     <button class="login-register-btn" onclick="window.location.href = '../login_register.php';">Entrar
