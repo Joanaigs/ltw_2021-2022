@@ -62,7 +62,7 @@
         <div class="container">
             <div class="forms-container">
                 <div class="signin">
-                    <form action="../login_register.php" method="post" class="sign-in-form">
+                    <form action="../formLoginRegister.php" method="post" class="sign-in-form">
                         <h2 class="title">Iniciar sessão</h2>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
@@ -381,7 +381,6 @@
     <script src="../javascript/script.js"></script>
     </body>
     </html>
-    </form>
 <?php } ?>
 
 
