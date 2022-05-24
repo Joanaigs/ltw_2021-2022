@@ -24,13 +24,13 @@
             Número de telemóvel: <?=$user->phoneNumber?>
         </div>
 
-        <button class="edit-profile-btn" name="editProfileButton" onclick="window.location.href = '../edit_profile.php';">Editar</button>
+        <button class="edit-profile-btn" name="editProfileButton" onclick="window.location.href = '../edit_profile_action.php';">Editar</button>
         <?php
     }
 
     function editProfileForm(User $user) { ?>
     <h2>Perfil</h2>
-    <form action="../edit_profile.php" method="post" class="profile">
+    <form action="../edit_profile_action.php" method="post" class="profile">
         <img src = "profile_pic.png" alt="Profile picture">
 
         <label for="username">Username:</label>
@@ -55,11 +55,11 @@
     <?php
     }
 
-    function drawLatestOrders(PDO $db, User $user) { ?>
+    function drawLatestOrders(Session $session, PDO $db, User $user) { ?>
         <h3>Pedidos anteriores</h3>
         <section id="latestOrders">
             <?php
-            $dishes = User::getOrders($db, $user->id);
+            $dishes = User::getOrders($session, $db, $user->id);
             if($dishes != null) {
                 foreach($dishes as $dish) { ?>
                     <order>
