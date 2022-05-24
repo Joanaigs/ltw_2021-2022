@@ -47,7 +47,6 @@ drawHeader();
         drawRestaurant($db, $restaurant, $dishes);
         ?>
     </div>
-
 </div>
 <?php drawFooter();?>
 

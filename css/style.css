@@ -239,6 +239,11 @@ header .icons #menu-bars{
     overflow: hidden;
 }
 
+.search1{
+    top: 0;
+    left:0;
+}
+
 .search1.active, .search2.active{
     width: 360px;
 }
@@ -254,7 +259,7 @@ header .icons #menu-bars{
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 6;
     cursor: pointer;
 }
 
@@ -344,12 +349,15 @@ header .icons #menu-bars{
 
 
 .footer .box-container .box h3{
+    margin-left: 2rem;
+    text-align: center;
     padding: .5rem 0;
     font-size: 2rem;
     color: var(--dark-color);
 }
 
 .footer .box-container .box a{
+    text-align: center;
     display: block;
     padding: .5rem 0;
     font-size: 1.5rem;
@@ -482,12 +490,29 @@ body{
 
 
 .filter{
-    margin: 50px;
-    margin-left: 100px;
+    margin: 60px;
     margin-top: 150px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+}
+
+.filter .search1{
     justify-content: flex-start;
+}
+
+.filter #filter{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.filter #filter label{
+    margin-bottom: 0.5rem;
+}
+
+.filter input.radio{
+    margin-right:1rem;
 }
 
 h2{
@@ -519,7 +544,6 @@ h2{
 #typeOfDish{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
 }
 #typeOfDish label{
     padding-left: 20px;
