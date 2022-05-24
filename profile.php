@@ -3,8 +3,6 @@
 
     session_start();
 
-    //if (!isset($_SESSION['id'])) die(header('Location: /'));
-
     require_once('database/connection.db.php');
     require_once('database/user.class.php');
 

@@ -24,7 +24,7 @@
 
         function save($db, string $password, string $confirm_password)
         {
-            if ($password === $confirm_password) {
+            if ($password != NULL && $password === $confirm_password) {
                 $stmt = $db->prepare('
         UPDATE User SET username = ?, email = ?, phoneNumber = ?, address = ?, password = ?
         WHERE id = ?');

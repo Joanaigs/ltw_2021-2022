@@ -319,7 +319,6 @@ form.sign-up-form {
         top: 65%;
         transform: translate(-50%, -100%);
         transition: 1s 0.8s ease-in-out;
-
     }
 
     .signin,
@@ -411,6 +410,14 @@ form.sign-up-form {
     .container.sign-up-mode .signup{
         top: 3%;
         transform: translate(-50%, 0);
+    }
+
+    .signup{
+        display: none;
+    }
+
+    .container.sign-up-mode .signup{
+        display: block;
     }
 
 }
