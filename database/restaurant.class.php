@@ -37,13 +37,25 @@
         return $restaurants;
     }
 
-      static function getFavoriteRestaurants(PDO $db) : array {
+      static function getFavoriteRestaurants(PDO $db,  int $idUser) : array {
           $stmt = $db->prepare('
-        SELECT *
-        FROM FavoriteRestaurant
+        SELECT id, Restaurant.idUser, name, address, image
+        FROM FavoriteRestaurant, Restaurant
+        WHERE FavoriteRestaurant.idUser=? and idRestaurant=id
       ');
-          $stmt->execute();
-          return $stmt->fetchAll();;
+          $stmt->execute(array($idUser));
+          $restaurants = array();
+
+          while ($restaurant = $stmt->fetch()) {
+              $restaurants[] = new Restaurant(
+                  $restaurant['id'],
+                  $restaurant['idUser'],
+                  $restaurant['name'],
+                  $restaurant['address'],
+                  $restaurant['image']
+              );
+          }
+          return $restaurants;
       }
 
 
