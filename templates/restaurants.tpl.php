@@ -35,13 +35,15 @@
 <?php function drawRestaurant(PDO $db, Restaurant $restaurant, array $dishes){?>
 
     <h1><?= $restaurant -> name?></h1>
-    <section id = "dishes">
+    <section class= "dishes">
     <?php $meal=$dishes[0]->meal;?>
     <h2 id="<?=$meal?>"><?=$meal?></h2>
         <?php foreach ($dishes as $dish){?>
                 <?php if($dish->meal!=$meal){$meal=$dish->meal;?>
                     <h2 id="<?=$meal?>"><?=$meal?></h2>
                 <?php } ?>
+
+            <!--
 
                 <?php if(isset( $_SESSION['id'])){?>
                     <a href="addToCart.php?idDish=<?=$dish->id?>&idRestaurant=<?=$restaurant->id?>"><div class="button_plus"></div></a>
@@ -57,9 +59,14 @@
 
                       <?php }}?>
 
+             -->
+
+            <article class="dish">
                 <img src="<?=$dish -> photo?>?id=<?=$dish->id?>" alt="">
-                <h3><?= $dish -> name?></h3>
-                <p class = "info"> <?= $dish -> price?> €</p>
+                <div class="text">
+                    <h3><?= $dish -> name?></h3>
+                    <p class = "info">Preço:  <?= $dish -> price?> €</p>
+                </div>
             </article>
         <?php } ?>
     </section>
