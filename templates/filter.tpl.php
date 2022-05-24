@@ -1,6 +1,6 @@
 <?php
     declare(strict_types = 1);
-    require_once('database/filter.class.php');
+    require_once(__DIR__. '/../database/filter.class.php');
 ?>
 
 <?php function drawFilter(array $filters) { ?>
