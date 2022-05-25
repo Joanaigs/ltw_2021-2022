@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1); ?>
 
-<?php function drawHeader() { ?>
+<?php function drawHeader(Session $session) { ?>
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -38,10 +38,13 @@
         <div class="icons">
             <i class="fas fa-bars" id="menu-bars"></i>
             <a href="#" class="fas fa-heart"></a>
-
-            <a href="../profile.php" class="fas fa-user"></a>
+            <?php if($session->isLoggedIn()){?>
+            <a href="../profile.php" class="fas fa-user"></a><?php ;}?>
             <a href="../cart.php" class="fas fa-shopping-cart"></a>
-            <button class="login-register-btn" onclick="window.location.href = '../login_register.php';">Entrar</button>
+            <?php if(!$session->isLoggedIn()){?>
+            <button class="login-register-btn" onclick="window.location.href = '../login_register_action.php';">Entrar</button><?php ;}
+            else{?>
+            <button class="logout-btn" onclick="window.location.href = '../logout_action.php';">Sair</button><?php ;}?>
         </div>
     </header>
 
@@ -114,7 +117,7 @@
 
 <?php } ?>
 
-<?php function drawLoginRegisterForm() { ?>
+<?php function drawLoginRegisterForm(Session $session) { ?>
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
@@ -144,7 +147,7 @@
                     </form>
                 </div>
                 <div class="signup">
-                    <form action="../login_register.php" method="post" class="sign-up-form">
+                    <form action="../formLoginRegister.php" method="post" class="sign-up-form">
                         <h2 class="title">Crie a sua nova conta</h2>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
@@ -423,6 +426,10 @@
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
                             <input type="password" name="password_confirm" placeholder="Confirmar palavra-passe" autocomplete="off" required />
+                        <?php $messages = $session->getMessages();
+                        foreach($messages as $message) {
+                        ?><p <?php $message;
+                        }?> </p>
                         </div>
                         <input type="submit" name="RegisterButton" class="btn solid" value="Registar" formmethod="post">
                 </form>
@@ -449,13 +456,5 @@
     <script src="../javascript/script.js"></script>
     </body>
     </html>
-<?php } ?>
-
-
-<?php function drawLogoutForm(string $name) { ?>
-  <form action="action_logout.php" method="post" class="logout">
-    <a href="profile.php"><?=$name?></a>
-    <button type="submit">Logout</button>
-  </form>
 <?php } ?>
 

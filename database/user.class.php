@@ -57,7 +57,7 @@
                 $success = false;
         }
 
-        static function getUserWithEmail(PDO $db, string $username, string $email): bool{
+        static function getUserWithEmail(Session $session, PDO $db, string $username, string $email): bool{
             $stmt = $db->prepare("
         SELECT email
         FROM User
@@ -75,14 +75,14 @@
                 if (!($row1 = $stmt1->fetch())) {
                     return false;
                 }
-                echo 'Já existe uma conta a utilizar este nome de utilizador.';
+                $session->addMessage('error', 'Já existe uma conta a utilizar este nome de utilizador.');
                 return true;
             }
-            echo 'Já existe uma conta a utilizar este email.';
+            $session->addMessage('error', 'Já existe uma conta a utilizar este email.');
             return true;
         }
 
-        static function getUserWithPassword(PDO $db, string $email, string $password) : ?User {
+        static function getUserWithPassword(Session $session, PDO $db, string $email, string $password) : ?User {
             $stmt = $db->prepare('
         SELECT *
         FROM User
@@ -103,7 +103,7 @@
                         $user['country']
                     );
                 }
-                else echo 'A palavra-passe está incorreta.';
+                else $session->addMessage( 'error', 'A palavra-passe está incorreta.');
             }
             return null;
         }
@@ -129,7 +129,8 @@
             );
         }
 
-        static function getOrders(PDO $db, int $id) {
+        static function getOrders(Session $session, PDO $db, int $id): ?array
+        {
             $stmt = $db->prepare('
         SELECT idDish
         FROM Orders
@@ -160,7 +161,7 @@
                     return $dishes;
                 }
             else{
-                echo 'Ainda não foram realizados pedidos.';
+                $session->addMessage('error','Ainda não foram realizados pedidos.');
                 return null;
             }
         }

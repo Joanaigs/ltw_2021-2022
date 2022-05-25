@@ -1,7 +1,8 @@
 <?php
     declare(strict_types=1);
 
-    session_start();
+    require_once('session.php');
+    $session = new Session();
 
     require_once('database/connection.db.php');
     require_once('database/user.class.php');
@@ -11,9 +12,9 @@
 
     $db = getDatabaseConnection();
 
-    $user = User::getUser($db, $_SESSION['id']);
+    $user = User::getUser($db, $session->getId());
 
-    drawHeader();
+    drawHeader($session);
     drawProfile($user);
     drawLatestOrders($db, $user);
     drawFooter();
