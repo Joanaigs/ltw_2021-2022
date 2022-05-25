@@ -46,6 +46,29 @@
           return $stmt->fetchAll();;
       }
 
+      static function isfavoriteRestaurant(PDO $db, int $id, int $idUser){
+          $stmt = $db->prepare('SELECT id, Restaurant.idUser as idUser, name, address, image
+        FROM FavoriteRestaurant & Restaurant
+        WHERE FavoriteRestaurant.idUser=? and idRestaurant=? and idRestaurant=id');
+          $stmt->execute(array($idUser, $id));
+
+          $restaurants = array();
+
+          while ($restaurant = $stmt->fetch()) {
+              $restaurants[] = new Restaurant(
+                  $restaurant['id'],
+                  $restaurant['idUser'],
+                  $restaurant['name'],
+                  $restaurant['address'],
+                  $restaurant['image']
+              );
+          }
+          if(sizeof($restaurants)>0)
+              return true;
+          else
+              return false;
+      }
+
 
       static function getRestaurant(PDO $db, string $id) : Restaurant {
           $stmt = $db->prepare('SELECT *  FROM Restaurant WHERE id = ?');

@@ -9,7 +9,7 @@ for(let i=0; i<filterRestaurants.length; i++) {
             section.innerHTML = ''
             for (const restaurant of restaurants) {
                 const article = document.createElement('article')
-                const header = document.createElement('header')
+                const h3 = document.createElement('h3')
                 const link = document.createElement('a')
                 link.href = '../restaurant.php?id=' + restaurant.id
                 link.textContent = restaurant.name
@@ -18,8 +18,8 @@ for(let i=0; i<filterRestaurants.length; i++) {
                 div.classList.add('heart')
                 div.id=restaurant.id;
                 img.src = 'https://picsum.photos/600/300?' + restaurant.id
-                article.appendChild(header)
-                header.appendChild(link)
+                h3.appendChild(link)
+                article.appendChild(h3)
                 article.append(div)
                 article.appendChild(img)
                 section.appendChild(article)

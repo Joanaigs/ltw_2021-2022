@@ -4,7 +4,7 @@
   require_once(__DIR__.'/../database/restaurant.class.php');
 
 
-function drawRestaurants(array $restaurants, array $filterRestaurants) { ?>
+function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db) { ?>
 <div class="grid-container">
     <div class ="filter">
         <section class="search1">
@@ -32,7 +32,13 @@ function drawRestaurants(array $restaurants, array $filterRestaurants) { ?>
                     <h3>
                         <a href="restaurant.php?id=<?=$res->id?>"><?=$res->name?></a>
                     </h3>
-                    <div class="heart" id=<?=$res->id?>></div>
+                    <?php if(isset( $_SESSION['id'])){
+                        $isFavorite=Dish::isfavoriteRestaurant($db, $res->id, $_SESSION['id']);
+                        if($isFavorite===true){?>
+                            <div class="heart liked" id=<?=$res->id?>></div>
+
+                        <?php } else{?><div class="heart" id=<?=$res->id?>></div><?php
+                        }}?>
                     <img src="https://picsum.photos/600/300?.<?=$res->name?>"alt="">
                 </article>
             <?php }

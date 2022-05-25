@@ -13,6 +13,6 @@
   ?>
 
 <?php
-  drawRestaurants($restaurants, $filterRestaurants);
+  drawRestaurants($restaurants, $filterRestaurants, $db);
   drawFooter();
 ?>
