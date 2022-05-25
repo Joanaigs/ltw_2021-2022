@@ -138,19 +138,19 @@
             return $dishes;
         }
 
-        static function addfavoriteDish(PDO $db, string $idDi, string $idUser)  {
+        static function addfavoriteDish(PDO $db, string $idDi, int $idUser)  {
             $stmt = $db->prepare('INSERT INTO FavoriteDish(idUser, idDish) Values(?, ?)');
             $stmt->execute(array($idUser, $idDi));
         }
 
 
-        static function removefavoriteDish(PDO $db, string $idDi, string $idUser)  {
+        static function removefavoriteDish(PDO $db, string $idDi, int $idUser)  {
             $stmt = $db->prepare('DELETE FROM FavoriteDish where idUser=? and idDish=?' );
             $stmt->execute(array($idUser, $idDi));
         }
 
 
-        static function isfavoriteDish(PDO $db, int $idDi, string $idUser)  {
+        static function isfavoriteDish(PDO $db, int $idDi, int $idUser)  {
             $stmt = $db->prepare('SELECT Dish.id as id, idRestaurant, Dish.name as name, price, photo, idMeal, idTypeOfDish, Meal.name as mealName
             FROM Dish, Meal, FavoriteDish WHERE FavoriteDish.idUser=? and FavoriteDish.idDish=? and FavoriteDish.idDish=Dish.id and idMeal=Meal.id');
             $stmt->execute(array($idUser, $idDi));

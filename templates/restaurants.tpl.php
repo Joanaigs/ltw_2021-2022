@@ -5,7 +5,7 @@
 ?>
 
 
-<?php function drawRestaurants(array $restaurants) { ?><!DOCTYPE html>
+<?php function drawRestaurants(array $restaurants, PDO $db , Session $session) { ?><!DOCTYPE html>
 
     <div class="search1">
             <div class="search-icon1"></div>
@@ -22,8 +22,13 @@
                     <h3>
                         <a href="restaurant.php?id=<?=$res->id?>"><?=$res->name?></a>
                     </h3>
+                    <?php if(isset( $_SESSION['id'])){
+                        $isFavorite=Restaurant::isfavoriteRestaurant($db, $res->id, $_SESSION['id']);
+                        if($isFavorite===true){?>
+                            <div class="heart liked" id=<?=$res->id?>></div>
 
-                    <div class="heart" id=<?=$res->id?>></div>
+                        <?php } else{?><div class="heart" id=<?=$res->id?>></div><?php
+                        }}?>
                     <img src="https://picsum.photos/600/300?.<?=$res->name?>"alt="">
                 </article>
             <?php }
@@ -32,7 +37,7 @@
 
 <?php } ?>
 
-<?php function drawRestaurant(PDO $db, Restaurant $restaurant, array $dishes){?>
+<?php function drawRestaurant(PDO $db, Restaurant $restaurant, array $dishes, Session $session){?>
 
     <h1><?= $restaurant -> name?></h1>
     <section id = "dishes">
@@ -43,9 +48,9 @@
                     <h2 id="<?=$meal?>"><?=$meal?></h2>
                 <?php } ?>
 
-                <?php if(isset( $_SESSION['id'])){?>
+                <?php if($session->isLoggedIn()){?>
                     <a href="addToCart.php?idDish=<?=$dish->id?>&idRestaurant=<?=$restaurant->id?>"><div class="button_plus"></div></a>
-                    <?php $inCart=Cart::findInCart($db, $dish->id, $_SESSION['id']);
+                    <?php $inCart=Cart::findInCart($db, $dish->id, $session->getId());
                     if($inCart===true){?>
                         <a href="removeFromCart.php?idDish=<?=$dish->id?>&idRestaurant=<?=$restaurant->id?>"><div class="button_minus"></div> </a>
                     <?php }} ?>

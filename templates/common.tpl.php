@@ -37,8 +37,8 @@
         </nav>
         <div class="icons">
             <i class="fas fa-bars" id="menu-bars"></i>
-            <a href="#" class="fas fa-heart"></a>
             <?php if($session->isLoggedIn()){?>
+            <a href="../favorites.php" class="fas fa-heart"></a>
             <a href="../profile.php" class="fas fa-user"></a><?php ;}?>
             <a href="../cart.php" class="fas fa-shopping-cart"></a>
             <?php if(!$session->isLoggedIn()){?>

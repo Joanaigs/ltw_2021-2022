@@ -16,5 +16,5 @@
 
     drawHeader($session);
     drawProfile($user);
-    drawLatestOrders($db, $user);
+    drawLatestOrders($session, $db, $user);
     drawFooter();
