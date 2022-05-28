@@ -68,10 +68,6 @@
 
 <header>
     <h1><a href="main_page.php">Larica</a></h1>
-
-    <form>
-        <button type="submit"><a href="main_page">Login/Register</a></button>
-    </form>
     <div class="m_container">
         <i id="money" class="money"></i>
     </div>
@@ -81,6 +77,7 @@
     <div class=menu">
         <a href="restView.php?id=<?=$id?>">Menu</a>
     </div>
+
 </header>
 <main>
     <?php } ?>
