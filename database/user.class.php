@@ -133,7 +133,7 @@
         {
             $stmt = $db->prepare('
         SELECT idDish
-        FROM Orders
+        FROM Orders, DishOrder
         WHERE idUser = ?
       ');
 
@@ -141,9 +141,9 @@
 
             if ($row = $stmt->fetch()) {
                 $stmt1 = $db->prepare("
-                SELECT *
-                FROM Dish
-                WHERE id = ?");
+                SELECT Dish.id as id, idRestaurant, Dish.name as name, price, photo, idMeal, idTypeOfDish, Meal.name as mealName
+                FROM Dish, Meal
+                WHERE Dish.id = ?  and idMeal=Meal.id");
 
                 $stmt1->execute(array($row['idDish']));
                 $dishes = array();
@@ -154,8 +154,9 @@
                         $dish['name'],
                         $dish['price'],
                         $dish['photo'],
+                        $dish['idMeal'],
                         $dish['idTypeOfDish'],
-                        $dish['idMeal']
+                        $dish['mealName']
                     );
                 }
                     return $dishes;

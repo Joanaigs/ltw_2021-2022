@@ -11,6 +11,8 @@ $db = new PDO('sqlite:example.db');
 
 $idRestaurant=$_GET['idRestaurant'];
 $idDish=$_GET['idDish'];
-Cart::removefromCart($db, $idDish, $session->getId());
-
-header("Location: restaurant.php?id=$idRestaurant");
+Cart::removefromCart($db, intval($idDish), $session->getId());
+if($_GET['cart']==='true')
+    header("Location: cart.php");
+else
+    header("Location: restaurant.php?id=$idRestaurant");

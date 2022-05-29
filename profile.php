@@ -14,7 +14,6 @@
 
     $user = User::getUser($db, $session->getId());
     $restaurant=Restaurant::hasRestaurant($db, $session->getId());
-    echo $restaurant->name;
     drawHeader($session);
     drawProfile($user);
     drawLatestOrders($session, $db, $user);

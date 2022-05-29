@@ -52,7 +52,7 @@
                     <a href="addToCart.php?idDish=<?=$dish->id?>&idRestaurant=<?=$restaurant->id?>"><div class="button_plus"></div></a>
                     <?php $inCart=Cart::findInCart($db, $dish->id, $session->getId());
                     if($inCart===true){?>
-                        <a href="removeFromCart.php?idDish=<?=$dish->id?>&idRestaurant=<?=$restaurant->id?>"><div class="button_minus"></div> </a>
+                        <a href="removeFromCart.php?idDish=<?=$dish->id?>&idRestaurant=<?=$restaurant->id?>&cart=false"><div class="button_minus"></div> </a>
                     <?php }} ?>
                 <?php if(isset( $_SESSION['id'])){?>
                         <div class="heart" id=<?=$dish->id?>></div><?php

@@ -44,7 +44,7 @@ CREATE TABLE Meal (
 DROP TABLE IF EXISTS Dish;
 CREATE TABLE Dish (
     id INTEGER PRIMARY KEY,
-    idRestaurant INTEGER REFERENCES Restaurant(id),
+    idRestaurant INTEGER REFERENCES Restaurant(id) ON DELETE CASCADE,
     name TEXT,
     price DOUBLE,
     photo TEXT DEFAULT "https://picsum.photos/600/300",
@@ -72,7 +72,6 @@ CREATE TABLE Comment (
 DROP TABLE IF EXISTS Orders;
 CREATE TABLE Orders (
     id INTEGER PRIMARY KEY,
-    idDish INTEGER REFERENCES Dish(id),
     idUser  INTEGER REFERENCES User(id),
     state TEXT
 );

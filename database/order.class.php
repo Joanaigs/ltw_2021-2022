@@ -39,5 +39,32 @@ class Order {
         $stmt->execute(array($state, $id));
     }
 
+    static function addOrder(PDO $db, int $idUser)  {
+        $stmt = $db->prepare('INSERT INTO Orders(idUser, state) VALUES (?, "received")');
+        $stmt->execute(array($idUser));
+    }
+
+    static function addDishOrder(PDO $db, int $idOrder, int $idDish)  {
+        $stmt = $db->prepare('INSERT INTO DishOrder(idDish , idOrder) VALUES (?,?)');
+        $stmt->execute(array($idDish, $idOrder));
+    }
+
+
+    static function orderOfUser(PDO $db, int $idUser)  {
+        $stmt = $db->prepare('SELECT * FROM Orders where idUser=?');
+        $stmt->execute(array($idUser));
+
+        $orders = array();
+
+        while ($order = $stmt->fetch()) {
+            $orders[] = new Order(
+                $order['id'],
+                $order['idUser'],
+                $order['state']
+            );
+        }
+        return end($orders);
+    }
+
 }
 ?>
