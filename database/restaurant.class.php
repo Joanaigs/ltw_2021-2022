@@ -148,6 +148,12 @@
           $stmt = $db->prepare('DELETE FROM FavoriteRestaurant where idUser=? and idRestaurant=?' );
           $stmt->execute(array($idUser, $idRe));
       }
+
+      static function removeRestaurants(PDO $db, int $idRe)  {
+          $stmt = $db->prepare('DELETE FROM Restaurant where id=?' );
+          $stmt->execute(array($idRe));
+      }
+
       static function hasRestaurant(PDO $db, int $id)
       {
           $stmt = $db->prepare('
