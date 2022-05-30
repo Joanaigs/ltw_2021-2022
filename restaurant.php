@@ -24,7 +24,7 @@ drawHeader();
         <section id = "meal">
             <h2>Categoria:</h2>
             <?php foreach ($filterMeals as $item){?>
-                <a href="#<?=$item->name?>"><?=$item->name?></a>
+                <a href="#<?=$item->name?>"><?=$item->name?> > </a>
             <?php } ?>
         </section>
 

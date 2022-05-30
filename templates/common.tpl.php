@@ -82,7 +82,7 @@
 
 <?php function drawFooter() { ?>
     <link rel="stylesheet" href="css/style.css">
-    <section class="footer">
+    <footer>
         <div class="box-container">
             <div class="box">
                 <h3>Links</h3>
@@ -107,7 +107,7 @@
             </div>
         </div>
         <div class="credit"> &copy; Larica LTW 2021/2022 - All rights reserved </div>
-    </section>
+    </footer>
 <?php } ?>
 
 <?php function drawLoginForm() { ?>
