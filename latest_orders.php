@@ -1,4 +1,5 @@
 <?php
+
     declare(strict_types=1);
 
     require_once('session.php');
@@ -15,5 +16,5 @@
     $user = User::getUser($db, $session->getId());
 
     drawHeader($session);
-    drawProfile($user);
+    drawLatestOrders($session, $db, $user);
     drawFooter();

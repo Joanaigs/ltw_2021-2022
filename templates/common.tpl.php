@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <title>Larica-Food Delivery Website</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <link rel="stylesheet" href="../css/style.css">
       <script src="javascript/heartDish.js" defer></script>
       <script src="javascript/heart.js" defer></script>
@@ -85,9 +85,15 @@
 <main>
     <?php } ?>
 
-<?php function drawFooter() { ?>
+    <?php function drawFooter() { ?>
+        <link rel="stylesheet" href="css/style.css">
+        <footer class="credit">&copy; Larica LTW 2021/2022 - All rights reserved</footer>
+
+    <?php } ?>
+
+<?php function drawAboutUs() { ?>
     <link rel="stylesheet" href="css/style.css">
-    <section class="footer">
+    <footer class="footer">
         <div class="box-container">
             <div class="box">
                 <h3>Links</h3>
@@ -112,10 +118,22 @@
                 <a href="https://github.com/Joanaigs">GitHub - @Joanaigs</a>
             </div>
         </div>
-        <div class="credit"> &copy; Larica LTW 2021/2022 - All rights reserved </div>
-    </section>
-
+        <?php drawFooter(); ?>
+    </footer>
 <?php } ?>
+
+    <?php function drawSidebar() { ?>
+        <link rel="stylesheet" href="../css/profile.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+            <div class="sidebar">
+                <h3>Conta</h3>
+                <ul class="sidebar-options">
+                    <li class="profile-page"><a href="../profile.php">Perfil de utilizador <i class="fas fa-chevron-right" id="chevron-right"></i></a></li>
+                    <li class="last-orders-page"><a href="../latest_orders.php">Pedidos anteriores <i class="fas fa-chevron-right" id="chevron-right"></i></a></li>
+                </ul>
+            </div>
+        <?php } ?>
 
 <?php function drawLoginRegisterForm(Session $session) { ?>
 <!DOCTYPE html>

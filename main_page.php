@@ -22,5 +22,5 @@
     </div>
 <?php
   drawRestaurants($restaurants);
-  drawFooter();
+  drawAboutUs();
 ?>

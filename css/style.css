@@ -28,6 +28,11 @@ html{
     scroll-behavior: smooth;
 }
 
+html, body{
+    width: 100%;
+    height: 100%;
+}
+
 .heart {
     position: relative;
 }
@@ -142,10 +147,8 @@ html{
     transition: 0.2s;
 }
 
-
-
 header{
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
@@ -362,13 +365,12 @@ header .icons #menu-bars{
     text-decoration: none;
 }
 
-.footer .credit{
+.credit{
     text-align: center;
     border-top: .1rem solid rgb(0,0,0,0.1);
     font-size: 1.5rem;
     color: var(--body-font-family);
     padding: 1.5rem .5rem;
-    margin-top: 1.5rem;
 }
 
 
@@ -463,8 +465,6 @@ body{
     display: grid;
     grid-template-rows: auto 1fr auto;
 }
-
-
 
 .grid-container{
     display: grid;
