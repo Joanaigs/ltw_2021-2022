@@ -19,12 +19,12 @@
     drawLatestOrders($session, $db, $user);
     if($restaurant===false){?>
         <button class="add-restaurant-btn" name="addRestaurantButton" onclick="window.location.href = '../addRestaurant.php';">Add Restaurant</button>
-        <?php }
+    <?php }
     else{?>
         <button class="restaurant-page-btn" name="restaurantPageButton" onclick="window.location.href = '../restView.php?id=<?=$restaurant->id?>';">Restaurant Page</button>
         <button class="erase-restaurant-btn" name="eraseRestaurantButton" onclick="window.location.href = '../eraseRestaurant.php';">Erase Restaurant</button>
     <?php }
     ?>
 
-<?php
+    <?php
     drawFooter();
