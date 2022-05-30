@@ -64,7 +64,7 @@ CREATE TABLE Review (
 DROP TABLE IF EXISTS Comment;
 CREATE TABLE Comment (
     idReview INTEGER REFERENCES Review(id),
-    idUser  INTEGER REFERENCES User(id),
+    idRestaurant  INTEGER REFERENCES Restaurant(id),
     comment TEXT
 );
 
