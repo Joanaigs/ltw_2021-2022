@@ -3,90 +3,70 @@
     declare(strict_types = 1);
 
     require_once('database/user.class.php');
-    require_once('templates/common.tpl.php');
 
-    function drawLatestOrders(Session $session, PDO $db, User $user) { ?>
-        <link rel="stylesheet" href="../css/profile.css"/>
-        <div class="grid-container-profile">
-            <?php drawSidebar(); ?>
-            <div class="last-orders">
-                <h2>Pedidos anteriores</h2>
-                <?php
-                $dishes = User::getOrders($session, $db, $user->id);
-                if($dishes != null) {
-                    foreach($dishes as $dish) { ?>
-                        <p class="dish">
-                            <?php echo ($dish->name); ?>
-                        </p>
-                    <?php }
-                    }
-                ?>
-            </div>
+    function drawProfile(User $user) { ?>
+    <h2>Perfil</h2>
+        <img src = "profile_pic.png" alt="Profile picture">
+
+        <div class="username">
+            Username: <?=$user->username?>
         </div>
-    <?php }
 
-    function drawProfile($user) { ?>
-    <link rel="stylesheet" href="../css/profile.css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-        <div class="grid-container-profile">
-            <?php drawSidebar(); ?>
-        <div class="profile-info">
-            <h2>Perfil</h2>
-            <img src = "profile_pic.png" alt="Profile picture">
-            <div class="info">
-                <span><label><i class="fas fa-user"></i>Nome de utilizador:</label><?=$user->username?></span>
-                <span><label><i class="fas fa-envelope"></i>Email: </label><?=$user->email?></span>
-                <span><label><i class="fas fa-home"></i>Endereço: </label><?=$user->address?></span>
-                <span><label><i class="fas fa-phone"></i>Número de telemóvel: </label><?=$user->phoneNumber?></span>
-            </div>
-            <button class="edit-profile-btn" name="editProfileButton" onclick="window.location.href = '../edit_profile_action.php';">Editar</button>
+        <div class="email">
+            Email: <?=$user->email?>
         </div>
-    </div>
-        <?php }
+
+        <div class="address">
+            Endereço: <?=$user->address?>
+        </div>
+
+        <div class="phoneNumber">
+            Número de telemóvel: <?=$user->phoneNumber?>
+        </div>
+
+        <button class="edit-profile-btn" name="editProfileButton" onclick="window.location.href = '../edit_profile_action.php';">Editar</button>
+        <?php
+    }
 
     function editProfileForm(User $user) { ?>
-        <link rel="stylesheet" href="../css/profile.css"/>
-        <div class="grid-container-profile">
-            <?php drawSidebar(); ?>
-            <div class="edit-profile-info">
-                <form action="../formEditProfile.php" method="post" class="edit-profile">
-                    <h2 class="title">Editar Perfil</h2>
-                    <img src = "profile_pic.png" alt="Profile picture">
+    <h2>Perfil</h2>
+    <form action="../edit_profile_action.php" method="post" class="profile">
+        <img src = "profile_pic.png" alt="Profile picture">
 
-                    <div class="input-field">
-                        <label><i class="fas fa-user"></i>Nome de utilizador:</label>
-                        <input type="text" name="username" value="<?=$user->username?>" />
-                    </div>
+        <label for="username">Username:</label>
+        <input id="username" type="text" name="username" value="<?=$user->username?>">
 
-                    <div class="input-field">
-                        <label><i class="fas fa-envelope"></i>Email: </label>
-                        <input type="text" name="email" value="<?=$user->email?>"/>
-                    </div>
+        <label for="email">Email:</label>
+        <input id="email" type="text" name="email" value="<?=$user->email?>">
 
-                    <div class="input-field">
-                        <label><i class="fas fa-home"></i>Endereço: </label>
-                        <input type="text" name="address" placeholder="<?=$user->address?>"/>
-                    </div>
+        <label for="address">Morada:</label>
+        <input id="address" type="text" name="address" value="<?=$user->address?>">
 
-                    <div class="input-field">
-                        <label><i class="fas fa-phone"></i>Número de telemóvel: </label>
-                        <input type="text" name="phoneNumber" placeholder="<?=$user->phoneNumber?>"/>
-                    </div>
+        <label for="phoneNumber">Número de telemóvel:</label>
+        <input id="phoneNumber" type="text" name="phoneNumber" value="<?=$user->phoneNumber?>">
 
-                    <div class="input-field">
-                        <label><i class="fas fa-lock"></i>Palavra-passe: </label>
-                        <input type="password" name="password" placeholder="Editar palavra-passe"/>
-                    </div>
-                    <p class="warning">A palavra-passe deve conter no mínimo 5 caracteres e incluir letras e números</p>
-                    <div class="input-field">
-                        <label><i class="fas fa-lock"></i>Palavra-passe: </label>
-                        <input type="password" name="confirm_password" placeholder="Confirmar palavra-passe"/>
-                    </div>
+        <label for="password">Palavra-passe:</label>
+        <input id="password" type="password" name="password">
 
-                    <input type="submit" name="saveEdit" class="btn-solid" value="Salvar" formmethod="post">
-                </form>
-            </div>
-        </div>
+        <label for="confirm_password">Confirmar palavra-passe:</label>
+        <input id="confirm_password" type="password" name="confirm_password">
+        <input type="submit" name="saveEdit" class="btn solid" value="Salvar" formmethod="post">
+    </form>
     <?php
     }
+
+    function drawLatestOrders(Session $session, PDO $db, User $user) { ?>
+        <h3>Pedidos anteriores</h3>
+        <section id="latestOrders">
+            <?php
+            $dishes = User::getOrders($session, $db, $user->id);
+            if($dishes != null) {
+                foreach($dishes as $dish) { ?>
+                    <order>
+                    <?php echo ($dish->name) ?>
+                    <br>
+                    </order>
+                <?php }
+                }
+            }?>
+        </section>
