@@ -58,6 +58,29 @@
           return $restaurants;
       }
 
+      static function isfavoriteRestaurant(PDO $db, int $id, int $idUser){
+          $stmt = $db->prepare('SELECT id, Restaurant.idUser as idUser, name, address, image
+        FROM FavoriteRestaurant , Restaurant
+        WHERE FavoriteRestaurant.idUser=? and idRestaurant=? and idRestaurant=id');
+          $stmt->execute(array($idUser, $id));
+
+          $restaurants = array();
+
+          while ($restaurant = $stmt->fetch()) {
+              $restaurants[] = new Restaurant(
+                  $restaurant['id'],
+                  $restaurant['idUser'],
+                  $restaurant['name'],
+                  $restaurant['address'],
+                  $restaurant['image']
+              );
+          }
+          if(sizeof($restaurants)>0)
+              return true;
+          else
+              return false;
+      }
+
 
       static function getRestaurant(PDO $db, string $id) : Restaurant {
           $stmt = $db->prepare('SELECT *  FROM Restaurant WHERE id = ?');
@@ -111,13 +134,45 @@
           }
           return $restaurants;
       }
-      static function addfavoriteRestaurants(PDO $db, string $idRe, string $idUser)  {
+      static function addfavoriteRestaurants(PDO $db, string $idRe, int $idUser)  {
           $stmt = $db->prepare('INSERT INTO FavoriteRestaurant(idUser, idRestaurant) Values(?, ?)');
           $stmt->execute(array($idUser, $idRe));
       }
-      static function removefavoriteRestaurants(PDO $db, string $idRe, string $idUser)  {
+
+      static function addRestaurants(PDO $db, int $idUser, string $name, string $address)  {
+          $stmt = $db->prepare('INSERT INTO Restaurant(idUser, name, address) Values(?, ?, ?)');
+          $stmt->execute(array($idUser, $name, $address));
+      }
+
+      static function removefavoriteRestaurants(PDO $db, string $idRe, int $idUser)  {
           $stmt = $db->prepare('DELETE FROM FavoriteRestaurant where idUser=? and idRestaurant=?' );
           $stmt->execute(array($idUser, $idRe));
+      }
+
+      static function removeRestaurants(PDO $db, int $idRe)  {
+          $stmt = $db->prepare('DELETE FROM Restaurant where id=?' );
+          $stmt->execute(array($idRe));
+      }
+
+      static function hasRestaurant(PDO $db, int $id)
+      {
+          $stmt = $db->prepare('
+            SELECT *
+            FROM Restaurant
+            WHERE idUser = ?
+          ');
+
+          $stmt->execute(array($id));
+          $r = $stmt->fetch();
+          if($r===false)
+              return false;
+          return new Restaurant(
+              $r['id'],
+              $r['idUser'],
+              $r['name'],
+              $r['address'],
+              $r['image']
+          );
       }
   }
 ?>

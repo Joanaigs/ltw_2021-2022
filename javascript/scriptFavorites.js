@@ -18,13 +18,9 @@ for (let i=0; i < filterFavorites.length; i++){
                     link.href = '../restaurant.php?id=' + restaurant.id
                     link.textContent = restaurant.name
                     const img = document.createElement('img')
-                    const div = document.createElement('div')
-                    div.classList.add('heart')
-                    div.id=restaurant.id;
                     img.src = 'https://picsum.photos/600/300?' + restaurant.id
                     article.appendChild(header)
                     header.appendChild(link)
-                    article.append(div)
                     article.appendChild(img)
                     section.appendChild(article)
                 }
@@ -39,10 +35,6 @@ for (let i=0; i < filterFavorites.length; i++){
                     h4.textContent=dish.name
                     img.src = 'https://picsum.photos/600/300?' + dish.id
                     const p=document.createElement("p")
-                    p.textContent=dish.price
-                    const div = document.createElement('div')
-                    div.classList.add('heart')
-                    article.appendChild(div)
                     article.appendChild(img)
                     article.appendChild(h4)
                     article.appendChild(p)

@@ -37,8 +37,8 @@
         </nav>
         <div class="icons">
             <i class="fas fa-bars" id="menu-bars"></i>
-            <a href="#" class="fas fa-heart"></a>
             <?php if($session->isLoggedIn()){?>
+            <a href="../favorites.php" class="fas fa-heart"></a>
             <a href="../profile.php" class="fas fa-user"></a><?php ;}?>
             <a href="../cart.php" class="fas fa-shopping-cart"></a>
             <?php if(!$session->isLoggedIn()){?>
@@ -68,10 +68,6 @@
 
 <header>
     <h1><a href="main_page.php">Larica</a></h1>
-
-    <form>
-        <button type="submit"><a href="main_page">Login/Register</a></button>
-    </form>
     <div class="m_container">
         <i id="money" class="money"></i>
     </div>
@@ -81,6 +77,7 @@
     <div class=menu">
         <a href="restView.php?id=<?=$id?>">Menu</a>
     </div>
+
 </header>
 <main>
     <?php } ?>

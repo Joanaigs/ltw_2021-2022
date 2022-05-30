@@ -1,7 +1,8 @@
 <?php
 
 declare(strict_types = 1);
-session_start();
+require_once('session.php');
+$session = new Session();
 require_once('database/restaurant.class.php');
 require_once('database/dish.class.php');
 require_once('database/cart.class.php');
@@ -16,7 +17,7 @@ $restaurant = Restaurant::getRestaurant($db,$idRestaurant);
 $dishes = Dish::getDishesRestaurant($db, $_GET['id']);
 $filterMeals = Filter::getMeals($db);
 $filterTypes=Filter::getTypeDish($db);
-drawHeader();
+drawHeader($session);
 
 ?>
 <div class="grid-container">
@@ -44,7 +45,7 @@ drawHeader();
 
     <div class="page">
         <?php
-        drawRestaurant($db, $restaurant, $dishes);
+        drawRestaurant($db, $restaurant, $dishes, $session);
         ?>
     </div>
 

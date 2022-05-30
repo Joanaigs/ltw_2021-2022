@@ -57,5 +57,10 @@ class Filter {
         }
         return $filters;
     }
+
+    static function addCategoryRestaurant(PDO $db, int $idRe, int $idCategory)  {
+        $stmt = $db->prepare('INSERT INTO CategoryRestaurant(idRestaurant, idCategory) Values(?, ?)');
+        $stmt->execute(array($idRe, $idCategory));
+    }
 }
 ?>

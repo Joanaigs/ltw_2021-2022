@@ -21,6 +21,7 @@
                     <?php } ?>
     </div>
 <?php
+
   drawRestaurants($restaurants);
   drawAboutUs();
 ?>
