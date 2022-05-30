@@ -1,3 +1,4 @@
+
 const searchRestaurants1 = document.querySelector('#searchRest1')
 const searchRestaurants2 = document.querySelector('#searchRest2')
 if (searchRestaurants1) {
@@ -30,8 +31,7 @@ if (searchRestaurants1) {
 else if (searchRestaurants2) {
     searchRestaurants2.addEventListener('input', async function() {
         const response = await fetch('api_restaurantsSearch.php?search=' + this.value)
-    })
-}
+
 
 
 
@@ -46,5 +46,4 @@ icon1.onclick = function (){
 icon2.onclick = function (){
     search2.classList.toggle('active');
 }
-
 

@@ -21,7 +21,6 @@
                     <?php } ?>
     </div>
 <?php
-
-  drawRestaurants($restaurants);
-  drawAboutUs();
+  drawRestaurants($restaurants, $db, $session);
+  drawFooter();
 ?>
