@@ -55,9 +55,9 @@ body{
 
 .sidebar{
     list-style: none;
-    position: fixed;
-    height: 83.55%;
-    width: 20%;
+    position: sticky;
+    top: 55px;
+    height: 100vh;
     background-color: var(--section-background-color);
 }
 
@@ -201,7 +201,51 @@ body{
     margin-left: 2rem;
 }
 
+.last-orders .dishes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 
+.last-orders .dishes .info-dish{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-around;
+    margin: 10px 0 30px;
+    border-radius: 15px;
+    height: 260px;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+.last-orders .info-dish h3{
+    margin-left: 2rem;
+    margin-top: 1rem;
+    color: var(--body-font-color);
+    font-size: 16px;
+}
+
+.last-orders .info-dish > img{
+    grid-column-start: 1;
+    margin: 1rem 0 2rem 2rem;
+    width: 260px;
+    height: 200px;
+    align-content: center;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+.last-orders .info-dish .text{
+    grid-column-start: 2.25;
+    color: var(--body-font-color);
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.last-orders .info-dish:hover{
+    background-color: var(--section-background-color);
+}
 
 
 @media (max-width: 768px){
