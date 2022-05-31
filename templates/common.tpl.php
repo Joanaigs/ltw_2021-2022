@@ -14,6 +14,7 @@
       <link rel="stylesheet" href="../css/comments.css">
       <script src="javascript/heartDish.js" defer></script>
       <script src="javascript/heart.js" defer></script>
+      <script src="javascript/restaurantPage.js" defer></script>
       <script src="javascript/scriptsMealFilter.js" defer></script>
       <script src="javascript/restaurantFilter.js" defer></script>
       <script src="javascript/restaurantSearch.js" defer></script>

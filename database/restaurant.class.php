@@ -7,6 +7,8 @@
     public string $name;
     public string $address;
     public string $image;
+    public bool $heart;
+    public bool $loggedIn;
 
     public function __construct(int $id, int $idUser, string $name, string $address, string $image)
     {
@@ -17,7 +19,7 @@
       $this->image=$image;
     }
 
-    static function getRestaurants(PDO $db) : array {
+    static function getRestaurants(PDO $db, Session $session) : array {
       $stmt = $db->prepare('
         SELECT *
         FROM Restaurant
@@ -26,13 +28,24 @@
         $restaurants = array();
 
         while ($restaurant = $stmt->fetch()) {
-            $restaurants[] = new Restaurant(
+            $temp = new Restaurant(
                 $restaurant['id'],
                 $restaurant['idUser'],
                 $restaurant['name'],
                 $restaurant['address'],
                 $restaurant['image']
             );
+            if(self::isfavoriteRestaurant($db, $restaurant['id'],$session->getId())){
+                $temp->heart=true;
+            }
+            else
+                $temp->heart=false;
+            if($session->isLoggedIn()){
+                $temp->loggedIn=true;
+            }
+            else
+                $temp->loggedIn=false;
+            $restaurants[]=$temp;
         }
         return $restaurants;
     }
@@ -99,24 +112,35 @@
       }
 
 
-      static function searchRestaurants(PDO $db, string $search) : array {
+      static function searchRestaurants(PDO $db, string $search, Session $session) : array {
           $stmt = $db->prepare('SELECT * FROM Restaurant WHERE name LIKE ? ');
           $stmt->execute(array('%'. $search . '%'));
 
           $restaurants = array();
 
           while ($restaurant = $stmt->fetch()) {
-              $restaurants[] = new Restaurant(
+              $temp = new Restaurant(
                   $restaurant['id'],
                   $restaurant['idUser'],
                   $restaurant['name'],
                   $restaurant['address'],
                   $restaurant['image']
               );
+              if(self::isfavoriteRestaurant($db, $restaurant['id'],$session->getId())){
+                  $temp->heart=true;
+              }
+              else
+                  $temp->heart=false;
+              if($session->isLoggedIn()){
+                  $temp->loggedIn=true;
+              }
+              else
+                  $temp->loggedIn=false;
+              $restaurants[]=$temp;
           }
           return $restaurants;
       }
-      static function filterRestaurants(PDO $db, string $filter) : array {
+      static function filterRestaurants(PDO $db, string $filter, Session $session) : array {
           $stmt = $db->prepare('SELECT * FROM Restaurant WHERE id in(
         SELECT idRestaurant FROM CategoryRestaurant, Category  WHERE idCategory=id and name=? )
  ');
@@ -125,13 +149,24 @@
           $restaurants = array();
 
           while ($restaurant = $stmt->fetch()) {
-              $restaurants[] = new Restaurant(
+              $temp = new Restaurant(
                   $restaurant['id'],
                   $restaurant['idUser'],
                   $restaurant['name'],
                   $restaurant['address'],
                   $restaurant['image']
               );
+              if(self::isfavoriteRestaurant($db, $restaurant['id'],$session->getId())){
+                  $temp->heart=true;
+              }
+              else
+                  $temp->heart=false;
+              if($session->isLoggedIn()){
+                  $temp->loggedIn=true;
+              }
+              else
+                  $temp->loggedIn=false;
+              $restaurants[]=$temp;
           }
           return $restaurants;
       }

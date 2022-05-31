@@ -18,12 +18,12 @@ require_once ('database/connection.db.php');
 $db = getDatabaseConnection();
 $idRestaurant=$_GET['id'];
 $restaurant = Restaurant::getRestaurant($db,intval($idRestaurant));
-$dishes = Dish::getDishesRestaurant($db, $_GET['id']);
+$dishes = Dish::getDishesRestaurant($db, $_GET['id'], $session);
 $filterMeals = Filter::getMeals($db);
 $filterTypes=Filter::getTypeDish($db);
 drawHeader($session);
-
 ?>
+
 <div class="grid-container">
     <div class = "filter">
         <section id = "meal">
@@ -48,9 +48,9 @@ drawHeader($session);
     </div>
 
     <div class="page">
-        <?php
-        drawRestaurant($db, $restaurant, $dishes, $session);
-        ?>
+        <h1><?= $restaurant -> name?></h1>
+        <section class = "dishes" id="1">
+        </section>
     </div>
 </div>
 <?php

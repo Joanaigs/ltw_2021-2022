@@ -1,6 +1,7 @@
 <?php
     declare(strict_types = 1);
-
+    require_once('cart.class.php');
+    require_once('connection.db.php');
     class Dish{
         public int $id;
         public int $idRestaurant;
@@ -10,6 +11,9 @@
         public int $idMeal;
         public int $idTypeOfDish;
         public string $meal;
+        public bool $heart;
+        public bool $cart;
+        public bool $loggedIn;
 
 
 
@@ -25,7 +29,7 @@
             $this->meal=$meal;
         }
 
-        static public function getDishesRestaurant(PDO $db, string $id): array{
+        static public function getDishesRestaurant(PDO $db, string $id, Session $session): array{
             $stmt = $db -> prepare('
                 SELECT Dish.id as id, idRestaurant, Dish.name as name, price, photo, idMeal, idTypeOfDish, Meal.name as mealName
                 FROM Dish, Meal
@@ -38,7 +42,7 @@
             $dishes = array();
 
             while ($dish = $stmt->fetch()){
-                $dishes[] = new Dish(
+                $temp = new Dish(
                     $dish['id'],
                     $dish['idRestaurant'],
                     $dish['name'],
@@ -48,9 +52,23 @@
                     $dish['idTypeOfDish'],
                     $dish['mealName']
                 );
+                if(Cart::findInCart($db, $dish['id'], $session->getId())){
+                    $temp->cart=true;
+                }
+                else
+                    $temp->cart=false;
+                if(self::isfavoriteDish($db, $dish['id'],$session->getId())){
+                    $temp->heart=true;
+                }
+                else
+                    $temp->heart=false;
+                if($session->isLoggedIn()){
+                    $temp->loggedIn=true;
+                }
+                else
+                    $temp->loggedIn=false;
+                $dishes[] = $temp;
             }
-
-
             return $dishes;
         }
 
@@ -115,7 +133,7 @@
             );
         }
 
-        static function filterDish(PDO $db, $filter, $idRestaurant)
+        static function filterDish(PDO $db, $filter, $idRestaurant, Session $session)
         {
             $stmt = $db->prepare('SELECT Dish.id as id, idRestaurant, Dish.name as name, price, photo, idMeal, idTypeOfDish, Meal.name as mealName
             FROM Dish, Meal WHERE idTypeOfDish=? and idRestaurant=? and idMeal=Meal.id');
@@ -124,7 +142,7 @@
             $dishes = array();
 
             while ($dish = $stmt->fetch()){
-                $dishes[] = new Dish(
+                $temp = new Dish(
                     $dish['id'],
                     $dish['idRestaurant'],
                     $dish['name'],
@@ -134,6 +152,22 @@
                     $dish['idTypeOfDish'],
                     $dish['mealName']
                 );
+                if(Cart::findInCart($db, $dish['id'], $session->getId())){
+                    $temp->cart=true;
+                }
+                else
+                    $temp->cart=false;
+                if(self::isfavoriteDish($db, $dish['id'],$session->getId())){
+                    $temp->heart=true;
+                }
+                else
+                    $temp->heart=false;
+                if($session->isLoggedIn()){
+                    $temp->loggedIn=true;
+                }
+                else
+                    $temp->loggedIn=false;
+                $dishes[] = $temp;
             }
             return $dishes;
         }

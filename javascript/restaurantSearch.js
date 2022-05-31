@@ -5,26 +5,7 @@ if (searchRestaurants1) {
     searchRestaurants1.addEventListener('input', async function() {
         const response = await fetch('../api/api_restaurantsSearch.php?search=' + this.value)
         const restaurants = await response.json()
-        const section = document.querySelector('#restaurants')
-        section.innerHTML = ''
-        for (const restaurant of restaurants) {
-            const article = document.createElement('article')
-            const h3 = document.createElement('h3')
-            const link = document.createElement('a')
-            link.href = '../restaurant.php?id=' + restaurant.id
-            link.textContent = restaurant.name
-            const img = document.createElement('img')
-            const div = document.createElement('div')
-            div.classList.add('heart')
-            div.id=restaurant.id;
-            img.src = 'https://picsum.photos/600/300?' + restaurant.id
-            h3.appendChild(link)
-            article.appendChild(h3)
-            article.append(div)
-            article.appendChild(img)
-            section.appendChild(article)
-        }
-        heartsClick();
+        get_restaurants(restaurants)
     })
 }
 if (searchRestaurants2) {
@@ -33,26 +14,7 @@ if (searchRestaurants2) {
         console.log("hi");
         const response = await fetch('../api/api_restaurantsSearch.php?search=' + this.value)
         const restaurants = await response.json()
-        const section = document.querySelector('#restaurants')
-        section.innerHTML = ''
-        for (const restaurant of restaurants) {
-            const article = document.createElement('article')
-            const h3 = document.createElement('h3')
-            const link = document.createElement('a')
-            link.href = '../restaurant.php?id=' + restaurant.id
-            link.textContent = restaurant.name
-            const img = document.createElement('img')
-            const div = document.createElement('div')
-            div.classList.add('heart')
-            div.id=restaurant.id;
-            img.src = 'https://picsum.photos/600/300?' + restaurant.id
-            h3.appendChild(link)
-            article.appendChild(h3)
-            article.append(div)
-            article.appendChild(img)
-            section.appendChild(article)
-        }
-        heartsClick();
+        get_restaurants(restaurants)
     })
 }
 

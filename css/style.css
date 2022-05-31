@@ -625,13 +625,13 @@ body{
     text-decoration: underline;
 }
 
-#typeOfDish label{
+#typeOfRestaurant label{
     padding-left: 20px;
     font-size: 15px;
     color: #444444;
 }
 
-#typeOfDish label:hover{
+#typeOfRestaurant label:hover{
     color: #7F7F7F;
 }
 

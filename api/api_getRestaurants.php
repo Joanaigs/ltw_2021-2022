@@ -4,6 +4,7 @@ require_once('../session.php');
 $session = new Session();
 require_once('../database/restaurant.class.php');
 $db = new PDO('sqlite:../example.db');
-$restaurants = Restaurant::searchRestaurants($db, $_GET['search'], $session);
+
+$restaurants=Restaurant::getRestaurants($db, $session);
+
 echo json_encode($restaurants);
-?>
