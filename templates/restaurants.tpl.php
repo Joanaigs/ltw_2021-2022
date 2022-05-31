@@ -6,14 +6,8 @@
 
 
 function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db , Session $session) { ?><!DOCTYPE html>
-
-    <div class="search1">
-            <div class="search-icon1"></div>
-            <div class="input">
-                <input id="searchRest1" type="text" placeholder="Procurar">
-            </div>
-            <span class="clear1" onclick="document.getElementById('searchRest1').value=''"></span>
-        </section>
+<div class="grid-container">
+    <div class ="filter">
         <section id = "typeOfDish">
             <h2>Tipo de Prato:</h2>
             <div id="filter">

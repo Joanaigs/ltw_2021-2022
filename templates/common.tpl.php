@@ -24,7 +24,16 @@
   </head>
   <body>
     <header>
-        <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
+        <div class="header-left">
+            <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
+            <section class="search1">
+                <div class="search-icon1"></div>
+                <div class="input">
+                    <input id="searchRest1" type="text" placeholder="Procurar">
+                </div>
+                <span class="clear1" onclick="document.getElementById('searchRest1').value=''"></span>
+            </section>
+        </div>
         <nav class="navbar">
             <div class="search2">
                 <div class="search-icon2"></div>
