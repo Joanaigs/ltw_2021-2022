@@ -43,7 +43,7 @@
                     <h2 id="<?=$meal?>"><?=$meal?></h2>
                 <?php } ?>
 
-            <!--
+
 
                 <?php if(isset( $_SESSION['id'])){?>
                     <a href="addToCart.php?idDish=<?=$dish->id?>&idRestaurant=<?=$restaurant->id?>"><div class="button_plus"></div></a>
@@ -59,7 +59,7 @@
 
                       <?php }}?>
 
-             -->
+
 
             <article class="dish">
                 <img src="<?=$dish -> photo?>?id=<?=$dish->id?>" alt="">
