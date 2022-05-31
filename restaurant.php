@@ -49,7 +49,7 @@ drawHeader($session);
 
     <div class="page">
         <h1><?= $restaurant -> name?></h1>
-        <section class = "dishes" id="1">
+        <section class = "dishes" id=<?= $restaurant -> id?>>
         </section>
     </div>
 </div>

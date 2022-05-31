@@ -21,23 +21,7 @@ function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db ,
     </div>
     <div class="page">
         <section id="restaurants">
-            <?php foreach ($restaurants as $res) { ?>
-                <article>
-                    <?php if($session->isLoggedIn()){
-                        $isFavorite=Restaurant::isfavoriteRestaurant($db, $res->id, $session->getId());
 
-                        if($isFavorite===true){?>
-                            <div class="heart liked" id=<?=$res->id?>></div>
-
-                        <?php } else{?><div class="heart" id=<?=$res->id?>></div><?php
-                        }}?>
-                    <img src="https://picsum.photos/600/300?.<?=$res->name?>"alt="">
-                    <h3>
-                        <a href="../restaurant.php?id=<?=$res->id?>"><?=$res->name?></a>
-                    </h3>
-                </article>
-            <?php }
-            ?>
         </section>
     </div>
 </div>
