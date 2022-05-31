@@ -116,7 +116,6 @@
 
             <div class="box">
                 <h3>Contacte-nos</h3>
-                <a href="#">+351 909878987</a>
                 <a href="#">up202007620@edu.fe.up.pt</a>
                 <a href="#">up202007623@edu.fe.up.pt</a>
                 <a href="#">up202006279@edu.fe.up.pt</a>

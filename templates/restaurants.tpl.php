@@ -24,7 +24,7 @@ function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db ,
             <?php foreach ($restaurants as $res) { ?>
                 <article>
                     <h3>
-                        <a href="restaurant.php?id=<?=$res->id?>"><?=$res->name?></a>
+                        <a href="../restaurant.php?id=<?=$res->id?>"><?=$res->name?></a>
                     </h3>
 
                     <?php if($session->isLoggedIn()){
