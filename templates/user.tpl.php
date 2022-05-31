@@ -3,6 +3,8 @@
     declare(strict_types = 1);
 
     require_once('database/user.class.php');
+    require_once('database/dish.class.php');
+    require_once('database/restaurant.class.php');
     require_once('templates/common.tpl.php');
 
     function drawLatestOrders(Session $session, PDO $db, User $user) { ?>
@@ -11,16 +13,25 @@
             <?php drawSidebar(); ?>
             <div class="last-orders">
                 <h2>Pedidos anteriores</h2>
+                <section class = "dishes">
                 <?php
                 $dishes = User::getOrders($session, $db, $user->id);
                 if($dishes != null) {
-                    foreach($dishes as $dish) { ?>
-                        <p class="dish">
-                            <?php echo ($dish->name); ?>
-                        </p>
-                    <?php }
-                    }
+                    foreach($dishes as $dish) {
+                        $idRestaurant=$dish->idRestaurant;
+                        $restaurant = Restaurant::getRestaurant($db, $idRestaurant); ?>
+                        <section class = "info-dish">
+                            <h3> <?=$restaurant->name?></h3>
+                            <img src="<?=$dish -> photo?>?id=<?=$dish->id?>" alt="">
+                            <div class="text">
+                                <h4> <?= $dish -> name?></h4>
+                                <p class = "info"> <?= $dish -> price?> €</p>
+                            </div>
+                        </section>
+                        <?php }
+                }
                 ?>
+                </section>
             </div>
         </div>
     <?php }

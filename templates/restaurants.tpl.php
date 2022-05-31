@@ -22,8 +22,8 @@
                     <h3>
                         <a href="restaurant.php?id=<?=$res->id?>"><?=$res->name?></a>
                     </h3>
-                    <?php if(isset( $_SESSION['id'])){
-                        $isFavorite=Restaurant::isfavoriteRestaurant($db, $res->id, $_SESSION['id']);
+                    <?php if($session->isLoggedIn()){
+                        $isFavorite=Restaurant::isfavoriteRestaurant($db, $res->id, $session->getId());
                         if($isFavorite===true){?>
                             <div class="heart liked" id=<?=$res->id?>></div>
 
@@ -54,9 +54,9 @@
                     if($inCart===true){?>
                         <a href="removeFromCart.php?idDish=<?=$dish->id?>&idRestaurant=<?=$restaurant->id?>&cart=false"><div class="button_minus"></div> </a>
                     <?php }} ?>
-                <?php if(isset( $_SESSION['id'])){?>
+                <?php if($session->isLoggedIn()){?>
                         <div class="heart" id=<?=$dish->id?>></div><?php
-                          $isFavorite=Dish::isfavoriteDish($db, $dish->id, $_SESSION['id']);
+                          $isFavorite=Dish::isfavoriteDish($db, $dish->id, $session->getId());
                           if($isFavorite===true){?>
                               <div class="heart liked" id=<?=$dish->id?>></div>
 
