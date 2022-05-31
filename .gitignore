@@ -4,3 +4,4 @@ out/
 build/
 *.iml
 example.db
+.DS_Store
