@@ -52,7 +52,6 @@ drawHeader($session);
         drawRestaurant($db, $restaurant, $dishes, $session);
         ?>
     </div>
-
 </div>
 <?php
 $reviews=Review::getReview($db, $idRestaurant);

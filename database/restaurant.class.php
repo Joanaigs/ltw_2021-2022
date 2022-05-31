@@ -60,6 +60,7 @@
 
       static function isfavoriteRestaurant(PDO $db, int $id, int $idUser){
           $stmt = $db->prepare('SELECT id, Restaurant.idUser as idUser, name, address, image
+
         FROM FavoriteRestaurant , Restaurant
         WHERE FavoriteRestaurant.idUser=? and idRestaurant=? and idRestaurant=id');
           $stmt->execute(array($idUser, $id));
