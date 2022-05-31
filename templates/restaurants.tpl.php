@@ -4,10 +4,10 @@
   require_once(__DIR__.'/../database/restaurant.class.php');
 
 
-function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db) { ?>
-<div class="grid-container">
-    <div class ="filter">
-        <section class="search1">
+
+function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db , Session $session) { ?><!DOCTYPE html>
+
+    <div class="search1">
             <div class="search-icon1"></div>
             <div class="input">
                 <input id="searchRest1" type="text" placeholder="Procurar">
@@ -32,8 +32,10 @@ function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db) 
                     <h3>
                         <a href="restaurant.php?id=<?=$res->id?>"><?=$res->name?></a>
                     </h3>
-                    <?php if(isset( $_SESSION['id'])){
-                        $isFavorite=Dish::isfavoriteRestaurant($db, $res->id, $_SESSION['id']);
+
+                    <?php if($session->isLoggedIn()){
+                        $isFavorite=Restaurant::isfavoriteRestaurant($db, $res->id, $session->getId());
+
                         if($isFavorite===true){?>
                             <div class="heart liked" id=<?=$res->id?>></div>
 
@@ -49,7 +51,7 @@ function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db) 
 
 <?php } ?>
 
-<?php function drawRestaurant(PDO $db, Restaurant $restaurant, array $dishes){?>
+<?php function drawRestaurant(PDO $db, Restaurant $restaurant, array $dishes, Session $session){?>
 
     <h1><?= $restaurant -> name?></h1>
     <section id = "dishes">
@@ -60,15 +62,15 @@ function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db) 
                     <h2 id="<?=$meal?>"><?=$meal?></h2>
                 <?php } ?>
 
-                <?php if(isset( $_SESSION['id'])){?>
+                <?php if($session->isLoggedIn()){?>
                     <a href="addToCart.php?idDish=<?=$dish->id?>&idRestaurant=<?=$restaurant->id?>"><div class="button_plus"></div></a>
-                    <?php $inCart=Cart::findInCart($db, $dish->id, $_SESSION['id']);
+                    <?php $inCart=Cart::findInCart($db, $dish->id, $session->getId());
                     if($inCart===true){?>
-                        <a href="removeFromCart.php?idDish=<?=$dish->id?>&idRestaurant=<?=$restaurant->id?>"><div class="button_minus"></div> </a>
+                        <a href="removeFromCart.php?idDish=<?=$dish->id?>&idRestaurant=<?=$restaurant->id?>&cart=false"><div class="button_minus"></div> </a>
                     <?php }} ?>
-                <?php if(isset( $_SESSION['id'])){?>
+                <?php if($session->isLoggedIn()){?>
                         <div class="heart" id=<?=$dish->id?>></div><?php
-                          $isFavorite=Dish::isfavoriteDish($db, $dish->id, $_SESSION['id']);
+                          $isFavorite=Dish::isfavoriteDish($db, $dish->id, $session->getId());
                           if($isFavorite===true){?>
                               <div class="heart liked" id=<?=$dish->id?>></div>
 

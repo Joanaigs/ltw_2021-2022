@@ -10,13 +10,15 @@
         <?php foreach ($cart as $dish) { ?>
             <article id="item">
                 <?php $total += $dish->price?>
-                <p><?=$dish->name?></p><p><?=$dish->price?> €</p>
+                <a href="restaurant.php?id=<?=$dish->idRestaurant?>"><?=$dish->name?></a>
+                <button class="erase-fromCart-btn" name="eraseFromButton" onclick="window.location.href = '../removeFromCart.php?idRestaurant=<?=$dish->idRestaurant?>&idDish=<?=$dish->id?>&cart=true';">Remover</button>
+                <p><?=$dish->price?> €</p>
             </article>
 
         <?php } ?>
         <p>TOTAL: <?=$total?>€</p>
 
-        <button type="button">CHECKOUT</button>
+        <button class="make-order-btn" name="makeOrderButton" onclick="window.location.href = '../makeOrder.php';">Checkout</button>
     </section>
 <?php } ?>
 

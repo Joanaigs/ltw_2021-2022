@@ -1,5 +1,4 @@
 <?php
-
     declare(strict_types = 1);
 
     class Dish{
@@ -55,13 +54,32 @@
             return $dishes;
         }
 
-        static function getFavoriteDishes(PDO $db) : array {
-            $stmt = $db->prepare('
-        SELECT *
-        FROM FavoriteDish
-      ');
-            $stmt->execute();
-            return $stmt->fetchAll();
+        static function getFavoriteDishes(PDO $db, int $id) : array {
+            $stmt = $db -> prepare('
+                SELECT Dish.id, Dish.idRestaurant, Dish.name, Dish.price, Dish.photo, Dish.idMeal,
+                       Dish.idTypeOfDish, Meal.name as mealName
+                FROM FavoriteDish, Dish, Meal
+                WHERE FavoriteDish.idDish == Dish.id AND FavoriteDish.idUser == ? AND Dish.idMeal == Meal.id
+            ');
+
+            $stmt -> execute(array($id));
+
+            $dishes = array();
+
+            while ($dish = $stmt->fetch()){
+                $dishes[] = new Dish(
+                    $dish['id'],
+                    $dish['idRestaurant'],
+                    $dish['name'],
+                    $dish['price'],
+                    $dish['photo'],
+                    $dish['idMeal'],
+                    $dish['idTypeOfDish'],
+                    $dish['mealName']
+                );
+            }
+
+            return $dishes;
         }
 
 
@@ -120,19 +138,19 @@
             return $dishes;
         }
 
-        static function addfavoriteDish(PDO $db, string $idDi, string $idUser)  {
+        static function addfavoriteDish(PDO $db, string $idDi, int $idUser)  {
             $stmt = $db->prepare('INSERT INTO FavoriteDish(idUser, idDish) Values(?, ?)');
             $stmt->execute(array($idUser, $idDi));
         }
 
 
-        static function removefavoriteDish(PDO $db, string $idDi, string $idUser)  {
+        static function removefavoriteDish(PDO $db, string $idDi, int $idUser)  {
             $stmt = $db->prepare('DELETE FROM FavoriteDish where idUser=? and idDish=?' );
             $stmt->execute(array($idUser, $idDi));
         }
 
 
-        static function isfavoriteDish(PDO $db, int $idDi, string $idUser)  {
+        static function isfavoriteDish(PDO $db, int $idDi, int $idUser)  {
             $stmt = $db->prepare('SELECT Dish.id as id, idRestaurant, Dish.name as name, price, photo, idMeal, idTypeOfDish, Meal.name as mealName
             FROM Dish, Meal, FavoriteDish WHERE FavoriteDish.idUser=? and FavoriteDish.idDish=? and FavoriteDish.idDish=Dish.id and idMeal=Meal.id');
             $stmt->execute(array($idUser, $idDi));
@@ -180,3 +198,4 @@
     }
 
 ?>
+

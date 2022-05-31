@@ -7,7 +7,7 @@ require_once('../templates/common.tpl.php');
 require_once('../templates/restaurants.tpl.php');
 $db = new PDO('sqlite:../example.db');
 $checked=$_GET['checked'];
-if($_GET['filter']=="all"){
+if($_GET['filter']=="todos"){
     $dishes=Dish::getDishesRestaurant($db, $_GET['id']);
 }
 elseif($checked=='true'){

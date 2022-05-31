@@ -29,6 +29,7 @@ if (searchRestaurants1) {
 }
 if (searchRestaurants2) {
     searchRestaurants2.addEventListener('input', async function() {
+
         console.log("hi");
         const response = await fetch('../api/api_restaurantsSearch.php?search=' + this.value)
         const restaurants = await response.json()
@@ -55,7 +56,6 @@ if (searchRestaurants2) {
     })
 }
 
-
 const icon1 = document.querySelector('.search-icon1');
 const icon2 = document.querySelector('.search-icon2');
 const search1 = document.querySelector('.search1');
@@ -67,4 +67,5 @@ icon1.onclick = function (){
 icon2.onclick = function (){
     search2.classList.toggle('active');
 }
+
 
