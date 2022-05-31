@@ -13,11 +13,5 @@
   $restaurants = Restaurant::getRestaurants($db);
   $filterRestaurants= Filter::getFilterRestaurants($db);
   drawHeader($session);
-  ?>
-
-<?php
-
-
   drawRestaurants($restaurants, $filterRestaurants, $db, $session);
-  drawAboutUs();
-?>
+  drawFooter();

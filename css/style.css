@@ -352,21 +352,74 @@ header .icons #menu-bars{
     transform: rotate(315deg);
 }
 
-.footer .box-container{
+.about{
+    display: grid;
+    grid-template-rows: 1fr 1fr auto;
+}
+
+.about .box-container{
     margin-top: 4rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     gap: 1.5rem;
 }
 
-.footer .box-container .box h3{
+.about .about-site{
+    grid-row-start: 1;
+    margin-bottom: 4rem;
+    background-image: url("../images/about.jpg");
+    position: relative;
+    text-align: center;
+}
+
+.about-site h3{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    font-size: 40px;
+    color: var(--dark-color);
+}
+
+.about-site p{
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -80%);
+    font-size: 15px;
+}
+
+.about .how-to-use{
+    margin-top: 2rem;
+    margin-bottom: 12rem;
+}
+
+.about .how-to-use p{
+    font-size: 14px;
+}
+
+.about .how-to-use .box-container .box{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.about .how-to-use .box-container .box .image{
+    width: 350px;
+    height: 220px;
+}
+
+.about .box-container .box h3{
     text-align: center;
     padding: .3rem 0;
     font-size: 1.6rem;
     color: var(--dark-color);
 }
 
-.footer .box-container .box a{
+.about .box-container .box a{
     text-align: center;
     display: block;
     padding: .5rem 0;
@@ -375,18 +428,45 @@ header .icons #menu-bars{
     text-decoration: none;
 }
 
-.footer .box-container .box a:hover{
+.about .box-container .box a:hover{
     color: var(--accent-color);
     text-decoration: none;
 }
 
-.credit{
-    text-align: center;
-    border-top: .1rem solid rgb(0,0,0,0.1);
-    font-size: 1.2rem;
-    padding: 1.5rem .5rem;
+.about .follow{
+    background-color: var(--dark-color);
 }
 
+.about .follow h3{
+    padding-left: 4rem;
+    padding-top: 5rem;
+    font-size: 24px;
+    color: var(--section-background-color);
+}
+
+.about .follow .box-container .box h3, .about .follow .box-container .box h3, #credit{
+    color: var(--section-background-color);
+}
+
+.about .follow .box-container .box a{
+    color: #acacac;
+}
+
+.about .follow .box-container{
+    margin-bottom: 4rem;
+}
+
+#credit, #real{
+    margin-top: 2rem;
+    padding: 1.5rem .5rem;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+#real{
+    margin-top: 0;
+    border-top: .1rem solid rgb(0,0,0,0.1);
+}
 
 @media (max-width: 991px) {
     html{
@@ -500,6 +580,7 @@ body{
     position: sticky;
     display: flex;
     flex-direction: column;
+    background-color: var(--section-background-color);
 }
 
 .filter #filter{

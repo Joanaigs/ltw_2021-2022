@@ -23,10 +23,6 @@ function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db ,
         <section id="restaurants">
             <?php foreach ($restaurants as $res) { ?>
                 <article>
-                    <h3>
-                        <a href="../restaurant.php?id=<?=$res->id?>"><?=$res->name?></a>
-                    </h3>
-
                     <?php if($session->isLoggedIn()){
                         $isFavorite=Restaurant::isfavoriteRestaurant($db, $res->id, $session->getId());
 
@@ -36,6 +32,9 @@ function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db ,
                         <?php } else{?><div class="heart" id=<?=$res->id?>></div><?php
                         }}?>
                     <img src="https://picsum.photos/600/300?.<?=$res->name?>"alt="">
+                    <h3>
+                        <a href="../restaurant.php?id=<?=$res->id?>"><?=$res->name?></a>
+                    </h3>
                 </article>
             <?php }
             ?>

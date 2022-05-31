@@ -16,7 +16,6 @@
     $restaurant=Restaurant::hasRestaurant($db, $session->getId());
     drawHeader($session);
     drawProfile($user);
-    drawLatestOrders($session, $db, $user);
     if($restaurant===false){?>
         <button class="add-restaurant-btn" name="addRestaurantButton" onclick="window.location.href = '../addRestaurant.php';">Add Restaurant</button>
     <?php }
