@@ -24,7 +24,16 @@
   </head>
   <body>
     <header>
-        <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
+        <div class="header-left">
+            <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
+            <section class="search1">
+                <div class="search-icon1"></div>
+                <div class="input">
+                    <input id="searchRest1" type="text" placeholder="Procurar">
+                </div>
+                <span class="clear1" onclick="document.getElementById('searchRest1').value=''"></span>
+            </section>
+        </div>
         <nav class="navbar">
             <div class="search2">
                 <div class="search-icon2"></div>
@@ -34,7 +43,7 @@
                 <span class="clear2" onclick="document.getElementById('searchRest2').value=''"></span>
             </div>
             <a class="active" href="../main_page.php">Restaurantes</a>
-            <a href="#">Sobre</a>
+            <a href="../about.php">Sobre</a>
         </nav>
         <div class="icons">
             <i class="fas fa-bars" id="menu-bars"></i>
@@ -89,39 +98,80 @@
 
     <?php function drawFooter() { ?>
         <link rel="stylesheet" href="css/style.css">
-        <footer class="credit">&copy; Larica LTW 2021/2022 - All rights reserved</footer>
+        <footer class="credit" id="real">&copy; Larica LTW 2021/2022 - All rights reserved</footer>
 
     <?php } ?>
 
 <?php function drawAboutUs() { ?>
     <link rel="stylesheet" href="css/style.css">
-    <footer class="footer">
-        <div class="box-container">
-            <div class="box">
-                <h3>Links</h3>
-                <a href="../main_page.php">Página inicial</a>
-                <a href="#">Sobre</a>
-                <a href="#">Carrinho</a>
-            </div>
+    <div class="about">
+        <div class="about-site">
+            <p>
+                Somos uma empresa que trabalha com os restaurantes da sua zona, levando os seus pedidos diretamente à sua porta,
+                sem ter de mexer algo mais que um dedo.
+            </p>
+            <h3>
+                Como funciona?
+            </h3>
+        </div>
+        <div class="how-to-use">
+            <div class="box-container">
+                <div class="box">
+                    <img src="https://picsum.photos/600/300" alt="burger" class="image" />
+                    <h3>Procurar</h3>
+                    <p>
+                        Larica tem centenas de restaurantes à sua escolha. Quando abre a aplicação, pode procurar um restaurante ou cozinha em particular.
+                    </p>
+                </div>
 
 
-            <div class="box">
-                <h3>Contacte-nos</h3>
-                <a href="#">+351 909878987</a>
-                <a href="#">up202007620@edu.fe.up.pt</a>
-                <a href="#">up202007623@edu.fe.up.pt</a>
-                <a href="#">up202006279@edu.fe.up.pt</a>
-            </div>
+                <div class="box">
+                    <img src="https://picsum.photos/600/300" alt="burger" class="image" />
+                    <h3>Pedir</h3>
+                    <p>
+                        Quando decidir o que quer encomendar basta tocar no '+' para que o pedido seja adicionado ao seu carrinho de compras.
+                        No entanto, apenas poderá realizar pedidos de restaurantes diferentes, separadamente.
+                    </p>
+                </div>
 
-            <div class="box">
-                <h3>Siga-nos</h3>
-                <a href="https://github.com/matildesequeira">GitHub - @matildesequeira</a>
-                <a href="https://github.com/marianaosiecka">GitHub - @marianaosiecka</a>
-                <a href="https://github.com/Joanaigs">GitHub - @Joanaigs</a>
+                <div class="box">
+                    <img src="https://picsum.photos/600/300" alt="burger" class="image" />
+                    <h3>Pagar</h3>
+                    <p>
+                        Quando estiver pronto para fazer check-out, irá ver o seu endereço (com possibilidade de modificá-lo para esse pedido específico) e o preço do pedido.
+                        Se estiver tudo bem, toque em Checkout e já está.
+                    </p>
+                </div>
             </div>
         </div>
-        <?php drawFooter(); ?>
-    </footer>
+        <div class="follow">
+            <h3>Links</h3>
+            <div class="box-container">
+                <div class="box">
+                    <h3>Links</h3>
+                    <a href="../main_page.php">Página inicial</a>
+                    <a href="#">Sobre</a>
+                    <a href="#">Carrinho</a>
+                </div>
+
+
+                <div class="box">
+                    <h3>Contacte-nos</h3>
+                    <a href="#">up202007620@edu.fe.up.pt</a>
+                    <a href="#">up202007623@edu.fe.up.pt</a>
+                    <a href="#">up202006279@edu.fe.up.pt</a>
+                </div>
+
+                <div class="box">
+                    <h3>Siga-nos</h3>
+                    <a href="https://github.com/matildesequeira">GitHub - @matildesequeira</a>
+                    <a href="https://github.com/marianaosiecka">GitHub - @marianaosiecka</a>
+                    <a href="https://github.com/Joanaigs">GitHub - @Joanaigs</a>
+                </div>
+            </div>
+            <footer id="credit">&copy; Larica LTW 2021/2022 - All rights reserved</footer>
+        </div>
+    </div>
 <?php } ?>
 
     <?php function drawSidebar() { ?>

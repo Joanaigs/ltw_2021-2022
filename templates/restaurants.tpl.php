@@ -6,14 +6,8 @@
 
 
 function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db , Session $session) { ?><!DOCTYPE html>
-
-    <div class="search1">
-            <div class="search-icon1"></div>
-            <div class="input">
-                <input id="searchRest1" type="text" placeholder="Procurar">
-            </div>
-            <span class="clear1" onclick="document.getElementById('searchRest1').value=''"></span>
-        </section>
+<div class="grid-container">
+    <div class ="filter">
         <section id = "typeOfDish">
             <h2>Tipo de Prato:</h2>
             <div id="filter">
@@ -29,10 +23,6 @@ function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db ,
         <section id="restaurants">
             <?php foreach ($restaurants as $res) { ?>
                 <article>
-                    <h3>
-                        <a href="restaurant.php?id=<?=$res->id?>"><?=$res->name?></a>
-                    </h3>
-
                     <?php if($session->isLoggedIn()){
                         $isFavorite=Restaurant::isfavoriteRestaurant($db, $res->id, $session->getId());
 
@@ -42,6 +32,9 @@ function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db ,
                         <?php } else{?><div class="heart" id=<?=$res->id?>></div><?php
                         }}?>
                     <img src="https://picsum.photos/600/300?.<?=$res->name?>"alt="">
+                    <h3>
+                        <a href="../restaurant.php?id=<?=$res->id?>"><?=$res->name?></a>
+                    </h3>
                 </article>
             <?php }
             ?>
