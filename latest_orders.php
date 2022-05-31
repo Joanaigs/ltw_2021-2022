@@ -7,6 +7,7 @@
 
     require_once('database/connection.db.php');
     require_once('database/user.class.php');
+
     require_once('templates/common.tpl.php');
     require_once('templates/user.tpl.php');
 
@@ -15,5 +16,5 @@
     $user = User::getUser($db, $session->getId());
 
     drawHeader($session);
-    editProfileForm($user);
+    drawLatestOrders($session, $db, $user);
     drawFooter();
