@@ -1,11 +1,7 @@
+<?php 
+  declare(strict_types = 1);
 
-<?php
-declare(strict_types = 1);
-
-require_once(__DIR__.'/../database/restaurant.class.php');
-?>
-
-
+  require_once(__DIR__.'/../database/restaurant.class.php');
 
 
 
@@ -31,4 +27,3 @@ function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db ,
 </div>
 
 <?php } ?>
-
