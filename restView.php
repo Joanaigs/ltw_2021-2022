@@ -1,6 +1,5 @@
 <?php
     declare(strict_types = 1);
-
     require_once('session.php');
     $session = new Session();
 
@@ -16,4 +15,5 @@
     $dishes=Dish::getDishesRestaurant($db, $idRestaurant, $session);
     drawRestaurantView($db, intval($idRestaurant), $dishes);
     drawFooter();
+
 

@@ -50,8 +50,8 @@
             <i class="fas fa-bars" id="menu-bars"></i>
             <?php if($session->isLoggedIn()){?>
             <a href="../favorites.php" class="fas fa-heart"></a>
-            <a href="../profile.php" class="fas fa-user"></a><?php ;}?>
-            <a href="../cart.php" class="fas fa-shopping-cart"></a>
+            <a href="../profile.php" class="fas fa-user"></a>
+            <a href="../cart.php" class="fas fa-shopping-cart"></a><?php ;}?>
             <?php if(!$session->isLoggedIn()){?>
             <button class="login-register-btn" onclick="window.location.href = '../login_register_action.php';">Entrar</button><?php ;}
             else{?>
