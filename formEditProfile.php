@@ -19,12 +19,13 @@
             if(!empty($_POST['username'])) {
                 $user->username = $_POST['username'];
                 $session->setUsername($user->username);
-                echo($_POST['username']);
             }
             if(!empty($_POST['email']))
                 $user->email = $_POST['email'];
-            if(!empty($_POST['address']))
+            if(!empty($_POST['address'])) {
                 $user->address = $_POST['address'];
+                $session->setAddress($user->address);
+            }
             if(!empty($_POST['phoneNumber']))
                 $user->phoneNumber = $_POST['phoneNumber'];
             if(!empty($_POST)){

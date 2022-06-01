@@ -45,15 +45,16 @@ function drawLatestOrders(Session $session, PDO $db, User $user)
     </div>
 <?php }
 
-function drawProfile($user)
-{ ?>
+
+    function drawProfile($user, $restaurant) { ?>
     <link rel="stylesheet" href="../css/profile.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
           integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
-    <div class="grid-container-profile">
-        <?php drawSidebar(); ?>
+
+        <div class="grid-container-profile">
+            <?php drawSidebar($restaurant); ?>
         <div class="profile-info">
             <h2>Perfil</h2>
             <img src="profile_pic.png" alt="Profile picture">
@@ -70,15 +71,14 @@ function drawProfile($user)
     </div>
 <?php }
 
-function editProfileForm(User $user)
-{ ?>
-    <link rel="stylesheet" href="../css/profile.css"/>
-    <div class="grid-container-profile">
-        <?php drawSidebar(); ?>
-        <div class="edit-profile-info">
-            <form action="../formEditProfile.php" method="post" class="edit-profile">
-                <h2 class="title">Editar Perfil</h2>
-                <img src="profile_pic.png" alt="Profile picture">
+    function editProfileForm(User $user, Restaurant $restaurant) { ?>
+        <link rel="stylesheet" href="../css/profile.css"/>
+        <div class="grid-container-profile">
+            <?php drawSidebar($restaurant); ?>
+            <div class="edit-profile-info">
+                <form action="../formEditProfile.php" method="post" class="edit-profile">
+                    <h2 class="title">Editar Perfil</h2>
+                    <img src = "profile_pic.png" alt="Profile picture">
 
                 <div class="input-field">
                     <label><i class="fas fa-user"></i>Nome de utilizador:</label>
@@ -90,10 +90,10 @@ function editProfileForm(User $user)
                     <input type="text" name="email" value="<?= $user->email ?>"/>
                 </div>
 
-                <div class="input-field">
-                    <label><i class="fas fa-home"></i>Endereço: </label>
-                    <input type="text" name="address" placeholder="<?= $user->address ?>"/>
-                </div>
+                    <div class="input-field">
+                        <label><i class="fas fa-home"></i>Morada: </label>
+                        <input type="text" name="address" placeholder="<?=$user->address?>"/>
+                    </div>
 
                 <div class="input-field">
                     <label><i class="fas fa-phone"></i>Número de telemóvel: </label>

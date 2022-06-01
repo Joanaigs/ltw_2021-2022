@@ -13,7 +13,8 @@
     $db = getDatabaseConnection();
 
     $user = User::getUser($db, $session->getId());
+    $restaurant=Restaurant::hasRestaurant($db, $session->getId());
 
     drawHeader($session);
-    editProfileForm($user);
+    editProfileForm($user, $restaurant);
     drawFooter();
