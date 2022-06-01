@@ -10,7 +10,7 @@
     require_once('templates/cart.tpl.php');
 
     $db = getDatabaseConnection();
-    $restaurants = Restaurant::getRestaurants($db);
+    $restaurants = Restaurant::getRestaurants($db, $session);
     drawHeader($session);?>
      <section id="cart">
      <?php foreach ($restaurants as $res) {
