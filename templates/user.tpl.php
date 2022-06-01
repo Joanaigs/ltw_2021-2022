@@ -12,7 +12,8 @@ function drawLatestOrders(Session $session, PDO $db, User $user)
 { ?>
     <link rel="stylesheet" href="../css/profile.css"/>
     <div class="grid-container-profile">
-        <?php drawSidebar(); ?>
+        <?php $restaurant=Restaurant::hasRestaurant($db, $session->getId());
+        drawSidebar($restaurant); ?>
         <div class="last-orders">
             <h2>Pedidos anteriores</h2>
             <section class="dishes">
