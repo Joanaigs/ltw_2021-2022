@@ -20,6 +20,8 @@ async function get_meals(value, id) {
     h2.textContent = m
     section.appendChild(h2)
     for (const dish of meals) {
+        const article = document.createElement('article')
+        article.classList.add("dish")
         if (dish.meal !== m) {
             m = dish.meal
             const h2s = document.createElement('h2')
@@ -27,40 +29,56 @@ async function get_meals(value, id) {
             h2s.textContent = m
             section.appendChild(h2s)
         }
+        const content = document.createElement("div")
+        content.classList.add("content")
+        const img = document.createElement('img')
+        img.src = 'https://picsum.photos/600/300?' + dish.id
+        content.appendChild(img)
+        const text = document.createElement("div")
+        text.classList.add("text")
+        const h3 = document.createElement("h3")
+        h3.textContent=dish.name
+        text.appendChild(h3)
+        const p = document.createElement("p")
+        p.classList.add("info")
+        p.textContent = 'Preço:' + dish.price + '€'
+        text.appendChild(p)
+        content.appendChild(text)
+        article.appendChild(content)
+        const buttons = document.createElement("div")
+        buttons.classList.add("buttons")
+        const addButton= document.createElement("div")
+        addButton.classList.add("add-button")
         if(dish.loggedIn){
             const a = document.createElement("a")
             a.href="addToCart.php?idDish=" + +dish.id + "&idRestaurant=" + dish.idRestaurant
             const div = document.createElement("div")
             div.classList.add("button_plus")
             a.appendChild(div)
-            section.appendChild(a)
+            addButton.appendChild(a)
             if(dish.cart){
                 const a1 = document.createElement("a")
                 a1.href="removeFromCart.php?idDish=" + +dish.id + "&idRestaurant=" + dish.idRestaurant
                 const div1 = document.createElement("div")
                 div1.classList.add("button_minus")
                 a1.appendChild(div1)
-                section.appendChild(a1)
+                addButton.appendChild(a1)
             }
+            buttons.appendChild(addButton)
+            const hearts = document.createElement("div")
+            hearts.classList.add("hearts")
             const div2 = document.createElement("div")
             div2.classList.add("heart")
             div2.id=dish.id
-            section.appendChild(div2)
             if(dish.heart){
                 div2.classList.add("liked")
             }
-            section.appendChild(div2)
+            hearts.appendChild(div2)
+            addButton.appendChild(hearts)
+            buttons.append(hearts)
+            article.append(buttons)
         }
-        const img = document.createElement('img')
-        img.src = 'https://picsum.photos/600/300?' + dish.id
-        section.appendChild(img)
-        const h3 = document.createElement("h3")
-        h3.textContent=dish.name
-        section.appendChild(h3)
-        const p = document.createElement("p")
-        p.classList.add("info")
-        p.textContent = dish.price
-        section.appendChild(p)
+        section.append(article)
 
     }
     heartsDishClick();
