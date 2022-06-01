@@ -55,6 +55,7 @@ else if (isset($_POST['LoginButton'])) {
         else{
             $session->setId($user->id);
             $session->setUsername($user->username);
+            $session->setAddress($user->address);
             $session->addMessage('success', 'Sessão iniciada');
             exit(header("Location: /main_page.php"));
         }

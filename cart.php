@@ -11,27 +11,8 @@
 
     $db = getDatabaseConnection();
     $restaurants = Restaurant::getRestaurants($db, $session);
-    drawHeader($session);?>
-     <section id="cart">
-     <?php foreach ($restaurants as $res) {
-        $cart = Cart::getCart($db, $session->getId(), $res->id);
-        if(!empty($cart)){?>
-            <h2><a href="restaurant.php?id=<?=$res->id?>"><?=$res->name?></a></h2>
-            <?php $total = 0;
-            foreach ($cart as $dish) { ?>
-                <article id="item">
-                    <?php $total += $dish->price?>
-                    <a href="restaurant.php?id=<?=$dish->idRestaurant?>#<?=$dish->name?>"><?=$dish->name?></a>
-                    <button class="erase-fromCart-btn" name="eraseFromButton" onclick="window.location.href = '../removeFromCart.php?idRestaurant=<?=$dish->idRestaurant?>&idDish=<?=$dish->id?>&cart=true';">Remover</button>
-                    <p><?=$dish->price?> €</p>
-                </article>
-
-            <?php } ?>
-            <p>TOTAL: <?=$total?>€</p>
-            <button class="make-order-btn" name="makeOrderButton" onclick="window.location.href = '../makeOrder.php?idRestaurant=<?=$res->id?>';">Checkout</button>
-     <?php }} ?>
-    </section>
-<?php
+    drawHeader($session);
+    drawCart($db, $session, $restaurants);
     drawFooter();
 
 ?>
