@@ -69,17 +69,38 @@ body{
     color: var(--dark-color);
 }
 
-.sidebar ul li{
+.sidebar ul .profile-page, .sidebar ul .last-orders-page{
     display: block;
     height: 100%;
     width: 100%;
     line-height: 4rem;
     font-size: 18px;
     color: var(--body-font-color);
-    padding-left: 5rem;
+    padding-left: 4rem;
     box-sizing: border-box;
     transition: all 0.3s;
     text-decoration: none;
+}
+
+.sidebar ul .restaurant-page{
+    padding-left: 1.75rem;
+}
+
+.sidebar ul .add-restaurant{
+    padding-left: 1rem;
+}
+
+.sidebar ul li .add-restaurant-btn, .restaurant-page-btn, .erase-restaurant-btn{
+    border: none;
+    height: 100%;
+    width: 100%;
+    font-size: 18px;
+    line-height: 4rem;
+    box-sizing: border-box;
+    transition: all 0.3s;
+    color: var(--body-font-color);
+    background-color: var(--section-background-color);
+    font-family: var(--body-font-family);
 }
 
 .sidebar ul li a{
@@ -100,13 +121,18 @@ body{
     background-color: #f5f5f0;
 }
 
+.sidebar ul li .add-restaurant-btn:hover, .restaurant-page-btn:hover, .erase-restaurant-btn:hover{
+    background-color: #f5f5f0;
+}
+
 .profile-info, .edit-profile{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 2rem 2rem 0;
+    margin-top: 2rem;
+    padding: 6rem 2rem 0;
     margin-left: 2rem;
 }
+
 
 .edit-profile{
     padding: 0 2rem;

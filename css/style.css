@@ -177,7 +177,7 @@ header .logo i{
     color: var(--accent-color);
 }
 
-header .navbar a {
+header .navbar a, header .navbar .menu, header .navbar .ordersSate, header .navbar .review {
     font-size: 1.7rem;
     border-radius: .5rem;
     padding: 0.5rem 1.5rem;
