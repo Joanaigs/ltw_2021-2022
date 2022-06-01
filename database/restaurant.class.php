@@ -148,8 +148,8 @@ class Restaurant {
         $stmt->execute(array($filter));
 
         $restaurants = array();
-
         while ($restaurant = $stmt->fetch()) {
+
             $temp = new Restaurant(
                 $restaurant['id'],
                 $restaurant['idUser'],
@@ -166,8 +166,8 @@ class Restaurant {
                     $temp->loggedIn = true;
                 } else
                     $temp->loggedIn = false;
-                $restaurants[] = $temp;
             }
+            $restaurants[] = $temp;
         }
         return $restaurants;
     }

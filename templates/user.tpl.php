@@ -23,6 +23,7 @@ function drawLatestOrders(Session $session, PDO $db, User $user)
                         $dishes=Dish::dishOrder($db, $order->id);
                         $restaurant = Restaurant::getRestaurant($db, $order->idRestaurant); ?>
                         <h3> <?= $restaurant->name ?></h3>
+                        <h4> Data: <?= $order->date ?></h4>
                         <h4> Endereço de entrega: <?= $order->address ?></h4>
                         <?php
                         foreach ($dishes as $dish) {?>

@@ -77,7 +77,8 @@ CREATE TABLE Orders (
                         id INTEGER PRIMARY KEY,
                         address TEXT,
                         idUser  INTEGER REFERENCES User(id),
-                        state TEXT
+                        state TEXT,
+                        date TEXT
 );
 
 DROP TABLE IF EXISTS DishOrder;
@@ -207,8 +208,8 @@ INSERT INTO Dish(idRestaurant, name, price, idMeal) VALUES (4, 'Cerveja', 2.40, 
 INSERT INTO Dish(idRestaurant, name, price, idMeal) VALUES (4, 'Água', 1.25, 4);
 INSERT INTO Dish(idRestaurant, name, price, idMeal) VALUES (4, 'Refrigerante', 2.00, 4);
 
-INSERT INTO Orders(idUser, address, state) VALUES (1, 'rua da alegria', 'Preparar');
-INSERT INTO Orders(idUser, address, state) VALUES (1, 'rua do clérigo', 'Pronto');
+INSERT INTO Orders(idUser, address, state, date) VALUES (1, 'rua da alegria', 'Preparar', '12-04-2020');
+INSERT INTO Orders(idUser, address, state, date) VALUES (1, 'rua do clérigo', 'Pronto', '12-04-2020');
 
 INSERT INTO FavoriteDish(idUser, idDish) VALUES (1,3);
 INSERT INTO FavoriteDish(idUser, idDish) VALUES (5,3);

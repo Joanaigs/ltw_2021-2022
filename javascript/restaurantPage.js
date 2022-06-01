@@ -11,10 +11,12 @@ async function get_restaurants(restaurants) {
         link.textContent = restaurant.name
         const img = document.createElement('img')
         const div = document.createElement('div')
-        div.classList.add('heart')
-        div.id=restaurant.id;
-        if(restaurant.heart){
-            div.classList.add('liked')
+        if(restaurant.loggedIn) {
+            div.classList.add('heart')
+            div.id = restaurant.id;
+            if (restaurant.heart) {
+                div.classList.add('liked')
+            }
         }
         img.src = 'https://picsum.photos/600/300?' + restaurant.id
         article.append(div)

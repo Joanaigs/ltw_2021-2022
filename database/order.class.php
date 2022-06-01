@@ -8,18 +8,20 @@ class Order {
     public string $state;
     public string $address;
     public int $idRestaurant;
+    public string $date;
 
-    public function __construct(int $id, int $idUser, string $state, $address)
+    public function __construct(int $id, int $idUser, string $state, $address, string $date)
     {
         $this->id = $id;
         $this->idUser = $idUser;
         $this->state = $state;
         $this->address=$address;
+        $this->date=$date;
     }
 
     static function getOrdersRestaurant(PDO $db, string $id) : array {
         $stmt = $db->prepare('
-        SELECT distinct Orders.id as id, Orders.idUser as idUser, state, address
+        SELECT distinct Orders.id as id, Orders.idUser as idUser, state, address, date
         FROM Orders, DishOrder, Dish
         WHERE Dish.idRestaurant = ? and DishOrder.idDish=Dish.id and Orders.id=DishOrder.idOrder
       ');
@@ -32,7 +34,8 @@ class Order {
                 $order['id'],
                 $order['idUser'],
                 $order['state'],
-                $order['address']
+                $order['address'],
+                $order['date']
             );
 
         }
@@ -41,7 +44,7 @@ class Order {
 
     static function getOrdersUser(PDO $db, int $id) : array {
         $stmt = $db->prepare('
-        SELECT distinct Orders.id as id, Orders.idUser as idUser, state, address, idRestaurant
+        SELECT distinct Orders.id as id, Orders.idUser as idUser, state, address, idRestaurant, date
         FROM Orders, DishOrder, Dish
         WHERE Orders.idUser = ? and DishOrder.idDish=Dish.id and Orders.id=DishOrder.idOrder
       ');
@@ -54,7 +57,8 @@ class Order {
                 $order['id'],
                 $order['idUser'],
                 $order['state'],
-                $order['address']
+                $order['address'],
+                $order['date']
             );
             $temp->idRestaurant=$order['idRestaurant'];
             $orders[]=$temp;
@@ -68,8 +72,9 @@ class Order {
     }
 
     static function addOrder(PDO $db, int $idUser, string $address)  {
-        $stmt = $db->prepare("INSERT INTO Orders(idUser, address, state) VALUES (?, ?, 'Recebido pelo restaurante')");
-        $stmt->execute(array( $idUser, $address));
+        $date = date("d-m-Y");
+        $stmt = $db->prepare("INSERT INTO Orders(idUser, address, state, date) VALUES (?, ?, 'Recebido pelo restaurante', ?)");
+        $stmt->execute(array( $idUser, $address, $date));
     }
 
     static function addAddressOrder(PDO $db, string $address,int $id)  {
@@ -93,7 +98,8 @@ class Order {
                 $order['id'],
                 $order['idUser'],
                 $order['state'],
-                $order['address']
+                $order['address'],
+                $order['date']
             );
         }
         return end($orders);
