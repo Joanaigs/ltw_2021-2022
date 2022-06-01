@@ -1,21 +1,15 @@
 <?php
 declare(strict_types = 1);
-
+require_once('../session.php');
+$session = new Session();
 require_once('../database/restaurant.class.php');
-require_once('../database/filter.class.php');
-require_once('../templates/common.tpl.php');
-require_once('../templates/filter.tpl.php');
-require_once('../templates/restaurants.tpl.php');
 $db = new PDO('sqlite:../example.db');
 $checked=$_GET['checked'];
 if($_GET['filter']=="all"){
-    $restaurants=Restaurant::getRestaurants($db);
-}
-elseif($checked=='true'){
-    $restaurants = Restaurant::filterRestaurants($db, $_GET['filter']);
+    $restaurants=Restaurant::getRestaurants($db, $session);
 }
 else{
-    $restaurants=Restaurant::getRestaurants($db);
+    $restaurants = Restaurant::filterRestaurants($db, $_GET['filter'], $session);
 }
 echo json_encode($restaurants);
 ?>

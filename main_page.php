@@ -10,14 +10,8 @@
   require_once('templates/restaurants.tpl.php');
   $db = new PDO('sqlite:example.db');
 
-  $restaurants = Restaurant::getRestaurants($db);
+  $restaurants = Restaurant::getRestaurants($db, $session);
   $filterRestaurants= Filter::getFilterRestaurants($db);
   drawHeader($session);
-  ?>
-
-<?php
-
-
   drawRestaurants($restaurants, $filterRestaurants, $db, $session);
-  drawAboutUs();
-?>
+  drawFooter();
