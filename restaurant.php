@@ -24,9 +24,9 @@ drawHeader();
         <section id = "meal">
             <h3>Categoria:</h3>
             <ul class="sidebar-options">
-            <?php foreach ($filterMeals as $item){?>
-                <li> <a href="#<?=$item->name?>"><?=$item->name?> > </a></li>
-            <?php } ?>
+                <?php foreach ($filterMeals as $item){?>
+                    <li> <a href="#<?=$item->name?>"><?=$item->name?> > </a></li>
+                <?php } ?>
             </ul>
         </section>
 
