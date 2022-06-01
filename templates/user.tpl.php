@@ -23,23 +23,31 @@ function drawLatestOrders(Session $session, PDO $db, User $user)
                     foreach ($orders as $order) {
                         $dishes=Dish::dishOrder($db, $order->id);
                         $restaurant = Restaurant::getRestaurant($db, $order->idRestaurant); ?>
-                        <h3> <?= $restaurant->name ?></h3>
-                        <h4> Data: <?= $order->date ?></h4>
-                        <h4> Endereço de entrega: <?= $order->address ?></h4>
+                        <section class="info-order">
+                            <h3> <?= $restaurant->name ?></h3>
+                            <p> <label>Data: </label><?= $order->date ?></p>
+                            <p> <label>Endereço de entrega: </label><?= $order->address ?></p>
+                            <p> <label>Estado do pedido: </label><?= $order->state ?></p>
+                        </section>
+                        <div class="order">
                         <?php
-                        foreach ($dishes as $dish) {?>
+                        $total = 0;
+                        foreach ($dishes as $dish) {
+                            $total += $dish->price?>
                             <section class="info-dish">
-                                <img src="<?= $dish->photo ?>?id=<?= $dish->id ?>" alt="">
-                                <div class="text">
+                                <section class="image">
+                                    <img src="<?= $dish->photo ?>?id=<?= $dish->id ?>" alt="">
+                                </section>
+                                <section class="text">
                                     <h4> <?= $dish->name ?></h4>
                                     <p class="info"> <?= $dish->price ?> €</p>
-                                </div>
+                                </section>
                             </section>
                         <?php }?>
-                            <br>
-                        <h4> Estado do pedido: <?= $order->state ?></h4><?php
+                        </div>
+                        <p id="price"><label>Preço total do pedido: </label><?=$total?>€</p>
+                    <?php }
                     }
-                }
                 ?>
             </section>
         </div>
