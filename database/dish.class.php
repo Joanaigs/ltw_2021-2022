@@ -1,7 +1,7 @@
 <?php
-
     declare(strict_types = 1);
-
+    require_once('cart.class.php');
+    require_once('connection.db.php');
     class Dish{
         public int $id;
         public int $idRestaurant;
@@ -11,6 +11,9 @@
         public int $idMeal;
         public int $idTypeOfDish;
         public string $meal;
+        public bool $heart;
+        public bool $cart;
+        public bool $loggedIn;
 
 
 
@@ -26,12 +29,55 @@
             $this->meal=$meal;
         }
 
-        static public function getDishesRestaurant(PDO $db, string $id): array{
+        static public function getDishesRestaurant(PDO $db, string $id, Session $session): array{
             $stmt = $db -> prepare('
                 SELECT Dish.id as id, idRestaurant, Dish.name as name, price, photo, idMeal, idTypeOfDish, Meal.name as mealName
                 FROM Dish, Meal
                 WHERE idRestaurant = ? and idMeal=Meal.id
                 Order by idMeal, name
+            ');
+
+            $stmt -> execute(array($id));
+
+            $dishes = array();
+
+            while ($dish = $stmt->fetch()){
+                $temp = new Dish(
+                    $dish['id'],
+                    $dish['idRestaurant'],
+                    $dish['name'],
+                    $dish['price'],
+                    $dish['photo'],
+                    $dish['idMeal'],
+                    $dish['idTypeOfDish'],
+                    $dish['mealName']
+                );
+                if(Cart::findInCart($db, $dish['id'], $session->getId())){
+                    $temp->cart=true;
+                }
+                else
+                    $temp->cart=false;
+                if(self::isfavoriteDish($db, $dish['id'],$session->getId())){
+                    $temp->heart=true;
+                }
+                else
+                    $temp->heart=false;
+                if($session->isLoggedIn()){
+                    $temp->loggedIn=true;
+                }
+                else
+                    $temp->loggedIn=false;
+                $dishes[] = $temp;
+            }
+            return $dishes;
+        }
+
+        static function getFavoriteDishes(PDO $db, int $id) : array {
+            $stmt = $db -> prepare('
+                SELECT Dish.id, Dish.idRestaurant, Dish.name, Dish.price, Dish.photo, Dish.idMeal,
+                       Dish.idTypeOfDish, Meal.name as mealName
+                FROM FavoriteDish, Dish, Meal
+                WHERE FavoriteDish.idDish == Dish.id AND FavoriteDish.idUser == ? AND Dish.idMeal == Meal.id
             ');
 
             $stmt -> execute(array($id));
@@ -51,17 +97,7 @@
                 );
             }
 
-
             return $dishes;
-        }
-
-        static function getFavoriteDishes(PDO $db) : array {
-            $stmt = $db->prepare('
-        SELECT *
-        FROM FavoriteDish
-      ');
-            $stmt->execute();
-            return $stmt->fetchAll();
         }
 
 
@@ -97,7 +133,7 @@
             );
         }
 
-        static function filterDish(PDO $db, $filter, $idRestaurant)
+        static function filterDish(PDO $db, $filter, $idRestaurant, Session $session)
         {
             $stmt = $db->prepare('SELECT Dish.id as id, idRestaurant, Dish.name as name, price, photo, idMeal, idTypeOfDish, Meal.name as mealName
             FROM Dish, Meal WHERE idTypeOfDish=? and idRestaurant=? and idMeal=Meal.id');
@@ -106,7 +142,7 @@
             $dishes = array();
 
             while ($dish = $stmt->fetch()){
-                $dishes[] = new Dish(
+                $temp = new Dish(
                     $dish['id'],
                     $dish['idRestaurant'],
                     $dish['name'],
@@ -116,17 +152,33 @@
                     $dish['idTypeOfDish'],
                     $dish['mealName']
                 );
+                if(Cart::findInCart($db, $dish['id'], $session->getId())){
+                    $temp->cart=true;
+                }
+                else
+                    $temp->cart=false;
+                if(self::isfavoriteDish($db, $dish['id'],$session->getId())){
+                    $temp->heart=true;
+                }
+                else
+                    $temp->heart=false;
+                if($session->isLoggedIn()){
+                    $temp->loggedIn=true;
+                }
+                else
+                    $temp->loggedIn=false;
+                $dishes[] = $temp;
             }
             return $dishes;
         }
 
-        static function addfavoriteDish(PDO $db, string $idDi, string $idUser)  {
+        static function addfavoriteDish(PDO $db, string $idDi, int $idUser)  {
             $stmt = $db->prepare('INSERT INTO FavoriteDish(idUser, idDish) Values(?, ?)');
             $stmt->execute(array($idUser, $idDi));
         }
 
 
-        static function removefavoriteDish(PDO $db, string $idDi, string $idUser)  {
+        static function removefavoriteDish(PDO $db, string $idDi, int $idUser)  {
             $stmt = $db->prepare('DELETE FROM FavoriteDish where idUser=? and idDish=?' );
             $stmt->execute(array($idUser, $idDi));
         }
@@ -180,3 +232,4 @@
     }
 
 ?>
+

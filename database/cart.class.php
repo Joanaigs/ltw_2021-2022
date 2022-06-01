@@ -23,16 +23,15 @@ class Cart {
     }
 
 
-    static function getCart(PDO $db) : array {
+    static function getCart(PDO $db, int $idUser, int $idRes) {
         $stmt = $db -> prepare('
                 
                 SELECT Dish.id, Dish.idRestaurant, Dish.name, Dish.price, Dish.photo, Dish.idMeal, idUser
                 FROM Dish, Cart
-                WHERE Dish.id = Cart.idDish;
+                WHERE Dish.id = Cart.idDish and idUser=? and Dish.idRestaurant=?;
             ');
 
-        $stmt -> execute();
-
+        $stmt -> execute(array($idUser, $idRes));
         $cart = array();
 
         while ($dish = $stmt->fetch()){
@@ -50,7 +49,7 @@ class Cart {
         return $cart;
     }
 
-    static function addToCart(PDO $db, string $idDi, string $idUser)  {
+    static function addToCart(PDO $db, string $idDi, int $idUser)  {
         $stmt = $db->prepare('INSERT INTO Cart(idDish, idUser) Values(?, ?)');
         $stmt->execute(array($idDi, $idUser));
     }
@@ -79,9 +78,10 @@ class Cart {
             return false;
     }
 
-    static function removefromCart(PDO $db, string $idDi, string $idUser)  {
+    static function removefromCart(PDO $db, int $idDi, int $idUser)  {
         $stmt = $db->prepare('DELETE FROM Cart where idUser=? and idDish=?' );
         $stmt->execute(array($idUser, $idDi));
     }
+
 }
 ?>
