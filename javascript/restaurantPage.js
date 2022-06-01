@@ -31,9 +31,9 @@ async function get_restaurants(restaurants) {
         }
         img.src = 'https://picsum.photos/600/300?' + restaurant.id
         article.append(div)
-        article.append(ratingFixed)
         article.appendChild(img)
         h3.appendChild(link)
+        article.append(ratingFixed)
         article.appendChild(h3)
         section.appendChild(article)
     }
