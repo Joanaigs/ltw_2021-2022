@@ -13,7 +13,7 @@
 
     $idRestaurant=$_GET['id'];
     drawRestViewHeader($idRestaurant);
-    $dishes=Dish::getDishesRestaurant($db, $idRestaurant);
+    $dishes=Dish::getDishesRestaurant($db, $idRestaurant, $session);
     drawRestaurantView($db, intval($idRestaurant), $dishes);
     drawFooter();
 

@@ -173,7 +173,7 @@ header .logo:visited { text-decoration: none; }
 header .logo:hover { text-decoration: none; }
 header .logo:active { text-decoration: none; }
 
-header .header-left .logo i{
+header .header-left .logo i, header .logo i{
     color: var(--accent-color);
 }
 
