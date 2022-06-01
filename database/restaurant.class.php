@@ -135,7 +135,6 @@ class Restaurant {
                     $temp->loggedIn = true;
                 } else
                     $temp->loggedIn = false;
-                $restaurants[] = $temp;
             }
             $restaurants[]=$temp;
         }

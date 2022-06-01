@@ -1,20 +1,37 @@
 const searchRestaurants1 = document.querySelector('#searchRest1')
 const searchRestaurants2 = document.querySelector('#searchRest2')
-console.log(searchRestaurants2)
 if (searchRestaurants1) {
     searchRestaurants1.addEventListener('input', async function() {
-        const response = await fetch('../api/api_restaurantsSearch.php?search=' + this.value)
-        const restaurants = await response.json()
-        get_restaurants(restaurants)
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const id = urlParams.get('id')
+        if(id===null){
+            const response = await fetch('../api/api_restaurantsSearch.php?search=' + this.value)
+            const restaurants = await response.json()
+            get_restaurants(restaurants)
+        }
+        else{
+            const response = await fetch('../api/api_dishSearch.php?search=' + this.value + '&id=' + id)
+            const meals = await response.json()
+            get_meals(meals)
+        }
     })
 }
 if (searchRestaurants2) {
     searchRestaurants2.addEventListener('input', async function() {
-
-        console.log("hi");
-        const response = await fetch('../api/api_restaurantsSearch.php?search=' + this.value)
-        const restaurants = await response.json()
-        get_restaurants(restaurants)
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const id = urlParams.get('id')
+        if(id===null){
+            const response = await fetch('../api/api_restaurantsSearch.php?search=' + this.value)
+            const restaurants = await response.json()
+            get_restaurants(restaurants)
+        }
+        else{
+            const response = await fetch('../api/api_dishSearch.php?search=' + this.value + '&id=' + id)
+            const meals = await response.json()
+            get_meals(meals)
+        }
     })
 }
 

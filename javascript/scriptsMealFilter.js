@@ -2,16 +2,15 @@ const filterMeal = document.querySelectorAll('#typeOfDish input[type=\'radio\']'
 console.log(filterMeal);
 for(let i=0; i<filterMeal.length; i++) {
     if (filterMeal) {
-        filterMeal[i].addEventListener('change', function(){
-            get_meals(this.value, this.id);
+        filterMeal[i].addEventListener('change', async function(){
+            const response = await fetch('../api/api_restaurant.php?filter=' + value + '&' + 'id=' + id)
+            const meals = await response.json()
+            get_meals(meals)
         })
     }
 }
 
-async function get_meals(value, id) {
-    const response = await fetch('../api/api_restaurant.php?filter=' + value + '&' + 'id=' + id)
-    console.log('../api/api_restaurant.php?filter=' + value + '&' + 'id=' + id)
-    const meals = await response.json()
+async function get_meals(meals) {
     const section = document.querySelector('.dishes')
     section.innerHTML = ''
     m = meals[0].meal;
@@ -85,4 +84,12 @@ async function get_meals(value, id) {
 
 }
 temp=document.querySelector('.page .dishes')
-if (temp) get_meals(undefined, temp.id)
+
+async function get_d(id) {
+    const response = await fetch('../api/api_getDishes.php?id=' + id)
+    const meals = await response.json()
+    get_meals(meals)
+}
+if (temp) {
+    get_d(temp.id)
+}
