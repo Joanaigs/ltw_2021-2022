@@ -22,14 +22,16 @@ drawHeader();
 <div class="grid-container">
     <div class = "filter">
         <section id = "meal">
-            <h2>Categoria:</h2>
+            <h3>Categoria:</h3>
+            <ul class="sidebar-options">
             <?php foreach ($filterMeals as $item){?>
-                <a href="#<?=$item->name?>"><?=$item->name?> > </a>
+                <li> <a href="#<?=$item->name?>"><?=$item->name?> > </a></li>
             <?php } ?>
+            </ul>
         </section>
 
         <section id = "typeOfDish">
-            <h2>Tipo de Prato:</h2>
+            <h3>Tipo de Prato:</h3>
             <label>
                 <input type="radio" name =typeFilter value="todos" id="<?=$idRestaurant?>" checked="checked"> Todos
             </label>

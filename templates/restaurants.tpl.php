@@ -44,28 +44,36 @@
                 <?php } ?>
 
 
-
-                <?php if(isset( $_SESSION['id'])){?>
-                    <a href="addToCart.php?idDish=<?=$dish->id?>&idRestaurant=<?=$restaurant->id?>"><div class="button_plus"></div></a>
-                    <?php $inCart=Cart::findInCart($db, $dish->id, $_SESSION['id']);
-                    if($inCart===true){?>
-                        <a href="removeFromCart.php?idDish=<?=$dish->id?>&idRestaurant=<?=$restaurant->id?>"><div class="button_minus"></div> </a>
-                    <?php }} ?>
-                <?php if(isset( $_SESSION['id'])){?>
-                        <div class="heart" id=<?=$dish->id?>></div><?php
-                          $isFavorite=Dish::isfavoriteDish($db, $dish->id, $_SESSION['id']);
-                          if($isFavorite===true){?>
-                              <div class="heart liked" id=<?=$dish->id?>></div>
-
-                      <?php }}?>
-
-
-
             <article class="dish">
-                <img src="<?=$dish -> photo?>?id=<?=$dish->id?>" alt="">
-                <div class="text">
-                    <h3><?= $dish -> name?></h3>
-                    <p class = "info">Preço:  <?= $dish -> price?> €</p>
+
+
+                <div class="content">
+                    <img src="<?=$dish -> photo?>?id=<?=$dish->id?>" alt="">
+                    <div class="text">
+                        <h3><?= $dish -> name?></h3>
+                        <p class = "info">Preço:  <?= $dish -> price?> €</p>
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <div class="add-button">
+                        <?php if(isset( $_SESSION['id'])){?>
+                            <a href="addToCart.php?idDish=<?=$dish->id?>&idRestaurant=<?=$restaurant->id?>" class="fa-solid fa-plus"></a>
+                            <?php $inCart=Cart::findInCart($db, $dish->id, $_SESSION['id']);
+                            if($inCart===true){?>
+                                <a href="removeFromCart.php?idDish=<?=$dish->id?>&idRestaurant=<?=$restaurant->id?>" class="fa-solid fa-minus"></a>
+                            <?php }}?>
+                    </div>
+
+                    <div class="hearts">
+                        <?php
+                        if(isset( $_SESSION['id'])){?>
+                        <div class="heart" id=<?=$dish->id?>></div><?php
+                            $isFavorite=Dish::isfavoriteDish($db, $dish->id, $_SESSION['id']);
+                            if($isFavorite===true){?>
+                                <div class="heart-liked" id=<?=$dish->id?>></div>
+                            <?php }}?>
+                    </div>
                 </div>
             </article>
         <?php } ?>
