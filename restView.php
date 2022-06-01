@@ -11,7 +11,7 @@ $db = new PDO('sqlite:example.db');
 
 $idRestaurant=$_GET['id'];
 drawRestViewHeader($idRestaurant);
-$dishes=Dish::getDishesRestaurant($db, $idRestaurant);
+$dishes=Dish::getDishesRestaurant($db, $idRestaurant, $session);
 ?>
 <a href="addDish.php?idRestaurant=<?=$idRestaurant?>"><div class="button_plus"></div> </a>
 <?php foreach ($dishes as $dish) { ?>

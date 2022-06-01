@@ -20,7 +20,7 @@ CREATE TABLE Restaurant (
                             idUser  INTEGER REFERENCES User(id),
                             name   TEXT,
                             address TEXT UNIQUE,
-                            image TEXT DEFAULT "https://picsum.photos/600/300"
+                            image TEXT DEFAULT 'https://picsum.photos/600/300'
 );
 
 DROP TABLE IF EXISTS Category;
@@ -47,7 +47,7 @@ CREATE TABLE Dish (
                       idRestaurant INTEGER REFERENCES Restaurant(id) ON DELETE CASCADE,
                       name TEXT,
                       price DOUBLE,
-                      photo TEXT DEFAULT "https://picsum.photos/600/300",
+                      photo TEXT DEFAULT 'https://picsum.photos/600/300',
                       idTypeOfDish INTEGER REFERENCES TypeOfDish(id) DEFAULT 5,
                       idMeal INTEGER REFERENCES Meal(id)
 );
@@ -75,6 +75,7 @@ CREATE TABLE Comment (
 DROP TABLE IF EXISTS Orders;
 CREATE TABLE Orders (
                         id INTEGER PRIMARY KEY,
+                        address TEXT,
                         idUser  INTEGER REFERENCES User(id),
                         state TEXT
 );

@@ -92,8 +92,8 @@ INSERT INTO Dish(idRestaurant, name, price, idMeal) VALUES (4, 'Cerveja', 2.40, 
 INSERT INTO Dish(idRestaurant, name, price, idMeal) VALUES (4, 'Água', 1.25, 4);
 INSERT INTO Dish(idRestaurant, name, price, idMeal) VALUES (4, 'Refrigerante', 2.00, 4);
 
-INSERT INTO Orders(idUser, state) VALUES (1, 'received');
-INSERT INTO Orders(idUser, state) VALUES (1, 'preparing');
+INSERT INTO Orders(idUser, address, state) VALUES (1, 'rua da alegria', 'received');
+INSERT INTO Orders(idUser, address, state) VALUES (1, 'rua do clérigo', 'preparing');
 
 INSERT INTO FavoriteDish(idUser, idDish) VALUES (1,3);
 INSERT INTO FavoriteDish(idUser, idDish) VALUES (5,3);
@@ -109,9 +109,9 @@ INSERT INTO DishOrder(idDish, idOrder) VALUES (2,1);
 INSERT INTO DishOrder(idDish , idOrder) VALUES (4,2);
 INSERT INTO DishOrder(idDish, idOrder) VALUES (5,2);
 
-INSERT INTO Cart(idDish, idUser) VALUES (1, 1);
-INSERT INTO Cart(idDish, idUser) VALUES (3, 2);
-INSERT INTO Cart(idDish, idUser) VALUES (5, 3);
-INSERT INTO Cart(idDish, idUser) VALUES (7, 4);
-INSERT INTO Cart(idDish, idUser) VALUES (11, 5);
+INSERT INTO Cart(idDish, address, idUser) VALUES (1, 'rua dos clérigos', 1);
+INSERT INTO Cart(idDish, address, idUser) VALUES (3, 'rua dos clérigos', 2);
+INSERT INTO Cart(idDish, address, idUser) VALUES (5, 'rua dos clérigos', 3);
+INSERT INTO Cart(idDish, address, idUser) VALUES (7, 'rua dos clérigos', 4);
+INSERT INTO Cart(idDish, address, idUser) VALUES (11, 'rua dos clérigos', 5);
 
