@@ -32,6 +32,11 @@ class Session
         return $_SESSION['username'] ?? null;
     }
 
+    public function getAddress(): ?string
+    {
+        return $_SESSION['address'] ?? null;
+    }
+
     public function setId(int $id)
     {
         $_SESSION['id'] = $id;
@@ -40,6 +45,11 @@ class Session
     public function setUsername(string $username)
     {
         $_SESSION['username'] = $username;
+    }
+
+    public function setAddress(string $address)
+    {
+        $_SESSION['address'] = $address;
     }
 
     public function addMessage(string $type, string $text)

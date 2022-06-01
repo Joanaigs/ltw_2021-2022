@@ -76,7 +76,7 @@
                     </div>
 
                     <div class="input-field">
-                        <label><i class="fas fa-home"></i>Endereço: </label>
+                        <label><i class="fas fa-home"></i>Morada: </label>
                         <input type="text" name="address" placeholder="<?=$user->address?>"/>
                     </div>
 

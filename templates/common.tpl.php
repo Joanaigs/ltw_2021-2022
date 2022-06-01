@@ -120,7 +120,7 @@
                     <img src="https://picsum.photos/600/300" alt="burger" class="image" />
                     <h3>Procurar</h3>
                     <p>
-                        Larica tem centenas de restaurantes à sua escolha. Quando abre a aplicação, pode procurar um restaurante ou cozinha em particular.
+                        Larica tem centenas de restaurantes à sua escolha. Quando abre o website, pode procurar um restaurante ou cozinha em particular.
                     </p>
                 </div>
 
