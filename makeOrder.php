@@ -25,4 +25,4 @@ foreach ($cart as $dish) {
     Cart::removefromCart($db, $dish->id, $session->getId());
 }
 
-header("Location: cart.php");
+header("Location: latest_orders.php");

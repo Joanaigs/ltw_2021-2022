@@ -24,6 +24,7 @@ class Order {
         SELECT distinct Orders.id as id, Orders.idUser as idUser, state, address, date
         FROM Orders, DishOrder, Dish
         WHERE Dish.idRestaurant = ? and DishOrder.idDish=Dish.id and Orders.id=DishOrder.idOrder
+        ORDER BY date asc, Orders.id desc
       ');
         $stmt->execute(array($id));
 
@@ -47,6 +48,7 @@ class Order {
         SELECT distinct Orders.id as id, Orders.idUser as idUser, state, address, idRestaurant, date
         FROM Orders, DishOrder, Dish
         WHERE Orders.idUser = ? and DishOrder.idDish=Dish.id and Orders.id=DishOrder.idOrder
+        ORDER BY date asc, Orders.id desc
       ');
         $stmt->execute(array($id));
 
