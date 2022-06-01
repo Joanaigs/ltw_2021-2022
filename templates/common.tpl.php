@@ -73,26 +73,25 @@
     <script src="javascript/orderSelect.js" defer></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/comments.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <body>
 
 <header>
-    <h1><a href="main_page.php">Larica</a></h1>
-    <div class="m_container">
-        <i id="money" class="money"></i>
-    </div>
-    <div class=ordersSate">
-        <a href="state.php?id=<?=$id?>">Order Sate</a>
-    </div>
-    <div class=menu">
+    <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
+    <nav class="navbar">
         <a href="restView.php?id=<?=$id?>">Menu</a>
-    </div>
-    <div class=review">
+        <a href="state.php?id=<?=$id?>">Estado dos Pedidos</a>
         <a href="comments.php?id=<?=$id?>">Avaliações e comentários</a>
+    </nav>
+    <div class="icons">
+        <i class="fas fa-bars" id="menu-bars"></i>
+        <a href="../favorites.php" class="fas fa-heart"></a>
+        <a href="../profile.php" class="fas fa-user"></a>
+        <a href="../cart.php" class="fas fa-shopping-cart"></a>
+        <button class="logout-btn" onclick="window.location.href = '../logout_action.php';">Sair</button>
     </div>
-
 </header>
 <main>
     <?php } ?>
@@ -175,7 +174,7 @@
     </div>
 <?php } ?>
 
-    <?php function drawSidebar() { ?>
+    <?php function drawSidebar($restaurant) { ?>
         <link rel="stylesheet" href="../css/profile.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -184,6 +183,12 @@
                 <ul class="sidebar-options">
                     <li class="profile-page"><a href="../profile.php">Perfil de utilizador <i class="fas fa-chevron-right" id="chevron-right"></i></a></li>
                     <li class="last-orders-page"><a href="../latest_orders.php">Pedidos anteriores <i class="fas fa-chevron-right" id="chevron-right"></i></a></li>
+                    <?php if($restaurant===false){?>
+                    <li class="add-restaurant"><button class="add-restaurant-btn" name="addRestaurantButton" onclick="window.location.href = '../addRestaurant.php';">Adicionar restaurante</button></li>
+                    <?php }
+                    else{?>
+                    <li class="restaurant-page"><button class="restaurant-page-btn" name="restaurantPageButton" onclick="window.location.href = '../restView.php?id=<?=$restaurant->id?>';">Página do restaurante <i class="fas fa-chevron-right" id="chevron-right"></i></button></li>
+                    <?php } ?>
                 </ul>
             </div>
         <?php } ?>

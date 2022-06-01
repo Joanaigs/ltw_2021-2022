@@ -36,12 +36,12 @@
         </div>
     <?php }
 
-    function drawProfile($user) { ?>
+    function drawProfile($user, $restaurant) { ?>
     <link rel="stylesheet" href="../css/profile.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
         <div class="grid-container-profile">
-            <?php drawSidebar(); ?>
+            <?php drawSidebar($restaurant); ?>
         <div class="profile-info">
             <h2>Perfil</h2>
             <img src = "profile_pic.png" alt="Profile picture">
@@ -56,10 +56,10 @@
     </div>
         <?php }
 
-    function editProfileForm(User $user) { ?>
+    function editProfileForm(User $user, Restaurant $restaurant) { ?>
         <link rel="stylesheet" href="../css/profile.css"/>
         <div class="grid-container-profile">
-            <?php drawSidebar(); ?>
+            <?php drawSidebar($restaurant); ?>
             <div class="edit-profile-info">
                 <form action="../formEditProfile.php" method="post" class="edit-profile">
                     <h2 class="title">Editar Perfil</h2>
