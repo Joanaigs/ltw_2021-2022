@@ -105,6 +105,7 @@
 
 <?php function drawAboutUs() { ?>
     <link rel="stylesheet" href="css/style.css">
+
     <div class="about">
         <div class="about-site">
             <p>
@@ -172,7 +173,9 @@
             </div>
             <footer id="credit">&copy; Larica LTW 2021/2022 - All rights reserved</footer>
         </div>
+
     </div>
+
 <?php } ?>
 
     <?php function drawSidebar() { ?>
