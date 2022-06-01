@@ -21,10 +21,11 @@ $orders=Order::getOrdersRestaurant($db,$idRestaurant);
         <a> <?=$dish->name?></a><br>
     <?php } ?>
     <select id="states" name=<?=$order->id?>>
-        <option value="preparing" <?php if($order->state  === 'preparing') echo "selected"; ?>>Preparing</option>
-        <option value="received" <?php if($order->state == 'received') echo "selected"; ?>>Received</option>
-        <option value="ready" <?php if($order->state == 'ready') echo "selected"; ?>>Ready</option>
-        <option value="delivered" <?php if($order->state  == 'delivered') echo "selected"; ?>>Delivered</option>
+        <option value="Preparar" <?php if($order->state  === 'preparing') echo "selected"; ?>>Preparar</option>
+        <option value="Recebido pelo restaurante" <?php if($order->state == 'received') echo "selected"; ?>>Recebido pelo restaurante</option>
+        <option value="Pronto" <?php if($order->state == 'ready') echo "selected"; ?>>Pronto</option>
+        <option value="A entregar" <?php if($order->state  == 'delivered') echo "selected"; ?>>A entregar</option>
+        <option value="Entregue" <?php if($order->state  == 'delivered') echo "selected"; ?>>Entregue</option>
     </select>
     <br>
 <?php } ?>

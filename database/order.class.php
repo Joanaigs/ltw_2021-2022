@@ -7,7 +7,7 @@ class Order {
     public int $idUser;
     public string $state;
     public string $address;
-    public string $dishName;
+    public int $idRestaurant;
 
     public function __construct(int $id, int $idUser, string $state, $address)
     {
@@ -38,13 +38,37 @@ class Order {
         }
         return $orders;
     }
+
+    static function getOrdersUser(PDO $db, int $id) : array {
+        $stmt = $db->prepare('
+        SELECT distinct Orders.id as id, Orders.idUser as idUser, state, address, idRestaurant
+        FROM Orders, DishOrder, Dish
+        WHERE Orders.idUser = ? and DishOrder.idDish=Dish.id and Orders.id=DishOrder.idOrder
+      ');
+        $stmt->execute(array($id));
+
+        $orders = array();
+
+        while ($order = $stmt->fetch()) {
+            $temp = new Order(
+                $order['id'],
+                $order['idUser'],
+                $order['state'],
+                $order['address']
+            );
+            $temp->idRestaurant=$order['idRestaurant'];
+            $orders[]=$temp;
+        }
+        return $orders;
+    }
+
     static function UpdateOrdersRestaurant(PDO $db, string $id, string $state) {
         $stmt = $db->prepare('UPDATE Orders set state=? where id=?');
         $stmt->execute(array($state, $id));
     }
 
     static function addOrder(PDO $db, int $idUser, string $address)  {
-        $stmt = $db->prepare("INSERT INTO Orders(idUser, address, state) VALUES (?, ?, 'received')");
+        $stmt = $db->prepare("INSERT INTO Orders(idUser, address, state) VALUES (?, ?, 'Recebido pelo restaurante')");
         $stmt->execute(array( $idUser, $address));
     }
 
@@ -64,9 +88,7 @@ class Order {
         $stmt->execute(array($idUser));
 
         $orders = array();
-        echo "hii";
         while ($order = $stmt->fetch()) {
-            echo "hi";
             $orders[] = new Order(
                 $order['id'],
                 $order['idUser'],

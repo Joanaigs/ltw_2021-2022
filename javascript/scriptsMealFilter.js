@@ -84,5 +84,5 @@ async function get_meals(value, id) {
     heartsDishClick();
 
 }
-temp=document.querySelector('.dishes')
+temp=document.querySelector('.page .dishes')
 if (temp) get_meals(undefined, temp.id)
