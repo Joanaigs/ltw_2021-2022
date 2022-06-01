@@ -1,6 +1,6 @@
 <?php
 declare(strict_types = 1);
-
+require_once('review.class.php');
 class Restaurant {
     public int $id;
     public int $idUser;
@@ -9,6 +9,7 @@ class Restaurant {
     public string $image;
     public bool $heart;
     public bool $loggedIn;
+    public $ranking;
 
     public function __construct(int $id, int $idUser, string $name, string $address, string $image)
     {
@@ -45,6 +46,9 @@ class Restaurant {
                 } else
                     $temp->loggedIn = false;
             }
+            $r=Review::getRanking($db, $restaurant['id']);
+
+            $temp->ranking=$r;
             $restaurants[]=$temp;
         }
         return $restaurants;
@@ -136,6 +140,8 @@ class Restaurant {
                 } else
                     $temp->loggedIn = false;
             }
+            $r=Review::getRanking($db, $restaurant['id']);
+            $temp->ranking=$r;
             $restaurants[]=$temp;
         }
         return $restaurants;
@@ -166,6 +172,8 @@ class Restaurant {
                 } else
                     $temp->loggedIn = false;
             }
+            $r=Review::getRanking($db, $restaurant['id']);
+            $temp->ranking=$r;
             $restaurants[] = $temp;
         }
         return $restaurants;
