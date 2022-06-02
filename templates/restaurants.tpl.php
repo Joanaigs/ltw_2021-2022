@@ -7,7 +7,7 @@
 
 function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db , Session $session) { ?><!DOCTYPE html>
 <div class="grid-container">
-    <div class ="filter">
+    <div class ="sidebar">
         <section id = "typeOfRestaurant">
             <h2>Tipo de Prato:</h2>
             <div id="filter">

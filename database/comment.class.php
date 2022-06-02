@@ -28,7 +28,7 @@ class Comment
                 SELECT Comment.id as id, idReview, idRestaurant, idUser, Comment.date as date, comment, fromRestaurant
                 FROM Review, Comment
                 WHERE idReview = ? and idReview=Review.id
-                Order by date;
+                Order by id ;
             ');
 
         $stmt->execute(array($idReview));
@@ -52,5 +52,10 @@ class Comment
     static function addComment(PDO $db,int $idReview, int $restaurant, string $date, string $comment)  {
         $stmt = $db->prepare('INSERT INTO Comment(idReview, fromRestaurant, date, comment) VALUES (?, ?, ?, ?)');
         $stmt->execute(array($idReview, $restaurant, $date, $comment));
+    }
+
+    static function removeComment(PDO $db, int $id)  {
+        $stmt = $db->prepare('DELETE FROM Comment where id=?' );
+        $stmt->execute(array($id));
     }
 }
