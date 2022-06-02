@@ -84,7 +84,8 @@ CREATE TABLE Orders (
 DROP TABLE IF EXISTS DishOrder;
 CREATE TABLE DishOrder (
                            idDish INTEGER REFERENCES Dish(id),
-                           idOrder INTEGER REFERENCES Orders(id)
+                           idOrder INTEGER REFERENCES Orders(id),
+                           number INTEGER
 );
 
 DROP TABLE IF EXISTS FavoriteDish;
@@ -109,6 +110,6 @@ DROP TABLE IF EXISTS Cart;
 CREATE TABLE Cart(
                      id INTEGER PRIMARY KEY,
                      idDish INTEGER REFERENCES Dish(id),
-                     idUser INTEGER REFERENCES User(id)
+                     idUser INTEGER REFERENCES User(id),
+                     number INTEGER
 );
-

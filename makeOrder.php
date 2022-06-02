@@ -21,7 +21,7 @@ else {
 }
 $order=Order::orderOfUser($db, $session->getId());
 foreach ($cart as $dish) {
-    Order::addDishOrder($db, $order->id, $dish->id);
+    Order::addDishOrder($db, $order->id, $dish->id, $dish->number);
     Cart::removefromCart($db, $dish->id, $session->getId());
 }
 

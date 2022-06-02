@@ -39,7 +39,7 @@ function drawLatestOrders(Session $session, PDO $db, User $user)
                                     <img src="<?= $dish->photo ?>?id=<?= $dish->id ?>" alt="">
                                 </section>
                                 <section class="text">
-                                    <h4> <?= $dish->name ?></h4>
+                                    <h4> <?= $dish->name ?> x<?= $dish->number ?></h4>
                                     <p class="info"> <?= $dish->price ?> €</p>
                                 </section>
                             </section>
