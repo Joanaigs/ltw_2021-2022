@@ -4,7 +4,6 @@ require_once('../session.php');
 $session = new Session();
 require_once('../database/restaurant.class.php');
 $db = new PDO('sqlite:../example.db');
-$checked=$_GET['checked'];
 if($_GET['filter']=="all"){
     $restaurants=Restaurant::getRestaurants($db, $session);
 }

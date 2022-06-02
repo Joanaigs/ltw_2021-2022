@@ -47,6 +47,21 @@ class Review
         return $reviews;
     }
 
+    static public function getRanking(PDO $db, int $idRest)
+    {
+
+        $stmt = $db->prepare('
+                SELECT round(avg(rating), 1) as average
+                FROM Review
+                WHERE idRestaurant = ?
+            ');
+
+        $stmt->execute(array($idRest));
+
+        $review = $stmt->fetch();
+        return $review['average'];
+    }
+
     static function addReview(PDO $db, string $idRe, int $idUser, string $review, string $date, int $raiting)  {
         $stmt = $db->prepare('INSERT INTO Review(idRestaurant, idUser, review, date, rating) VALUES (?, ?, ?, ?, ?)');
         $stmt->execute(array($idRe, $idUser, $review, $date, $raiting));

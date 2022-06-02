@@ -8,7 +8,7 @@ require_once('templates/common.tpl.php');
 require_once('templates/comments.tpl.php');
 require_once('database/user.class.php');
 require_once('database/review.class.php');
-require_once ('database/connection.db.php');
+require_once('database/connection.db.php');
 
 $db = getDatabaseConnection();
 $idRestaurant=$_GET['idRestaurant'];
