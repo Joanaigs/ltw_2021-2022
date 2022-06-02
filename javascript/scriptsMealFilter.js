@@ -46,21 +46,21 @@ async function get_meals(meals) {
         article.appendChild(content)
         const buttons = document.createElement("div")
         buttons.classList.add("buttons")
-        const addButton= document.createElement("div")
-        addButton.classList.add("add-button")
+        const cartButton= document.createElement("div")
+        cartButton.classList.add("cartButton")
         if(dish.loggedIn){
             if (!dish.cart){
             const a = document.createElement("a")
-            a.href="addToCart.php?idDish=" + +dish.id + "&idRestaurant=" + dish.idRestaurant
+            a.href="addToCart.php?idDish=" + +dish.id + "&idRestaurant=" + dish.idRestaurant + "&favorites=0"
             a.className = "fa-solid fa-plus"
-            addButton.appendChild(a)
+            cartButton.appendChild(a)
             }else{
                 const a1 = document.createElement("a")
-                a1.href="removeFromCart.php?idDish=" + +dish.id + "&idRestaurant=" + dish.idRestaurant
+                a1.href="removeFromCart.php?idDish=" + +dish.id + "&idRestaurant=" + dish.idRestaurant + "&favorites=0"
                 a1.className = "fa-solid fa-minus"
-                addButton.appendChild(a1)
+                cartButton.appendChild(a1)
             }
-            buttons.appendChild(addButton)
+            buttons.appendChild(cartButton)
             const hearts = document.createElement("div")
             hearts.classList.add("hearts")
             const div2 = document.createElement("div")
@@ -70,7 +70,7 @@ async function get_meals(meals) {
                 div2.classList.add("heart-liked")
             }
             hearts.appendChild(div2)
-            addButton.appendChild(hearts)
+            cartButton.appendChild(hearts)
             buttons.append(hearts)
             article.append(buttons)
         }

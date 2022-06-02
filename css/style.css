@@ -849,6 +849,38 @@ body > footer{
     cursor: pointer;
 }
 
+
+
+.filter{
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--section-background-color);
+}
+
+.filter #filter{
+    margin: 0 4rem 4rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter #filter label{
+    margin-bottom: 0.5rem;
+}
+
+.filter input.radio{
+    margin-right:1rem;
+}
+
+
+.filter h2{
+    margin-top: 6rem;
+    margin-left: 6rem;
+    color: var(--dark-color);
+    font-size: 20px;
+}
+
+
 #typeOfRestaurant label{
     padding-left: 20px;
     font-size: 15px;
@@ -897,7 +929,7 @@ h1{
 
 }
 
-.dish .buttons .add-button{
+.buttons .cartButton{
     position: absolute;
     margin-right: 15px;
     margin-top: 15px;
@@ -906,17 +938,17 @@ h1{
 
 }
 
-.dish .buttons .add-button a{
+.buttons .cartButton a{
     text-decoration: none;
     color: #444444;
     font-size: 15px;
 
 }
 
-.dish .buttons .hearts .heart{
+.buttons .hearts .heart{
     position: absolute;
-    margin-left: 10px;
-    margin-top: 10px;
+    margin-left: 15px;
+    margin-top: 15px;
     top: 0;
     left: 10px;
 
@@ -1238,6 +1270,106 @@ button.erase-comment-btn{
     position: absolute;
     left:60em;
 }
+
+
+#favoriteFilter{
+    margin-left: 100px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 350px;
+    height: 50px;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+
+
+#favoriteFilter label{
+    font-size: 1.7rem;
+    border-radius: 0.5rem;
+    color: #606060;
+    margin: auto;
+
+}
+
+#favoriteFilter label input{
+    display: none;
+}
+
+#favoriteFilter label > span{
+    padding: 6px;
+
+    border-radius: 0.5rem;
+}
+
+#favoriteFilter label input:checked ~ span{
+    background-color: var(--dark-color);
+    color: var(--light-color);
+
+
+}
+
+
+#favoritesPage{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+#favoritesPage article{
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-right: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    position: relative;
+}
+
+#favoritesPage article:hover{
+    background-color: var(--section-background-color);
+}
+
+
+#favoritesPage article > img{
+    width: 150px;
+    height: 150px;
+    border-radius: 0.5rem;
+}
+
+#favoritesPage article .text {
+    text-decoration: none;
+    color: #606060;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+}
+
+#favoritesPage article .text p{
+    font-weight: normal;
+    font-size: 13px;
+
+}
+
+
+#favoritesPage article .text div > h4 {
+    font-weight: normal;
+    font-size: 13px;
+
+}
+
+
+
+
 
 
 
