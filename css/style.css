@@ -1059,6 +1059,20 @@ form .form-control{
 
 }
 
+button.erase-comment-btn{
+    width: 90px;
+    height: 40px;
+    outline: none;
+    border: none;
+    border-radius: 48px;
+    background-color: var(--accent-color);
+    color: var(--light-color);
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.5s;
+}
+
 
 form button{
     width: 90px;
@@ -1150,6 +1164,19 @@ form button{
 
 }
 
+button.erase-comment-btn{
+    width: 90px;
+    height: 40px;
+    outline: none;
+    border: none;
+    border-radius: 48px;
+    background-color: var(--accent-color);
+    color: var(--light-color);
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.5s;
+}
 .add-comment{
     margin-left: 170px;
     margin-right: 5px;
@@ -1162,6 +1189,17 @@ form button{
     flex-direction: row;
     justify-content:space-around;
 
+}
+
+.erase-comment form{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+
+}
+.erase-comment{
+    position: absolute;
+    left:60em;
 }
 
 

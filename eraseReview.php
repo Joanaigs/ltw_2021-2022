@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types = 1);
 require_once('session.php');
 $session = new Session();
@@ -11,10 +10,7 @@ require_once('database/review.class.php');
 require_once('database/connection.db.php');
 
 $db = getDatabaseConnection();
+$idReview=$_GET['id'];
 $idRestaurant=$_GET['idRestaurant'];
-
-if (isset($_POST["rate"], $_POST["remark"])){
-    $date=date("d-m-Y");
-    Review::addReview($db, $idRestaurant, $session->getId() , $_POST["remark"], $date, intval($_POST["rate"]));
-    header("Location: reviews.php?id=$idRestaurant");
-}
+Review::removeReview($db, intval($idReview));
+header("Location: reviews.php?id=$idRestaurant");

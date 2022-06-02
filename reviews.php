@@ -48,10 +48,8 @@ drawHeader($session); ?>
                     <label for="star3" title="text">3 stars</label>
                     <input type="radio" id="star2" name="rate" value=2/>
                     <label for="star2" title="text">2 stars</label>
-                    <input type="radio" id="star1" name="rate" value=1 />
+                    <input type="radio" id="star1" name="rate" value=1 checked/>
                     <label for="star1" title="text">1 star</label>
-                    <input type="radio" id="star0" name="rate" value=0 checked/>
-                    <label for="star0" title="text">0 star</label>
                 </div>
 
                 <input class="form-control" rows="1" placeholder="Deixe-nos aqui a sua opinião..." name="remark"

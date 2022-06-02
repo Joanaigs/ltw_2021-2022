@@ -14,7 +14,8 @@ require_once(__DIR__ . '/../database/review.class.php');
             <article class="review">
 
 
-                <?php $user = User::getUser($db, $review->idUser) ?>
+                <?php $user = User::getUser($db, $review->idUser);
+                $restaurant=Restaurant::getRestaurant($db, $review->idRestaurant)?>
                     <div class="review-info">
 
 
@@ -34,7 +35,11 @@ require_once(__DIR__ . '/../database/review.class.php');
                         </div>
                     </div>
                 <p> <?= $review->review ?> </p>
-
+                <?php if ($session->getId() === $user->id && $rest === 0){ ?>
+                    <button class="erase-comment-btn" name="eraseComment"
+                            onclick="window.location.href = '../eraseReview.php?id=<?= $review->id ?>&idRestaurant=<?=$review->idRestaurant?>';">APAGAR
+                    </button>
+                <?php }?>
 
                 <section class="comments">
                 <?php $comments = Comment::getComments($db, $review->id);
@@ -54,7 +59,13 @@ require_once(__DIR__ . '/../database/review.class.php');
                                         <h3> <?= $comment->date ?> </h3>
                                     </div>
                                 </div>
-                            <p> <?= $comment->comment ?> </p> <?php
+                            <p> <?= $comment->comment ?> </p>
+                            <?php if ($session->getId() === $restaurant->idUser && $rest===1) { ?>
+                                <button class="erase-comment-btn" name="eraseComment"
+                                        onclick="window.location.href = '../eraseComment.php?id=<?= $comment->id ?>&type=<?= $rest ?>&idRestaurant=<?= $review->idRestaurant ?>';">
+                                    APAGAR
+                                </button>
+                            <?php }
                         } else { ?>
                             <div class="flex-right">
                                 <img src="https://picsum.photos/100/100?.<?= $user->username ?>" alt="">
@@ -64,7 +75,17 @@ require_once(__DIR__ . '/../database/review.class.php');
                                 </div>
                             </div>
                             <p> <?= $comment->comment ?> </p>
+                            <div class="erase-comment">
+                                <?php if ($session->getId() === $user->id && $rest===0) { ?>
+                                    <button class="erase-comment-btn" name="eraseComment"
+                                            onclick="window.location.href = '../eraseComment.php?id=<?= $comment->id ?>&type=<?= $rest ?>&idRestaurant=<?= $review->idRestaurant ?>';">
+                                        APAGAR
+                                    </button>
+                                <?php } ?>
+                            </div>
+                            </div>
                         <?php }?>
+
                             </div><?php
                     }
                 }?>
@@ -72,21 +93,13 @@ require_once(__DIR__ . '/../database/review.class.php');
 
                 <div class="add-comment">
 
-                <?php if ($session->getId() === $user->id) { ?>
-                    <form method="post" class="add-comment" enctype="multipart/form-data">
+                <?php if ($session->getId() === $user->id || $rest===1) { ?>
+                    <form action="../addComment.php?type=<?=$rest?>&idRestaurant=<?=$review->idRestaurant?>&id=<?=$review->id?>" method="post" class="add-comment" enctype="multipart/form-data">
                         <input class="form-control" placeholder="Adicione um comentário..."
                                name="comment" id="comment" required/>
 
                         <button type="submit">Publicar</button>
                     </form> <?php
-                    if (isset($_POST["comment"])) {
-                        $date = date("d-m-Y");
-                        Comment::addComment($db, $review->id, $rest, $date, $_POST["comment"]);
-                        if($rest===0)
-                            header("Location: restaurant.php?id=$review->idRestaurant");
-                        else
-                            header("Location: comments.php?id=$review->idRestaurant");
-                    }
                 } ?>
 
 
