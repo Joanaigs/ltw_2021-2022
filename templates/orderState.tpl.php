@@ -29,7 +29,7 @@
                                 <?php $user=User::getUser($db, $order->idUser)?>
                                 <h4 id="cliente">Cliente: <?= $user->username ?></h4>
                                 <?php foreach ($dishes as $dish) {?>
-                                    <a> - <?=$dish->name?></a>
+                                    <a> - <?=$dish->name?> x<?=$dish->number?></a>
                                 <?php } ?>
                                 <select id="states" name=<?=$order->id?>>
                                     <option value="Recebido pelo restaurante" selected>Recebido pelo restaurante</option>
@@ -58,7 +58,7 @@
                                 <?php $user=User::getUser($db, $order->idUser)?>
                                 <h4 id="cliente">Cliente: <?= $user->username ?></h4>
                                 <?php foreach ($dishes as $dish) {?>
-                                    <a> - <?=$dish->name?></a>
+                                    <a> - <?=$dish->name?> x<?=$dish->number?></a>
                                 <?php } ?>
                                 <select id="states" name=<?=$order->id?>>
                                     <option value="Preparar" selected>Preparar</option>
@@ -86,7 +86,7 @@
                                 <?php $user=User::getUser($db, $order->idUser)?>
                                 <h4 id="cliente">Cliente: <?= $user->username ?></h4>
                                 <?php foreach ($dishes as $dish) {?>
-                                    <a> - <?=$dish->name?></a>
+                                    <a> - <?=$dish->name?> x<?=$dish->number?></a>
                                 <?php } ?>
                                 <select id="states" name=<?=$order->id?>>
                                     <option value="Pronto" selected>Pronto</option>
@@ -113,7 +113,7 @@
                                 <?php $user=User::getUser($db, $order->idUser)?>
                                 <h4 id="cliente">Cliente: <?= $user->username ?></h4>
                                 <?php foreach ($dishes as $dish) {?>
-                                    <a> - <?=$dish->name?></a>
+                                    <a> - <?=$dish->name?> x<?=$dish->number?></a>
                                 <?php } ?>
                                 <select id="states" name=<?=$order->id?>>
                                     <option value="A entregar" selected>A entregar</option>
@@ -139,7 +139,7 @@
                                 <?php $user=User::getUser($db, $order->idUser)?>
                                 <h4 id="cliente">Cliente: <?= $user->username ?></h4>
                                 <?php foreach ($dishes as $dish) {?>
-                                    <a> - <?=$dish->name?></a>
+                                    <a> - <?=$dish->name?> x<?=$dish->number?></a>
                                 <?php } ?>
                                 <select id="states" name=<?=$order->id?>>
                                     <option value="Entregue" selected>Entregue</option>
