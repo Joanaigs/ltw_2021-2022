@@ -53,7 +53,8 @@ async function get_favoriteRestaurants(value) {
         const buttons = document.createElement('div')
         buttons.classList.add('buttons');
 
-
+        const rest = document.createElement("div")
+        rest.id=("restaurants")
         const hearts = document.createElement("div")
         hearts.classList.add("hearts")
         const div2 = document.createElement("div")
@@ -65,7 +66,8 @@ async function get_favoriteRestaurants(value) {
 
 
         hearts.appendChild(div2)
-        buttons.append(hearts)
+        rest.append(hearts)
+        buttons.append(rest)
         article.append(buttons)
         section.append(article)
     }
