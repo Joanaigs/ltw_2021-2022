@@ -849,6 +849,38 @@ body > footer{
     cursor: pointer;
 }
 
+
+
+.filter{
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--section-background-color);
+}
+
+.filter #filter{
+    margin: 0 4rem 4rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter #filter label{
+    margin-bottom: 0.5rem;
+}
+
+.filter input.radio{
+    margin-right:1rem;
+}
+
+
+.filter h2{
+    margin-top: 6rem;
+    margin-left: 6rem;
+    color: var(--dark-color);
+    font-size: 20px;
+}
+
+
 #typeOfRestaurant label{
     padding-left: 20px;
     font-size: 15px;
