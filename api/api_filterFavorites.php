@@ -10,9 +10,9 @@ require_once('../templates/restaurants.tpl.php');
 
 $db = new PDO('sqlite:../example.db');
 if ($_GET['filter'] == "restaurants") {
-    $array = Restaurant::getFavoriteRestaurants($db, $session->getId());
+    $array = Restaurant::getFavoriteRestaurants($db, $session, $session->getId());
 } else {
-    $array = Dish::getFavoriteDishes($db, $session->getId());
+    $array = Dish::getFavoriteDishes($db,$session, $session->getId());
 }
 echo json_encode($array);
 

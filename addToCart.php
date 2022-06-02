@@ -11,6 +11,13 @@ $db = new PDO('sqlite:example.db');
 
 $idRestaurant=$_GET['idRestaurant'];
 $idDish=$_GET['idDish'];
+$favorites =$_GET['favorites'];
 Cart::addToCart($db, $idDish, $session->getId());
 
-header("Location: restaurant.php?id=$idRestaurant");
+
+if ($favorites == 0)
+    header("Location: restaurant.php?id=$idRestaurant");
+else
+    header("Location: favorites.php");
+
+

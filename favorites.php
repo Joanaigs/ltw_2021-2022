@@ -15,22 +15,23 @@ $db = $db = new PDO('sqlite:example.db');
 
 drawHeader($session);
 if ($session->isLoggedIn()) {
-    $restaurants=Restaurant::getFavoriteRestaurants($db, $session->getId());
+    $restaurants=Restaurant::getFavoriteRestaurants($db, $session, $session->getId());
     ?>
+    <div class="favorites-grid-container">
         <div id = "favoriteFilter">
-            <input type="radio" name ="typeFilter" value="restaurants" id="restaurants" checked="checked"><label>restaurants</label>
-            <input type="radio" name ="typeFilter" id="dishes" value="dishes" ><label>dishes</label>
+            <label>
+                <input type="radio" name ="typeFilter" id="dishes" value="dishes" checked="checked">
+                <span>Pratos</span>
+            </label>
+            <label>
+                <input type="radio" name ="typeFilter" value="restaurants" id="restaurants" >
+                <span>Restaurantes</span>
+            </label>
+
         </div>
-        <section id="favoritesPage">
-            <?php foreach ($restaurants as $res) { ?>
-                <article>
-                    <header>
-                        <a href="restaurant.php?id=<?=$res->id?>"><?=$res->name?></a>
-                    </header>
-                    <img src="https://picsum.photos/600/300?.<?=$res->name?>"alt="">
-                </article>
-            <?php }?>
-        </section>
+        <section id="favoritesPage"></section>
+
+    </div>
     <?php
 }
 drawFooter();

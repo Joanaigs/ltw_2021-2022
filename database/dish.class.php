@@ -108,7 +108,7 @@ class Dish{
         return $dishes;
     }
 
-    static function getFavoriteDishes(PDO $db, int $id) : array {
+    static function getFavoriteDishes(PDO $db,Session $session, int $id) : array {
         $stmt = $db -> prepare('
                 SELECT Dish.id, Dish.idRestaurant, Dish.name, Dish.price, Dish.photo, Dish.idMeal,
                        Dish.idTypeOfDish, Meal.name as mealName
@@ -121,7 +121,7 @@ class Dish{
         $dishes = array();
 
         while ($dish = $stmt->fetch()){
-            $dishes[] = new Dish(
+            $temp = new Dish(
                 $dish['id'],
                 $dish['idRestaurant'],
                 $dish['name'],
@@ -131,6 +131,21 @@ class Dish{
                 $dish['idTypeOfDish'],
                 $dish['mealName']
             );
+            if($session->isLoggedIn()) {
+                if (Cart::findInCart($db, $dish['id'], $session->getId())) {
+                    $temp->cart = true;
+                } else
+                    $temp->cart = false;
+                if (self::isfavoriteDish($db, $dish['id'], $session->getId())) {
+                    $temp->heart = true;
+                } else
+                    $temp->heart = false;
+                if ($session->isLoggedIn()) {
+                    $temp->loggedIn = true;
+                } else
+                    $temp->loggedIn = false;
+            }
+            $dishes[] = $temp;
         }
 
         return $dishes;
