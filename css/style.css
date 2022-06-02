@@ -993,8 +993,7 @@ h1{
 
 .reviews-flex-container .image{
 
-    grid-row-start: 1;
-    grid-row-end: 2;
+
 
 
     height: 350px;
@@ -1109,7 +1108,7 @@ form button{
 
 }
 
-.flex-right {
+.flex-left {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -1119,11 +1118,18 @@ form button{
 
 }
 
-.flex-right img{
+
+.flex-left img{
     border-radius: 50%;
     width: 90px;
     height: 90px;
     justify-self: center;
+}
+
+.flex-right{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
 
 .review-profile-info {
@@ -1137,8 +1143,22 @@ form button{
 
 .ratingFixed{
     font-size: 25px;
-    margin: 50px;
+    margin-top: 50px;
+    margin-right: 20px;
     margin-bottom: 5px;
+}
+
+.review-info .flex-right{
+    margin-right: 30px;
+}
+
+.flex-right button{
+    margin-top: 35px;
+    margin-bottom: 5px;
+    border: none;
+    background-color: var(--light-color);
+    font-size: 20px;
+    color: var(--body-font-color);
 }
 
 .review p{
@@ -1151,13 +1171,29 @@ form button{
 .comment{
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
     margin-left: 100px;
+}
+
+.comment .flex-right{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-left: 40px;
 }
 
 .comment p{
     margin: 15px;
-    margin-left: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.comment button{
+    margin: 15px;
+    margin-right: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;

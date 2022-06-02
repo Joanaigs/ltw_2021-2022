@@ -13,82 +13,84 @@ require_once(__DIR__ . '/../database/review.class.php');
         <?php foreach ($reviews as $review) {?>
             <article class="review">
 
-
                 <?php $user = User::getUser($db, $review->idUser);
                 $restaurant=Restaurant::getRestaurant($db, $review->idRestaurant)?>
                     <div class="review-info">
 
-
-                        <div class="flex-right">
+                        <div class="flex-left">
                             <img src="https://picsum.photos/100/100?.<?= $user->username ?>" alt="">
                             <div class="review-profile-info">
                                 <h2> <?= $user->username ?> </h2>
                                 <h3> <?= $review->date ?> </h3>
                             </div>
                         </div>
-                        <div class="ratingFixed">
-                            <span class="fa fa-star <?php if ($review->rating >= 1) echo "checked" ?>"></span>
-                            <span class="fa fa-star <?php if ($review->rating >= 2) echo "checked" ?>"></span>
-                            <span class="fa fa-star <?php if ($review->rating >= 3) echo "checked" ?>"></span>
-                            <span class="fa fa-star <?php if ($review->rating >= 4) echo "checked" ?>"></span>
-                            <span class="fa fa-star <?php if ($review->rating >= 5) echo "checked" ?>"></span>
+
+                        <div class="flex-right">
+                            <div class="ratingFixed">
+                                <span class="fa fa-star <?php if ($review->rating >= 1) echo "checked" ?>"></span>
+                                <span class="fa fa-star <?php if ($review->rating >= 2) echo "checked" ?>"></span>
+                                <span class="fa fa-star <?php if ($review->rating >= 3) echo "checked" ?>"></span>
+                                <span class="fa fa-star <?php if ($review->rating >= 4) echo "checked" ?>"></span>
+                                <span class="fa fa-star <?php if ($review->rating >= 5) echo "checked" ?>"></span>
+                            </div>
+                            <?php if ($session->getId() === $user->id && $rest === 0){ ?>
+                                <button class="fas fa-trash-alt" name="eraseComment"
+                                        onclick="window.location.href = '../eraseReview.php?id=<?= $review->id ?>&idRestaurant=<?=$review->idRestaurant?>';">
+                                </button>
+                            <?php }?>
                         </div>
                     </div>
                 <p> <?= $review->review ?> </p>
-                <?php if ($session->getId() === $user->id && $rest === 0){ ?>
-                    <button class="erase-comment-btn" name="eraseComment"
-                            onclick="window.location.href = '../eraseReview.php?id=<?= $review->id ?>&idRestaurant=<?=$review->idRestaurant?>';">APAGAR
-                    </button>
-                <?php }?>
+
 
                 <section class="comments">
                 <?php $comments = Comment::getComments($db, $review->id);
                 if (!empty($comments)) {?>
 
                     <?php foreach ($comments as $comment) { ?>
-                            <div class="comment">
-                        <?php
-                        if ($comment->fromRestaurant === 1) {
-                            $restaurant = Restaurant::getRestaurant($db, $comment->idRestaurant); ?>
-                                <div class="flex-right">
+                        <div class="comment">
 
+                            <?php if ($comment->fromRestaurant === 1) {
+                                $restaurant = Restaurant::getRestaurant($db, $comment->idRestaurant); ?>
+
+                            <div class="flex-left">
                                     <img src="https://picsum.photos/100/100?.<?= $restaurant->name ?>" alt="">
                                     <div class="review-profile-info">
                                         <h4>Owner</h4>
                                         <h2> <?= $restaurant->name ?> </h2>
                                         <h3> <?= $comment->date ?> </h3>
                                     </div>
-                                </div>
-                            <p> <?= $comment->comment ?> </p>
-                            <?php if ($session->getId() === $restaurant->idUser && $rest===1) { ?>
-                                <button class="erase-comment-btn" name="eraseComment"
-                                        onclick="window.location.href = '../eraseComment.php?id=<?= $comment->id ?>&type=<?= $rest ?>&idRestaurant=<?= $review->idRestaurant ?>';">
-                                    APAGAR
-                                </button>
-                            <?php }
-                        } else { ?>
+                            </div>
+
                             <div class="flex-right">
+                                <p> <?= $comment->comment ?> </p>
+                                <?php if ($session->getId() === $restaurant->idUser && $rest===1) { ?>
+                                    <button class="fas fa-trash-alt" name="eraseComment"
+                                        onclick="window.location.href = '../eraseComment.php?id=<?= $comment->id ?>&type=<?= $rest ?>&idRestaurant=<?= $review->idRestaurant ?>';">
+                                    </button>
+                                <?php } ?>
+                            </div>
+                        <?php } else { ?>
+                            <div class="flex-left">
                                 <img src="https://picsum.photos/100/100?.<?= $user->username ?>" alt="">
                                 <div class="review-profile-info">
                                 <h2> <?= $user->username ?> </h2>
                                 <h3> <?= $comment->date ?> </h3>
                                 </div>
                             </div>
-                            <p> <?= $comment->comment ?> </p>
-                            <div class="erase-comment">
+
+                            <div class="flex-right">
+                                <p> <?= $comment->comment ?> </p>
                                 <?php if ($session->getId() === $user->id && $rest===0) { ?>
-                                    <button class="erase-comment-btn" name="eraseComment"
+                                    <button class="fas fa-trash-alt" name="eraseComment"
                                             onclick="window.location.href = '../eraseComment.php?id=<?= $comment->id ?>&type=<?= $rest ?>&idRestaurant=<?= $review->idRestaurant ?>';">
-                                        APAGAR
                                     </button>
                                 <?php } ?>
-                            </div>
+
                             </div>
                         <?php }?>
-
-                            </div><?php
-                    }
-                }?>
+                        </div>
+                        <?php }}?>
 
 
                 <div class="add-comment">
