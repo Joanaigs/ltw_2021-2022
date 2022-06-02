@@ -624,6 +624,7 @@ header .icons #menu-bars{
 .each-rest form .make-order-btn:hover{
     background-color: var(--accent-color);
 }
+
 @media (max-width: 991px) {
     html{
         font-size: 55%;

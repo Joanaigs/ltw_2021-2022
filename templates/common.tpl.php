@@ -6,20 +6,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <title>Larica-Food Delivery Website</title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <link rel="stylesheet" href="../css/style.css">
       <link rel="stylesheet" href="../css/comments.css">
-      <script src="javascript/heartDish.js" defer></script>
-      <script src="javascript/heart.js" defer></script>
-      <script src="javascript/restaurantPage.js" defer></script>
-      <script src="javascript/scriptsMealFilter.js" defer></script>
-      <script src="javascript/restaurantFilter.js" defer></script>
-      <script src="javascript/restaurantSearch.js" defer></script>
-      <script src="javascript/scriptFavorites.js" defer></script>
-      <script src="javascript/script.js" defer></script>
+      <script src="../javascript/heartDish.js" defer></script>
+      <script src="../javascript/heart.js" defer></script>
+      <script src="../javascript/restaurantPage.js" defer></script>
+      <script src="../javascript/scriptsMealFilter.js" defer></script>
+      <script src="../javascript/restaurantFilter.js" defer></script>
+      <script src="../javascript/restaurantSearch.js" defer></script>
+      <script src="../javascript/scriptFavorites.js" defer></script>
+      <script src="../javascript/script.js" defer></script>
 
 
   </head>
@@ -60,9 +60,9 @@
     </header>
 
   </body>
-<?php } ?>
+<?php }
 
-<?php function drawRestViewHeader($id) { ?>
+function drawRestViewHeader($id) { ?>
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -93,16 +93,18 @@
         <button class="logout-btn" onclick="window.location.href = '../logout_action.php';">Sair</button>
     </div>
 </header>
-<main>
-    <?php } ?>
+</body>
+<?php }
 
-    <?php function drawFooter() { ?>
 
-        <footer class="credit" id="real">&copy; Larica LTW 2021/2022 - All rights reserved</footer>
+function drawFooter() { ?>
+    <link rel="stylesheet" href="css/style.css">
+    <footer class="credit" id="real">&copy; Larica LTW 2021/2022 - All rights reserved</footer>
 
-    <?php } ?>
 
-<?php function drawAboutUs() { ?>
+<?php }
+
+function drawAboutUs() { ?>
     <link rel="stylesheet" href="css/style.css">
     <div class="about">
         <div class="about-site">
@@ -172,9 +174,9 @@
             <footer id="credit">&copy; Larica LTW 2021/2022 - All rights reserved</footer>
         </div>
     </div>
-<?php } ?>
+<?php }
 
-    <?php function drawSidebar($restaurant) { ?>
+    function drawSidebar($restaurant) { ?>
         <link rel="stylesheet" href="../css/profile.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -191,9 +193,9 @@
                     <?php } ?>
                 </ul>
             </div>
-        <?php } ?>
+        <?php }
 
-<?php function drawLoginRegisterForm(Session $session) { ?>
+function drawLoginRegisterForm(Session $session) { ?>
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
