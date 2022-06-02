@@ -9,54 +9,75 @@ require_once(__DIR__ . '/../database/review.class.php');
 <?php function drawComments(array $reviews, PDO $db, Session $session, int $rest)
 { ?><!DOCTYPE html>
 
-    <section id="reviews">
+    <section class="reviews">
         <?php foreach ($reviews as $review) {?>
             <article class="review">
 
+
                 <?php $user = User::getUser($db, $review->idUser) ?>
-                <img src="https://picsum.photos/100/100?.<?= $user->username ?>" alt="">
-                <h2> <?= $user->username ?> </h2>
-                <h3> <?= $review->date ?> </h3>
-                <div class="ratingFixed">
-                    <span class="fa fa-star <?php if ($review->rating >= 1) echo "checked" ?>"></span>
-                    <span class="fa fa-star <?php if ($review->rating >= 2) echo "checked" ?>"></span>
-                    <span class="fa fa-star <?php if ($review->rating >= 3) echo "checked" ?>"></span>
-                    <span class="fa fa-star <?php if ($review->rating >= 4) echo "checked" ?>"></span>
-                    <span class="fa fa-star <?php if ($review->rating >= 5) echo "checked" ?>"></span>
-                </div>
-                <a> <?= $review->review ?> </a>
+                    <div class="review-info">
 
 
+                        <div class="flex-right">
+                            <img src="https://picsum.photos/100/100?.<?= $user->username ?>" alt="">
+                            <div class="review-profile-info">
+                                <h2> <?= $user->username ?> </h2>
+                                <h3> <?= $review->date ?> </h3>
+                            </div>
+                        </div>
+                        <div class="ratingFixed">
+                            <span class="fa fa-star <?php if ($review->rating >= 1) echo "checked" ?>"></span>
+                            <span class="fa fa-star <?php if ($review->rating >= 2) echo "checked" ?>"></span>
+                            <span class="fa fa-star <?php if ($review->rating >= 3) echo "checked" ?>"></span>
+                            <span class="fa fa-star <?php if ($review->rating >= 4) echo "checked" ?>"></span>
+                            <span class="fa fa-star <?php if ($review->rating >= 5) echo "checked" ?>"></span>
+                        </div>
+                    </div>
+                <p> <?= $review->review ?> </p>
+
+
+                <section class="comments">
                 <?php $comments = Comment::getComments($db, $review->id);
                 if (!empty($comments)) {?>
-                    <h3> Comentários: </h3><?php
 
-                    foreach ($comments as $comment) { ?>
+                    <?php foreach ($comments as $comment) { ?>
                             <div class="comment">
                         <?php
                         if ($comment->fromRestaurant === 1) {
                             $restaurant = Restaurant::getRestaurant($db, $comment->idRestaurant); ?>
-                            <h3>Owner</h3>
-                            <img src="https://picsum.photos/100/100?.<?= $restaurant->name ?>" alt="">
-                            <h3> <?= $restaurant->name ?> </h3>
-                            <h4> <?= $comment->date ?> </h4>
-                            <a> <?= $comment->comment ?> </a> <?php
+                                <div class="flex-right">
+
+                                    <img src="https://picsum.photos/100/100?.<?= $restaurant->name ?>" alt="">
+                                    <div class="review-profile-info">
+                                        <h4>Owner</h4>
+                                        <h2> <?= $restaurant->name ?> </h2>
+                                        <h3> <?= $comment->date ?> </h3>
+                                    </div>
+                                </div>
+                            <p> <?= $comment->comment ?> </p> <?php
                         } else { ?>
-                            <img src="https://picsum.photos/100/100?.<?= $user->username ?>" alt="">
-                            <h3> <?= $user->username ?> </h3>
-                            <h4> <?= $comment->date ?> </h4>
-                            <a> <?= $comment->comment ?> </a>
+                            <div class="flex-right">
+                                <img src="https://picsum.photos/100/100?.<?= $user->username ?>" alt="">
+                                <div class="review-profile-info">
+                                <h2> <?= $user->username ?> </h2>
+                                <h3> <?= $comment->date ?> </h3>
+                                </div>
+                            </div>
+                            <p> <?= $comment->comment ?> </p>
                         <?php }?>
                             </div><?php
                     }
-                }
-                if ($session->getId() === $user->id) { ?>
-                    <h3>Comentar:</h3>
-                    <form method="post" class="review" enctype="multipart/form-data">
-                        <textarea class="form-control" rows="2" placeholder="Escreve aqui a teu comentário..."
-                                  name="comment" id="comment" required></textarea>
-                        <br>
-                        <button type="submit">Enviar</button>
+                }?>
+
+
+                <div class="add-comment">
+
+                <?php if ($session->getId() === $user->id) { ?>
+                    <form method="post" class="add-comment" enctype="multipart/form-data">
+                        <input class="form-control" placeholder="Adicione um comentário..."
+                               name="comment" id="comment" required/>
+
+                        <button type="submit">Publicar</button>
                     </form> <?php
                     if (isset($_POST["comment"])) {
                         $date = date("d-m-Y");
@@ -67,6 +88,10 @@ require_once(__DIR__ . '/../database/review.class.php');
                             header("Location: comments.php?id=$review->idRestaurant");
                     }
                 } ?>
+
+
+                </div>
+                </section>
             </article>
         <?php }
 

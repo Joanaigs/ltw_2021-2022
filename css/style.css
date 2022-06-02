@@ -825,3 +825,192 @@ h1{
     box-shadow: var(--box-shadow);
     margin-top:2rem;
 }
+
+.reviews-flex-container{
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.reviews-flex-container .image{
+
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+
+    height: 350px;
+    background-image: url("../images/lareira-serralves.jpeg");
+    position: relative;
+
+}
+
+.reviews-flex-container h1{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+.reviews-flex-container .add-review{
+
+    margin-right: 80px;
+    margin-left: 80px;
+    border-radius: 15px;
+
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+
+}
+
+.reviews-flex-container h2{
+    color: var(--body-font-color);
+    font-size: 16px;
+    margin: 15px;
+    margin-bottom: 0;
+}
+
+.reviews-flex-container h3{
+    color: var(--body-font-color);
+    font-size: 14px;
+    margin-left: 15px;
+}
+
+.reviews-flex-container h4{
+    color: var(--dark-color);
+    font-size: 16px;
+    margin-left: 15px;
+}
+
+.reviews-flex-container .add-review form{
+    margin: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.reviews-flex-container .add-review form .rate{
+    margin: 15px;
+    margin-bottom: 18px;
+}
+
+form .form-control{
+    width: 70%;
+    margin: 14px;
+    border: none;
+    border-bottom: 2px solid var(--accent-color);
+    font-family: 'Poppins', sans-serif;
+    color: #444444;
+
+}
+
+
+form button{
+    width: 90px;
+    height: 40px;
+    outline: none;
+    border: none;
+    border-radius: 48px;
+    background-color: var(--accent-color);
+    color: var(--light-color);
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.5s;
+}
+
+
+.reviews .review{
+
+    margin: 80px;
+    border-radius: 15px;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+
+}
+
+.review-info {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: none;
+    border-bottom: 1px solid var(--section-background-color);
+
+
+}
+
+.flex-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 15px;
+    padding-left: 25px;
+    margin-bottom: 5px;
+
+}
+
+.flex-right img{
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    justify-self: center;
+}
+
+.review-profile-info {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+
+}
+
+.ratingFixed{
+    font-size: 25px;
+    margin: 50px;
+    margin-bottom: 5px;
+}
+
+.review p{
+    font-size: 15px;
+    margin:15px;
+    color: var(--body-font-color);
+}
+
+
+.comment{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-left: 100px;
+}
+
+.comment p{
+    margin: 15px;
+    margin-left: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.add-comment{
+    margin-left: 170px;
+    margin-right: 5px;
+    padding: 10px;
+}
+
+
+.add-comment form{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+
+}
+
+
+
+
+
+
+
+
