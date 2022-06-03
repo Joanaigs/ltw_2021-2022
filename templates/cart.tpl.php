@@ -37,8 +37,8 @@
                     </div>
                 <?php } ?>
             <?php } ?>
-        </div>
-        <section id="right-section"></section>
+            </div>
+            <section id="right-section"></section>
         </div>
         <?php }
 

@@ -11,8 +11,8 @@
     $db = new PDO('sqlite:example.db');
 
     $idRestaurant=$_GET['id'];
-    drawRestViewHeader($idRestaurant);
     $dishes=Dish::getDishesRestaurant($db, $idRestaurant, $session);
+    drawRestViewHeader($idRestaurant);
     drawRestaurantView($db, intval($idRestaurant), $dishes);
     drawFooter();
 

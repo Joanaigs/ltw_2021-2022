@@ -9,7 +9,10 @@ async function get_restaurants(restaurants) {
         const link = document.createElement('a')
         link.href = '../restaurant.php?id=' + restaurant.id
         link.textContent = restaurant.name
+        const text = document.createElement('div')
+        text.classList.add('text')
         const ratingFixed = document.createElement('div')
+        ratingFixed.classList.add('rating')
         const h4 = document.createElement('h4')
         if(restaurant.ranking===null){
             h4.textContent = "Nenhuma avaliação"
@@ -20,6 +23,7 @@ async function get_restaurants(restaurants) {
         span.innerHTML = '<i class = "fa fa-star checked"> </i>';
         h4.appendChild(span);
         ratingFixed.appendChild(h4);
+        text.append(h3)
         const img = document.createElement('img')
         const div = document.createElement('div')
         if(restaurant.loggedIn) {
@@ -30,11 +34,11 @@ async function get_restaurants(restaurants) {
             }
         }
         img.src = 'https://picsum.photos/600/300?' + restaurant.id
+        article.append(ratingFixed)
         article.append(div)
         article.appendChild(img)
         h3.appendChild(link)
-        article.append(ratingFixed)
-        article.appendChild(h3)
+        article.append(text)
         section.appendChild(article)
     }
     heartsClick();

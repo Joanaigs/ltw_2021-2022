@@ -21,7 +21,6 @@ function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db ,
     </div>
     <div class="page">
         <section id="restaurants">
-
         </section>
     </div>
 </div>
@@ -31,17 +30,107 @@ function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db ,
 
 function drawRestaurantView(PDO $db, int $idRestaurant, array $dishes){
     $restaurant = Restaurant::getRestaurant($db, $idRestaurant);?>
-    <h1><?= $restaurant -> name?></h1>
-    <div class="erase-restaurant"><button class="erase-restaurant-btn" name="eraseRestaurantButton" onclick="window.location.href = '../eraseRestaurant.php';">Eliminar restaurante</button></div>
-    <section id = "dishes">
-        <div class="button_plus"><a href="addDish.php?idRestaurant=<?=$idRestaurant?>"></a></div>
-        <?php foreach ($dishes as $dish) { ?>
-            <a href="editDish.php?idDish=<?=$dish->id?>"><i class="fas fa-pencil"></i></a>
-            <a href="removeDish.php?idDish=<?=$dish->id?>&idRestaurant=<?=$idRestaurant?>"><div class="button_minus"></div> </a>
-            <img src="https://picsum.photos/600/300?<?=$dish->name?>"alt="">
-            <h3><?= $dish -> name?></h3>
-            <p class = "info"> <?= $dish -> price?> €</p>
-        <?php }?>
-    </section>
+
+<link rel="stylesheet" href="../css/owner_restView.css"/>
+<link rel="stylesheet" href="../css/profile.css"/>
+    <div class="grid-container-rest">
+        <span class="rest-image"></span>
+        <div class="rest-name">
+            <h1><?= $restaurant -> name?></h1>
+            <div class="erase-restaurant"><button class="erase-restaurant-btn" name="eraseRestaurantButton" onclick="window.location.href = '../eraseRestaurant.php';">Eliminar restaurante</button></div>
+        </div>
+        <div id="menu">
+            <h2>Menu</h2>
+            <a class="button-add" href="../addDish.php?idRestaurant=<?=$idRestaurant?>"><i class="fas fa-plus"> Adicionar prato ao menu</i></a>
+            <section id="entrada">
+                <h2 class="type">Entradas</h2>
+                <div class="order">
+                    <?php foreach ($dishes as $dish) {
+                        if ($dish->meal != "Entrada")
+                            continue;?>
+                        <section class="info-dish">
+                            <section class="image">
+                                <img src="<?= $dish->photo ?>?id=<?= $dish->id ?>" alt="">
+                            </section>
+                            <section class="text">
+                                <h4> <?= $dish->name ?></h4>
+                                <p class="info"> <?= $dish->price ?> €</p>
+                                <section class="edit">
+                                    <a class="button-edit" href="../editDish.php?idDish=<?=$dish->id?>"><i class="fas fa-pencil"></i> Editar prato</a>
+                                    <a class="button-minus" href="../removeDish.php?idDish=<?=$dish->id?>&idRestaurant=<?=$idRestaurant?>">- Eliminar prato do menu</a>
+                                </section>
+                            </section>
+                        </section>
+                    <?php }?>
+                </div>
+            </section>
+            <section id="pratoPincipal">
+                <h2 class="type">Pratos Principais</h2>
+                <div class="order">
+                    <?php foreach ($dishes as $dish) {
+                        if ($dish->meal != "Prato principal")
+                        continue;?>
+                        <section class="info-dish">
+                            <section class="image">
+                                <img src="<?= $dish->photo ?>?id=<?= $dish->id ?>" alt="">
+                            </section>
+                            <section class="text">
+                                <h4> <?= $dish->name ?></h4>
+                                <p class="info"> <?= $dish->price ?> €</p>
+                                <section class="edit">
+                                    <a class="button-edit" href="../editDish.php?idDish=<?=$dish->id?>"><i class="fas fa-pencil"></i> Editar prato</a>
+                                    <a class="button-minus" href="../removeDish.php?idDish=<?=$dish->id?>&idRestaurant=<?=$idRestaurant?>">- Eliminar prato do menu</a>
+                                </section>
+                            </section>
+                        </section>
+                    <?php }?>
+                </div>
+            </section>
+            <section id="sobremesa">
+                <h2 class="type">Sobremesas</h2>
+                <div class="order">
+                    <?php foreach ($dishes as $dish) {
+                        if ($dish->meal != "Sobremesa")
+                            continue;?>
+                        <section class="info-dish">
+                            <section class="image">
+                                <img src="<?= $dish->photo ?>?id=<?= $dish->id ?>" alt="">
+                            </section>
+                            <section class="text">
+                                <h4> <?= $dish->name ?></h4>
+                                <p class="info"> <?= $dish->price ?> €</p>
+                                <section class="edit">
+                                    <a class="button-edit" href="../editDish.php?idDish=<?=$dish->id?>"><i class="fas fa-pencil"></i> Editar prato</a>
+                                    <a class="button-minus" href="../removeDish.php?idDish=<?=$dish->id?>&idRestaurant=<?=$idRestaurant?>">- Eliminar prato do menu</a>
+                                </section>
+                            </section>
+                        </section>
+                    <?php }?>
+                </div>
+            </section>
+            <section id="bebida">
+                <h2 class="type">Bebidas</h2>
+                <div class="order">
+                    <?php foreach ($dishes as $dish) {
+                        if ($dish->meal != "Bebida")
+                            continue;?>
+                        <section class="info-dish">
+                            <section class="image">
+                                <img src="<?= $dish->photo ?>?id=<?= $dish->id ?>" alt="">
+                            </section>
+                            <section class="text">
+                                <h4> <?= $dish->name ?></h4>
+                                <p class="info"> <?= $dish->price ?> €</p>
+                                <section class="edit">
+                                    <a class="button-edit" href="../editDish.php?idDish=<?=$dish->id?>"><i class="fas fa-pencil"></i> Editar prato</a>
+                                    <a class="button-minus" href="../removeDish.php?idDish=<?=$dish->id?>&idRestaurant=<?=$idRestaurant?>">- Eliminar prato do menu</a>
+                                </section>
+                            </section>
+                        </section>
+                    <?php }?>
+                </div>
+            </section>
+        </div>
+    </div>
 <?php }?>
 

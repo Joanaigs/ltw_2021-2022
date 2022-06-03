@@ -227,7 +227,7 @@ body{
     margin-right: 4rem;
 }
 
-.last-orders .dishes .order {
+.last-orders .dishes .order{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 40px;
@@ -261,7 +261,7 @@ body{
     margin-bottom: 1rem;
 }
 
-.last-orders .dishes .info-dish{
+.last-orders .dishes .info-dish, .grid-container-rest #menu .order .info-dish{
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-content: space-around;
@@ -271,19 +271,19 @@ body{
     box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
 }
 
-.last-orders .info-dish h4{
+.last-orders .info-dish h4, .grid-container-rest #menu .order .info-dish h4{
     color: var(--body-font-color);
     font-size: 12px;
 }
 
-.last-orders .info-dish .image{
+.last-orders .info-dish .image, .grid-container-rest #menu .order .info-dish .image{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.last-orders .info-dish img{
+.last-orders .info-dish img,.grid-container-rest #menu .order .info-dish img{
     grid-column-start: 1;
     margin-left: 2rem;
     width: 260px;
@@ -291,7 +291,7 @@ body{
     box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
 }
 
-.last-orders .info-dish .text{
+.last-orders .info-dish .text, .grid-container-rest #menu .order .info-dish .text{
     grid-column-start: 2.25;
     color: var(--body-font-color);
     font-size: 12px;
@@ -302,7 +302,7 @@ body{
 }
 
 
-.last-orders .info-dish:hover{
+.last-orders .info-dish:hover, .grid-container-rest #menu .order .info-dish:hover{
     background-color: var(--section-background-color);
 }
 
