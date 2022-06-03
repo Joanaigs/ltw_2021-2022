@@ -740,7 +740,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--section-background-color);
+    background-color: var(--dark-color);
 }
 
 .filter #filter{
@@ -751,6 +751,7 @@ body{
 
 .filter #filter label{
     margin-bottom: 0.5rem;
+    color: var(--section-background-color);
 }
 
 .filter input.radio{
@@ -781,7 +782,7 @@ body{
     justify-self: center;
     font-size: 18px;
     margin: 6rem 2rem 1rem;
-    color: var(--dark-color);
+    color: var(--section-background-color);
 }
 
 #typeOfRestaurant label{
@@ -814,9 +815,9 @@ h1{
 
 .page #restaurants article{
     padding: 1rem 1rem 1rem;
-    background-color: var(--section-background-color);
+
     border-radius: 10px;
-    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     transition: all 0.3s;
@@ -831,7 +832,7 @@ h1{
     margin-left: 1rem;
 }
 .page #restaurants article .text a{
-    color: #444444;
+    color: var(--dark-color);
     font-size: 2rem;
     text-decoration: none;
 }
@@ -845,7 +846,7 @@ h1{
 }
 
 .page #restaurants article h4{
-    color: #444444;
+    color: var(--dark-color);
     font-size: 16px;
     align-self: center;
     margin-left: auto;
@@ -854,6 +855,7 @@ h1{
 
 .page #restaurants article h4 i{
     margin-left: 0.5rem;
+    color: #fff15c;
 }
 
 .page #restaurants img{
