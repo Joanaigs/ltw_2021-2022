@@ -109,13 +109,15 @@ class Restaurant {
 
         $restaurant = $stmt->fetch();
 
-        return new Restaurant(
+       $temp=  new Restaurant(
             $restaurant['id'],
             $restaurant['idUser'],
             $restaurant['name'],
             $restaurant['address'],
             $restaurant['image']
         );
+        $temp->filt=Filter::getFilterfromRestaurant($db, $restaurant['id']);
+        return $temp;
     }
 
 
@@ -198,9 +200,17 @@ class Restaurant {
         $stmt->execute(array($idUser, $idRe));
     }
 
-    static function removeRestaurants(PDO $db, int $idRe)  {
-        $stmt = $db->prepare('DELETE FROM Restaurant where id=?' );
+     static function removeRestaurants(PDO $db, int $idRe)  {
+       $stmt = $db->prepare('DELETE FROM Restaurant where id=?' );
         $stmt->execute(array($idRe));
+    }
+
+    static function updateRestaurants(PDO $db, int $idRe, string $name, string $address, string $cate)  {
+        $stmt = $db->prepare('Update Restaurant set name=?, address=? where id=?' );
+        $stmt->execute(array($name, $address, $idRe));
+
+        $stmt = $db->prepare('Update CategoryRestaurant set idCategory=(select Category.id from Category where id=?) where idRestaurant=?' );
+        $stmt->execute(array($cate, $idRe));
     }
 
     static function hasRestaurant(PDO $db, int $id)
