@@ -1,6 +1,7 @@
 <?php
 declare(strict_types = 1);
 require_once('review.class.php');
+require_once('filter.class.php');
 class Restaurant {
     public int $id;
     public int $idUser;
@@ -9,6 +10,7 @@ class Restaurant {
     public string $image;
     public bool $heart;
     public bool $loggedIn;
+    public string $filt;
     public $ranking;
 
     public function __construct(int $id, int $idUser, string $name, string $address, string $image)
@@ -49,6 +51,7 @@ class Restaurant {
             $r=Review::getRanking($db, $restaurant['id']);
 
             $temp->ranking=$r;
+            $temp->filt=Filter::getFilterfromRestaurant($db, $restaurant['id']);
             $restaurants[]=$temp;
         }
         return $restaurants;
@@ -142,6 +145,7 @@ class Restaurant {
             }
             $r=Review::getRanking($db, $restaurant['id']);
             $temp->ranking=$r;
+            $temp->filt=Filter::getFilterfromRestaurant($db, $restaurant['id']);
             $restaurants[]=$temp;
         }
         return $restaurants;
@@ -174,6 +178,7 @@ class Restaurant {
             }
             $r=Review::getRanking($db, $restaurant['id']);
             $temp->ranking=$r;
+            $temp->filt=Filter::getFilterfromRestaurant($db, $restaurant['id']);
             $restaurants[] = $temp;
         }
         return $restaurants;

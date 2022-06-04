@@ -33,12 +33,15 @@ async function get_restaurants(restaurants) {
                 div.classList.add('liked')
             }
         }
+        const filter = document.createElement('h4')
+        filter.textContent=restaurant.filt
         img.src = 'https://picsum.photos/600/300?' + restaurant.id
         article.append(ratingFixed)
         article.append(div)
         article.appendChild(img)
         h3.appendChild(link)
         article.append(text)
+        article.append(filter)
         section.appendChild(article)
     }
     heartsClick();
