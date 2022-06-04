@@ -767,37 +767,25 @@ body{
 
 }
 
-#meal a{
-    color: #444444;
-    text-decoration: none;
-    font-size: 15px;
-    padding-left: 20px;
-}
-
-#meal a:hover{
-    color: #7F7F7F;
-    text-decoration: underline;
-}
-
 #typeOfRestaurant h2{
     justify-self: center;
     font-size: 18px;
-    margin: 6rem 2rem 1rem;
-    color: var(--light-color);
+    margin: 6rem 4rem 1rem;
+    color: var(--section-background-color);
 }
 
 #typeOfRestaurant label{
     font-size: 15px;
-    color: #444444;
+    color: var(--section-background-color);
 }
 
 #typeOfRestaurant label:hover{
-    color: #7F7F7F;
+    color: #dbd9d3;
 }
 
 .page{
-    padding-left: 6rem;
-    padding-right: 6rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
     background-color: #f5f5f0;
 }
 
@@ -808,7 +796,7 @@ h1{
 
 .page #restaurants{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 30px;
     justify-content: space-between;
     margin-top: 4rem;
@@ -816,7 +804,7 @@ h1{
 }
 
 .page #restaurants article{
-    padding: 1rem 1rem 1rem;
+    padding: 1rem 2rem;
     background-color: var(--light-color);
     border-radius: 10px;
     box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
@@ -831,13 +819,25 @@ h1{
 
 .page #restaurants article .text{
     margin-top: 1rem;
-    margin-left: auto;
-    margin-right: auto;
+    display: flex;
+    flex-direction: row;
 }
 .page #restaurants article .text a{
     color: var(--dark-color);
     font-size: 2rem;
     text-decoration: none;
+}
+
+.page #restaurants article .text .section-filter{
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+}
+
+.page #restaurants article .text .section-filter h4{
+    color: var(--dark-color);
+    font-size: 16px;
+    font-weight: normal;
 }
 
 .page #restaurants article .rating{
@@ -848,10 +848,9 @@ h1{
 
 .page #restaurants article h4{
     color: var(--dark-color);
-    font-size: 16px;
+    font-size: 14px;
     align-self: center;
     margin-left: auto;
-    margin-right: auto;
 }
 
 .page #restaurants article h4 i{
@@ -861,8 +860,8 @@ h1{
 
 .page #restaurants img{
     border-radius: 10px;
-    width: 400px;
-    height: 220px;
+    width: 100%;
+    height: 200px;
     box-shadow: var(--box-shadow);
     align-self: center;
 }

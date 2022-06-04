@@ -35,13 +35,16 @@ async function get_restaurants(restaurants) {
         }
         const filter = document.createElement('h4')
         filter.textContent=restaurant.filt
+        const section_filter = document.createElement('section')
+        section_filter.classList.add('section-filter')
+        section_filter.append(filter)
+        text.append(section_filter)
         img.src = 'https://picsum.photos/600/300?' + restaurant.id
         article.append(ratingFixed)
         article.append(div)
         article.appendChild(img)
         h3.appendChild(link)
         article.append(text)
-        article.append(filter)
         section.appendChild(article)
     }
     heartsClick();

@@ -9,7 +9,7 @@ function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db ,
 <div class="grid-container">
     <div class ="filter">
         <section id = "typeOfRestaurant">
-            <h2>Tipo de Prato:</h2>
+            <h2>Comida:</h2>
             <div id="filter">
                 <label><input  class="radio" type="radio" name =filter value="all" checked="checked" />Todos
                 </label>
