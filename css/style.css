@@ -771,16 +771,15 @@ body{
     justify-self: center;
     font-size: 18px;
     margin: 6rem 4rem 1rem;
-    color: var(--section-background-color);
+    color: var(--light-color);
 }
 
 #typeOfRestaurant label{
     font-size: 15px;
-    color: var(--section-background-color);
 }
 
 #typeOfRestaurant label:hover{
-    color: #dbd9d3;
+    color: #deded9;
 }
 
 .page{
