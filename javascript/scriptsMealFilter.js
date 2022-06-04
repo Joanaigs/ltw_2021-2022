@@ -31,7 +31,7 @@ async function get_meals(meals) {
         const content = document.createElement("div")
         content.classList.add("content")
         const img = document.createElement('img')
-        img.src = '../images/dishes/' + dish.id +'.jpg'
+        img.src = '../images/dishes/' + dish.image +'.jpg'
         content.appendChild(img)
         const text = document.createElement("div")
         text.classList.add("text")

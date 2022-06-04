@@ -12,7 +12,7 @@ function drawLatestOrders(Session $session, PDO $db, User $user)
 { ?>
     <link rel="stylesheet" href="../css/profile.css"/>
     <div class="grid-container-profile">
-        <?php $restaurant=Restaurant::hasRestaurant($db, $session->getId());
+        <?php $restaurant = Restaurant::hasRestaurant($db, $session->getId());
         drawSidebar($restaurant); ?>
         <div class="last-orders">
             <h2>Pedidos anteriores</h2>
@@ -21,33 +21,33 @@ function drawLatestOrders(Session $session, PDO $db, User $user)
                 $orders = Order::getOrdersUser($db, $user->id);
                 if ($orders != null) {
                     foreach ($orders as $order) {
-                        $dishes=Dish::dishOrder($db, $order->id);
+                        $dishes = Dish::dishOrder($db, $order->id);
                         $restaurant = Restaurant::getRestaurant($db, $order->idRestaurant); ?>
                         <section class="info-order">
                             <h3> <?= $restaurant->name ?></h3>
-                            <p> <label>Data: </label><?= $order->date ?></p>
-                            <p> <label>Endereço de entrega: </label><?= $order->address ?></p>
-                            <p> <label>Estado do pedido: </label><?= $order->state ?></p>
+                            <p><label>Data: </label><?= $order->date ?></p>
+                            <p><label>Endereço de entrega: </label><?= $order->address ?></p>
+                            <p><label>Estado do pedido: </label><?= $order->state ?></p>
                         </section>
                         <div class="order">
-                        <?php
-                        $total = 0;
-                        foreach ($dishes as $dish) {
-                            $total += $dish->price*$dish->number?>
-                            <section class="info-dish">
-                                <section class="image">
-                                    <img src="<?= $dish->photo ?>?id=<?= $dish->id ?>" alt="">
+                            <?php
+                            $total = 0;
+                            foreach ($dishes as $dish) {
+                                $total += $dish->price * $dish->number ?>
+                                <section class="info-dish">
+                                    <section class="image">
+                                        <img src="<?= $dish->photo ?>?id=<?= $dish->id ?>" alt="">
+                                    </section>
+                                    <section class="text">
+                                        <h4> <?= $dish->name ?> x<?= $dish->number ?></h4>
+                                        <p class="info"> <?= $dish->price * $dish->number ?> €</p>
+                                    </section>
                                 </section>
-                                <section class="text">
-                                    <h4> <?= $dish->name ?> x<?= $dish->number ?></h4>
-                                    <p class="info"> <?= $dish->price * $dish->number?> €</p>
-                                </section>
-                            </section>
-                        <?php }?>
+                            <?php } ?>
                         </div>
-                        <p id="price"><label>Preço total do pedido: </label><?=$total?>€</p>
+                        <p id="price"><label>Preço total do pedido: </label><?= $total ?>€</p>
                     <?php }
-                    }
+                }
                 ?>
             </section>
         </div>
@@ -55,18 +55,19 @@ function drawLatestOrders(Session $session, PDO $db, User $user)
 <?php }
 
 
-    function drawProfile($user, $restaurant) { ?>
+function drawProfile($user, $restaurant)
+{ ?>
     <link rel="stylesheet" href="../css/profile.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
           integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
 
-        <div class="grid-container-profile">
-            <?php drawSidebar($restaurant); ?>
+    <div class="grid-container-profile">
+        <?php drawSidebar($restaurant); ?>
         <div class="profile-info">
             <h2>Perfil</h2>
-            <img src="profile_pic.png" alt="Profile picture">
+            <img src="../images/profiles/<?= $user->image ?>.jpg" alt="Profile picture">
             <div class="info">
                 <span><label><i class="fas fa-user"></i>Nome de utilizador:</label><?= $user->username ?></span>
                 <span><label><i class="fas fa-envelope"></i>Email: </label><?= $user->email ?></span>
@@ -80,15 +81,18 @@ function drawLatestOrders(Session $session, PDO $db, User $user)
     </div>
 <?php }
 
-    function editProfileForm(User $user, Restaurant $restaurant) { ?>
-        <link rel="stylesheet" href="../css/profile.css"/>
-        <div class="grid-container-profile">
-            <?php drawSidebar($restaurant); ?>
-            <div class="edit-profile-info">
-                <form action="../formEditProfile.php" method="post" class="edit-profile">
-                    <h2 class="title">Editar Perfil</h2>
-                    <img src = "profile_pic.png" alt="Profile picture">
-
+function editProfileForm(User $user, $restaurant)
+{ ?>
+    <link rel="stylesheet" href="../css/profile.css"/>
+    <div class="grid-container-profile">
+        <?php drawSidebar($restaurant); ?>
+        <div class="edit-profile-info">
+            <form action="../formEditProfile.php" method="post" class="edit-profile" enctype="multipart/form-data">
+                <h2 class="title">Editar Perfil</h2>
+                <div class="input-field">
+                    <label for="imageRestaurant">Imagem:</label>
+                    <input type="file" name="image" accept="image/png,image/jpeg">
+                </div>
                 <div class="input-field">
                     <label><i class="fas fa-user"></i>Nome de utilizador:</label>
                     <input type="text" name="username" value="<?= $user->username ?>"/>
@@ -99,10 +103,10 @@ function drawLatestOrders(Session $session, PDO $db, User $user)
                     <input type="text" name="email" value="<?= $user->email ?>"/>
                 </div>
 
-                    <div class="input-field">
-                        <label><i class="fas fa-home"></i>Morada: </label>
-                        <input type="text" name="address" placeholder="<?=$user->address?>"/>
-                    </div>
+                <div class="input-field">
+                    <label><i class="fas fa-home"></i>Morada: </label>
+                    <input type="text" name="address" placeholder="<?= $user->address ?>"/>
+                </div>
 
                 <div class="input-field">
                     <label><i class="fas fa-phone"></i>Número de telemóvel: </label>

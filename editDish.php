@@ -14,9 +14,9 @@ $dish=Dish::getDish($db, $idDish);
 $typeDishes=Filter::getTypeDish($db);
 drawRestViewHeader($dish->idRestaurant);
 ?>
-<form action="editDish.php?idDish=<?=$idDish?>" method="post" class="dish" enctype="multipart/form-data">
-    <label for="photoDish">Photo:</label>
-    <input type="file" name="photoDish" accept="image/png,image/jpeg">
+<form action="editDishDatabase.php?idRestaurant=<?=$dish->idRestaurant?>&idDish=<?=$idDish?>" method="post" class="dish" enctype="multipart/form-data">
+    <label for="imageRestaurant">Imagem:</label>
+    <input type="file" name="image" accept="image/png,image/jpeg">
 
     <label for="nameDish">Name:</label>
     <input id="nameDish" type="text" name="nameDish" value="<?=$dish->name?>">
@@ -38,11 +38,6 @@ drawRestViewHeader($dish->idRestaurant);
 <div name="addDish">Nenhum prato adicionado</div>
 
 <?php
-if (isset($_POST["nameDish"], $_POST["priceDish"], $_POST['mealDish'], $_POST['typeDish'])){
-    Dish::removeDish($db, $idDish);
-    Dish::addDish($db, $_POST["nameDish"], $_POST["priceDish"], $_POST['mealDish'], $dish->idRestaurant, $_POST['typeDish']);
-    header("Location: restView.php?id=$dish->idRestaurant");
-}
 
 drawFooter();
 

@@ -14,6 +14,5 @@
     drawRestViewHeader($idRestaurant);
     $dishes=Dish::getDishesRestaurant($db, $idRestaurant, $session);
     drawRestaurantView($db, intval($idRestaurant), $dishes);
-    drawFooter();
 
 

@@ -57,7 +57,7 @@ class Cart {
         $stmt->execute(array($idDi, $idUser));
     }
     static function findInCart(PDO $db, int $idDi, int $idUser)  {
-        $stmt = $db->prepare('SELECT Dish.id, Dish.idRestaurant, Dish.name, Dish.price, Dish.photo, Dish.idMeal, idUser
+        $stmt = $db->prepare('SELECT Dish.id, Dish.idRestaurant, Dish.name, Dish.price, Dish.image, Dish.idMeal, idUser
          FROM Cart, Dish 
          WHERE idUser=? and idDish=? and Dish.id = Cart.idDish');
         $stmt->execute(array($idUser, $idDi));
@@ -71,7 +71,7 @@ class Cart {
                 $c['idUser'],
                 $c['name'],
                 $c['price'],
-                $c['photo'],
+                $c['image'],
                 $c['idMeal'],
                 0
             );

@@ -6,12 +6,12 @@ class Restaurant {
     public int $idUser;
     public string $name;
     public string $address;
-    public string $image;
+    public int $image;
     public bool $heart;
     public bool $loggedIn;
     public $ranking;
 
-    public function __construct(int $id, int $idUser, string $name, string $address, string $image)
+    public function __construct(int $id, int $idUser, string $name, string $address, int $image)
     {
         $this->id = $id;
         $this->idUser=$idUser;
@@ -197,9 +197,15 @@ class Restaurant {
         $stmt->execute(array($idUser, $idRe));
     }
 
-    static function addRestaurants(PDO $db, int $idUser, string $name, string $address)  {
-        $stmt = $db->prepare('INSERT INTO Restaurant(idUser, name, address) Values(?, ?, ?)');
-        $stmt->execute(array($idUser, $name, $address));
+    static function addRestaurants(PDO $db, int $idUser, string $name, string $address, $image)  {
+        if($image===null){
+            $stmt = $db->prepare('INSERT INTO Restaurant(idUser, name, address) Values(?, ?, ?)');
+            $stmt->execute(array($idUser, $name, $address));
+        }
+        else{
+            $stmt = $db->prepare('INSERT INTO Restaurant(idUser, name, address, image) Values(?, ?, ?, ?)');
+            $stmt->execute(array($idUser, $name, $address, $image));
+        }
     }
 
     static function removefavoriteRestaurants(PDO $db, string $idRe, int $idUser)  {
@@ -208,8 +214,21 @@ class Restaurant {
     }
 
     static function removeRestaurants(PDO $db, int $idRe)  {
+        $rest=self::getRestaurant($db, $idRe);
         $stmt = $db->prepare('DELETE FROM Restaurant where id=?' );
         $stmt->execute(array($idRe));
+        $stmtk = $db->prepare('Select title from images where id=?' );
+        $stmtk->execute(array($rest->image));
+        $image=$stmtk->fetch();
+        echo $image['title'];
+        if($image['title']!=='Default') {
+            $stmt = $db->prepare('DELETE FROM Images where id=?');
+            $stmt->execute(array($rest->image));
+            $filePath = "images/restaurants/$rest->image.jpg";
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
+        }
     }
 
     static function hasRestaurant(PDO $db, int $id)

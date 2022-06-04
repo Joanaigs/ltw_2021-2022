@@ -28,6 +28,22 @@
             }
             if(!empty($_POST['phoneNumber']))
                 $user->phoneNumber = $_POST['phoneNumber'];
+            echo $_FILES['image']['name'];
+            if($_FILES['image']['name']){
+                $dbh = new PDO('sqlite:example.db');
+                $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+                $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $stmt = $dbh->prepare("INSERT INTO images VALUES(NULL, ?)");
+                $stmt->execute(array('profile'));
+                $id = $dbh->lastInsertId();
+
+                if (!is_dir('images')) mkdir('images');
+                if (!is_dir('images/profiles')) mkdir('images/profiles');
+
+                $originalFileName = "images/profiles/$id.jpg";
+                move_uploaded_file($_FILES['image']['tmp_name'], $originalFileName);
+                $user->image=intval($id);
+            }
             if(!empty($_POST)){
                 $user->save($db, $_POST['password'], $_POST['confirm_password']);
                 echo('save');
