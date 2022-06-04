@@ -29,7 +29,7 @@ async function get_restaurants(restaurants) {
                 div.classList.add('liked')
             }
         }
-        img.src = 'https://picsum.photos/600/300?' + restaurant.id
+        img.src = '../images/restaurants/' + restaurant.id +'.jpg'
         article.append(div)
         article.appendChild(img)
         h3.appendChild(link)
