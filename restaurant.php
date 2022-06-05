@@ -51,7 +51,7 @@ drawHeader($session);
         <a href="../reviews.php?id=<?=$idRestaurant?>"> Comentários > </a>
     </div>
 
-    <div class="page">
+    <div class="page" id="restaurant-page">
         <h1><?= $restaurant->name ?></h1>
         <h2><?= $restaurant->address ?></h2>
         <section class="dishes" id=<?= $restaurant->id ?>>

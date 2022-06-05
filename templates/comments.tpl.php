@@ -112,4 +112,4 @@ require_once(__DIR__ . '/../database/review.class.php');
         ?>
     </section>
 
-<?php } ?>
+<?php }} ?>
