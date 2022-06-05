@@ -28,7 +28,7 @@
             }
             if(!empty($_POST['phoneNumber']))
                 $user->phoneNumber = $_POST['phoneNumber'];
-            if(!empty($_POST)){
+            if (!empty($_POST)) {
                 $user->save($db, $_POST['password'], $_POST['confirm_password']);
                 echo('save');
             }

@@ -121,6 +121,9 @@ function drawLatestOrders(Session $session, PDO $db, User $user)
 
                 <input type="submit" name="saveEdit" class="btn-solid" value="Salvar" formmethod="post">
             </form>
+                <button class="erase-profile-btn" name="eraseProfileButton"
+                        onclick="window.location.href = '../eraseProfile.php';">Apagar Conta
+                </button>
         </div>
     </div>
     <?php

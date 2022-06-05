@@ -2,7 +2,9 @@
 declare(strict_types = 1);
 
 function getDatabaseConnection() : PDO {
-    $db = new PDO('sqlite:example.db');
+    $db  =new PDO('sqlite:example.db');
+    $stmt = $db->prepare('PRAGMA foreign_keys = ON' );
+    $stmt->execute();
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

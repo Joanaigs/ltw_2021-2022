@@ -83,7 +83,7 @@ function drawRestViewHeader($id) { ?>
     <nav class="navbar">
         <a href="restView.php?id=<?=$id?>">Menu</a>
         <a href="state.php?id=<?=$id?>">Estado dos Pedidos</a>
-        <a href="comments.php?id=<?=$id?>">Avaliações e comentários</a>
+        <a href="reviews.php?id=<?=$id?>">Avaliações e comentários</a>
     </nav>
     <div class="icons">
         <i class="fas fa-bars" id="menu-bars"></i>
@@ -100,12 +100,10 @@ function drawRestViewHeader($id) { ?>
 function drawFooter() { ?>
     <link rel="stylesheet" href="css/style.css">
     <footer class="credit" id="real">&copy; Larica LTW 2021/2022 - All rights reserved</footer>
-
-
 <?php }
 
 function drawAboutUs() { ?>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <div class="about">
         <div class="about-site">
             <p>
