@@ -17,7 +17,7 @@ $meals=Filter::getMeals($db);
 $typeDishes=Filter::getTypeDish($db);
 
 ?>
-<form action="addDish.php?idRestaurant=<?=$idRestaurant?>" method="post" class="dish" enctype="multipart/form-data">
+<form action="addDish.php?idRestaurant=<?= $idRestaurant ?>" method="post" class="dish" enctype="multipart/form-data">
     <label for="photoDish">Photo:</label>
     <input type="file" name="photoDish" accept="image/png,image/jpeg">
 

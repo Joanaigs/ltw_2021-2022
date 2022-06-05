@@ -25,7 +25,7 @@ require_once(__DIR__ . '/../database/review.class.php');
                 </div>
                 <a> <?= $r->review ?> </a>
                 <?php $comments = Comment::getComments($db, $r->id);
-                if (!empty($comments)) {?>
+                if (!empty($comments)) { ?>
                     <h3> Comentários: </h3><?php
                     foreach ($comments as $c) {
                         if ($c->fromRestaurant === 1) {
@@ -54,7 +54,7 @@ require_once(__DIR__ . '/../database/review.class.php');
                     if (isset($_POST["comment"])) {
                         $date = date("d-m-Y");
                         Comment::addComment($db, $r->id, $rest, $date, $_POST["comment"]);
-                        if($rest===0)
+                        if ($rest === 0)
                             header("Location: restaurant.php?id=$r->idRestaurant");
                         else
                             header("Location: comments.php?id=$r->idRestaurant");

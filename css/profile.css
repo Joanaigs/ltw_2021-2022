@@ -198,7 +198,8 @@ body{
     margin-right: 1rem;
 }
 
-.edit-profile-btn, .edit-profile .btn-solid{
+
+.edit-profile-btn, .edit-profile .btn-solid, .erase-profile-btn{
     width: 80px;
     height: 40px;
     outline: none;
@@ -217,7 +218,7 @@ body{
     margin-top: 1.5rem;
 }
 
-.edit-profile-btn:hover, .edit-profile .btn-solid:hover{
+.edit-profile-btn:hover, .edit-profile .btn-solid:hover, .erase-profile-btn:hover{
     background-color: #2f2396;
 }
 
