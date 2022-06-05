@@ -27,7 +27,7 @@ async function get_favoriteRestaurants(value) {
         text.classList.add('text');
         const link = document.createElement('a')
         link.classList.add('text')
-        link.href = img.src = '../images/restaurants/' + restaurant.image +'.jpg'
+        link.href = '../restaurant.php?id=' + restaurant.id
         link.textContent = restaurant.name
         text.append(link)
 
@@ -46,7 +46,7 @@ async function get_favoriteRestaurants(value) {
         text.append(ratingFixed)
 
         const img = document.createElement('img')
-        img.src = 'https://picsum.photos/600/300?' + restaurant.id
+        img.src = '../images/restaurants/' + restaurant.image +'.jpg'
         article.appendChild(img)
         article.appendChild(text)
 

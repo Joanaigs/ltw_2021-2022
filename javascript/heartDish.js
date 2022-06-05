@@ -6,8 +6,10 @@ function heartsDishClick(){
             if (button[i].classList.contains("liked")) {
                 button[i].classList.remove("liked");
                 const response = await fetch('../api/api_favoriteDish.php?add='+false +'&' + 'id='+this.id)
-                console.log(button)
                 await response.json()
+                if(document.querySelector('#favoritesPage')){
+                    location.reload();
+                }
             } else {
                 button[i].classList.add("liked");
                 const response = await fetch('../api/api_favoriteDish.php?add='+true +'&' + 'id='+this.id)

@@ -16,5 +16,5 @@ $idRestaurant = $_GET['idRestaurant'];
 if (isset($_POST["rate"], $_POST["remark"])) {
     $date = date("d-m-Y");
     Review::addReview($db, $idRestaurant, $session->getId(), $_POST["remark"], $date, intval($_POST["rate"]));
-    header("Location: restaurant.php?id=$idRestaurant");
+    header("Location: reviews.php?id=$idRestaurant");
 }
