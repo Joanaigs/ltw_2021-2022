@@ -8,17 +8,17 @@ class Cart {
     public int $number;
     public string $name;
     public float $price;
-    public string $photo;
+    public int $image;
     public int $idMeal;
     public int $idUser;
 
-    public function __construct(int $id, int $idRestaurant, int $idUser, string  $name, float $price, string $photo, int $idMeal, int $number)
+    public function __construct(int $id, int $idRestaurant, int $idUser, string  $name, float $price, int $image, int $idMeal, int $number)
     {
         $this->id=$id;
         $this->idRestaurant = $idRestaurant;
         $this->name=$name;
         $this->price=$price;
-        $this->photo=$photo;
+        $this->image=$image;
         $this->idMeal=$idMeal;
         $this->idUser=$idUser;
         $this->number=$number;
@@ -28,7 +28,7 @@ class Cart {
     static function getCart(PDO $db, int $idUser, int $idRes) {
         $stmt = $db -> prepare('
                 
-                SELECT Dish.id, Dish.idRestaurant, Dish.name, Dish.price, Dish.photo, Dish.idMeal, idUser, number
+                SELECT Dish.id, Dish.idRestaurant, Dish.name, Dish.price, Dish.image, Dish.idMeal, idUser, number
                 FROM Dish, Cart
                 WHERE Dish.id = Cart.idDish and idUser=? and Dish.idRestaurant=?;
             ');
@@ -43,7 +43,7 @@ class Cart {
                 $dish['idUser'],
                 $dish['name'],
                 $dish['price'],
-                $dish['photo'],
+                $dish['image'],
                 $dish['idMeal'],
                 $dish['number']
             );

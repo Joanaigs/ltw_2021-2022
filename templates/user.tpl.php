@@ -36,7 +36,7 @@ function drawLatestOrders(Session $session, PDO $db, User $user)
                                 $total += $dish->price * $dish->number ?>
                                 <section class="info-dish">
                                     <section class="image">
-                                        <img src="<?= $dish->photo ?>?id=<?= $dish->id ?>" alt="">
+                                        <img src="../images/dishes/<?=$dish->image?>.jpg" alt="">
                                     </section>
                                     <section class="text">
                                         <h4> <?= $dish->name ?> x<?= $dish->number ?></h4>
