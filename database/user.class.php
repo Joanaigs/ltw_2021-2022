@@ -12,42 +12,30 @@ class User
     public string $city;
     public string $country;
 
-    public function __construct(int $id, string $username, string $email, string $phoneNumber, string $address, string $city, string $country)
+    public function __construct(int $id, int $image, string $username, string $email, string $phoneNumber, string $address, string $city, string $country)
     {
-        public int $id;
-        public  int $image;
-        public string $username;
-        public string $email;
-        public string $phoneNumber;
-        public string $address;
-        public string $city;
-        public string $country;
+        $this->id = $id;
+        $this->image = $image;
+        $this->username = $username;
+        $this->email = $email;
+        $this->phoneNumber = $phoneNumber;
+        $this->address = $address;
+        $this->city = $city;
+        $this->country = $country;
+    }
 
-        public function __construct(int $id, int $image,string $username, string $email, string $phoneNumber, string $address, string $city, string $country){
-            $this->id = $id;
-            $this->image=$image;
-            $this->username = $username;
-            $this->email = $email;
-            $this->phoneNumber = $phoneNumber;
-            $this->address = $address;
-            $this->city = $city;
-            $this->country = $country;
-        }
-
-        function save($db, string $password, string $confirm_password)
-        {
-            if ($password != NULL && $password === $confirm_password) {
-                $stmt = $db->prepare('
+    function save($db, string $password, string $confirm_password)
+    {
+        if ($password != NULL && $password === $confirm_password) {
+            $stmt = $db->prepare('
         UPDATE User SET username = ?, email = ?, phoneNumber = ?, address = ?, password = ?, image=?
         WHERE id = ?');
-                $stmt->execute(array($this->username, $this->email, $this->phoneNumber, $this->address, md5($password), $this->image,$this->id));
-            }
-            else {
-                $stmt = $db->prepare('
+            $stmt->execute(array($this->username, $this->email, $this->phoneNumber, $this->address, md5($password), $this->image, $this->id));
+        } else {
+            $stmt = $db->prepare('
         UPDATE User SET username = ?, email = ?, phoneNumber = ?, address = ?, image=?
         WHERE id = ?');
-                $stmt->execute(array($this->username, $this->email, $this->phoneNumber, $this->address, $this->image,$this->id));
-            }
+            $stmt->execute(array($this->username, $this->email, $this->phoneNumber, $this->address, $this->image, $this->id));
         }
     }
 
@@ -104,23 +92,22 @@ class User
         WHERE email = ?');
 
 
-            $stmt->execute(array($email));
+        $stmt->execute(array($email));
 
-            if ($user = $stmt->fetch()) {
+        if ($user = $stmt->fetch()) {
 
-                if(md5($password) === $user['password']){
-                    return new User(
-                        intval($user['id']),
-                        $user['image'],
-                        $user['username'],
-                        $user['email'],
-                        $user['phoneNumber'],
-                        $user['address'],
-                        $user['city'],
-                        $user['country']
-                    );
-                }
-                else $session->addMessage( 'error', 'A palavra-passe está incorreta.');
+            if (md5($password) === $user['password']) {
+                return new User(
+                    intval($user['id']),
+                    $user['image'],
+                    $user['username'],
+                    $user['email'],
+                    $user['phoneNumber'],
+                    $user['address'],
+                    $user['city'],
+                    $user['country']
+                );
+            } else $session->addMessage('error', 'A palavra-passe está incorreta.');
         }
         return null;
     }
@@ -133,20 +120,20 @@ class User
         WHERE id = ?
       ');
 
-            $stmt->execute(array($id));
-            $user = $stmt->fetch();
+        $stmt->execute(array($id));
+        $user = $stmt->fetch();
 
-             return new User(
-                intval($user['id']),
-                 $user['image'],
-                $user['username'],
-                $user['email'],
-                $user['phoneNumber'],
-                $user['address'],
-                $user['city'],
-                $user['country']
-            );
-        }
+        return new User(
+            intval($user['id']),
+            $user['image'],
+            $user['username'],
+            $user['email'],
+            $user['phoneNumber'],
+            $user['address'],
+            $user['city'],
+            $user['country']
+        );
+    }
 
     static function getOrders(Session $session, PDO $db, int $id): ?array
     {
@@ -158,8 +145,8 @@ class User
 
         $stmt->execute(array($id));
 
-            if ($row = $stmt->fetch()) {
-                $stmt1 = $db->prepare("
+        if ($row = $stmt->fetch()) {
+            $stmt1 = $db->prepare("
                 SELECT Dish.id as id, idRestaurant, Dish.name as name, price, Dish.image, idMeal, idTypeOfDish, Meal.name as mealName
                 FROM Dish, Meal
                 WHERE Dish.id = ?  and idMeal=Meal.id");
