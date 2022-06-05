@@ -28,7 +28,6 @@
             }
             if(!empty($_POST['phoneNumber']))
                 $user->phoneNumber = $_POST['phoneNumber'];
-            echo $_FILES['image']['name'];
             if($_FILES['image']['name']){
                 $dbh = new PDO('sqlite:example.db');
                 $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
@@ -45,6 +44,7 @@
                 $user->image=intval($id);
             }
             if(!empty($_POST)){
+
                 $user->save($db, $_POST['password'], $_POST['confirm_password']);
                 echo('save');
             }

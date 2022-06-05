@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 require_once('session.php');
 $session = new Session();
 require_once('database/restaurant.class.php');
@@ -13,14 +13,14 @@ require_once('templates/comments.tpl.php');
 require_once('templates/restaurants.tpl.php');
 require_once('database/user.class.php');
 require_once('database/review.class.php');
-require_once ('database/connection.db.php');
+require_once('database/connection.db.php');
 
 $db = getDatabaseConnection();
-$idRestaurant=$_GET['id'];
-$restaurant = Restaurant::getRestaurant($db,intval($idRestaurant));
+$idRestaurant = $_GET['id'];
+$restaurant = Restaurant::getRestaurant($db, intval($idRestaurant));
 $dishes = Dish::getDishesRestaurant($db, $_GET['id'], $session);
 $filterMeals = Filter::getMeals($db);
-$filterTypes=Filter::getTypeDish($db);
+$filterTypes = Filter::getTypeDish($db);
 drawHeader($session);
 ?>
 
@@ -51,9 +51,10 @@ drawHeader($session);
         <a href="../reviews.php?id=<?=$idRestaurant?>"> Comentários > </a>
     </div>
 
-    <div class="page">
-        <h1><?= $restaurant -> name?></h1>
-        <section class = "dishes" id=<?= $restaurant -> id?>>
+    <div class="page" id="restaurant-page">
+        <h1><?= $restaurant->name ?></h1>
+        <h2><?= $restaurant->address ?></h2>
+        <section class="dishes" id=<?= $restaurant->id ?>>
         </section>
     </div>
 
@@ -61,6 +62,6 @@ drawHeader($session);
 </div>
 
 
-
 <?php  drawFooter();?>
+
 

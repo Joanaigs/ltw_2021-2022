@@ -1,6 +1,8 @@
+
 INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Joana Santos', 'dweferg@hotmail.com', '88888888', 'rua da joana', 'Porto', 'Portugal', '5050-444', '987876435');
 INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Mariana Carvalho', 'ajsdf@hotmail.com', '123456767', 'rua da mariana',  'Porto', 'Portugal', '5050-443', '923456435');
 INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Matilde Sequeira', 'jutyjeyt@hotmail.com', '9876543', 'rua da matilde',  'Porto', 'Portugal', '5050-442', '926796345');
+INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Judy Maria', 'top@hotmail.com', '123567543', 'rua da alegria',  'Porto', 'Portugal', '5050-452', '34523488');
 
 INSERT INTO Images(title) VALUES ('Tábua de presunto');
 INSERT INTO Images(title) VALUES ('Tábua de enchidos');
@@ -163,18 +165,20 @@ INSERT INTO Orders(idUser, address, state, date) VALUES (1, 'rua da alegria', 'P
 INSERT INTO Orders(idUser, address, state, date) VALUES (1, 'rua do clérigo', 'Pronto', '12-04-2020');
 
 INSERT INTO FavoriteDish(idUser, idDish) VALUES (1,3);
-INSERT INTO FavoriteDish(idUser, idDish) VALUES (5,3);
-INSERT INTO FavoriteDish(idUser, idDish) VALUES (6,3);
-INSERT INTO FavoriteDish(idUser, idDish) VALUES (7,3);
+INSERT INTO FavoriteDish(idUser, idDish) VALUES (3,3);
+INSERT INTO FavoriteDish(idUser, idDish) VALUES (2,3);
+INSERT INTO FavoriteDish(idUser, idDish) VALUES (1,3);
 
 INSERT INTO FavoriteRestaurant(idUser, idRestaurant) VALUES (1,1);
 INSERT INTO FavoriteRestaurant(idUser, idRestaurant) VALUES (1,2);
 INSERT INTO FavoriteRestaurant(idUser, idRestaurant) VALUES (1,3);
 
+
 INSERT INTO DishOrder(idDish , idOrder, number) VALUES (1,1, 1);
 INSERT INTO DishOrder(idDish, idOrder, number) VALUES (2,1, 2);
 INSERT INTO DishOrder(idDish , idOrder, number) VALUES (4,2, 1);
 INSERT INTO DishOrder(idDish, idOrder, number) VALUES (5,2, 2);
+
 
 INSERT INTO Cart(idDish, idUser, number) VALUES (1, 1, 2);
 INSERT INTO Cart(idDish,  idUser, number) VALUES (3, 2, 3);

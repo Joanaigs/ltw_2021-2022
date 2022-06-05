@@ -101,9 +101,7 @@ require_once(__DIR__ . '/../database/review.class.php');
                                name="comment" id="comment" required/>
 
                         <button type="submit">Publicar</button>
-                    </form> <?php
-                } ?>
-
+                    </form> 
 
                 </div>
                 </section>
@@ -113,4 +111,4 @@ require_once(__DIR__ . '/../database/review.class.php');
         ?>
     </section>
 
-<?php } ?>
+<?php }} ?>

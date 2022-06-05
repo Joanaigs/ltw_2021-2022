@@ -1,6 +1,7 @@
 <?php
 declare(strict_types = 1);
 require_once('review.class.php');
+require_once('filter.class.php');
 class Restaurant {
     public int $id;
     public int $idUser;
@@ -9,6 +10,7 @@ class Restaurant {
     public int $image;
     public bool $heart;
     public bool $loggedIn;
+    public string $filt;
     public $ranking;
 
     public function __construct(int $id, int $idUser, string $name, string $address, int $image)
@@ -49,6 +51,7 @@ class Restaurant {
             $r=Review::getRanking($db, $restaurant['id']);
 
             $temp->ranking=$r;
+            $temp->filt=Filter::getFilterfromRestaurant($db, $restaurant['id']);
             $restaurants[]=$temp;
         }
         return $restaurants;
@@ -120,13 +123,15 @@ class Restaurant {
 
         $restaurant = $stmt->fetch();
 
-        return new Restaurant(
+       $temp=  new Restaurant(
             $restaurant['id'],
             $restaurant['idUser'],
             $restaurant['name'],
             $restaurant['address'],
             $restaurant['image']
         );
+        $temp->filt=Filter::getFilterfromRestaurant($db, $restaurant['id']);
+        return $temp;
     }
 
 
@@ -156,6 +161,7 @@ class Restaurant {
             }
             $r=Review::getRanking($db, $restaurant['id']);
             $temp->ranking=$r;
+            $temp->filt=Filter::getFilterfromRestaurant($db, $restaurant['id']);
             $restaurants[]=$temp;
         }
         return $restaurants;
@@ -188,6 +194,7 @@ class Restaurant {
             }
             $r=Review::getRanking($db, $restaurant['id']);
             $temp->ranking=$r;
+            $temp->filt=Filter::getFilterfromRestaurant($db, $restaurant['id']);
             $restaurants[] = $temp;
         }
         return $restaurants;
@@ -213,6 +220,7 @@ class Restaurant {
         $stmt->execute(array($idUser, $idRe));
     }
 
+
     static function removeRestaurants(PDO $db, int $idRe)  {
         $rest=self::getRestaurant($db, $idRe);
         $stmt = $db->prepare('DELETE FROM Restaurant where id=?' );
@@ -229,6 +237,14 @@ class Restaurant {
                 unlink($filePath);
             }
         }
+    }
+
+    static function updateRestaurants(PDO $db, int $idRe, string $name, string $address, string $cate)  {
+        $stmt = $db->prepare('Update Restaurant set name=?, address=? where id=?' );
+        $stmt->execute(array($name, $address, $idRe));
+
+        $stmt = $db->prepare('Update CategoryRestaurant set idCategory=(select Category.id from Category where id=?) where idRestaurant=?' );
+        $stmt->execute(array($cate, $idRe));
     }
 
     static function hasRestaurant(PDO $db, int $id)
