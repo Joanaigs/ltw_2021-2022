@@ -29,7 +29,7 @@ drawHeader($session); ?>
 
 <div class="reviews-flex-container">
 
-        <span class="image"></span>
+        <span class="image" style='background-image:url("../images/restaurants/<?=$restaurant->image?>.jpg"') ></span>
         <h1>O que achou de <?=$restaurant->name?> ?</h1>
 
 
