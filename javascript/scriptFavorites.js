@@ -27,7 +27,7 @@ async function get_favoriteRestaurants(value) {
         text.classList.add('text');
         const link = document.createElement('a')
         link.classList.add('text')
-        link.href = '../restaurant.php?id=' + restaurant.id
+        link.href = img.src = '../images/restaurants/' + restaurant.image +'.jpg'
         link.textContent = restaurant.name
         text.append(link)
 
@@ -90,7 +90,7 @@ async function get_favoriteDishes(value) {
         const img = document.createElement('img')
         const h3 = document.createElement('h3')
         h3.textContent = dish.name
-        img.src = 'https://picsum.photos/600/300?' + dish.id
+        img.src = img.src = '../images/dishes/' + dish.image +'.jpg'
         const p = document.createElement("p")
         p.textContent = 'Preço: ' + dish.price + '€'
         text.append(h3)

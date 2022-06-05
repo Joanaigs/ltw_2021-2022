@@ -11,10 +11,12 @@ require_once('templates/restaurants.tpl.php');
 require_once('database/user.class.php');
 $db = getDatabaseConnection();
 
-$idRestaurant = $_GET['id'];
-$dishes = Dish::getDishesRestaurant($db, $idRestaurant, $session);
+
+$idRestaurant=$_GET['id'];
 drawRestViewHeader($idRestaurant);
+$dishes=Dish::getDishesRestaurant($db, $idRestaurant, $session);
 drawRestaurantView($db, intval($idRestaurant), $dishes);
 drawFooter();
+
 
 

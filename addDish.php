@@ -17,9 +17,9 @@ $meals=Filter::getMeals($db);
 $typeDishes=Filter::getTypeDish($db);
 
 ?>
-<form action="addDish.php?idRestaurant=<?= $idRestaurant ?>" method="post" class="dish" enctype="multipart/form-data">
-    <label for="photoDish">Photo:</label>
-    <input type="file" name="photoDish" accept="image/png,image/jpeg">
+<form action="addDishDatabase.php?idRestaurant=<?=$idRestaurant?>" method="post" class="dish" enctype="multipart/form-data">
+    <label for="imageRestaurant">Imagem:</label>
+    <input type="file" name="image" accept="image/png,image/jpeg">
 
     <label for="nameDish">Name:</label>
     <input id="nameDish" type="text" name="nameDish">
@@ -38,14 +38,9 @@ $typeDishes=Filter::getTypeDish($db);
 
     <button type="submit">Salvar</button>
 </form>
-<div name="addDish">Nenhum prato adicionado</div>
 
-<?php
-if (isset($_POST["nameDish"], $_POST["priceDish"], $_POST['mealDish'], $_POST['typeDish'])){
-    echo 2;
-    Dish::addDish($db, $_POST["nameDish"], $_POST["priceDish"], $_POST['mealDish'], intval($idRestaurant), $_POST['typeDish']);
-    header("Location: restView.php?id=$idRestaurant");
-}
+
+
 
 drawFooter();
 

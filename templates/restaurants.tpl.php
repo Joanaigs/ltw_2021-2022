@@ -29,17 +29,17 @@ function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db, 
 <?php }
 
 
+
 function drawRestaurantView(PDO $db, int $idRestaurant, array $dishes)
 {
     $restaurant = Restaurant::getRestaurant($db, $idRestaurant); ?>
-
     <link rel="stylesheet" href="../css/owner_restView.css"/>
     <link rel="stylesheet" href="../css/profile.css"/>
     <div class="grid-container-rest">
-        <span class="rest-image"></span>
+        <span class="rest-image" style='background-image:url("../images/restaurants/<?=$restaurant->image?>.jpg"')></span>
         <div class="rest-name">
             <h1><?= $restaurant->name ?></h1>
-            <a class="button-edit" href="../editRestaurant.php?id=<?= $restaurant->id ?>"><i
+            <a class="button-edit" href="../editRestaurant.php?id=<?= $restaurant->image ?>"><i
                         class="fas fa-pencil"></i> Editar dados</a>
             <div class="erase-restaurant">
                 <button class="erase-restaurant-btn" name="eraseRestaurantButton"
@@ -66,7 +66,7 @@ function drawRestaurantViewDishes($idRestaurant, $dishes){?>
                             continue; ?>
             <section class="info-dish">
                 <section class="image">
-                    <img src="<?= $dish->photo ?>?id=<?= $dish->id ?>" alt="">
+                    <img src="../images/dishes/<?=$dish->image?>.jpg" alt="">
                 </section>
                 <section class="text">
                     <h4> <?= $dish->name ?></h4>
@@ -91,7 +91,7 @@ function drawRestaurantViewDishes($idRestaurant, $dishes){?>
                 continue; ?>
             <section class="info-dish">
                 <section class="image">
-                    <img src="<?= $dish->photo ?>?id=<?= $dish->id ?>" alt="">
+                    <img src="../images/dishes/<?=$dish->image?>.jpg" alt="">
                 </section>
                 <section class="text">
                     <h4> <?= $dish->name ?></h4>
@@ -116,7 +116,7 @@ function drawRestaurantViewDishes($idRestaurant, $dishes){?>
                 continue; ?>
             <section class="info-dish">
                 <section class="image">
-                    <img src="<?= $dish->photo ?>?id=<?= $dish->id ?>" alt="">
+                    <img src="../images/dishes/<?=$dish->image?>.jpg" alt="">
                 </section>
                 <section class="text">
                     <h4> <?= $dish->name ?></h4>
@@ -141,7 +141,7 @@ function drawRestaurantViewDishes($idRestaurant, $dishes){?>
                 continue; ?>
             <section class="info-dish">
                 <section class="image">
-                    <img src="<?= $dish->photo ?>?id=<?= $dish->id ?>" alt="">
+                    <img src="../images/dishes/<?=$dish->image?>.jpg" alt="">
                 </section>
                 <section class="text">
                     <h4> <?= $dish->name ?></h4>

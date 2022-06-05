@@ -1,16 +1,21 @@
+DROP TABLE IF EXISTS Images;
+CREATE TABLE Images (
+                        id INTEGER PRIMARY KEY,
+                        title VARCHAR NOT NULL
+);
 
 DROP TABLE IF EXISTS User;
-CREATE TABLE User
-(
-    id          INTEGER PRIMARY KEY,
-    username    TEXT,
-    email       TEXT UNIQUE,
-    password    TEXT,
-    address     TEXT,
-    city        TEXT,
-    country     TEXT,
-    postcode    TEXT,
-    phoneNumber TEXT
+CREATE TABLE User (
+                      id INTEGER PRIMARY KEY,
+                      image INTEGER REFERENCES Images(id) DEFAULT 58,
+                      username TEXT,
+                      email TEXT UNIQUE,
+                      password TEXT,
+                      address TEXT,
+                      city TEXT,
+                      country TEXT,
+                      postcode TEXT,
+                      phoneNumber TEXT
 );
 
 
@@ -23,7 +28,7 @@ CREATE TABLE Restaurant
         ON UPDATE CASCADE,
     name    TEXT,
     address TEXT UNIQUE,
-    image   TEXT DEFAULT 'https://picsum.photos/600/300'
+    image   INTEGER REFERENCES Images(id) default 57
 );
 
 DROP TABLE IF EXISTS Category;
@@ -55,7 +60,7 @@ CREATE TABLE Dish
                                                     ON UPDATE CASCADE,
     name         TEXT,
     price        DOUBLE,
-    photo        TEXT                               DEFAULT 'https://picsum.photos/600/300',
+    image INTEGER REFERENCES Images(id) DEFAULT 57,
     idTypeOfDish INTEGER REFERENCES TypeOfDish (id) DEFAULT 5,
     idMeal       INTEGER REFERENCES Meal (id)
 );
@@ -145,3 +150,4 @@ CREATE TABLE Cart
         ON UPDATE CASCADE,
     number INTEGER
 );
+

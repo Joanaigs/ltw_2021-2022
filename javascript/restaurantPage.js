@@ -39,7 +39,7 @@ async function get_restaurants(restaurants) {
         section_filter.classList.add('section-filter')
         section_filter.append(filter)
         text.append(section_filter)
-        img.src = 'https://picsum.photos/600/300?' + restaurant.id
+        img.src = '../images/restaurants/' + restaurant.image +'.jpg'
         article.append(ratingFixed)
         article.append(div)
         article.appendChild(img)

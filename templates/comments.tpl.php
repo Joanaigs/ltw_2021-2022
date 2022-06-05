@@ -18,8 +18,7 @@ require_once(__DIR__ . '/../database/review.class.php');
                     <div class="review-info">
 
                         <div class="flex-left">
-
-                            <img src="https://picsum.photos/100/100?.<?= $user->username ?>" alt="">
+                            <img src="../images/profiles/<?=$user->image?>.jpg" alt="">
                             <div class="review-profile-info">
                                 <h2> <?= $user->username ?> </h2>
                                 <h3> <?= $review->date ?> </h3>

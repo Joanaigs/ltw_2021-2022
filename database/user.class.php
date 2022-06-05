@@ -12,9 +12,10 @@ class User
     public string $city;
     public string $country;
 
-    public function __construct(int $id, string $username, string $email, string $phoneNumber, string $address, string $city, string $country)
+    public function __construct(int $id, int $image, string $username, string $email, string $phoneNumber, string $address, string $city, string $country)
     {
         $this->id = $id;
+        $this->image = $image;
         $this->username = $username;
         $this->email = $email;
         $this->phoneNumber = $phoneNumber;
@@ -27,14 +28,14 @@ class User
     {
         if ($password != NULL && $password === $confirm_password) {
             $stmt = $db->prepare('
-        UPDATE User SET username = ?, email = ?, phoneNumber = ?, address = ?, password = ?
+        UPDATE User SET username = ?, email = ?, phoneNumber = ?, address = ?, password = ?, image=?
         WHERE id = ?');
-            $stmt->execute(array($this->username, $this->email, $this->phoneNumber, $this->address, $this->id, md5($password)));
+            $stmt->execute(array($this->username, $this->email, $this->phoneNumber, $this->address, md5($password), $this->image, $this->id));
         } else {
             $stmt = $db->prepare('
-        UPDATE User SET username = ?, email = ?, phoneNumber = ?, address = ?
+        UPDATE User SET username = ?, email = ?, phoneNumber = ?, address = ?, image=?
         WHERE id = ?');
-            $stmt->execute(array($this->username, $this->email, $this->phoneNumber, $this->address, $this->id));
+            $stmt->execute(array($this->username, $this->email, $this->phoneNumber, $this->address, $this->image, $this->id));
         }
     }
 
@@ -90,6 +91,7 @@ class User
         FROM User
         WHERE email = ?');
 
+
         $stmt->execute(array($email));
 
         if ($user = $stmt->fetch()) {
@@ -97,6 +99,7 @@ class User
             if (md5($password) === $user['password']) {
                 return new User(
                     intval($user['id']),
+                    $user['image'],
                     $user['username'],
                     $user['email'],
                     $user['phoneNumber'],
@@ -122,6 +125,7 @@ class User
 
         return new User(
             intval($user['id']),
+            $user['image'],
             $user['username'],
             $user['email'],
             $user['phoneNumber'],
@@ -143,7 +147,7 @@ class User
 
         if ($row = $stmt->fetch()) {
             $stmt1 = $db->prepare("
-                SELECT Dish.id as id, idRestaurant, Dish.name as name, price, photo, idMeal, idTypeOfDish, Meal.name as mealName
+                SELECT Dish.id as id, idRestaurant, Dish.name as name, price, Dish.image, idMeal, idTypeOfDish, Meal.name as mealName
                 FROM Dish, Meal
                 WHERE Dish.id = ?  and idMeal=Meal.id");
 
