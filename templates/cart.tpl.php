@@ -21,9 +21,9 @@
                                 <article id="item">
                                     <?php $total += $dish->price*$dish->number?>
                                     <div class="name-price">
-                                        <a href="../restaurant.php?id=<?=$dish->idRestaurant?>#<?=$dish->name?>"><?=$dish->name?> x<?=$dish->number?></a>
+                                        <a href="../restaurant.php?id=<?=$dish->idRestaurant?>#<?=$dish->name?>"><?=$dish->name?> <span> x<?=$dish->number?></span></a>
                                         <a href="../updadeCartNumber.php?idDish=<?= $dish->id ?>&number=<?=$dish->number+1?>&idRestaurant=<?=$dish->idRestaurant?>" class="fa-solid fa-plus"></a>
-                                        <a href="../updadeCartNumber.php?idDish=<?= $dish->id ?>&number=<?=$dish->number-1?>&idRestaurant=<?=$dish->idRestaurant?>" class="fa fa-minus"></a>
+                                        <a href="../updadeCartNumber.php?idDish=<?= $dish->id ?>&number=<?=$dish->number-1?>&idRestaurant=<?=$dish->idRestaurant?>" class="minus">-</a>
                                         <p><?=$dish->price*$dish->number?> €</p>
                                     </div>
                                     <button class="erase-fromCart-btn" name="eraseFromButton" onclick="window.location.href = '../removeFromCart.php?idRestaurant=<?=$dish->idRestaurant?>&idDish=<?=$dish->id?>&cart=true';"> Remover</button>

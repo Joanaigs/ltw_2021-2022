@@ -520,7 +520,7 @@ header .icons #menu-bars{
 }
 
 .each-rest .total-price #price{
-    font-size: 16px;
+    font-size: 18px;
     font-family: var(--body-font-family);
     color: var(--body-font-color);
     font-weight: bold;
@@ -545,10 +545,23 @@ header .icons #menu-bars{
     align-items: end;
 }
 
+.each-rest #item .name-price a span{
+    font-weight: bold;
+}
+
+.each-rest #item .name-price .fa-solid, .each-rest #item .name-price .minus{
+    font-size: 18px;
+}
+
 .name-price p{
-    font-size: 13px;
+    font-size: 16px;
     color: var(--body-font-color);
     font-weight: bold;
+    border-top: 1px solid var(--section-background-color);
+}
+
+.name-price .minus{
+    font-weight: 800;
 }
 
 .each-rest #item a{
@@ -627,14 +640,36 @@ header .icons #menu-bars{
 
 @media (max-width: 991px) {
     html{
-        font-size: 55%;
+        font-size: 50%;
     }
+
+    .search1{
+        width: 30px;
+        height: 30px;
+    }
+
+    .search1 .search-icon1{
+        top: -0.4rem;
+        left: -0.4rem;
+    }
+
+    .search1 .search-icon1::before, .search2 .search-icon2::before{
+        width: 10px;
+        height: 10px;
+        transform: translate(-3px, -4px);
+    }
+
+    .search1 .search-icon1::after, .search2 .search-icon2::after{
+        height: 10px;
+        transform: translate(4px, 4px) rotate(315deg);
+    }
+
     header{
         padding: 1rem 2rem;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 760px) {
     header .icons #menu-bars{
         display: inline-block;
     }
@@ -695,23 +730,34 @@ header .icons #menu-bars{
     }
 }
 
-@media (max-width: 991px) {
-    html{
-        font-size: 50%;
+@media (max-width: 602px){
+
+    .each-rest form label, .each-rest form label i{
+        font-size: 14px;
     }
 
-    .search1{
-        width: 40px;
-        height: 40px;
-        left: 2rem;
+    .each-rest form input{
+        width:250px;
+        font-size: 14px;
     }
 
-    .search1 .search-icon1{
-        top: -0.7rem;
-        left: -0.5rem;
+    .each-rest form .make-order-btn{
+        margin-top: 1rem;
     }
 }
 
+@media (max-width: 540px){
+
+    .each-rest .edit-profile{
+        align-items: center;
+    }
+
+    .each-rest form label input{
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+    }
+}
 
 body{
     display: grid;
@@ -779,7 +825,6 @@ body > footer{
 }
 
 .side h2{
-
     color: var(--dark-color);
     font-size: 20px;
     text-align: center;
@@ -1024,10 +1069,6 @@ h1{
 }
 
 .reviews-flex-container .image{
-
-
-
-
     height: 350px;
     background-image: url("../images/lareira-serralves.jpeg");
     position: relative;
@@ -1053,8 +1094,7 @@ h1{
 .reviews-flex-container h2{
     color: var(--body-font-color);
     font-size: 16px;
-    margin: 15px;
-    margin-bottom: 0;
+    margin: 15px 15px 0;
 }
 
 .reviews-flex-container h3{
@@ -1077,8 +1117,7 @@ h1{
 }
 
 .reviews-flex-container .add-review form .rate{
-    margin: 15px;
-    margin-bottom: 18px;
+    margin: 15px 15px 18px;
 }
 
 form .form-control{
@@ -1144,9 +1183,8 @@ form button{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin: 15px;
     padding-left: 25px;
-    margin-bottom: 5px;
+    margin: 15px 15px 5px;
 
 }
 
@@ -1224,8 +1262,7 @@ form button{
 }
 
 .comment button{
-    margin: 15px;
-    margin-right: 30px;
+    margin: 15px 30px 15px 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1233,19 +1270,6 @@ form button{
 
 }
 
-button.erase-comment-btn{
-    width: 90px;
-    height: 40px;
-    outline: none;
-    border: none;
-    border-radius: 48px;
-    background-color: var(--accent-color);
-    color: var(--light-color);
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    font-weight: bold;
-    transition: all 0.5s;
-}
 .add-comment{
     margin-left: 170px;
     margin-right: 5px;
@@ -1301,14 +1325,13 @@ button.erase-comment-btn{
 
 #favoriteFilter label > span{
     padding: 6px;
-
     border-radius: 0.5rem;
+    transition: all 0.3s;
 }
 
 #favoriteFilter label input:checked ~ span{
     background-color: var(--dark-color);
     color: var(--light-color);
-
 
 }
 

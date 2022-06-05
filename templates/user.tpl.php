@@ -68,10 +68,10 @@ function drawLatestOrders(Session $session, PDO $db, User $user)
             <h2>Perfil</h2>
             <img src="profile_pic.png" alt="Profile picture">
             <div class="info">
-                <span><label><i class="fas fa-user"></i>Nome de utilizador:</label><?= $user->username ?></span>
+                <span><label><i class="fas fa-user"></i>Nome utilizador:</label><?= $user->username ?></span>
                 <span><label><i class="fas fa-envelope"></i>Email: </label><?= $user->email ?></span>
                 <span><label><i class="fas fa-home"></i>Endereço: </label><?= $user->address ?></span>
-                <span><label><i class="fas fa-phone"></i>Número de telemóvel: </label><?= $user->phoneNumber ?></span>
+                <span><label><i class="fas fa-phone"></i>Número telemóvel:</label><?= $user->phoneNumber ?></span>
             </div>
             <button class="edit-profile-btn" name="editProfileButton"
                     onclick="window.location.href = '../edit_profile_action.php';">Editar
@@ -90,7 +90,7 @@ function drawLatestOrders(Session $session, PDO $db, User $user)
                     <img src = "profile_pic.png" alt="Profile picture">
 
                 <div class="input-field">
-                    <label><i class="fas fa-user"></i>Nome de utilizador:</label>
+                    <label><i class="fas fa-user"></i>Nome utilizador:</label>
                     <input type="text" name="username" value="<?= $user->username ?>"/>
                 </div>
 
@@ -105,7 +105,7 @@ function drawLatestOrders(Session $session, PDO $db, User $user)
                     </div>
 
                 <div class="input-field">
-                    <label><i class="fas fa-phone"></i>Número de telemóvel: </label>
+                    <label><i class="fas fa-phone"></i>Número telemóvel: </label>
                     <input type="text" name="phoneNumber" placeholder="<?= $user->phoneNumber ?>"/>
                 </div>
 

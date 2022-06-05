@@ -92,7 +92,7 @@
 
             if ($user = $stmt->fetch()) {
 
-                if(md5($password) === $user['password']){
+                if($password === $user['password']){
                     return new User(
                         intval($user['id']),
                         $user['username'],
