@@ -1,3 +1,8 @@
+DROP TABLE IF EXISTS Images;
+CREATE TABLE Images (
+                        id INTEGER PRIMARY KEY,
+                        title VARCHAR NOT NULL
+);
 
 DROP TABLE IF EXISTS User;
 CREATE TABLE User (
@@ -146,9 +151,3 @@ CREATE TABLE Cart
     number INTEGER
 );
 
-
-DROP TABLE IF EXISTS Images;
-CREATE TABLE Images (
-                        id INTEGER PRIMARY KEY,
-                        title VARCHAR NOT NULL
-);
