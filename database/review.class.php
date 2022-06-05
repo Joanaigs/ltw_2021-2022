@@ -27,7 +27,7 @@ class Review
                 SELECT *
                 FROM Review
                 WHERE idRestaurant = ?
-                Order by date;
+                Order by id DESC ;
             ');
 
         $stmt->execute(array($idRest));
@@ -65,5 +65,10 @@ class Review
     static function addReview(PDO $db, string $idRe, int $idUser, string $review, string $date, int $raiting)  {
         $stmt = $db->prepare('INSERT INTO Review(idRestaurant, idUser, review, date, rating) VALUES (?, ?, ?, ?, ?)');
         $stmt->execute(array($idRe, $idUser, $review, $date, $raiting));
+    }
+
+    static function removeReview(PDO $db, int $id)  {
+        $stmt = $db->prepare('DELETE FROM Review where id=?' );
+        $stmt->execute(array($id));
     }
 }

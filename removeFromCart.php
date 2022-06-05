@@ -12,8 +12,11 @@ $db = getDatabaseConnection();
 
 $idRestaurant = $_GET['idRestaurant'];
 $idDish = $_GET['idDish'];
+
 Cart::removefromCart($db, intval($idDish), $session->getId());
 if ($_GET['cart'] === 'true')
     header("Location: cart.php");
-else
+else if ($favorites == 0)
     header("Location: restaurant.php?id=$idRestaurant");
+else
+    header("Location: favorites.php");

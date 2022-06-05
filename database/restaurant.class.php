@@ -57,7 +57,7 @@ class Restaurant {
         return $restaurants;
     }
 
-    static function getFavoriteRestaurants(PDO $db,  int $idUser) : array {
+    static function getFavoriteRestaurants(PDO $db, Session $session, int $idUser) : array {
         $stmt = $db->prepare('
         SELECT id, Restaurant.idUser, name, address, image
         FROM FavoriteRestaurant, Restaurant
@@ -67,13 +67,27 @@ class Restaurant {
         $restaurants = array();
 
         while ($restaurant = $stmt->fetch()) {
-            $restaurants[] = new Restaurant(
+            $temp = new Restaurant(
                 $restaurant['id'],
                 $restaurant['idUser'],
                 $restaurant['name'],
                 $restaurant['address'],
                 $restaurant['image']
             );
+            if ($session->isLoggedIn()) {
+                if (self::isfavoriteRestaurant($db, $restaurant['id'], $session->getId())) {
+                    $temp->heart = true;
+                } else
+                    $temp->heart = false;
+                if ($session->isLoggedIn()) {
+                    $temp->loggedIn = true;
+                } else
+                    $temp->loggedIn = false;
+            }
+            $r=Review::getRanking($db, $restaurant['id']);
+
+            $temp->ranking=$r;
+            $restaurants[]=$temp;
         }
         return $restaurants;
     }

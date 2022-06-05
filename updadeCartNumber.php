@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 require_once('session.php');
 $session = new Session();
 require_once('database/restaurant.class.php');
@@ -7,20 +7,15 @@ require_once('database/cart.class.php');
 require_once('templates/common.tpl.php');
 require_once('templates/filter.tpl.php');
 require_once('templates/restaurants.tpl.php');
-require_once('database/connection.db.php');
-$db = getDatabaseConnection();
-
+$db = new PDO('sqlite:example.db');
 
 $idRestaurant=$_GET['idRestaurant'];
 $idDish=$_GET['idDish'];
-$favorites =$_GET['favorites'];
-
-Cart::addToCart($db, $idDish, $session->getId());
-
-
-if ($favorites == 0)
-    header("Location: restaurant.php?id=$idRestaurant");
+$number=$_GET['number'];
+if($number<=0){
+    Cart::removefromCart($db, intval($idDish), $session->getId());
+}
 else
-    header("Location: favorites.php");
+    Cart::updadeNumberDish($db, intval($number), intval($idDish), $session->getId());
 
-
+header("Location: cart.php");

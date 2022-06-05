@@ -6,6 +6,7 @@ for(let i=0; i<stateOrders.length; i++) {
             const response = await fetch('../api/api_orderSates.php?state='+this.value +'&' + 'id='+stateOrders[i].name)
             console.log('../api/api_orderSates.php?state='+this.value +'&' + 'id='+stateOrders[i].name)
             const orders = await response.json()
+            location.reload();
         })
     }
 }

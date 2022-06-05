@@ -33,14 +33,14 @@ function drawLatestOrders(Session $session, PDO $db, User $user)
                         <?php
                         $total = 0;
                         foreach ($dishes as $dish) {
-                            $total += $dish->price?>
+                            $total += $dish->price*$dish->number?>
                             <section class="info-dish">
                                 <section class="image">
                                     <img src="<?= $dish->photo ?>?id=<?= $dish->id ?>" alt="">
                                 </section>
                                 <section class="text">
-                                    <h4> <?= $dish->name ?></h4>
-                                    <p class="info"> <?= $dish->price ?> €</p>
+                                    <h4> <?= $dish->name ?> x<?= $dish->number ?></h4>
+                                    <p class="info"> <?= $dish->price * $dish->number?> €</p>
                                 </section>
                             </section>
                         <?php }?>

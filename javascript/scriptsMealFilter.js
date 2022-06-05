@@ -40,40 +40,37 @@ async function get_meals(meals) {
         text.appendChild(h3)
         const p = document.createElement("p")
         p.classList.add("info")
-        p.textContent = 'Preço:' + dish.price + '€'
+        p.textContent = 'Preço: ' + dish.price + '€'
         text.appendChild(p)
         content.appendChild(text)
         article.appendChild(content)
         const buttons = document.createElement("div")
         buttons.classList.add("buttons")
-        const addButton= document.createElement("div")
-        addButton.classList.add("add-button")
+        const cartButton= document.createElement("div")
+        cartButton.classList.add("cartButton")
         if(dish.loggedIn){
+            if (!dish.cart){
             const a = document.createElement("a")
-            a.href="addToCart.php?idDish=" + +dish.id + "&idRestaurant=" + dish.idRestaurant
-            const div = document.createElement("div")
-            div.classList.add("button_plus")
-            a.appendChild(div)
-            addButton.appendChild(a)
-            if(dish.cart){
+            a.href="addToCart.php?idDish=" + +dish.id + "&idRestaurant=" + dish.idRestaurant + "&favorites=0"
+            a.className = "fa-solid fa-plus"
+            cartButton.appendChild(a)
+            }else{
                 const a1 = document.createElement("a")
-                a1.href="removeFromCart.php?idDish=" + +dish.id + "&idRestaurant=" + dish.idRestaurant
-                const div1 = document.createElement("div")
-                div1.classList.add("button_minus")
-                a1.appendChild(div1)
-                addButton.appendChild(a1)
+                a1.href="removeFromCart.php?idDish=" + +dish.id + "&idRestaurant=" + dish.idRestaurant + "&favorites=0"
+                a1.className = "fa-solid fa-minus"
+                cartButton.appendChild(a1)
             }
-            buttons.appendChild(addButton)
+            buttons.appendChild(cartButton)
             const hearts = document.createElement("div")
             hearts.classList.add("hearts")
             const div2 = document.createElement("div")
             div2.classList.add("heart")
             div2.id=dish.id
             if(dish.heart){
-                div2.classList.add("liked")
+                div2.classList.add("heart-liked")
             }
             hearts.appendChild(div2)
-            addButton.appendChild(hearts)
+            cartButton.appendChild(hearts)
             buttons.append(hearts)
             article.append(buttons)
         }
