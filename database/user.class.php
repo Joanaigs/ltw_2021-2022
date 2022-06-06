@@ -91,7 +91,6 @@ class User
         FROM User
         WHERE email = ?');
 
-
         $stmt->execute(array($email));
 
         if ($user = $stmt->fetch()) {

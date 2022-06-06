@@ -12,8 +12,11 @@ require_once('templates/user.tpl.php');
 
 $db = getDatabaseConnection();
 
+
 $user = User::getUser($db, $session->getId());
-$restaurant = Restaurant::hasRestaurant($db, $session->getId());
-drawHeader($session);
+$restaurant=Restaurant::hasRestaurant($db, $session->getId());
+
+drawProfileHeader($restaurant);
 drawProfile($user, $restaurant);
 drawFooter();
+

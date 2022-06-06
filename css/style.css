@@ -29,10 +29,7 @@ html{
     scroll-behavior: smooth;
 }
 
-html, body{
-    width: 100%;
-    height: 100%;
-}
+body { min-height: 100vh;}
 
 
 .heart:before {
@@ -161,7 +158,7 @@ header{
 
 header .logo{
     color: var(--dark-color);
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: bolder;
 }
 
@@ -185,7 +182,7 @@ header .header-left .logo i, header .logo i{
 }
 
 header .navbar a, header .navbar .menu, header .navbar .ordersSate, header .navbar .review {
-    font-size: 1.7rem;
+    font-size: 2rem;
     border-radius: .5rem;
     padding: 0.5rem 1.5rem;
     color: #606060;
@@ -213,7 +210,7 @@ header .icons i, header .icons a, header .icons button{
     line-height: 4.5rem;
     width: 4.5rem;
     text-align: center;
-    font-size: 1.7rem;
+    font-size: 2rem;
     color: var(--dark-color);
     border-radius: 50%;
 }
@@ -363,7 +360,9 @@ header .icons #menu-bars{
 
 .about .about-site{
     grid-row-start: 1;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
+    margin-left: 5rem;
+    margin-right: 6rem;
     background-image: url("../images/about.jpg");
     position: relative;
     text-align: center;
@@ -373,17 +372,20 @@ header .icons #menu-bars{
     position: absolute;
     top: 60%;
     left: 50%;
-    transform: translate(-50%, -60%);
+    transform: translate(-180%, -60%);
     font-size: 40px;
-    color: var(--dark-color);
+    color: var(--light-color);
+    text-shadow: 1px 1px 3px #000000;
 }
 
 .about-site p{
     position: absolute;
     top: 80%;
     left: 50%;
-    transform: translate(-50%, -80%);
+    transform: translate(-110%, -80%);
     font-size: 15px;
+    color: var(--light-color);
+    text-shadow: 1px 1px 3px #000000;
 }
 
 .about .how-to-use{
@@ -412,7 +414,6 @@ header .icons #menu-bars{
 
 .about .how-to-use .box-container .box .image{
     width: 100%;
-    height: 220px;
 }
 
 .about .box-container .box h3{
@@ -473,16 +474,16 @@ header .icons #menu-bars{
 }
 
 
-.container{
+.container-cart{
     display: grid;
     grid-template-columns: 0.1fr 1fr 0.1fr;
 }
 
-.container #left-section{
+.container-cart #left-section{
     background-image: linear-gradient(-45deg, #30296b 0%, var(--dark-color) 100%);
 }
 
-.container #right-section{
+.container-cart #right-section{
     background-image: linear-gradient(-45deg, #30296b 0%, var(--dark-color) 100%);
 }
 
@@ -526,7 +527,7 @@ header .icons #menu-bars{
 }
 
 .each-rest .total-price #price{
-    font-size: 16px;
+    font-size: 18px;
     font-family: var(--body-font-family);
     color: var(--body-font-color);
     font-weight: bold;
@@ -540,7 +541,7 @@ header .icons #menu-bars{
 
 .each-rest #item{
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
     margin-bottom: 2rem;
 }
 
@@ -555,12 +556,17 @@ header .icons #menu-bars{
     font-weight: bold;
 }
 
-.each-rest #item .name-price .fa-solid, .each-rest #item .name-price .minus{
+.each-rest #item .edit-cart .minus{
     font-size: 18px;
 }
 
+.each-rest #item .edit-cart .fa-solid, .each-rest #item .edit-cart .minus, .each-rest #item .erase-fromCart-btn i{
+    color: var(--dark-color);
+    transition: all 0.3s;
+}
+
 .name-price p{
-    font-size: 13px;
+    font-size: 16px;
     color: var(--body-font-color);
     font-weight: bold;
     border-top: 1px solid var(--section-background-color);
@@ -577,24 +583,30 @@ header .icons #menu-bars{
     text-decoration: none;
 }
 
-.each-rest #item .erase-fromCart-btn{
+.each-rest #item .edit-cart{
+    padding-top: 0.3rem;
+    margin-left: 1.5rem;
     justify-self: end;
-    width: 65px;
-    height: 35px;
-    outline: none;
-    border: none;
-    margin-left: 2rem;
-    border-radius: 48px;
-    background-color: #2f286b;
-    color: var(--light-color);
-    font-size: 10px;
-    text-transform: uppercase;
-    font-weight: bold;
-    transition: all 0.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
 }
 
-.each-rest #item .erase-fromCart-btn:hover{
-    background-color: #5e51c2;
+.each-rest #item .erase-fromCart-btn{
+    padding-top: 0.7rem;
+    display: flex;
+    margin-left: 1rem;
+    border: none;
+    text-decoration: none;
+    background-color: var(--light-color);
+}
+
+.each-rest #item .erase-fromCart-btn{
+    margin-bottom: auto;
+}
+
+.each-rest #item .edit-cart .fa-solid:hover, .each-rest #item .edit-cart .minus:hover, .each-rest #item .erase-fromCart-btn i:hover{
+    color: #5e51c2;
 }
 
 .each-rest form{
@@ -644,93 +656,12 @@ header .icons #menu-bars{
     background-color: var(--accent-color);
 }
 
-@media (max-width: 991px) {
-    html{
-        font-size: 55%;
-    }
-    header{
-        padding: 1rem 2rem;
-    }
+#cart h3{
+    margin-top: 2rem;
+    margin-left: 4rem;
+    font-size: 16px;
+    color: var(--body-font-color);
 }
-
-@media (max-width: 768px) {
-    header .icons #menu-bars{
-        display: inline-block;
-    }
-
-    header .navbar{
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background-color: var(--light-color);
-        border-top: 0.1rem solid rgb(0, 0, 0, 0.2);
-        border-bottom: 0.1rem solid rgb(0, 0, 0, 0.2);
-        padding: 1rem;
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-    }
-
-    header .navbar.active{
-        transition-duration: 0.3s;
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    }
-
-    header .navbar a{
-        display: block;
-        padding: 1.5rem;
-        margin: 1rem;
-        font-size: 2rem;
-        background-color: var(--section-background-color);
-    }
-
-    header .navbar .search2{
-        display: block;
-        width: 40px;
-        height: 40px;
-        top: 0;
-        left: -0.5rem;
-        padding: 1.5rem;
-        margin: 1.5rem;
-        box-shadow: none;
-    }
-
-    header .navbar .search2 .input{
-        bottom: 1rem;
-        height: 40px;
-        left: 40px;
-    }
-
-    header .navbar .search2 .search-icon2{
-        top: -0.7rem;
-        left: -0.5rem;
-    }
-
-    header .navbar .search2.active{
-        width:98%;
-    }
-
-    .search1 {
-        display: none;
-    }
-}
-
-@media (max-width: 991px) {
-    html{
-        font-size: 50%;
-    }
-
-    .search1{
-        width: 40px;
-        height: 40px;
-        left: 2rem;
-    }
-
-    .search1 .search-icon1{
-        top: -0.7rem;
-        left: -0.5rem;
-    }
-}
-
 
 body{
     display: grid;
@@ -752,7 +683,7 @@ body > footer{
 .grid-container{
     grid-area: main;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: .2fr 1fr;
 }
 
 .grid-container.side{
@@ -776,7 +707,6 @@ body > footer{
     position: sticky;
     top: 0;
     height: 100vh;
-
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -817,24 +747,21 @@ body > footer{
 
 #typeOfRestaurant h2{
     justify-self: center;
-    font-size: 18px;
-    margin: 6rem 4rem 1rem;
+    text-align: center;
+    font-size: 20px;
+    margin: 6rem 0 1rem;
     color: var(--dark-color);}
 
 #meal a{
     color: var(--body-font-color);
     text-decoration: none;
     font-size: 18px;
-    padding-left: 60px;
     padding-top: 5px;
     padding-bottom: 5px;
-
 }
 
 #meal a:hover{
-
     background-color: #f2f3ec;
-
 }
 
 .side a{
@@ -862,7 +789,6 @@ body > footer{
 }
 #typeOfDish label{
     padding-left: 60px;
-
     font-size: 18px;
     color: var(--body-font-color);
     padding-top: 5px;
@@ -888,10 +814,13 @@ body > footer{
     margin: 0 4rem 4rem;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
 }
 
 .filter #filter label{
     margin-bottom: 0.5rem;
+    color: var(--body-font-color);
+    font-size: 18px;
 }
 
 .filter input.radio{
@@ -904,12 +833,6 @@ body > footer{
     margin-left: 6rem;
     color: var(--dark-color);
     font-size: 20px;
-}
-
-
-#typeOfRestaurant label{
-    font-size: 15px;
-    color: #444444;
 }
 
 #typeOfRestaurant label:hover{
@@ -944,9 +867,7 @@ h1{
     padding-top: 15px;
 }
 .dish{
-
-    margin: 10px;
-    margin-left: 0;
+    margin: 10px 10px 10px 0;
     border-radius: 15px;
     height: 160px;
     box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
@@ -967,7 +888,6 @@ h1{
     text-decoration: none;
     color: #444444;
     font-size: 15px;
-
 }
 
 .buttons .hearts .heart{
@@ -1095,10 +1015,6 @@ h1{
 }
 
 .reviews-flex-container .image{
-
-
-
-
     height: 350px;
     position: relative;
 
@@ -1111,20 +1027,16 @@ h1{
 
 
 .reviews-flex-container .add-review{
-
     margin-right: 80px;
     margin-left: 80px;
     border-radius: 15px;
-
     box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
-
 }
 
 .reviews-flex-container h2{
     color: var(--body-font-color);
     font-size: 16px;
-    margin: 15px;
-    margin-bottom: 0;
+    margin: 15px 15px 0;
 }
 
 .reviews-flex-container h3{
@@ -1147,8 +1059,7 @@ h1{
 }
 
 .reviews-flex-container .add-review form .rate{
-    margin: 15px;
-    margin-bottom: 18px;
+    margin: 15px 15px 18px;
 }
 
 form .form-control{
@@ -1214,9 +1125,8 @@ form button{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin: 15px;
     padding-left: 25px;
-    margin-bottom: 5px;
+    margin: 15px 15px 5px;
 
 }
 
@@ -1294,8 +1204,7 @@ form button{
 }
 
 .comment button{
-    margin: 15px;
-    margin-right: 30px;
+    margin: 15px 30px 15px 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1303,19 +1212,6 @@ form button{
 
 }
 
-button.erase-comment-btn{
-    width: 90px;
-    height: 40px;
-    outline: none;
-    border: none;
-    border-radius: 48px;
-    background-color: var(--accent-color);
-    color: var(--light-color);
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    font-weight: bold;
-    transition: all 0.5s;
-}
 .add-comment{
     margin-left: 170px;
     margin-right: 5px;
@@ -1371,33 +1267,35 @@ button.erase-comment-btn{
 
 #favoriteFilter label > span{
     padding: 6px;
-
     border-radius: 0.5rem;
+    transition: all 0.3s;
 }
 
 #favoriteFilter label input:checked ~ span{
     background-color: var(--dark-color);
     color: var(--light-color);
 
-
 }
 
+.favorites-grid-container{
+    padding-bottom: 2.5rem;
+}
 
 #favoritesPage{
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-left: 100px;
     margin-right: 100px;
+    grid-gap: 30px;
 }
 
 #favoritesPage article{
     border-radius: 0.5rem;
     box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
     padding: 10px;
-    margin-right: 40px;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
     position: relative;
 }
 
@@ -1415,25 +1313,290 @@ button.erase-comment-btn{
 #favoritesPage article .text {
     text-decoration: none;
     color: #606060;
-    font-size: 15px;
+    font-size: 17px;
     font-weight: bold;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: auto;
+}
+
+#favoritesPage article .text h3, #favoritesPage article .text a{
+    font-size: 17px;
 }
 
 #favoritesPage article .text p{
     font-weight: normal;
-    font-size: 13px;
-
+    font-size: 16px;
 }
-
 
 #favoritesPage article .text div > h4 {
+    margin-top: .5rem;
     font-weight: normal;
-    font-size: 13px;
-
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
+#favoritesPage article .text div span i{
+    margin-left: .5rem;
+}
+
+@media (max-height: 1272px) {
+    .reviews-flex-container .image {
+        height: 300px;
+    }
+}
+
+@media (max-width: 991px) {
+    html{
+        font-size: 50%;
+    }
+
+    .search1{
+        width: 30px;
+        height: 30px;
+    }
+
+    .search1 .search-icon1{
+        top: -0.4rem;
+        left: -0.4rem;
+    }
+
+    .search1 .search-icon1::before{
+        width: 10px;
+        height: 10px;
+        transform: translate(-3px, -4px);
+    }
+
+    .search1 .search-icon1::after{
+        height: 10px;
+        transform: translate(4px, 4px) rotate(315deg);
+    }
+
+    header{
+        padding: 1rem 2rem;
+    }
+
+    #favoritesPage article .text{
+        font-size: 13px;
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+
+    #favoritesPage article .text span i{
+        font-size: 11px;
+    }
+
+    #favoriteFilter {
+        margin-left: 2rem;
+    }
+
+    #favoritesPage{
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+}
+
+@media (max-width: 896px){
+    .add-review form .form-control{
+        width: 60%;
+    }
+    .reviews-flex-container h1{
+        font-size: 34px;
+    }
+
+    .add-comment form{
+        justify-content:space-between;
+    }
+
+    .add-comment form .form-control{
+        width: 80%;
+    }
+
+    .add-comment {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .review p{
+        padding-left: 2.5rem;
+    }
+
+    .comment{
+        margin-left: 0;
+    }
+}
+
+
+/* responsive design */
+@media (max-width: 773px) {
+
+    /* navbar */
+    header .icons #menu-bars{
+        display: inline-block;
+    }
+
+    header .navbar{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--light-color);
+        border-top: 0.1rem solid rgb(0, 0, 0, 0.2);
+        border-bottom: 0.1rem solid rgb(0, 0, 0, 0.2);
+        padding: 1rem;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+    header .navbar.active{
+        transition-duration: 0.3s;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    header .navbar a{
+        display: block;
+        padding: 1.5rem;
+        margin: 1rem;
+        font-size: 2rem;
+        background-color: var(--section-background-color);
+    }
+
+    header .navbar .search2{
+        display: block;
+        width: 40px;
+        height: 40px;
+        top: 0;
+        left: -0.5rem;
+        padding: 1.5rem;
+        margin: 1.5rem;
+        box-shadow: none;
+    }
+
+    header .navbar .search2 .input{
+        bottom: 1rem;
+        height: 40px;
+        left: 40px;
+    }
+
+    header .navbar .search2 .search-icon2{
+        top: -0.7rem;
+        left: -0.5rem;
+    }
+
+    header .navbar .search2.active{
+        width:98%;
+    }
+
+
+    .search2 .search-icon2::before{
+        width: 10px;
+        height: 10px;
+        transform: translate(3px, 3px);
+    }
+
+    .search2 .search-icon2::after{
+        height: 10px;
+        transform: translate(10px, 12px) rotate(315deg);
+    }
+
+    .search1 {
+        display: none;
+    }
+
+    /* reviews */
+    .reviews-flex-container .add-review h2{
+        padding-left: 2rem;
+    }
+
+    .reviews-flex-container .add-review form{
+        margin-top: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+    }
+
+    .reviews-flex-container .add-review form .rate{
+        align-self: start;
+    }
+
+    form .form-control{
+        width: 90%;
+    }
+
+    form button{
+        margin-left: 1rem;
+    }
+
+    .review-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .flex-left{
+        justify-content: start;
+    }
+
+    .ratingFixed{
+        margin: 0 3rem 0.8rem 0;
+    }
+
+    .flex-right button{
+        margin-top: 0;
+    }
+
+    .fa-star{
+        font-size: 20px;
+    }
+
+    .comment .flex-right p{
+        margin-top: 0.2rem;
+    }
+
+    /* favourites */
+    #favoritesPage article .text h3{
+        font-size: 13px;
+    }
+    #favoritesPage article .text p{
+        font-size: 11px;
+    }
+
+    #favoritesPage article .text div span i{
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 667px) {
+    .reviews-flex-container h1{
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 602px){
+
+    .each-rest form label, .each-rest form label i{
+        font-size: 14px;
+    }
+
+    .each-rest form input{
+        width:250px;
+        font-size: 14px;
+    }
+
+    .each-rest form .make-order-btn{
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 540px){
+
+    .each-rest .edit-profile{
+        align-items: center;
+    }
+
+    .each-rest form label input{
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+    }
+}

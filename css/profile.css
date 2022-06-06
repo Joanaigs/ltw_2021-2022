@@ -29,6 +29,10 @@ body{
     grid-template-rows: auto 1fr auto;
 }
 
+.navbar #profile, .navbar #latest-orders, .navbar #add-restaurant, .navbar #restaurant-page{
+    display: none;
+}
+
 .grid-container-profile{
     display: grid;
     grid-template-columns: 0.4fr 1.6fr;
@@ -59,44 +63,61 @@ body{
     top: 55px;
     height: 100vh;
     background-color: var(--section-background-color);
+    display: flex;
+    padding-right: 2rem;
+    flex-direction: column;
+    align-items: center;
 }
 
 .sidebar h3{
+    padding-top: 4rem;
     font-size: 20px;
-    line-height: 6rem;
-    padding-left: 10rem;
+    line-height: 22px;
     user-select: none;
+    margin-bottom: 1rem;
     color: var(--dark-color);
 }
 
+.sidebar ul{
+    list-style-type: none;
+}
+
 .sidebar ul .profile-page, .sidebar ul .last-orders-page{
-    display: block;
-    height: 100%;
     width: 100%;
-    line-height: 4rem;
+    line-height: 22px;
     font-size: 18px;
     color: var(--body-font-color);
     padding-left: 4rem;
-    box-sizing: border-box;
     transition: all 0.3s;
     text-decoration: none;
+    margin-top: 1rem;
 }
 
-.sidebar ul .restaurant-page{
-    padding-left: 1.75rem;
+.sidebar ul li a, .sidebar ul li button{
+    display: grid;
+    grid-template-columns: 1fr auto;
 }
 
-.sidebar ul .add-restaurant{
-    padding-left: 1rem;
+.sidebar ul li .icon{
+    text-align: center;
 }
 
-.sidebar ul li .add-restaurant-btn, .restaurant-page-btn, .erase-restaurant-btn{
+.sidebar ul li a i, .sidebar ul li button i{
+    display: inline-block;
+    width: 100%;
+}
+
+.sidebar ul .restaurant-page, .sidebar ul .add-restaurant{
+    margin-top: .9rem;
+    padding-left: 4rem;
+}
+
+.sidebar ul li .add-restaurant-btn, .sidebar ul li .restaurant-page-btn{
     border: none;
-    height: 100%;
     width: 100%;
     font-size: 18px;
-    line-height: 4rem;
-    box-sizing: border-box;
+    line-height: 22px;
+    text-align: left;
     transition: all 0.3s;
     color: var(--body-font-color);
     background-color: var(--section-background-color);
@@ -117,12 +138,12 @@ body{
     font-size: 14px;
 }
 
-.sidebar ul li:hover{
-    background-color: #f5f5f0;
+.sidebar ul li a:hover{
+    color: var(--dark-color);
 }
 
-.sidebar ul li .add-restaurant-btn:hover, .restaurant-page-btn:hover, .erase-restaurant-btn:hover{
-    background-color: #f5f5f0;
+.sidebar ul li .add-restaurant-btn:hover, .sidebar ul li .restaurant-page-btn:hover{
+    color: var(--dark-color);
 }
 
 .profile-info, .edit-profile{
@@ -131,13 +152,21 @@ body{
     margin-top: 2rem;
     padding: 6rem 2rem 0;
     margin-left: 2rem;
+    margin-right: 3rem;
 }
 
+.profile-info img{
+    margin-top: 3rem;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 3rem;
+    border-radius: 50%;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
+}
 
 .edit-profile{
     padding: 0 2rem;
-    margin-top: 2rem;
-    margin-left: 2rem;
+    margin: 2rem 3rem 2rem 2rem;
 }
 
 .profile-info h2, .edit-profile h2, .last-orders h2{
@@ -158,13 +187,14 @@ body{
     color: var(--body-font-color);
     font-size: 1.6rem;
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 40% 60%;
+    align-items: center;
     border-bottom: 1px solid var(--section-background-color);
     margin-bottom: 1rem;
     margin-top: 1rem;
 }
 
-.edit-profile .input-field input{
+.edit-profile .input-field .info-input, .edit-profile #image-button-label{
     max-width: 500px;
     width: 100%;
     height: 50px;
@@ -186,18 +216,30 @@ body{
 
 .edit-profile p{
     color: #9c9a9a;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .profile-info .info label, .edit-profile .input-field label{
     font-weight: bold;
     margin-bottom: 0;
+    margin-right: 2rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
 }
 
 .profile-info .info label i, .edit-profile .input-field label i{
     margin-right: 1rem;
 }
 
+.buttons{
+    display: flex;
+    flex-direction: row;
+}
+
+.edit-profile span{
+    width: 100%;
+}
 
 .edit-profile-btn, .edit-profile .btn-solid, .erase-profile-btn{
     width: 80px;
@@ -210,16 +252,39 @@ body{
     font-size: 1.4rem;
     text-transform: uppercase;
     font-weight: bold;
-    margin-bottom: 6rem;
+    margin-bottom: 2rem;
     transition: all 0.5s;
 }
 
-.edit-profile .btn-solid{
+.erase-profile-btn{
+    width: 140px;
+}
+
+.edit-profile #image-button-label{
+    width: 200px;
+    padding-left: 10px;
+}
+
+.edit-profile #image-button-label:hover{
+   color: var(--dark-color);
+}
+
+.buttons span{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.edit-profile .btn-solid, .edit-profile .erase-profile-btn{
     margin-top: 1.5rem;
 }
 
 .edit-profile-btn:hover, .edit-profile .btn-solid:hover, .erase-profile-btn:hover{
     background-color: #2f2396;
+}
+
+.edit-profile .image-input{
+    display: none;
 }
 
 .last-orders{
@@ -228,41 +293,43 @@ body{
     margin-right: 4rem;
 }
 
-.last-orders .dishes .order{
+
+.last-orders .dishes-lt .order {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 40px;
 }
 
-.last-orders .dishes .info-order {
+.last-orders .dishes-lt .info-order {
     padding-top: 4rem;
     border-top: 1px solid var(--section-background-color);
 }
 
-.last-orders .dishes .info-order h3{
-    font-size: 20px;
+.last-orders .dishes-lt .info-order h3{
+    font-size: 22px;
     color: var(--dark-color);
     margin-bottom: 1rem;
 }
 
-.last-orders .dishes .info-order p{
+.last-orders .dishes-lt .info-order p{
     margin-top: 0.5rem;
-    font-size: 14px;
+    font-size: 16px;
     color: var(--body-font-color);
 }
 
-.last-orders .dishes .info-order label, .last-orders .dishes #price label{
-    font-size: 15px;
+.last-orders .dishes-lt .info-order label, .last-orders .dishes-lt #price label{
+    font-size: 18px;
     font-weight: bold;
 }
 
-.last-orders .dishes #price{
-    font-size: 15px;
+.last-orders .dishes-lt #price{
+    font-size: 16px;
     color: var(--body-font-color);
     margin-bottom: 1rem;
 }
 
-.last-orders .dishes .info-dish, .grid-container-rest #menu .order .info-dish{
+
+.last-orders .dishes-lt .info-dish, .grid-container-rest #menu .order .info-dish{
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-content: space-around;
@@ -274,7 +341,7 @@ body{
 
 .last-orders .info-dish h4, .grid-container-rest #menu .order .info-dish h4{
     color: var(--body-font-color);
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .last-orders .info-dish .image, .grid-container-rest #menu .order .info-dish .image{
@@ -295,7 +362,7 @@ body{
 .last-orders .info-dish .text, .grid-container-rest #menu .order .info-dish .text{
     grid-column-start: 2.25;
     color: var(--body-font-color);
-    font-size: 12px;
+    font-size: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -303,29 +370,99 @@ body{
 }
 
 
+
 .last-orders .info-dish:hover, .grid-container-rest #menu .order .info-dish:hover{
     background-color: var(--section-background-color);
 }
 
-
-@media (max-width: 768px){
-    .sidebar{
-        height: 87%;
+@media (max-width: 1314px) {
+    .sidebar ul .profile-page, .sidebar ul .last-orders-page, .sidebar ul li .add-restaurant-btn, .sidebar ul li .restaurant-page-btn{
+        font-size: 16px;
     }
 }
 
-@media (max-width: 991px) {
-    .sidebar{
-        height: 87%;
+@media (max-width: 733px){
+    .profile-info .info label, .edit-profile .input-field label{
+        line-height: 20px;
     }
 }
 
-@media (max-width: 1200px){
+@media (max-width: 760px){
     .sidebar{
-        height: 87%;
+        display: none;
     }
 
-    .sidebar .sidebar-options ul li{
-        font-size: 12px;
+    .grid-container-profile, .grid-container-profile .edit-profile-info, .grid-container-profile .last-orders{
+        display: block;
+        background-color: var(--section-background-color);
     }
+
+    .profile-info, .edit-profile, .last-orders{
+        background-color: var(--light-color);
+        padding: 2rem;
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.06);
+    }
+
+    header .icons #menu-bars{
+        display: inline-block;
+    }
+
+    header .navbar{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--light-color);
+        border-top: 0.1rem solid rgb(0, 0, 0, 0.2);
+        border-bottom: 0.1rem solid rgb(0, 0, 0, 0.2);
+        padding: 1rem;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+    header .navbar.active{
+        transition-duration: 0.3s;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header .navbar a, header .navbar #profile, header .navbar #latest-orders, header .navbar #add-restaurant, header .navbar #restaurant-page{
+        display: block;
+        text-align: center;
+        width: 100%;
+        padding: 1.5rem;
+        font-size: 2rem;
+        background-color: var(--section-background-color);
+    }
+
+    header .navbar a:hover, header .navbar #profile:hover, header .navbar #latest-orders:hover, header .navbar #add-restaurant:hover, header .navbar #restaurant-page:hover{
+        text-decoration: none;
+        color: var(--light-color);
+        background-color: var(--accent-color);
+    }
+
+    header .navbar #add-restaurant, header .navbar #restaurant-page{
+        padding: 0;
+        margin: 8px;
+    }
+
+    header .navbar .add-restaurant-btn, header .navbar .restaurant-page-btn{
+        padding:12px;
+        width: 100%;
+        height: 100%;
+        border: none;
+        font-family: var(--body-font-family);
+        font-size: 2rem;
+        color: #606060;
+        background-color: var(--section-background-color);
+    }
+
+    header .navbar .add-restaurant-btn:hover, header .navbar .restaurant-page-btn:hover{
+        text-decoration: none;
+        color: var(--light-color);
+        background-color: var(--accent-color);
+    }
+
+
 }

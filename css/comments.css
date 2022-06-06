@@ -49,8 +49,8 @@
 .rate {
     float: left;
     height: 2em;
-    padding: 0 10px;
 }
+
 .rate:not(:checked) > input {
     position:absolute;
     top:-9999px;
@@ -81,3 +81,11 @@
 .rate > label:hover ~ input:checked ~ label {
     color: #c59b08;
 }
+
+
+@media (max-width: 1016px){
+    .rate:not(:checked) > label{
+        font-size: 1.8em;
+    }
+}
+

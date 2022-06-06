@@ -44,7 +44,7 @@
                 <span class="clear2" onclick="document.getElementById('searchRest2').value=''"></span>
             </div>
             <a class="active" href="../main_page.php">Restaurantes</a>
-            <a href="../about.php">Sobre</a>
+            <a class="active" href="../about.php">Sobre</a>
         </nav>
         <div class="icons">
             <i class="fas fa-bars" id="menu-bars"></i>
@@ -62,20 +62,74 @@
   </body>
 <?php }
 
+function drawProfileHeader($restaurant) { ?>
+  <!DOCTYPE html>
+  <html lang="en-US">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/profile.css"/>
+    <link rel="stylesheet" href="../css/comments.css">
+    <script src="../javascript/heartDish.js" defer></script>
+    <script src="../javascript/heart.js" defer></script>
+    <script src="../javascript/restaurantPage.js" defer></script>
+    <script src="../javascript/scriptsMealFilter.js" defer></script>
+    <script src="../javascript/restaurantFilter.js" defer></script>
+    <script src="../javascript/restaurantSearch.js" defer></script>
+    <script src="../javascript/scriptFavorites.js" defer></script>
+    <script src="../javascript/script.js" defer></script>
+<body>
+    <header>
+        <div class="header-left">
+            <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
+        </div>
+        <nav class="navbar">
+            <a class="active" id="profile" href="../profile.php">Perfil de utilizador</a>
+            <a class="active" id="latest-orders" href="../latest_orders.php">Pedidos anteriores</a>
+            <?php if($restaurant===false){?>
+                <div class="active" id="add-restaurant"><button class="add-restaurant-btn" name="addRestaurantButton" onclick="window.location.href = '../addRestaurant.php';">Adicionar restaurante</button></div>
+            <?php }
+            else{?>
+                <div class="active" id="restaurant-page"><button class="restaurant-page-btn" name="restaurantPageButton" onclick="window.location.href = '../restView.php?id=<?=$restaurant->id?>';">Página do restaurante</button></div>
+            <?php } ?>
+            <a class="active" href="../main_page.php">Restaurantes</a>
+            <a class="active" href="../about.php">Sobre</a>
+        </nav>
+        <div class="icons">
+            <i class="fas fa-bars" id="menu-bars"></i>
+            <a href="../favorites.php" class="fas fa-heart"></a>
+            <a href="../profile.php" class="fas fa-user"></a>
+            <a href="../cart.php" class="fas fa-shopping-cart"></a>
+            <button class="logout-btn" onclick="window.location.href = '../logout_action.php';">Sair</button>
+        </div>
+    </header>
+  </body>
+  <?php }
+
 function drawRestViewHeader($id) { ?>
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-    <title></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <script src="../javascript/script.js" defer></script>
     <script src="javascript/heart.js" defer></script>
     <script src="javascript/orderSelect.js" defer></script>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/comments.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/comments.css">
+    <link rel="stylesheet" href="../css/profile.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <script src="../javascript/heartDish.js" defer></script>
+    <script src="../javascript/heart.js" defer></script>
+    <script src="../javascript/restaurantPage.js" defer></script>
+    <script src="../javascript/scriptsMealFilter.js" defer></script>
+    <script src="../javascript/restaurantFilter.js" defer></script>
+    <script src="../javascript/restaurantSearch.js" defer></script>
+    <script src="../javascript/scriptFavorites.js" defer></script>
+    <script src="../javascript/script.js" defer></script>
 </head>
 <body>
 
@@ -108,7 +162,7 @@ function drawAboutUs() { ?>
     <div class="about">
         <div class="about-site">
             <p>
-                Somos uma empresa que trabalha com os restaurantes da sua zona, levando os seus pedidos diretamente à sua porta,
+                Somos uma empresa que trabalha com os restaurantes da sua zona, levando os seus pedidos <br> diretamente à sua porta,
                 sem ter de mexer algo mais que um dedo.
             </p>
             <h3>
@@ -118,7 +172,7 @@ function drawAboutUs() { ?>
         <div class="how-to-use">
             <div class="box-container">
                 <div class="box">
-                    <img src="https://picsum.photos/600/300" alt="burger" class="image" />
+                    <img src="../images/about1.jpg" alt="burger" class="image" />
                     <h3>Procurar</h3>
                     <p>
                         Larica tem centenas de restaurantes à sua escolha. Quando abre o website, pode procurar um restaurante ou cozinha em particular.
@@ -127,7 +181,7 @@ function drawAboutUs() { ?>
 
 
                 <div class="box">
-                    <img src="https://picsum.photos/600/300" alt="burger" class="image" />
+                    <img src="../images/about2.jpg" alt="burger" class="image" />
                     <h3>Pedir</h3>
                     <p>
                         Quando decidir o que quer encomendar basta tocar no '+' para que o pedido seja adicionado ao seu carrinho de compras.
@@ -136,7 +190,7 @@ function drawAboutUs() { ?>
                 </div>
 
                 <div class="box">
-                    <img src="https://picsum.photos/600/300" alt="burger" class="image" />
+                    <img src="../images/about3.jpg" alt="burger" class="image" />
                     <h3>Pagar</h3>
                     <p>
                         Quando estiver pronto para fazer check-out, irá ver o seu endereço (com possibilidade de modificá-lo para esse pedido específico) e o preço do pedido.
@@ -182,13 +236,13 @@ function drawAboutUs() { ?>
             <div class="sidebar">
                 <h3>Conta</h3>
                 <ul class="sidebar-options">
-                    <li class="profile-page"><a href="../profile.php">Perfil de utilizador <i class="fas fa-chevron-right" id="chevron-right"></i></a></li>
-                    <li class="last-orders-page"><a href="../latest_orders.php">Pedidos anteriores <i class="fas fa-chevron-right" id="chevron-right"></i></a></li>
+                    <li class="profile-page"><a href="../profile.php"> Perfil de utilizador <div class="icon"><i class="fas fa-chevron-right" id="chevron-right"></i></div></a></li>
+                    <li class="last-orders-page"><a href="../latest_orders.php">Pedidos anteriores <div class="icon"><i class="fas fa-chevron-right" id="chevron-right"></i></div></a></li>
                     <?php if($restaurant===false){?>
-                    <li class="add-restaurant"><button class="add-restaurant-btn" name="addRestaurantButton" onclick="window.location.href = '../addRestaurant.php';">Adicionar restaurante</button></li>
+                        <li class="add-restaurant"><button class="add-restaurant-btn" name="addRestaurantButton" onclick="window.location.href = '../addRestaurant.php';">Adicionar restaurante <div class="icon"><i class="fas fa-chevron-right" id="chevron-right"></i></div></button></li>
                     <?php }
                     else{?>
-                    <li class="restaurant-page"><button class="restaurant-page-btn" name="restaurantPageButton" onclick="window.location.href = '../restView.php?id=<?=$restaurant->id?>';">Página do restaurante <i class="fas fa-chevron-right" id="chevron-right"></i></button></li>
+                        <li class="restaurant-page"><button class="restaurant-page-btn" name="restaurantPageButton" onclick="window.location.href = '../restView.php?id=<?=$restaurant->id?>';">Página do restaurante <div class="icon"><i class="fas fa-chevron-right" id="chevron-right"></i></div></button></li>
                     <?php } ?>
                 </ul>
             </div>

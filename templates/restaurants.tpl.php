@@ -28,8 +28,6 @@ function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db, 
 
 <?php }
 
-
-
 function drawRestaurantView(PDO $db, int $idRestaurant, array $dishes)
 {
     $restaurant = Restaurant::getRestaurant($db, $idRestaurant); ?>

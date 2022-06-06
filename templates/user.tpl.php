@@ -16,7 +16,7 @@ function drawLatestOrders(Session $session, PDO $db, User $user)
         drawSidebar($restaurant); ?>
         <div class="last-orders">
             <h2>Pedidos anteriores</h2>
-            <section class="dishes">
+            <section class="dishes-lt">
                 <?php
                 $orders = Order::getOrdersUser($db, $user->id);
                 if ($orders != null) {
@@ -69,10 +69,10 @@ function drawProfile($user, $restaurant)
             <h2>Perfil</h2>
             <img src="../images/profiles/<?= $user->image ?>.jpg" alt="Profile picture">
             <div class="info">
-                <span><label><i class="fas fa-user"></i>Nome de utilizador:</label><?= $user->username ?></span>
+                <span><label><i class="fas fa-user"></i>Nome utilizador:</label><?= $user->username ?></span>
                 <span><label><i class="fas fa-envelope"></i>Email: </label><?= $user->email ?></span>
                 <span><label><i class="fas fa-home"></i>Endereço: </label><?= $user->address ?></span>
-                <span><label><i class="fas fa-phone"></i>Número de telemóvel: </label><?= $user->phoneNumber ?></span>
+                <span><label><i class="fas fa-phone"></i>Número telemóvel:</label><?= $user->phoneNumber ?></span>
             </div>
             <button class="edit-profile-btn" name="editProfileButton"
                     onclick="window.location.href = '../edit_profile_action.php';">Editar
@@ -90,44 +90,46 @@ function editProfileForm(User $user, $restaurant)
             <form action="../formEditProfile.php" method="post" class="edit-profile" enctype="multipart/form-data">
                 <h2 class="title">Editar Perfil</h2>
                 <div class="input-field">
-                    <label for="imageRestaurant">Imagem:</label>
-                    <input type="file" name="image" accept="image/png,image/jpeg">
+                    <label for="imageRestaurant"><i class="fas fa-camera"></i>Imagem:</label>
+                    <label id="image-button-label">
+                    <input class="image-input" type="file" name="image" accept="image/png,image/jpeg">Escolha uma imagem</label>
                 </div>
                 <div class="input-field">
-                    <label><i class="fas fa-user"></i>Nome de utilizador:</label>
-                    <input type="text" name="username" value="<?= $user->username ?>"/>
+                    <label><i class="fas fa-user"></i>Nome utilizador:</label>
+                    <input class="info-input" type="text" name="username" value="<?= $user->username ?>"/>
                 </div>
 
                 <div class="input-field">
                     <label><i class="fas fa-envelope"></i>Email: </label>
-                    <input type="text" name="email" value="<?= $user->email ?>"/>
+                    <input class="info-input" type="text" name="email" value="<?= $user->email ?>"/>
                 </div>
 
                 <div class="input-field">
                     <label><i class="fas fa-home"></i>Morada: </label>
-                    <input type="text" name="address" placeholder="<?= $user->address ?>"/>
+                    <input class="info-input" type="text" name="address" placeholder="<?= $user->address ?>"/>
                 </div>
 
                 <div class="input-field">
-                    <label><i class="fas fa-phone"></i>Número de telemóvel: </label>
-                    <input type="text" name="phoneNumber" placeholder="<?= $user->phoneNumber ?>"/>
+                    <label><i class="fas fa-phone"></i>Número telemóvel: </label>
+                    <input class="info-input" type="text" name="phoneNumber" placeholder="<?= $user->phoneNumber ?>"/>
                 </div>
 
                 <div class="input-field">
                     <label><i class="fas fa-lock"></i>Palavra-passe: </label>
-                    <input type="password" name="password" placeholder="Editar palavra-passe"/>
+                    <input class="info-input" type="password" name="password" placeholder="Editar palavra-passe"/>
                 </div>
                 <p class="warning">A palavra-passe deve conter no mínimo 5 caracteres e incluir letras e números</p>
                 <div class="input-field">
                     <label><i class="fas fa-lock"></i>Palavra-passe: </label>
-                    <input type="password" name="confirm_password" placeholder="Confirmar palavra-passe"/>
+                    <input class="info-input" type="password" name="confirm_password" placeholder="Confirmar palavra-passe"/>
                 </div>
+                <div class="buttons">
+                    <input type="submit" name="saveEdit" class="btn-solid" value="Salvar" formmethod="post">
 
-                <input type="submit" name="saveEdit" class="btn-solid" value="Salvar" formmethod="post">
+                    <span><button class="erase-profile-btn" name="eraseProfileButton"
+                        onclick="window.location.href = '../eraseProfile.php';">Apagar Conta</button></span>
+                </div>
             </form>
-                <button class="erase-profile-btn" name="eraseProfileButton"
-                        onclick="window.location.href = '../eraseProfile.php';">Apagar Conta
-                </button>
         </div>
     </div>
     <?php
