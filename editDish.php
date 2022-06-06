@@ -24,7 +24,7 @@ drawRestViewHeader($dish->idRestaurant);
     <input id="nameDish" type="text" name="nameDish" value="<?= $dish->name ?>">
 
     <label for="priceDish">Price:</label>
-    <input id="priceDish" type="text" name="priceDish" value="<?= $dish->price ?>">
+    <input id="priceDish" type="number" step="0.01" name="priceDish" value="<?= $dish->price ?>">
 
     <label for="mealDish">Categoria:</label>
     <?php foreach ($meals as $meal) { ?>

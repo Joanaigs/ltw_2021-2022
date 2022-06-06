@@ -25,7 +25,7 @@ $typeDishes=Filter::getTypeDish($db);
     <input id="nameDish" type="text" name="nameDish">
 
     <label for="priceDish">Price:</label>
-    <input id="priceDish" type="number" name="priceDish">
+    <input id="priceDish" type="number" step="0.01" name="priceDish">
 
     <label for="mealDish">Categoria:</label>
     <?php foreach ($meals as $meal) { ?>
