@@ -114,9 +114,14 @@ function drawRestViewHeader($id) { ?>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../css/profile.css"/>
+
+    <script src="../javascript/script.js" defer></script>
+    <script src="javascript/heart.js" defer></script>
+    <script src="javascript/orderSelect.js" defer></script>
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/comments.css">
+    <link rel="stylesheet" href="../css/profile.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="../javascript/heartDish.js" defer></script>
     <script src="../javascript/heart.js" defer></script>
     <script src="../javascript/restaurantPage.js" defer></script>
@@ -131,9 +136,9 @@ function drawRestViewHeader($id) { ?>
 <header>
     <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
     <nav class="navbar">
-        <a href="../restView.php?id=<?=$id?>">Menu</a>
-        <a href="../state.php?id=<?=$id?>">Estado dos Pedidos</a>
-        <a href="../reviews.php?id=<?=$id?>">Avaliações e comentários</a>
+        <a href="restView.php?id=<?=$id?>">Menu</a>
+        <a href="state.php?id=<?=$id?>">Estado dos Pedidos</a>
+        <a href="../comments.php?id=<?=$id?>">Avaliações e comentários</a>
     </nav>
     <div class="icons">
         <i class="fas fa-bars" id="menu-bars"></i>

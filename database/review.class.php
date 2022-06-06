@@ -71,4 +71,9 @@ class Review
         $stmt = $db->prepare('DELETE FROM Review where id=?' );
         $stmt->execute(array($id));
     }
+
+    static function updateReview(PDO $db, int $id, string $review, int $rating)  {
+        $stmt = $db->prepare('Update Review set review=?, rating=? where id=?' );
+        $stmt->execute(array($review,$rating, $id));
+    }
 }

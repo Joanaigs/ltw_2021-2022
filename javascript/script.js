@@ -20,3 +20,37 @@ if(menu) {
         navbar.classList.toggle('active');
     }
 }
+
+function editReview(id){
+    let showReview = document.querySelectorAll('.showReview')
+    let editReview = document.querySelectorAll('.editReview')
+    for(let i=0; i<showReview.length;i++ ) {
+        if (parseInt(showReview[i].id) === id) {
+            let showReviewDisplay=showReview[i].style.display;
+            if (showReviewDisplay === 'block') {
+                showReview[i].style.display = 'none'
+                editReview[i].style.display = 'block'
+            } else {
+                showReview[i].style.display = 'block'
+                editReview[i].style.display = 'none'
+            }
+        }
+    }
+}
+
+function editComment(id){
+    let showComment = document.querySelectorAll('.showComment')
+    let editComment = document.querySelectorAll('.editComment')
+    for(let i=0; i<showComment.length;i++ ) {
+        if (parseInt(showComment[i].id) === id) {
+            let showCommentDisplay=showComment[i].style.display;
+            if (showCommentDisplay === 'block') {
+                showComment[i].style.display = 'none'
+                editComment[i].style.display = 'block'
+            } else {
+                showComment[i].style.display = 'block'
+                editComment[i].style.display = 'none'
+            }
+        }
+    }
+}

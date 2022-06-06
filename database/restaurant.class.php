@@ -239,9 +239,15 @@ class Restaurant {
         }
     }
 
-    static function updateRestaurants(PDO $db, int $idRe, string $name, string $address, string $cate)  {
-        $stmt = $db->prepare('Update Restaurant set name=?, address=? where id=?' );
-        $stmt->execute(array($name, $address, $idRe));
+    static function updateRestaurants(PDO $db, int $idRe, string $name, string $address, string $cate, $image)  {
+        if($image===null) {
+            $stmt = $db->prepare('Update Restaurant set name=?, address=? where id=?');
+            $stmt->execute(array($name, $address, $idRe));
+        }
+        else{
+            $stmt = $db->prepare('Update Restaurant set name=?, address=?, image=? where id=?');
+            $stmt->execute(array($name, $address, $image, $idRe));
+        }
 
         $stmt = $db->prepare('Update CategoryRestaurant set idCategory=(select Category.id from Category where id=?) where idRestaurant=?' );
         $stmt->execute(array($cate, $idRe));
