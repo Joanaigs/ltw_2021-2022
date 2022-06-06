@@ -5,7 +5,7 @@
     require_once('database/cart.class.php');
 
     function drawCart(PDO $db, Session $session, array $restaurants) { ?>
-        <div class="container">
+        <div class="container-cart">
             <section id="left-section"></section>
             <div id="cart">
                 <h1><i class="fas fa-shopping-cart"></i>Carrinho</h1>
@@ -22,11 +22,13 @@
                                     <?php $total += $dish->price*$dish->number?>
                                     <div class="name-price">
                                         <a href="../restaurant.php?id=<?=$dish->idRestaurant?>#<?=$dish->name?>"><?=$dish->name?> <span> x<?=$dish->number?></span></a>
-                                        <a href="../updadeCartNumber.php?idDish=<?= $dish->id ?>&number=<?=$dish->number+1?>&idRestaurant=<?=$dish->idRestaurant?>" class="fa-solid fa-plus"></a>
-                                        <a href="../updadeCartNumber.php?idDish=<?= $dish->id ?>&number=<?=$dish->number-1?>&idRestaurant=<?=$dish->idRestaurant?>" class="minus">-</a>
                                         <p><?=$dish->price*$dish->number?> €</p>
                                     </div>
-                                    <button class="erase-fromCart-btn" name="eraseFromButton" onclick="window.location.href = '../removeFromCart.php?idRestaurant=<?=$dish->idRestaurant?>&idDish=<?=$dish->id?>&cart=true';"> Remover</button>
+                                    <div class="edit-cart">
+                                        <a href="../updadeCartNumber.php?idDish=<?= $dish->id ?>&number=<?=$dish->number+1?>&idRestaurant=<?=$dish->idRestaurant?>" class="fa-solid fa-plus"></a>
+                                        <a href="../updadeCartNumber.php?idDish=<?= $dish->id ?>&number=<?=$dish->number-1?>&idRestaurant=<?=$dish->idRestaurant?>" class="minus">-</a>
+                                    </div>
+                                    <button class="erase-fromCart-btn" name="eraseFromButton" onclick="window.location.href = '../removeFromCart.php?idRestaurant=<?=$dish->idRestaurant?>&idDish=<?=$dish->id?>&cart=true';"><i class="fas fa-trash-alt"></i></button>
                                 </article>
                             <?php } ?>
                             </div>

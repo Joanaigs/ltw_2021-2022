@@ -253,41 +253,41 @@ body{
     margin-right: 4rem;
 }
 
-.last-orders .dishes .order {
+.last-orders .dishes-lt .order {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 40px;
 }
 
-.last-orders .dishes .info-order {
+.last-orders .dishes-lt .info-order {
     padding-top: 4rem;
     border-top: 1px solid var(--section-background-color);
 }
 
-.last-orders .dishes .info-order h3{
+.last-orders .dishes-lt .info-order h3{
     font-size: 20px;
     color: var(--dark-color);
     margin-bottom: 1rem;
 }
 
-.last-orders .dishes .info-order p{
+.last-orders .dishes-lt .info-order p{
     margin-top: 0.5rem;
     font-size: 14px;
     color: var(--body-font-color);
 }
 
-.last-orders .dishes .info-order label, .last-orders .dishes #price label{
+.last-orders .dishes-lt .info-order label, .last-orders .dishes-lt #price label{
     font-size: 15px;
     font-weight: bold;
 }
 
-.last-orders .dishes #price{
+.last-orders .dishes-lt #price{
     font-size: 15px;
     color: var(--body-font-color);
     margin-bottom: 1rem;
 }
 
-.last-orders .dishes .info-dish{
+.last-orders .dishes-lt .info-dish{
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-content: space-around;

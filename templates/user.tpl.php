@@ -16,7 +16,7 @@ function drawLatestOrders(Session $session, PDO $db, User $user)
         drawSidebar($restaurant); ?>
         <div class="last-orders">
             <h2>Pedidos anteriores</h2>
-            <section class="dishes">
+            <section class="dishes-lt">
                 <?php
                 $orders = Order::getOrdersUser($db, $user->id);
                 if ($orders != null) {

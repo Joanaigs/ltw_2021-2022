@@ -31,6 +31,7 @@ function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db ,
 
 function drawRestaurantView(PDO $db, int $idRestaurant, array $dishes){
     $restaurant = Restaurant::getRestaurant($db, $idRestaurant);?>
+        <div class="container-restOwner">
     <h1><?= $restaurant -> name?></h1>
     <div class="erase-restaurant"><button class="erase-restaurant-btn" name="eraseRestaurantButton" onclick="window.location.href = '../eraseRestaurant.php';">Eliminar restaurante</button></div>
     <section id = "dishes">
@@ -43,5 +44,6 @@ function drawRestaurantView(PDO $db, int $idRestaurant, array $dishes){
             <p class = "info"> <?= $dish -> price?> €</p>
         <?php }?>
     </section>
+        </div>
 <?php }?>
 
