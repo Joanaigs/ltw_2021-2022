@@ -39,7 +39,7 @@ function drawRestaurantView(PDO $db, int $idRestaurant, array $dishes)
         <span class="rest-image" style='background-image:url("../images/restaurants/<?=$restaurant->image?>.jpg"')></span>
         <div class="rest-name">
             <h1><?= $restaurant->name ?></h1>
-            <a class="button-edit" href="../editRestaurant.php?id=<?= $restaurant->image ?>"><i
+            <a class="button-edit" href="../editRestaurant.php?id=<?= $restaurant->id ?>"><i
                         class="fas fa-pencil"></i> Editar dados</a>
             <div class="erase-restaurant">
                 <button class="erase-restaurant-btn" name="eraseRestaurantButton"

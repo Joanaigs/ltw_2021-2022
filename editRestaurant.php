@@ -20,7 +20,7 @@ drawRestViewHeader(intval($idRest));
 <link rel="stylesheet" href="css/profile.css"/>
 <form action="updateRestaurant.php?id=<?= $idRest ?>" method="post" class="dish" enctype="multipart/form-data">
     <label for="photoRestaurant">Photo:</label>
-    <input type="file" name="photoRestaurant" accept="image/png,image/jpeg">
+    <input type="file" name="image" accept="image/png,image/jpeg">
 
     <label for="nameRestaurant">Nome:</label>
     <input id="nameRestaurant" type="text" name="nameRestaurant" value="<?= $restaurant->name ?>">

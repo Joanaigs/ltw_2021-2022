@@ -69,6 +69,7 @@ function drawRestViewHeader($id) { ?>
     <title></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../javascript/script.js" defer></script>
     <script src="javascript/heart.js" defer></script>
     <script src="javascript/orderSelect.js" defer></script>
     <link rel="stylesheet" href="css/style.css">
@@ -83,7 +84,7 @@ function drawRestViewHeader($id) { ?>
     <nav class="navbar">
         <a href="restView.php?id=<?=$id?>">Menu</a>
         <a href="state.php?id=<?=$id?>">Estado dos Pedidos</a>
-        <a href="reviews.php?id=<?=$id?>">Avaliações e comentários</a>
+        <a href="../comments.php?id=<?=$id?>">Avaliações e comentários</a>
     </nav>
     <div class="icons">
         <i class="fas fa-bars" id="menu-bars"></i>

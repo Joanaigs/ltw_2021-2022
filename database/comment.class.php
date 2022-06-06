@@ -58,4 +58,9 @@ class Comment
         $stmt = $db->prepare('DELETE FROM Comment where id=?' );
         $stmt->execute(array($id));
     }
+
+    static function updateComment(PDO $db, int $id, string $comment)  {
+        $stmt = $db->prepare('Update Comment set comment=? where id=?' );
+        $stmt->execute(array($comment, $id));
+    }
 }
