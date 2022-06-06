@@ -150,12 +150,10 @@ function drawRestViewHeader($id) { ?>
 function drawFooter() { ?>
     <link rel="stylesheet" href="css/style.css">
     <footer class="credit" id="real">&copy; Larica LTW 2021/2022 - All rights reserved</footer>
-
-
 <?php }
 
 function drawAboutUs() { ?>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <div class="about">
         <div class="about-site">
             <p>

@@ -7,9 +7,8 @@ $session = new Session();
 require_once('database/restaurant.class.php');
 require_once('templates/common.tpl.php');
 require_once('templates/restaurants.tpl.php');
-
-
-$db = $db = new PDO('sqlite:example.db');
+require_once('database/connection.db.php');
+$db = getDatabaseConnection();
 
 
 

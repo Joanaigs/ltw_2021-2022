@@ -392,17 +392,23 @@ header .icons #menu-bars{
     font-size: 14px;
 }
 
-.about .how-to-use .box-container .box{
-    margin-left: 2rem;
-    margin-right: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.about .how-to-use .box-container{
+    margin-left: 5em;
+    margin-right: 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 50px;
     justify-content: center;
 }
 
+.about .how-to-use .box-container .box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .about .how-to-use .box-container .box .image{
-    width: 350px;
+    width: 100%;
     height: 220px;
 }
 
@@ -458,6 +464,7 @@ header .icons #menu-bars{
 }
 
 #real{
+    position: sticky;
     margin-top: 0;
     border-top: .1rem solid rgb(0,0,0,0.1);
 }
@@ -474,7 +481,6 @@ header .icons #menu-bars{
 
 .container-cart #right-section{
     background-image: linear-gradient(-45deg, #30296b 0%, var(--dark-color) 100%);
-    padding: 3rem 12% 2rem 17%;
 }
 
 #cart h1{
@@ -666,7 +672,7 @@ body > footer{
 .grid-container{
     grid-area: main;
     display: grid;
-    grid-template-columns: 0.65fr 2.35fr;
+    grid-template-columns: auto auto;
 }
 
 .grid-container.side{
@@ -727,6 +733,13 @@ body > footer{
 
 }
 
+
+#typeOfRestaurant h2{
+    justify-self: center;
+    font-size: 18px;
+    margin: 6rem 4rem 1rem;
+    color: var(--dark-color);}
+
 #meal a{
     color: var(--body-font-color);
     text-decoration: none;
@@ -764,6 +777,7 @@ body > footer{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+
 }
 #typeOfDish label{
     padding-left: 60px;
@@ -812,7 +826,6 @@ body > footer{
 
 
 #typeOfRestaurant label{
-    padding-left: 20px;
     font-size: 15px;
     color: #444444;
 }
@@ -919,28 +932,74 @@ h1{
 
 .page #restaurants{
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+    justify-content: space-between;
+    margin-top: 4rem;
+    margin-bottom: 6rem;
 }
 
-.page #restaurants section{
-    margin-right: 2rem;
-    margin-left: 2rem;
+.page #restaurants article{
+    padding: 1rem 2rem;
+    background-color: var(--light-color);
+    border-radius: 10px;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s;
 }
 
-.page #restaurants a{
+.page #restaurants article:hover{
+    background-color: #f5f5f0;
+}
+
+.page #restaurants article .text{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+}
+.page #restaurants article .text a{
     color: var(--dark-color);
     font-size: 2rem;
     text-decoration: none;
-    margin-bottom: 8rem;
-    right: 2rem;
+}
+
+.page #restaurants article .text .section-filter{
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+}
+
+.page #restaurants article .text .section-filter h4{
+    color: var(--dark-color);
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.page #restaurants article .rating{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.5rem;
+}
+
+.page #restaurants article h4{
+    color: var(--dark-color);
+    font-size: 14px;
+    align-self: center;
+    margin-left: auto;
+}
+
+.page #restaurants article h4 i{
+    margin-left: 0.5rem;
+    color: #fff15c;
 }
 
 .page #restaurants img{
     border-radius: 10px;
-    width: 330px;
+    width: 100%;
     height: 200px;
     box-shadow: var(--box-shadow);
-    margin-top:2rem;
+    align-self: center;
 }
 
 .reviews-flex-container{
@@ -952,7 +1011,6 @@ h1{
 
 .reviews-flex-container .image{
     height: 350px;
-    background-image: url("../images/lareira-serralves.jpeg");
     position: relative;
 
 }
@@ -1537,4 +1595,3 @@ form button{
         align-items: end;
     }
 }
-

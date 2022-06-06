@@ -27,6 +27,21 @@ class Filter {
         }
         return $filters;
     }
+
+    static function getFilterfromRestaurant(PDO $db, int $id)
+    {
+        $stmt = $db->prepare('
+        SELECT name
+        FROM Category, CategoryRestaurant
+        where idRestaurant=? and Category.id = CategoryRestaurant.idCategory
+      ');
+        $stmt->execute(array($id));
+        $filter = $stmt->fetch();
+
+        return $filter['name'];
+    }
+
+
     static function getMeals(PDO $db):array  {
         $stmt = $db->prepare('
         SELECT *

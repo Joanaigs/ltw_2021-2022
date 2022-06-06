@@ -7,7 +7,7 @@ class Dish{
     public int $idRestaurant;
     public string $name;
     public float $price;
-    public string $photo;
+    public int $image;
     public int $idMeal;
     public int $idTypeOfDish;
     public string $meal;
@@ -18,13 +18,13 @@ class Dish{
 
 
 
-    public function __construct(int $id, int $idRestaurant, string  $name, float $price, string $photo, int $idMeal, int $idTypeOfDish, string $meal){
+    public function __construct(int $id, int $idRestaurant, string  $name, float $price, int $image, int $idMeal, int $idTypeOfDish, string $meal){
 
         $this->id=$id;
         $this->idRestaurant = $idRestaurant;
         $this->name=$name;
         $this->price=$price;
-        $this->photo=$photo;
+        $this->image=$image;
         $this->idMeal=$idMeal;
         $this->idTypeOfDish=$idTypeOfDish;
         $this->meal=$meal;
@@ -32,7 +32,7 @@ class Dish{
 
     static public function getDishesRestaurant(PDO $db, string $id, Session $session): array{
         $stmt = $db -> prepare('
-                SELECT Dish.id as id, idRestaurant, Dish.name as name, price, photo, idMeal, idTypeOfDish, Meal.name as mealName
+                SELECT Dish.id as id, idRestaurant, Dish.name as name, price, image, idMeal, idTypeOfDish, Meal.name as mealName
                 FROM Dish, Meal
                 WHERE idRestaurant = ? and idMeal=Meal.id
                 Order by idMeal, name
@@ -48,7 +48,7 @@ class Dish{
                 $dish['idRestaurant'],
                 $dish['name'],
                 $dish['price'],
-                $dish['photo'],
+                $dish['image'],
                 $dish['idMeal'],
                 $dish['idTypeOfDish'],
                 $dish['mealName']
@@ -73,7 +73,7 @@ class Dish{
     }
 
     static function searchDishes(PDO $db, string $search, Session $session, int $idRest) : array {
-        $stmt = $db->prepare('SELECT Dish.id as id, idRestaurant, Dish.name as name, price, photo, idMeal, idTypeOfDish, Meal.name as mealName
+        $stmt = $db->prepare('SELECT Dish.id as id, idRestaurant, Dish.name as name, price, image, idMeal, idTypeOfDish, Meal.name as mealName
                 FROM Dish, Meal WHERE idMeal=Meal.id and idRestaurant = ? and Dish.name LIKE ? ');
         $stmt->execute(array($idRest ,'%'. $search . '%'));
 
@@ -85,7 +85,7 @@ class Dish{
                 $dish['idRestaurant'],
                 $dish['name'],
                 $dish['price'],
-                $dish['photo'],
+                $dish['image'],
                 $dish['idMeal'],
                 $dish['idTypeOfDish'],
                 $dish['mealName']
@@ -111,7 +111,7 @@ class Dish{
 
     static function getFavoriteDishes(PDO $db,Session $session, int $id) : array {
         $stmt = $db -> prepare('
-                SELECT Dish.id, Dish.idRestaurant, Dish.name, Dish.price, Dish.photo, Dish.idMeal,
+                SELECT Dish.id, Dish.idRestaurant, Dish.name, Dish.price, Dish.image, Dish.idMeal,
                        Dish.idTypeOfDish, Meal.name as mealName
                 FROM FavoriteDish, Dish, Meal
                 WHERE FavoriteDish.idDish == Dish.id AND FavoriteDish.idUser == ? AND Dish.idMeal == Meal.id
@@ -127,7 +127,7 @@ class Dish{
                 $dish['idRestaurant'],
                 $dish['name'],
                 $dish['price'],
-                $dish['photo'],
+                $dish['image'],
                 $dish['idMeal'],
                 $dish['idTypeOfDish'],
                 $dish['mealName']
@@ -153,22 +153,42 @@ class Dish{
     }
 
 
-    static function addDish(PDO $db, string $name, string $price, string $idMeal, int $idRest, string $idType)  {
-        $stmt = $db->prepare('INSERT INTO Dish(idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (?, ?, ?, ?, ?);');
-        $stmt->execute(array($idRest, $name, $price, $idType, $idMeal));
+    static function addDish(PDO $db, string $name, string $price, string $idMeal, int $idRest, string $idType, $idImage)  {
+        if($idImage===null){
+            $stmt = $db->prepare('INSERT INTO Dish(idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (?, ?, ?, ?, ?);');
+            $stmt->execute(array($idRest, $name, $price, $idType, $idMeal));
+        }
+        else{
+            $stmt = $db->prepare('INSERT INTO Dish(idRestaurant, name, price, idTypeOfDish, idMeal, image) VALUES (?, ?, ?, ?, ?, ?);');
+            $stmt->execute(array($idRest, $name, $price, $idType, $idMeal, $idImage));
+        }
+
     }
 
 
     static function removeDish(PDO $db, string $id)  {
+        $dish=self::getDish($db, $id);
         $stmt = $db->prepare('DELETE FROM Dish where id=?' );
         $stmt->execute(array($id));
+        $stmtk = $db->prepare('Select title from images where id=?' );
+        $stmtk->execute(array($dish->image));
+        $image=$stmtk->fetch();
+        echo $image['title'];
+        if($image['title']!=='Default') {
+            $stmt = $db->prepare('DELETE FROM Images where id=?');
+            $stmt->execute(array($dish->image));
+            $filePath = "images/dishes/$dish->image.jpg";
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
+        }
     }
 
 
     static function getDish(PDO $db, string $id) : Dish
     {
         $stmt = $db->prepare('
-        SELECT Dish.id as id, idRestaurant, Dish.name as name, price, photo, idMeal, idTypeOfDish, Meal.name as mealName
+        SELECT Dish.id as id, idRestaurant, Dish.name as name, price, image, idMeal, idTypeOfDish, Meal.name as mealName
         FROM Dish, Meal where Dish.id=? and idMeal=Meal.id
       ');
         $stmt->execute(array($id));
@@ -178,7 +198,7 @@ class Dish{
             $dish['idRestaurant'],
             $dish['name'],
             $dish['price'],
-            $dish['photo'],
+            $dish['image'],
             $dish['idMeal'],
             $dish['idTypeOfDish'],
             $dish['mealName']
@@ -187,7 +207,7 @@ class Dish{
 
     static function filterDish(PDO $db, $filter, $idRestaurant, Session $session)
     {
-        $stmt = $db->prepare('SELECT Dish.id as id, idRestaurant, Dish.name as name, price, photo, idMeal, idTypeOfDish, Meal.name as mealName
+        $stmt = $db->prepare('SELECT Dish.id as id, idRestaurant, Dish.name as name, price, image, idMeal, idTypeOfDish, Meal.name as mealName
             FROM Dish, Meal WHERE idTypeOfDish=? and idRestaurant=? and idMeal=Meal.id');
         $stmt->execute(array($filter, $idRestaurant));
 
@@ -199,7 +219,7 @@ class Dish{
                 $dish['idRestaurant'],
                 $dish['name'],
                 $dish['price'],
-                $dish['photo'],
+                $dish['image'],
                 $dish['idMeal'],
                 $dish['idTypeOfDish'],
                 $dish['mealName']
@@ -237,7 +257,7 @@ class Dish{
 
 
     static function isfavoriteDish(PDO $db, int $idDi, int $idUser)  {
-        $stmt = $db->prepare('SELECT Dish.id as id, idRestaurant, Dish.name as name, price, photo, idMeal, idTypeOfDish, Meal.name as mealName
+        $stmt = $db->prepare('SELECT Dish.id as id, idRestaurant, Dish.name as name, price, image, idMeal, idTypeOfDish, Meal.name as mealName
             FROM Dish, Meal, FavoriteDish WHERE FavoriteDish.idUser=? and FavoriteDish.idDish=? and FavoriteDish.idDish=Dish.id and idMeal=Meal.id');
         $stmt->execute(array($idUser, $idDi));
 
@@ -249,7 +269,7 @@ class Dish{
                 $dish['idRestaurant'],
                 $dish['name'],
                 $dish['price'],
-                $dish['photo'],
+                $dish['image'],
                 $dish['idMeal'],
                 $dish['idTypeOfDish'],
                 $dish['mealName']
@@ -261,7 +281,7 @@ class Dish{
             return false;
     }
     static function dishOrder(PDO $db, int $idOrder)  {
-        $stmt = $db->prepare('SELECT distinct Dish.id as id, idRestaurant, Dish.name as name, price, photo, idMeal, idTypeOfDish, Meal.name as mealName, number
+        $stmt = $db->prepare('SELECT distinct Dish.id as id, idRestaurant, Dish.name as name, price, image, idMeal, idTypeOfDish, Meal.name as mealName, number
             FROM Dish, Meal, DishOrder WHERE DishOrder.idOrder=? and DishOrder.idDish=Dish.id and idMeal=Meal.id');
         $stmt->execute(array($idOrder));
 
@@ -273,7 +293,7 @@ class Dish{
                 $dish['idRestaurant'],
                 $dish['name'],
                 $dish['price'],
-                $dish['photo'],
+                $dish['image'],
                 $dish['idMeal'],
                 $dish['idTypeOfDish'],
                 $dish['mealName']

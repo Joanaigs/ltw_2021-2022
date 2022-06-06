@@ -46,7 +46,7 @@ async function get_favoriteRestaurants(value) {
         text.append(ratingFixed)
 
         const img = document.createElement('img')
-        img.src = 'https://picsum.photos/600/300?' + restaurant.id
+        img.src = '../images/restaurants/' + restaurant.image +'.jpg'
         article.appendChild(img)
         article.appendChild(text)
 
@@ -90,7 +90,7 @@ async function get_favoriteDishes(value) {
         const img = document.createElement('img')
         const h3 = document.createElement('h3')
         h3.textContent = dish.name
-        img.src = 'https://picsum.photos/600/300?' + dish.id
+        img.src = img.src = '../images/dishes/' + dish.image +'.jpg'
         const p = document.createElement("p")
         p.textContent = 'Preço: ' + dish.price + '€'
         text.append(h3)
