@@ -157,7 +157,7 @@ function drawAboutUs() { ?>
     <div class="about">
         <div class="about-site">
             <p>
-                Somos uma empresa que trabalha com os restaurantes da sua zona, levando os seus pedidos diretamente à sua porta,
+                Somos uma empresa que trabalha com os restaurantes da sua zona, levando os seus pedidos <br> diretamente à sua porta,
                 sem ter de mexer algo mais que um dedo.
             </p>
             <h3>
@@ -167,7 +167,7 @@ function drawAboutUs() { ?>
         <div class="how-to-use">
             <div class="box-container">
                 <div class="box">
-                    <img src="https://picsum.photos/600/300" alt="burger" class="image" />
+                    <img src="../images/about1.jpg" alt="burger" class="image" />
                     <h3>Procurar</h3>
                     <p>
                         Larica tem centenas de restaurantes à sua escolha. Quando abre o website, pode procurar um restaurante ou cozinha em particular.
@@ -176,7 +176,7 @@ function drawAboutUs() { ?>
 
 
                 <div class="box">
-                    <img src="https://picsum.photos/600/300" alt="burger" class="image" />
+                    <img src="../images/about2.jpg" alt="burger" class="image" />
                     <h3>Pedir</h3>
                     <p>
                         Quando decidir o que quer encomendar basta tocar no '+' para que o pedido seja adicionado ao seu carrinho de compras.
@@ -185,7 +185,7 @@ function drawAboutUs() { ?>
                 </div>
 
                 <div class="box">
-                    <img src="https://picsum.photos/600/300" alt="burger" class="image" />
+                    <img src="../images/about3.jpg" alt="burger" class="image" />
                     <h3>Pagar</h3>
                     <p>
                         Quando estiver pronto para fazer check-out, irá ver o seu endereço (com possibilidade de modificá-lo para esse pedido específico) e o preço do pedido.

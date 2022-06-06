@@ -5,14 +5,17 @@ declare(strict_types=1);
 require_once('database/cart.class.php');
 
 
-    function drawCart(PDO $db, Session $session, array $restaurants) { ?>
+    function drawCart(PDO $db, Session $session, array $restaurants) {
+        $carrinho_vazio = true;?>
+
         <div class="container-cart">
             <section id="left-section"></section>
             <div id="cart">
                 <h1><i class="fas fa-shopping-cart"></i>Carrinho</h1>
             <?php foreach ($restaurants as $res) {?>
                <?php $cart = Cart::getCart($db, $session->getId(), $res->id);
-                if(!empty($cart)){?>
+                if(!empty($cart)){
+                    $carrinho_vazio=false;?>
                     <div class="each-rest">
                         <h2><a href="../restaurant.php?id=<?= $res->id ?>"><?= $res->name ?></a></h2>
                         <?php $total = 0; ?>
@@ -43,8 +46,9 @@ require_once('database/cart.class.php');
                             <button class="make-order-btn" type="submit">Checkout</button>
                         </form>
                     </div>
-                <?php } ?>
-            <?php } ?>
+                <?php }
+            } if($carrinho_vazio){?>
+                <h3>Carrinho vazio ...</h3> <?php } ?>
         </div>
         <section id="right-section"></section>
     </div>

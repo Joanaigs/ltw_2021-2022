@@ -155,6 +155,14 @@ body{
     margin-right: 3rem;
 }
 
+.profile-info img{
+    margin-top: 3rem;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 3rem;
+    border-radius: 50%;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
+}
 
 .edit-profile{
     padding: 0 2rem;
@@ -186,7 +194,7 @@ body{
     margin-top: 1rem;
 }
 
-.edit-profile .input-field input{
+.edit-profile .input-field .info-input, .edit-profile #image-button-label{
     max-width: 500px;
     width: 100%;
     height: 50px;
@@ -208,7 +216,7 @@ body{
 
 .edit-profile p{
     color: #9c9a9a;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .profile-info .info label, .edit-profile .input-field label{
@@ -224,6 +232,14 @@ body{
     margin-right: 1rem;
 }
 
+.buttons{
+    display: flex;
+    flex-direction: row;
+}
+
+.edit-profile span{
+    width: 100%;
+}
 
 .edit-profile-btn, .edit-profile .btn-solid, .erase-profile-btn{
     width: 80px;
@@ -240,12 +256,35 @@ body{
     transition: all 0.5s;
 }
 
-.edit-profile .btn-solid{
+.erase-profile-btn{
+    width: 140px;
+}
+
+.edit-profile #image-button-label{
+    width: 200px;
+    padding-left: 10px;
+}
+
+.edit-profile #image-button-label:hover{
+   color: var(--dark-color);
+}
+
+.buttons span{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.edit-profile .btn-solid, .edit-profile .erase-profile-btn{
     margin-top: 1.5rem;
 }
 
 .edit-profile-btn:hover, .edit-profile .btn-solid:hover, .erase-profile-btn:hover{
     background-color: #2f2396;
+}
+
+.edit-profile .image-input{
+    display: none;
 }
 
 .last-orders{
@@ -267,24 +306,24 @@ body{
 }
 
 .last-orders .dishes-lt .info-order h3{
-    font-size: 20px;
+    font-size: 22px;
     color: var(--dark-color);
     margin-bottom: 1rem;
 }
 
 .last-orders .dishes-lt .info-order p{
     margin-top: 0.5rem;
-    font-size: 14px;
+    font-size: 16px;
     color: var(--body-font-color);
 }
 
 .last-orders .dishes-lt .info-order label, .last-orders .dishes-lt #price label{
-    font-size: 15px;
+    font-size: 18px;
     font-weight: bold;
 }
 
 .last-orders .dishes-lt #price{
-    font-size: 15px;
+    font-size: 16px;
     color: var(--body-font-color);
     margin-bottom: 1rem;
 }
@@ -302,7 +341,7 @@ body{
 
 .last-orders .info-dish h4, .grid-container-rest #menu .order .info-dish h4{
     color: var(--body-font-color);
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .last-orders .info-dish .image, .grid-container-rest #menu .order .info-dish .image{
@@ -323,7 +362,7 @@ body{
 .last-orders .info-dish .text, .grid-container-rest #menu .order .info-dish .text{
     grid-column-start: 2.25;
     color: var(--body-font-color);
-    font-size: 12px;
+    font-size: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
