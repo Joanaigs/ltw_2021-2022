@@ -134,6 +134,7 @@ select.form-control option{
     font-weight: 600;
     margin: 10px 0;
     transition: all 0.5s;
+    font-size: 16px;
 }
 
 .btn:hover{
