@@ -35,20 +35,19 @@ require_once(__DIR__ . '/../database/review.class.php');
             </div>
             <?php if ($session->getId() === $user->id && $rest === 0) { ?>
 
-                <button class="fas fa-trash-alt" name="eraseComment"
-                        onclick="window.location.href = '../eraseReview.php?id=<?= $review->id ?>&idRestaurant=<?= $review->idRestaurant ?>';">
-                </button>
-                <button onclick="editReview(<?= $review->id ?>)" name="editReview"> Editar</button>
+                <button class="fas fa-trash-alt" name="eraseReview"
+                        onclick="window.location.href = '../eraseReview.php?id=<?= $review->id ?>&idRestaurant=<?= $review->idRestaurant ?>';"></button>
+                <button onclick="editReview(<?= $review->id ?>)" name="editReview" class="fas fa-pencil"></button>
             <?php } ?>
         </div>
     </div>
-    <section class="showReview" id="<?= $review->id ?>" style="display: block">
+    <section class="showReview" id="<?= $review->id ?>" >
         <p> <?= $review->review ?> </p>
     </section>
     <section class="editReview" id="<?= $review->id ?>" style="display: none">
         <form action="../editReview.php?idReview=<?= $review->id ?>&idRestaurant=<?= $review->idRestaurant ?>" method="post"
-              class="review">
-            <input id="edit_review" type="text" name="edit_review" value="<?= $review->review ?>">
+              class="editReview">
+
             <div id="editRate">
                 <input type="radio" id="star5<?= $review->id ?>" name="rating" value=5  <?php if ($review->rating == 5) echo "checked" ?>/>
                 <label for="star5<?= $review->id ?>" title="text">5 stars</label>
@@ -61,6 +60,7 @@ require_once(__DIR__ . '/../database/review.class.php');
                 <input type="radio" id="star1<?= $review->id ?>" name="rating" value=1  <?php if ($review->rating == 1) echo "checked" ?>/>
                 <label for="star1<?= $review->id ?>" title="text">1 star</label>
             </div>
+            <input id="edit_review" type="text" name="edit_review" value="<?= $review->review ?>">
             <button  name="editReview"> Guardar</button>
         </form>
     </section>
@@ -91,16 +91,16 @@ require_once(__DIR__ . '/../database/review.class.php');
                         </section>
                         <section class="editComment" id="<?= $comment->id ?>" style="display: none">
                             <form action="../editComment.php?idComment=<?= $comment->id ?>&idRestaurant=<?= $review->idRestaurant ?>&type=<?=$rest?>" method="post"
-                                  class="review">
+                                  class="editComment" id="comment">
                                 <input id="edit_comment" type="text" name="edit_comment" value=" <?= $comment->comment ?> ">
-                                <button  name="editComment"> Guardar</button>
+                                <button  name="editReview"> Guardar</button>
                             </form>
                         </section>
                         <?php if ($session->getId() === $restaurant->idUser && $rest === 1) { ?>
                             <button class="fas fa-trash-alt" name="eraseComment"
                                     onclick="window.location.href = '../eraseComment.php?id=<?= $comment->id ?>&type=<?= $rest ?>&idRestaurant=<?= $review->idRestaurant ?>';">
                             </button>
-                            <button onclick="editComment(<?= $comment->id ?>)" name="editReview"> Editar</button>
+                            <button onclick="editComment(<?= $comment->id ?>)" name="editReview" class="fas fa-pencil"></button>
                         <?php } ?>
                     </div>
                 <?php } else { ?>
@@ -118,16 +118,16 @@ require_once(__DIR__ . '/../database/review.class.php');
                         </section>
                         <section class="editComment" id="<?= $comment->id ?>" style="display: none">
                             <form action="../editComment.php?idComment=<?= $comment->id ?>&idRestaurant=<?= $review->idRestaurant ?>&type=<?=$rest?>" method="post"
-                                  class="review">
+                                  class="editComment" id="comment">
                                 <input id="edit_comment" type="text" name="edit_comment" value=" <?= $comment->comment ?> ">
-                                <button  name="editComment"> Guardar</button>
+                                <button  name="editReview">Guardar</button>
                             </form>
                         </section>
                         <?php if ($session->getId() === $user->id && $rest === 0) { ?>
                             <button class="fas fa-trash-alt" name="eraseComment"
                                     onclick="window.location.href = '../eraseComment.php?id=<?= $comment->id ?>&type=<?= $rest ?>&idRestaurant=<?= $review->idRestaurant ?>';">
                             </button>
-                            <button onclick="editComment(<?= $comment->id ?>)" name="editReview"> Editar</button>
+                            <button onclick="editComment(<?= $comment->id ?>)" name="editReview" class="fas fa-pencil"></button>
                         <?php } ?>
 
 
