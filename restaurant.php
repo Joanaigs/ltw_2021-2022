@@ -42,7 +42,7 @@ drawHeader($session);
 
                 <?php foreach ($filterTypes as $item){ ?>
                     <label>
-                        <input type="radio" name ="typeFilter" id="<?=$idRestaurant?>" value=<?=$item->id?>> <?=$item->name?>
+                        <input type="radio" name ="typeFilter" id="<?=$idRestaurant?>" value=<?=$item->id?>> <?=$item->name?><i class="fa-solid fa-up-from-bracket"></i>
                     </label>
                 <?php } ?>
             </section>

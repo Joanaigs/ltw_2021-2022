@@ -33,6 +33,7 @@ html, body{
 }
 
 body{
+    min-height: 100vh;
     display: grid;
     grid-template-rows: auto auto auto;
 }
@@ -97,7 +98,7 @@ body{
     margin-bottom: 2rem;
 }
 
-.grid-container-rest #menu a{
+.grid-container-rest #menu > a{
     margin-top: 2rem;
 }
 
@@ -138,3 +139,140 @@ body{
 #entrada , #pratoPrincipal , #sobremesa {
     padding-bottom: 2rem;
 }
+
+
+.popup{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(67, 67, 67, 0.61);
+    backdrop-filter: blur(5px);
+    transition: all 0.4s;
+    visibility: hidden;
+
+}
+
+.popup:target{
+    visibility: visible;
+    opacity: 1;
+
+}
+
+.popup-box-content{
+    position: relative;
+    background: var(--light-color);
+    width: 500px;
+    border-radius: 15px;
+
+}
+
+#popupClose{
+    position: absolute;
+    top: 0;
+    right: 15px;
+    color: var(--body-font-color);
+    text-decoration: none;
+    font-size: 30px;
+    margin: 0;
+}
+
+.popupBox{
+    padding: 10px;
+    padding-top: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.popupBox > label{
+    padding: 10px;
+    color: var(--body-font-color);
+    font-size: 15px;
+
+}
+
+.popupBox img{
+    position: absolute;
+    width: 160px;
+    left: 50%;
+    top: -80px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+
+}
+
+
+.popupBox > label > input[type = 'text']{
+    width: 60%;
+    border: none;
+    border-bottom: 2px solid var(--body-font-color);
+    color: var(--body-font-color);
+    margin-left: 10px ;
+
+}
+
+.popupBox > label > input[type = 'number']{
+    width: 15%;
+    border: none;
+    border-bottom: 2px solid var(--body-font-color);
+    color: var(--body-font-color);
+    margin-left: 80px ;
+}
+
+.popupBox > label > span{
+    width: 15%;
+    font-weight: normal;
+    color: var(--body-font-color);
+}
+
+.popupBox .radio-class-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 20px;
+}
+
+.radio-class-buttons > label{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: var(--body-font-color);
+    font-size: 15px;
+}
+
+
+.radio-class-buttons > label > span{
+    padding: 5px;
+    font-weight: normal;
+    color: var(--body-font-color);
+    display: inline-block;
+
+}
+
+.radio-class-buttons > label > span > input[type = 'radio']:checked{
+    background-color: var(--accent-color);
+
+}
+
+.popupBox > button{
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+
+#editRestaurant-popup{
+    padding-top: 0;
+}
+
+.categoryRadioButtons{
+    display: flex;
+    flex-direction: row;
+
+}
+
