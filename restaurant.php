@@ -21,7 +21,7 @@ $restaurant = Restaurant::getRestaurant($db, intval($idRestaurant));
 $dishes = Dish::getDishesRestaurant($db, $_GET['id'], $session);
 $filterMeals = Filter::getMeals($db);
 $filterTypes = Filter::getTypeDish($db);
-drawHeader($session);
+drawHeader($session, $hasSearch = true);
 ?>
 
 <div class="grid-container">

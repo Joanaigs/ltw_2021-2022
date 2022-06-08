@@ -5,7 +5,7 @@
     require_once('database/connection.db.php');
     require_once('database/restaurant.class.php');
     require_once('database/filter.class.php');
-    drawHeader($session);
+    drawHeader($session, $hasSearch = false);
     $db = getDatabaseConnection();
     $category=Filter::getFilterRestaurants($db);
 

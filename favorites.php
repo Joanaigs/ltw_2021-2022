@@ -12,7 +12,7 @@ $db = getDatabaseConnection();
 
 
 
-drawHeader($session);
+drawHeader($session, $hasSearch = false);
 if ($session->isLoggedIn()) {
     $restaurants=Restaurant::getFavoriteRestaurants($db, $session, $session->getId());
     ?>

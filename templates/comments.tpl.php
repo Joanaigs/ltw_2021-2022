@@ -79,7 +79,7 @@ require_once(__DIR__ . '/../database/review.class.php');
                     <div class="flex-left">
                         <img src="https://picsum.photos/100/100?.<?= $restaurant->name ?>" alt="">
                         <div class="review-profile-info">
-                            <h4>Owner</h4>
+                            <h4>Restaurante</h4>
                             <h2> <?= $restaurant->name ?> </h2>
                             <h3> <?= $comment->date ?> </h3>
                         </div>
