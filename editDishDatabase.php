@@ -26,13 +26,11 @@ if (isset($_POST["nameDish"], $_POST["priceDish"], $_POST['mealDish'], $_POST['t
 
         $originalFileName = "images/dishes/$id.jpg";
         move_uploaded_file($_FILES['image']['tmp_name'], $originalFileName);
-        Dish::removeDish($dbh, $idDish);
-        Dish::addDish($dbh, $_POST["nameDish"], $_POST["priceDish"], $_POST['mealDish'], intval($idRestaurant), $_POST['typeDish'], intval($id));
+        Dish::updateDish($dbh, intval($idDish),$_POST["nameDish"], $_POST["priceDish"], $_POST['mealDish'], intval($idRestaurant), $_POST['typeDish'], intval($id));
         header("Location: restView.php?id=$idRestaurant");
     }
     else{
-        Dish::removeDish($dbh, $idDish);
-        Dish::addDish($dbh, $_POST["nameDish"], $_POST["priceDish"], $_POST['mealDish'], intval($idRestaurant), $_POST['typeDish'], null);
+        Dish::updateDish($dbh, intval($idDish), $_POST["nameDish"], $_POST["priceDish"], $_POST['mealDish'], intval($idRestaurant), $_POST['typeDish'], null);
         header("Location: restView.php?id=$idRestaurant");
     }
 }
