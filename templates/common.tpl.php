@@ -569,6 +569,7 @@ function drawLoginRegisterForm(Session $session) { ?>
         <div class="panels-container">
             <div class="panel left-panel">
                 <div class="content">
+                    <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
                     <h3>Não tem conta?</h3>
                     <br>
                     <button id="sign-up-button" class="btn transparent">Criar conta</button>
@@ -577,6 +578,7 @@ function drawLoginRegisterForm(Session $session) { ?>
             </div>
             <div class="panel right-panel">
                 <div class="content">
+                    <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
                     <h3>Já tem conta?</h3>
                     <br>
                     <button id="sign-in-button" class="btn transparent">Iniciar sessão</button>
