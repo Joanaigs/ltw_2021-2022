@@ -92,7 +92,7 @@ function editProfileForm(User $user, $restaurant)
                 <div class="input-field">
                     <label for="imageRestaurant"><i class="fas fa-camera"></i>Imagem:</label>
                     <label id="image-button-label">
-                    <input class="image-input" type="file" name="image" accept="image/png,image/jpeg">Escolha uma imagem</label>
+                    <input class="image-input" type="file" name="image" accept="image/png,image/jpeg">Escolha uma imagem<span class="file-custom"></span></label>
                 </div>
                 <div class="input-field">
                     <label><i class="fas fa-user"></i>Nome utilizador:</label>

@@ -6,7 +6,7 @@ require_once(__DIR__ . '/../database/restaurant.class.php');
 
 
 function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db, Session $session) { ?><!DOCTYPE html>
-<div class="grid-container">
+<div class="grid-container" id="mainPage">
     <div class="filter">
         <section id="typeOfRestaurant">
             <h2>Comida:</h2>
@@ -21,6 +21,7 @@ function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db, 
         </section>
     </div>
     <div class="page">
+        <h1 id="main-title">Restaurantes</h1>
         <section id="restaurants">
         </section>
     </div>

@@ -27,6 +27,18 @@ html, body{
 body{
     display: grid;
     grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        'header'
+        'main'
+        'footer';
+}
+
+body > header{
+    grid-area: header;
+}
+
+body > footer{
+    grid-area: footer;
 }
 
 .navbar #profile, .navbar #latest-orders, .navbar #add-restaurant, .navbar #restaurant-page{
@@ -34,6 +46,7 @@ body{
 }
 
 .grid-container-profile{
+    grid-area: main;
     display: grid;
     grid-template-columns: 0.4fr 1.6fr;
 }
@@ -53,6 +66,11 @@ body{
 }
 
 .grid-container-profile .last-orders{
+    grid-column-start: 2;
+    grid-column-end: -1;
+}
+
+.grid-container-profile .restaurant-profile-info {
     grid-column-start: 2;
     grid-column-end: -1;
 }
@@ -146,7 +164,7 @@ body{
     color: var(--dark-color);
 }
 
-.profile-info, .edit-profile{
+.profile-info, .edit-profile, .restaurant-profile{
     display: flex;
     flex-direction: column;
     margin-top: 2rem;
@@ -164,28 +182,28 @@ body{
     box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
 }
 
-.edit-profile{
+.edit-profile, .restaurant-profile{
     padding: 0 2rem;
     margin: 2rem 3rem 2rem 2rem;
 }
 
-.profile-info h2, .edit-profile h2, .last-orders h2{
+.profile-info h2, .edit-profile h2, .last-orders h2, .restaurant-profile h2{
     font-size: 30px;
     border-bottom: 1px solid var(--section-background-color);
     color: var(--dark-color);
 }
 
-.profile-info .info, .edit-profile .input-field{
+.profile-info .info, .edit-profile .input-field, .restaurant-profile .input-field{
     display: flex;
     flex-direction: column;
     margin-bottom: 2rem;
 }
 
-.profile-info .info span, .edit-profile .input-field{
+.profile-info .info span, .edit-profile .input-field, .restaurant-profile .input-field{
     max-width: 100%;
     line-height: 50px;
     color: var(--body-font-color);
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     display: grid;
     grid-template-columns: 40% 60%;
     align-items: center;
@@ -194,7 +212,7 @@ body{
     margin-top: 1rem;
 }
 
-.edit-profile .input-field .info-input, .edit-profile #image-button-label{
+.input-field .info-input, #image-button-label{
     max-width: 500px;
     width: 100%;
     height: 50px;
@@ -208,18 +226,18 @@ body{
     color: #787878;
 }
 
-.edit-profile .input-field i{
+.input-field i{
     text-align: center;
     line-height: 50px;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
 }
 
-.edit-profile p{
+.edit-profile p, .restaurant-profile p{
     color: #9c9a9a;
     font-size: 13px;
 }
 
-.profile-info .info label, .edit-profile .input-field label{
+.profile-info .info label, .edit-profile .input-field label, .restaurant-profile .input-field label{
     font-weight: bold;
     margin-bottom: 0;
     margin-right: 2rem;
@@ -228,7 +246,7 @@ body{
     align-items: center;
 }
 
-.profile-info .info label i, .edit-profile .input-field label i{
+.profile-info .info label i, .edit-profile .input-field label i, .restaurant-profile .input-field label i{
     margin-right: 1rem;
 }
 
@@ -241,7 +259,7 @@ body{
     width: 100%;
 }
 
-.edit-profile-btn, .edit-profile .btn-solid, .erase-profile-btn{
+.edit-profile-btn, .edit-profile .btn-solid, .erase-profile-btn, .restaurant-profile .btn-solid{
     width: 80px;
     height: 40px;
     outline: none;
@@ -260,13 +278,17 @@ body{
     width: 140px;
 }
 
-.edit-profile #image-button-label{
+#image-button-label{
     width: 200px;
     padding-left: 10px;
 }
 
-.edit-profile #image-button-label:hover{
+#image-button-label:hover{
    color: var(--dark-color);
+}
+
+.restaurant-profile .input-field{
+    box-shadow: none;
 }
 
 .buttons span{
@@ -275,16 +297,38 @@ body{
     justify-content: end;
 }
 
-.edit-profile .btn-solid, .edit-profile .erase-profile-btn{
+.edit-profile .btn-solid, .edit-profile .erase-profile-btn, .restaurant-profile .btn-solid{
     margin-top: 1.5rem;
 }
 
-.edit-profile-btn:hover, .edit-profile .btn-solid:hover, .erase-profile-btn:hover{
+.edit-profile-btn:hover, .edit-profile .btn-solid:hover, .erase-profile-btn:hover, .restaurant-profile .btn-solid:hover{
     background-color: #2f2396;
 }
 
-.edit-profile .image-input{
+.image-input{
     display: none;
+}
+
+.restaurant-profile .category{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-bottom: 2rem;
+}
+.restaurant-profile .category #each-option{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    justify-content: space-between;
+}
+
+.restaurant-profile .category .radio{
+    margin-right: .5rem;
+}
+
+.restaurant-profile .category label{
+    margin-right: 2rem;
+    font-weight: normal;
+    line-height: 20px;
 }
 
 .last-orders{
@@ -295,9 +339,10 @@ body{
 
 
 .last-orders .dishes-lt .order {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 40px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .last-orders .dishes-lt .info-order {
@@ -342,6 +387,9 @@ body{
 .last-orders .info-dish h4, .grid-container-rest #menu .order .info-dish h4{
     color: var(--body-font-color);
     font-size: 16px;
+    line-height: 17px;
+    margin-bottom: 1rem;
+    text-align: center;
 }
 
 .last-orders .info-dish .image, .grid-container-rest #menu .order .info-dish .image{
@@ -367,12 +415,20 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-right: 2rem;
+    margin-left: 2rem;
 }
 
 
 
 .last-orders .info-dish:hover, .grid-container-rest #menu .order .info-dish:hover{
     background-color: var(--section-background-color);
+}
+
+@media (max-width: 1517px) {
+    .last-orders .dishes-lt .order{
+        justify-content: normal;
+    }
 }
 
 @media (max-width: 1314px) {
@@ -382,7 +438,7 @@ body{
 }
 
 @media (max-width: 733px){
-    .profile-info .info label, .edit-profile .input-field label{
+    .profile-info .info label, .edit-profile .input-field label, .restaurant-profile .input-field label{
         line-height: 20px;
     }
 }
@@ -392,12 +448,12 @@ body{
         display: none;
     }
 
-    .grid-container-profile, .grid-container-profile .edit-profile-info, .grid-container-profile .last-orders{
+    .grid-container-profile, .grid-container-profile .edit-profile-info, .grid-container-profile .restaurant-profile-info{
         display: block;
         background-color: var(--section-background-color);
     }
 
-    .profile-info, .edit-profile, .last-orders{
+    .profile-info, .edit-profile, .last-orders, .restaurant-profile{
         background-color: var(--light-color);
         padding: 2rem;
         box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.06);
