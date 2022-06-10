@@ -68,19 +68,24 @@ INSERT INTO Images(title) Values ('Buri');
 INSERT INTO Images(title) Values ('Pizzaria Luzzo');
 INSERT INTO Images(title) Values ('Capa Negra II');
 
+
 INSERT INTO Images(title) Values ('Default'); --57
 INSERT INTO Images(title) Values ('Default'); --58 Profile
+
+INSERT INTO Images(title) Values ('DeGema');
+
+
 
 INSERT INTO Restaurant(idUser, name, address, image) VALUES (1, 'Lareira-Serralves', 'R. Jorge Reinel 7, 4150-436 Porto', 53);
 INSERT INTO Restaurant(idUser, name, address, image) VALUES (2, 'Buri', 'R. Caldas Xavier 145, Porto', 54);
 INSERT INTO Restaurant(idUser, name, address, image) VALUES (3, 'Pizzaria Luzzo', 'Av. da Boavista 831, 4100-128 Porto', 55);
 INSERT INTO Restaurant(idUser, name, address, image) VALUES (4, 'Capa Negra II', 'Rua do Campo Alegre 191, 4150-177 Porto', 56);
+INSERT INTO Restaurant(idUser, name, address, image) VALUES (5, 'DeGema', 'Rua do Almada, n.º249, 4050-038 Porto', 59);
 
 INSERT INTO Category(name) VALUES ('Burger');
 INSERT INTO Category(name) VALUES ('Pizza');
 INSERT INTO Category(name) VALUES ('Sushi');
 INSERT INTO Category(name) VALUES ('Indiana');
-INSERT INTO Category(name) VALUES ('Japonesa');
 INSERT INTO Category(name) VALUES ('Portuguesa');
 INSERT INTO Category(name) VALUES ('Sandes');
 INSERT INTO Category(name) VALUES ('Marisco');
@@ -160,6 +165,12 @@ INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES 
 INSERT INTO Dish(image, idRestaurant, name, price, idMeal) VALUES (50, 4, 'Cerveja', 2.40, 4);
 INSERT INTO Dish(image, idRestaurant, name, price, idMeal) VALUES (51, 4, 'Água', 1.25, 4);
 INSERT INTO Dish(image, idRestaurant, name, price, idMeal) VALUES (52, 4, 'Refrigerante', 2.00, 4);
+
+
+
+--DeGema
+INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (40, 4, 'Rissol de carne', 1.00, 1, 1);
+
 
 INSERT INTO Orders(idUser, address, state, date) VALUES (1, 'rua da alegria', 'Preparar', '12-04-2020');
 INSERT INTO Orders(idUser, address, state, date) VALUES (1, 'rua do clérigo', 'Pronto', '12-04-2020');

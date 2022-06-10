@@ -79,18 +79,16 @@ require_once(__DIR__ . '/../database/review.class.php');
                     <?php $comments = Comment::getComments($db, $review->id);
                     if (!empty($comments)) { ?>
 
-                        <?php foreach ($comments
-
-                                       as $comment) { ?>
+                        <?php foreach ($comments as $comment) { ?>
                             <div class="comment">
 
                                 <?php if ($comment->fromRestaurant === 1) {
                                     $restaurant = Restaurant::getRestaurant($db, $comment->idRestaurant); ?>
 
                                     <div class="flex-left">
-                                        <img src="https://picsum.photos/100/100?.<?= $restaurant->name ?>" alt="">
+                                        <img src="../images/restaurants/<?= $restaurant->image ?>.jpg" alt="">
                                         <div class="review-profile-info">
-                                            <h4>Owner</h4>
+                                            <h4>Restaurante</h4>
                                             <h2> <?= $restaurant->name ?> </h2>
                                             <h3> <?= $comment->date ?> </h3>
                                         </div>
@@ -119,7 +117,7 @@ require_once(__DIR__ . '/../database/review.class.php');
                                     </div>
                                 <?php } else { ?>
                                     <div class="flex-left">
-                                        <img src="https://picsum.photos/100/100?.<?= $user->username ?>" alt="">
+                                        <img src="../images/profiles/<?= $user->image ?>.jpg" alt="">
                                         <div class="review-profile-info">
                                             <h2> <?= $user->username ?> </h2>
                                             <h3> <?= $comment->date ?> </h3>
@@ -153,20 +151,18 @@ require_once(__DIR__ . '/../database/review.class.php');
                                 <?php } ?>
                             </div>
                         <?php } ?>
-
-                        <div class="add-comment">
-
-                            <?php if ($session->getId() === $user->id || $rest === 1) { ?>
-                                <form action="../addComment.php?type=<?= $rest ?>&idRestaurant=<?= $review->idRestaurant ?>&id=<?= $review->id ?>"
-                                      method="post" class="add-comment" enctype="multipart/form-data">
-                                    <input class="form-control" placeholder="Adicione um comentário..."
-                                           name="comment" id="comment" required/>
-
-                                    <button type="submit">Publicar</button>
-                                </form>
-                            <?php } ?>
-                        </div>
                     <?php } ?>
+                    <div class="add-comment">
+                        <?php if ($session->getId() === $user->id || $rest === 1) { ?>
+                            <form action="../addComment.php?type=<?= $rest ?>&idRestaurant=<?= $review->idRestaurant ?>&id=<?= $review->id ?>"
+                                  method="post" class="add-comment" enctype="multipart/form-data">
+                                <input class="form-control" placeholder="Adicione um comentário..."
+                                       name="comment" id="comment" required/>
+
+                                <button type="submit">Publicar</button>
+                            </form>
+                        <?php } ?>
+                    </div>
                 </section>
             </article>
         <?php } ?>
