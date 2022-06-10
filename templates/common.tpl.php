@@ -141,12 +141,17 @@ function drawRestViewHeader($id) { ?>
     <script src="../javascript/script.js" defer></script>
     <script src="javascript/heart.js" defer></script>
     <script src="javascript/orderSelect.js" defer></script>
+
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/comments.css">
     <link rel="stylesheet" href="../css/profile.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="../javascript/addDish.js" defer></script>
+    <script src="../javascript/editDish.js" defer></script>
+    <script src="../javascript/editRestaurant.js" defer></script>
+    <script src="../javascript/eraseRestaurant.js" defer></script>
+
     <script src="../javascript/heartDish.js" defer></script>
     <script src="../javascript/heart.js" defer></script>
     <script src="../javascript/restaurantPage.js" defer></script>
@@ -155,6 +160,7 @@ function drawRestViewHeader($id) { ?>
     <script src="../javascript/restaurantSearch.js" defer></script>
     <script src="../javascript/scriptFavorites.js" defer></script>
     <script src="../javascript/script.js" defer></script>
+
 </head>
 <body>
 
@@ -632,6 +638,7 @@ function drawLoginRegisterForm(Session $session)
         <div class="panels-container">
             <div class="panel left-panel">
                 <div class="content">
+                    <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
                     <h3>Não tem conta?</h3>
                     <br>
                     <button id="sign-up-button" class="btn transparent">Criar conta</button>
@@ -640,6 +647,7 @@ function drawLoginRegisterForm(Session $session)
             </div>
             <div class="panel right-panel">
                 <div class="content">
+                    <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
                     <h3>Já tem conta?</h3>
                     <br>
                     <button id="sign-in-button" class="btn transparent">Iniciar sessão</button>
