@@ -22,19 +22,16 @@ async function get_favoriteRestaurants(value) {
     const section = document.querySelector('#favoritesPage')
     section.innerHTML = ''
     for (const restaurant of array) {
-        const a=document.createElement("a")
-        a.href="restaurant.php?id="+ restaurant.id
+
         const article = document.createElement('article')
-        const text = document.createElement('div')
+        const text = document.createElement('a')
         text.classList.add('text');
-        const link = document.createElement('a')
-        link.classList.add('text')
-        link.href = '../restaurant.php?id=' + restaurant.id
+        text.href="restaurant.php?id="+ restaurant.id
+        const link = document.createElement('h3')
         link.textContent = restaurant.name
         text.append(link)
 
-        const ratingFixed = document.createElement('div')
-        const h4 = document.createElement('h4')
+        const h4 = document.createElement('p')
         if(restaurant.ranking===null){
             h4.textContent = "Nenhuma avaliação"
         }
@@ -43,9 +40,9 @@ async function get_favoriteRestaurants(value) {
         const span = document.createElement('span')
         span.innerHTML = '<i class = "fa fa-star checked"> </i>';
         h4.appendChild(span);
-        ratingFixed.appendChild(h4);
 
-        text.append(ratingFixed)
+
+        text.append(h4)
 
         const img = document.createElement('img')
         img.src = '../images/restaurants/' + restaurant.image +'.jpg'
@@ -55,10 +52,10 @@ async function get_favoriteRestaurants(value) {
         const buttons = document.createElement('div')
         buttons.classList.add('buttons');
 
-        const rest = document.createElement("div")
-        rest.id=("restaurants")
+
         const hearts = document.createElement("div")
         hearts.classList.add("hearts")
+        hearts.id = "restaurants"
         const div2 = document.createElement("div")
         div2.classList.add("heart")
         div2.id = restaurant.id
@@ -68,11 +65,10 @@ async function get_favoriteRestaurants(value) {
 
 
         hearts.appendChild(div2)
-        rest.append(hearts)
-        buttons.append(rest)
+
+        buttons.append(hearts)
         article.append(buttons)
-        a.appendChild(article)
-        section.append(a)
+        section.append(article)
     }
     heartsClick();
 }
@@ -87,11 +83,11 @@ async function get_favoriteDishes(value) {
     const section = document.querySelector('#favoritesPage')
     section.innerHTML = ''
     for (const dish of array) {
-        const a=document.createElement("a")
-        a.href="restaurant.php?id="+ dish.idRestaurant
+
         const article = document.createElement('article')
-        const text = document.createElement('div')
+        const text = document.createElement('a')
         text.classList.add('text');
+        text.href="restaurant.php?id="+ dish.idRestaurant
         const img = document.createElement('img')
         const h3 = document.createElement('h3')
         h3.textContent = dish.name
@@ -111,13 +107,19 @@ async function get_favoriteDishes(value) {
 
         if (!dish.cart) {
             const a = document.createElement("a")
+            const i = document.createElement("i");
             a.href = "addToCart.php?idDish=" + +dish.id + "&idRestaurant=" + dish.idRestaurant + "&favorites=1"
-            a.className = "fa-solid fa-plus"
+            i.className = "fa-solid fa-plus"
+            a.text = "Adicionar ao carrinho"
+            a.appendChild(i)
             cartButton.appendChild(a)
         } else {
             const a1 = document.createElement("a")
+            const i = document.createElement("i");
             a1.href = "removeFromCart.php?idDish=" + +dish.id + "&idRestaurant=" + dish.idRestaurant + "&favorites=1"
-            a1.className = "fa-solid fa-minus"
+            i.className = "fa-solid fa-minus"
+            a1.text = "Remover do carrinho"
+            a1.appendChild(i)
             cartButton.appendChild(a1)
         }
 
@@ -134,8 +136,7 @@ async function get_favoriteDishes(value) {
         buttons.append(hearts)
         article.append(buttons)
 
-        a.appendChild(article)
-        section.appendChild(a)
+        section.appendChild(article)
     }
     heartsDishClick();
 }
