@@ -1070,6 +1070,13 @@ h1{
     box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
 }
 
+.add-review h2{
+    color: var(--body-font-color);
+    font-size: 16px;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
 .review-profile-info h2{
     color: var(--body-font-color);
     font-size: 16px;
@@ -1242,7 +1249,6 @@ form button{
 .comment{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     margin-left: 100px;
 }
 
@@ -1250,7 +1256,7 @@ form button{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    margin-left: 40px;
+    margin-left: auto;
 }
 
 .comment p{
@@ -1306,7 +1312,7 @@ form button{
 
     border: none;
     border-bottom: 2px solid var(--accent-color);
-    width: 100%;
+    width: 350px;
     height: auto;
     font-family: 'Poppins', sans-serif;
     color: var(--body-font-color);
@@ -1325,6 +1331,7 @@ form button{
     text-transform: uppercase;
     font-weight: bold;
     transition: all 0.5s;
+    align-items: center;
 
 
 }
@@ -1434,6 +1441,12 @@ form button{
     margin-left: .5rem;
 }
 
+
+@media (max-width: 1353px) {
+    #restaurantPage{
+        grid-template-columns: .3fr 1fr;
+    }
+}
 @media (max-height: 1272px) {
     .reviews-flex-container .image {
         height: 300px;
@@ -1445,11 +1458,6 @@ form button{
 
 }
 
-@media (max-width: 1272px){
-    #restaurantPage{
-        grid-template-columns: .3fr 1fr;
-    }
-}
 
 @media (max-width: 1162px){
     .grid-container{
