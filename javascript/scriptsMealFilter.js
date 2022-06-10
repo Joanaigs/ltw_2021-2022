@@ -52,12 +52,19 @@ async function get_meals(meals) {
             if (!dish.cart){
             const a = document.createElement("a")
             a.href="addToCart.php?idDish=" + +dish.id + "&idRestaurant=" + dish.idRestaurant + "&favorites=0"
-            a.className = "fa-solid fa-plus"
+            const i = document.createElement('i');
+            i.className = "fa-solid fa-plus";
+            a.textContent = "Adicionar ao carrinho"
+            a.append(i);
             cartButton.appendChild(a)
             }else{
                 const a1 = document.createElement("a")
                 a1.href="removeFromCart.php?idDish=" + +dish.id + "&idRestaurant=" + dish.idRestaurant + "&favorites=0"
-                a1.className = "fa-solid fa-minus"
+                const i = document.createElement('i');
+                i.className = "fa-solid fa-minus";
+
+                a1.textContent = "Remover do carrinho"
+                a1.append(i)
                 cartButton.appendChild(a1)
             }
             buttons.appendChild(cartButton)
