@@ -1,8 +1,8 @@
 const filterMeal = document.querySelectorAll('#typeOfDish input[type=\'radio\']')
 console.log(filterMeal);
-for(let i=0; i<filterMeal.length; i++) {
+for (let i = 0; i < filterMeal.length; i++) {
     if (filterMeal) {
-        filterMeal[i].addEventListener('change', async function(){
+        filterMeal[i].addEventListener('change', async function () {
             const response = await fetch('../api/api_restaurant.php?filter=' + value + '&' + 'id=' + id)
             const meals = await response.json()
             get_meals(meals)
@@ -31,12 +31,12 @@ async function get_meals(meals) {
         const content = document.createElement("div")
         content.classList.add("content")
         const img = document.createElement('img')
-        img.src = '../images/dishes/' + dish.image +'.jpg'
+        img.src = '../images/dishes/' + dish.image + '.jpg'
         content.appendChild(img)
         const text = document.createElement("div")
         text.classList.add("text")
         const h3 = document.createElement("h3")
-        h3.textContent=dish.name
+        h3.textContent = dish.name
         text.appendChild(h3)
         const p = document.createElement("p")
         p.classList.add("info")
@@ -46,18 +46,25 @@ async function get_meals(meals) {
         article.appendChild(content)
         const buttons = document.createElement("div")
         buttons.classList.add("buttons")
-        const cartButton= document.createElement("div")
+        const cartButton = document.createElement("div")
         cartButton.classList.add("cartButton")
         if(dish.loggedIn){
             if (!dish.cart){
             const a = document.createElement("a")
             a.href="addToCart.php?idDish=" + +dish.id + "&idRestaurant=" + dish.idRestaurant + "&favorites=0"
-            a.className = "fa-solid fa-plus"
+            const i = document.createElement('i');
+            i.className = "fa-solid fa-plus";
+            a.textContent = "Adicionar ao carrinho"
+            a.append(i);
             cartButton.appendChild(a)
             }else{
                 const a1 = document.createElement("a")
                 a1.href="removeFromCart.php?idDish=" + +dish.id + "&idRestaurant=" + dish.idRestaurant + "&favorites=0"
-                a1.className = "fa-solid fa-minus"
+                const i = document.createElement('i');
+                i.className = "fa-solid fa-minus";
+
+                a1.textContent = "Remover do carrinho"
+                a1.append(i)
                 cartButton.appendChild(a1)
             }
             buttons.appendChild(cartButton)
@@ -65,8 +72,8 @@ async function get_meals(meals) {
             hearts.classList.add("hearts")
             const div2 = document.createElement("div")
             div2.classList.add("heart")
-            div2.id=dish.id
-            if(dish.heart){
+            div2.id = dish.id
+            if (dish.heart) {
                 div2.classList.add("heart-liked")
             }
             hearts.appendChild(div2)
@@ -80,13 +87,15 @@ async function get_meals(meals) {
     heartsDishClick();
 
 }
-temp=document.querySelector('.page .dishes')
+
+temp = document.querySelector('.page .dishes')
 
 async function get_d(id) {
     const response = await fetch('../api/api_getDishes.php?id=' + id)
     const meals = await response.json()
     get_meals(meals)
 }
+
 if (temp) {
     get_d(temp.id)
 }

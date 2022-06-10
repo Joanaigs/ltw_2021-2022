@@ -1,13 +1,15 @@
 <?php
-require_once('session.php');
-$session = new Session();
-require_once('templates/common.tpl.php');
-require_once('database/connection.db.php');
-require_once('database/restaurant.class.php');
-require_once('database/filter.class.php');
-drawHeader($session);
-$db = getDatabaseConnection();
-$category = Filter::getFilterRestaurants($db);
+
+    require_once('session.php');
+    $session = new Session();
+    require_once('templates/common.tpl.php');
+    require_once('database/connection.db.php');
+    require_once('database/restaurant.class.php');
+    require_once('database/filter.class.php');
+    drawHeader($session, $hasSearch = false);
+    $db = getDatabaseConnection();
+    $category=Filter::getFilterRestaurants($db);
+
 
 ?>
     <link rel="stylesheet" href="css/profile.css"/>

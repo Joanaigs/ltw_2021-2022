@@ -13,6 +13,6 @@ $db = getDatabaseConnection();
 
 $restaurants = Restaurant::getRestaurants($db, $session);
 $filterRestaurants = Filter::getFilterRestaurants($db);
-drawHeader($session);
+drawHeader($session, $hasSearch = true);
 drawRestaurants($restaurants, $filterRestaurants, $db, $session);
 drawFooter();

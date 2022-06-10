@@ -12,5 +12,5 @@ require_once('database/connection.db.php');
 $db = getDatabaseConnection();
 
 
-drawHeader($session);
+drawHeader($session, $hasSearch = false);
 drawAboutUs();
