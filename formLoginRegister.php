@@ -6,7 +6,10 @@ $session = new Session();
 require_once('database/connection.db.php');
 require_once('database/user.class.php');
 require_once('templates/common.tpl.php');
-
+if ($session->getcsrf() !== $_POST['csrf']) {
+    $session->addMessage('error',"Não tem premissões para esta págian");
+    header("Location: index.php");
+}
 
 $db = getDatabaseConnection();
 $success = false;
@@ -52,8 +55,9 @@ if (isset($_POST['RegisterButton'])) {
             $session->setUsername($user->username);
             $session->setAddress($user->address);
             $session->addMessage('success', 'Sessão iniciada');
-            exit(header("Location: /main_page.php"));
+            exit(header("Location: index.php"));
         }
     } else
         $session->addMessage('error', 'Por favor preencha os campos necessários.');
 }
+exit(header("Location: /login_register_action.php"));

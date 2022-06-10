@@ -26,7 +26,7 @@
   <body>
     <header>
         <div class="header-left">
-            <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
+            <a href="../index.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
             <section class="search1">
                 <div class="search-icon1"></div>
                 <div class="input">
@@ -43,7 +43,7 @@
                 </div>
                 <span class="clear2" onclick="document.getElementById('searchRest2').value=''"></span>
             </div>
-            <a class="active" href="../main_page.php">Restaurantes</a>
+            <a class="active" href="../index.php">Restaurantes</a>
             <a class="active" href="../about.php">Sobre</a>
         </nav>
         <div class="icons">
@@ -83,7 +83,7 @@ function drawProfileHeader($restaurant) { ?>
 <body>
     <header>
         <div class="header-left">
-            <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
+            <a href="../index.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
         </div>
         <nav class="navbar">
             <a class="active" id="profile" href="../profile.php">Perfil de utilizador</a>
@@ -94,7 +94,7 @@ function drawProfileHeader($restaurant) { ?>
             else{?>
                 <div class="active" id="restaurant-page"><button class="restaurant-page-btn" name="restaurantPageButton" onclick="window.location.href = '../restView.php?id=<?=$restaurant->id?>';">Página do restaurante</button></div>
             <?php } ?>
-            <a class="active" href="../main_page.php">Restaurantes</a>
+            <a class="active" href="../index.php">Restaurantes</a>
             <a class="active" href="../about.php">Sobre</a>
         </nav>
         <div class="icons">
@@ -134,7 +134,7 @@ function drawRestViewHeader($id) { ?>
 <body>
 
 <header>
-    <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
+    <a href="../index.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
     <nav class="navbar">
         <a href="restView.php?id=<?=$id?>">Menu</a>
         <a href="state.php?id=<?=$id?>">Estado dos Pedidos</a>
@@ -204,7 +204,7 @@ function drawAboutUs() { ?>
             <div class="box-container">
                 <div class="box">
                     <h3>Links</h3>
-                    <a href="../main_page.php">Página inicial</a>
+                    <a href="../index.php">Página inicial</a>
                     <a href="#">Sobre</a>
                     <a href="#">Carrinho</a>
                 </div>
