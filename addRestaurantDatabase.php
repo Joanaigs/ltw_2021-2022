@@ -29,11 +29,11 @@ if (isset($_POST["nameRestaurant"], $_POST["addressRestaurant"], $_POST['restaur
         move_uploaded_file($_FILES['image']['tmp_name'], $originalFileName);
         Restaurant::addRestaurants($db, $session->getId(), $_POST["nameRestaurant"], $_POST["addressRestaurant"], $id);
         $idRestaurant = Restaurant::hasRestaurant($db, $session->getId());
-        Filter::addCategoryRestaurant($db, $idRestaurant->id, $_POST['restaurantCategory']);
+        Filter::addCategoryRestaurant($db, $idRestaurant->id, intval($_POST['restaurantCategory']));
     } else {
         Restaurant::addRestaurants($db, $session->getId(), $_POST["nameRestaurant"], $_POST["addressRestaurant"], null);
         $idRestaurant = Restaurant::hasRestaurant($db, $session->getId());
-        Filter::addCategoryRestaurant($db, $idRestaurant->id, $_POST['restaurantCategory']);
+        Filter::addCategoryRestaurant($db, $idRestaurant->id, intval($_POST['restaurantCategory']));
     }
 
 }

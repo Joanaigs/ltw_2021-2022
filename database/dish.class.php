@@ -249,6 +249,16 @@ class Dish{
         $stmt->execute(array($idUser, $idDi));
     }
 
+    static function updateDish(PDO $db, int $id,string $name, string $price, string $idMeal, int $idRest, string $idType, $idImage)  {
+        if($idImage===null){
+            $stmt = $db->prepare('Update Dish set idRestaurant=?, name=?, price=?, idTypeOfDish=?, idMeal=? where id=?');
+            $stmt->execute(array($idRest, $name, $price, $idType, $idMeal, $id));
+        }
+        else{
+            $stmt = $db->prepare('Update Dish set idRestaurant=?, name=?, price=?, idTypeOfDish=?, idMeal=?, image=? where id=?');
+            $stmt->execute(array($idRest, $name, $price, $idType, $idMeal, $idImage,$id));
+        }
+    }
 
     static function removefavoriteDish(PDO $db, string $idDi, int $idUser)  {
         $stmt = $db->prepare('DELETE FROM FavoriteDish where idUser=? and idDish=?' );

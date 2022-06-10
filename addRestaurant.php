@@ -1,32 +1,58 @@
 <?php
-    require_once('session.php');
-    $session = new Session();
-    require_once('templates/common.tpl.php');
-    require_once('database/connection.db.php');
-    require_once('database/restaurant.class.php');
-    require_once('database/filter.class.php');
-    drawHeader($session);
-    $db = getDatabaseConnection();
-    $category=Filter::getFilterRestaurants($db);
+require_once('session.php');
+$session = new Session();
+require_once('templates/common.tpl.php');
+require_once('database/connection.db.php');
+require_once('database/restaurant.class.php');
+require_once('database/filter.class.php');
+drawHeader($session);
+$db = getDatabaseConnection();
+$category = Filter::getFilterRestaurants($db);
 
 ?>
-<form action="addRestaurantDatabase.php" method="post" class="dish" enctype="multipart/form-data">
-    <label for="nameRestaurant">Nome:</label>
-    <input id="nameRestaurant" type="text" name="nameRestaurant">
+    <link rel="stylesheet" href="css/profile.css"/>
+    <div class="grid-container-profile">
+        <?php drawSidebar(false); ?>
+        <div class="restaurant-profile-info">
+            <form action="addRestaurantDatabase.php" method="post" class="restaurant-profile"
+                  enctype="multipart/form-data">
+                <h2 class="title">Adicionar restaurante</h2>
+                <div class="input-field">
+                    <label for="imageRestaurant"><i class="fas fa-camera"></i>Imagem:</label>
+                    <label id="image-button-label">
+                        <input class="image-input" type="file" name="image" accept="image/png,image/jpeg">Escolha uma
+                        imagem</label>
+                </div>
 
-    <label for="addressRestaurant">Endereço:</label>
-    <input id="addressRestaurant" type="text" name="addressRestaurant">
+                <div class="input-field">
+                    <label><i class="fas fa-utensils"></i>Nome restaurante:</label>
+                    <input class="info-input" type="text" name="nameRestaurant"/>
+                </div>
 
-    <label for="imageRestaurant">Imagem:</label>
-    <input type="file" name="image" accept="image/png,image/jpeg">
+                <div class="input-field">
+                    <label><i class="fas fa-home"></i>Morada: </label>
+                    <input class="info-input" type="text" name="addressRestaurant"/>
+                </div>
 
-    <label for="restaurantCategory">Categoria:</label>
-    <?php foreach ($category as $c) { ?>
-        <input class="radio" type="radio" name="restaurantCategory" value=<?=$c->id?>  /> <span><?=$c->name?></span>
-    <?php } ?>
-
-    <button type="submit">Salvar</button>
-</form>
+                <div class="input-field">
+                    <label><i class="fas fa-hamburger"></i>Categoria:</label>
+                    <div class="category">
+                        <?php foreach ($category as $c) { ?>
+                            <section id="each-option">
+                                <label>
+                                    <input class="radio" type="radio" name="restaurantCategory" value=<?= $c->id ?>/>
+                                    <?= $c->name ?>
+                                </label>
+                            </section>
+                        <?php } ?>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <input type="submit" formmethod="post" class="btn-solid" value="Salvar">
+                </div>
+            </form>
+        </div>
+    </div>
 
 <?php
 
