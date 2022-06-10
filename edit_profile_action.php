@@ -15,6 +15,7 @@ $db = getDatabaseConnection();
 $user = User::getUser($db, $session->getId());
 $restaurant = Restaurant::hasRestaurant($db, $session->getId());
 
-drawHeader($session);
+drawProfileHeader($restaurant);
 editProfileForm($user, $restaurant);
 drawFooter();
+

@@ -24,7 +24,7 @@ $filterTypes = Filter::getTypeDish($db);
 drawHeader($session);
 ?>
 
-<div class="grid-container">
+<div class="grid-container" id="restaurantPage">
     <div class = "side">
         <div class="filters">
             <section id = "meal">
@@ -48,7 +48,7 @@ drawHeader($session);
             </section>
         </div>
 
-        <a href="../reviews.php?id=<?=$idRestaurant?>"> Comentários > </a>
+        <a class="comments" href="../reviews.php?id=<?=$idRestaurant?>"> Comentários > </a>
     </div>
 
     <div class="page" id="restaurant-page">

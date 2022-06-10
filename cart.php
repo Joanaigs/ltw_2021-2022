@@ -16,4 +16,3 @@ drawHeader($session);
 drawCart($db, $session, $restaurants);
 drawFooter();
 
-?>

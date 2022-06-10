@@ -27,10 +27,14 @@ class User
     function save($db, string $password, string $confirm_password)
     {
         if ($password != NULL && $password === $confirm_password) {
+            $cost = [
+                'cost' => 11
+            ];
+            $hash = password_hash($password, PASSWORD_BCRYPT, $cost);
             $stmt = $db->prepare('
         UPDATE User SET username = ?, email = ?, phoneNumber = ?, address = ?, password = ?, image=?
         WHERE id = ?');
-            $stmt->execute(array($this->username, $this->email, $this->phoneNumber, $this->address, md5($password), $this->image, $this->id));
+            $stmt->execute(array($this->username, $this->email, $this->phoneNumber, $this->address, $hash, $this->image, $this->id));
         } else {
             $stmt = $db->prepare('
         UPDATE User SET username = ?, email = ?, phoneNumber = ?, address = ?, image=?
@@ -41,10 +45,14 @@ class User
 
     static function addNewUser(bool &$success, PDO $db, string $username, string $email, string $password, string $phoneNumber, string $address, string $city, string $country)
     {
-        $password = md5($password);
+        $cost = [
+            'cost' => 11
+        ];
+        $hash = password_hash($password, PASSWORD_BCRYPT, $cost);
+
         $stmt = $db->prepare('INSERT INTO User (username, email, password, address, city, country, phoneNumber) 
                        VALUES (?, ?, ?, ?, ?, ?, ?)');
-        $stmt->execute(array($username, $email, $password, $address, $city, $country, $phoneNumber));
+        $stmt->execute(array($username, $email, $hash, $address, $city, $country, $phoneNumber));
         $stmt = $db->prepare("
         SELECT *
         FROM User
@@ -91,12 +99,13 @@ class User
         FROM User
         WHERE email = ?');
 
-
         $stmt->execute(array($email));
 
         if ($user = $stmt->fetch()) {
 
-            if ($password === $user['password']) {
+
+            if (password_verify($password, $user['password'])) {
+
                 return new User(
                     intval($user['id']),
                     $user['image'],
