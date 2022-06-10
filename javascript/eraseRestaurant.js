@@ -3,6 +3,7 @@ console.log(eraseRestaurant)
 if (eraseRestaurant) {
     eraseRestaurant.addEventListener('click', async function () {
         const section = document.querySelector('#popup')
+        const article = document.querySelector(".rest-name")
         console.log(section)
         section.classList.remove("hidden")
         section.innerHTML = ''
@@ -18,15 +19,27 @@ if (eraseRestaurant) {
 
         const acceptButtons = document.createElement('div');
         acceptButtons.className = "acceptButtons"
-        const yesButton = document.createElement('a');
-        const noButton = document.createElement('a');
+        const yesButton = document.createElement('button');
+        yesButton.type="submit"
+        yesButton.classList.add("eraseRestaurant-btn")
+        const noButton = document.createElement('button');
 
         const iCross = document.createElement('i');
         iCross.className = "fa-light fa-circlclassNamerk";
 
+        const form=document.createElement("form")
+        form.action="../eraseRestaurant.php"
+        form.method="post"
+        form.classList="popupBox"
+
         yesButton.textContent = "Sim";
-        yesButton.href = '../eraseRestaurant.php';
         yesButton.appendChild(iCross);
+        const csrf=document.createElement("input")
+        csrf.type="hidden"
+        csrf.name="csrf"
+        csrf.value=article.dataset.token
+        form.appendChild(csrf)
+        form.appendChild(yesButton)
 
 
         noButton.textContent = "Não"

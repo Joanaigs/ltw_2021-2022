@@ -22,6 +22,8 @@ async function get_favoriteRestaurants(value) {
     const section = document.querySelector('#favoritesPage')
     section.innerHTML = ''
     for (const restaurant of array) {
+        const a=document.createElement("a")
+        a.href="restaurant.php?id="+ restaurant.id
         const article = document.createElement('article')
         const text = document.createElement('div')
         text.classList.add('text');
@@ -69,7 +71,8 @@ async function get_favoriteRestaurants(value) {
         rest.append(hearts)
         buttons.append(rest)
         article.append(buttons)
-        section.append(article)
+        a.appendChild(article)
+        section.append(a)
     }
     heartsClick();
 }
@@ -84,6 +87,8 @@ async function get_favoriteDishes(value) {
     const section = document.querySelector('#favoritesPage')
     section.innerHTML = ''
     for (const dish of array) {
+        const a=document.createElement("a")
+        a.href="restaurant.php?id="+ dish.idRestaurant
         const article = document.createElement('article')
         const text = document.createElement('div')
         text.classList.add('text');
@@ -129,7 +134,8 @@ async function get_favoriteDishes(value) {
         buttons.append(hearts)
         article.append(buttons)
 
-        section.appendChild(article)
+        a.appendChild(article)
+        section.appendChild(a)
     }
     heartsDishClick();
 }

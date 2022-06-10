@@ -27,6 +27,12 @@ if (addDish) {
         img.alt=""
         form.appendChild(img)
 
+        const csrf=document.createElement("input")
+        csrf.type="hidden"
+        csrf.name="csrf"
+        csrf.value=article.dataset.token
+        form.appendChild(csrf)
+
         const imageRestaurant=document.createElement("label")
         imageRestaurant.for="imageRestaurant"
         const file=document.createElement("input")

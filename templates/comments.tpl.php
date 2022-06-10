@@ -48,6 +48,7 @@ require_once(__DIR__ . '/../database/review.class.php');
             <form action="../editReview.php?idReview=<?= $review->id ?>&idRestaurant=<?= $review->idRestaurant ?>"
                   method="post"
                   class="editReview">
+            <input type="hidden" name="csrf" value="<?=$session->getcsrf()?>">
 
                 <div id="editRate">
                     <input type="radio" id="star5<?= $review->id ?>" name="rating"
@@ -82,44 +83,50 @@ require_once(__DIR__ . '/../database/review.class.php');
                         <?php if ($comment->fromRestaurant === 1) {
                             $restaurant = Restaurant::getRestaurant($db, $comment->idRestaurant); ?>
 
-                            <div class="flex-left">
-                                <img src="https://picsum.photos/100/100?.<?= $restaurant->name ?>" alt="">
-                                <div class="review-profile-info">
-                                    <h4>Restaurante</h4>
-                                    <h2> <?= $restaurant->name ?> </h2>
-                                    <h3> <?= $comment->date ?> </h3>
-                                </div>
-                            </div>
+                    <div class="flex-right">
+                        <section class="showComment" id="<?= $comment->id ?>" style="display: block">
+                            <p> <?= $comment->comment ?> </p>
+                        </section>
+                        <section class="editComment" id="<?= $comment->id ?>" style="display: none">
+                            <form action="../editComment.php?idComment=<?= $comment->id ?>&idRestaurant=<?= $review->idRestaurant ?>&type=<?=$rest?>" method="post"
+                                  class="review">
+                                <input id="edit_comment" type="text" name="edit_comment" value=" <?= $comment->comment ?> ">
+                                <button  name="editComment"> Guardar</button>
+                            </form>
+                        </section>
+                        <?php if ($session->getId() === $restaurant->idUser && $rest === 1) { ?>
+                            <button class="fas fa-trash-alt" name="eraseComment"
+                                    onclick="window.location.href = '../eraseComment.php?id=<?= $comment->id ?>&type=<?= $rest ?>&idRestaurant=<?= $review->idRestaurant ?>';">
+                            </button>
+                            <button onclick="editComment(<?= $comment->id ?>)" name="editReview"> Editar</button>
+                        <?php } ?>
+                    </div>
+                <?php } else { ?>
+                    <div class="flex-left">
+                        <img src="https://picsum.photos/100/100?.<?= $user->username ?>" alt="">
+                        <div class="review-profile-info">
+                            <h2> <?= $user->username ?> </h2>
+                            <h3> <?= $comment->date ?> </h3>
+                        </div>
+                    </div>
 
-                            <div class="flex-right">
-                                <section class="showComment" id="<?= $comment->id ?>" style="display: block">
-                                    <p> <?= $comment->comment ?> </p>
-                                </section>
-                                <section class="editComment" id="<?= $comment->id ?>" style="display: none">
-                                    <form action="../editComment.php?idComment=<?= $comment->id ?>&idRestaurant=<?= $review->idRestaurant ?>&type=<?= $rest ?>"
-                                          method="post"
-                                          class="editComment" id="comment">
-                                        <input id="edit_comment" type="text" name="edit_comment"
-                                               value=" <?= $comment->comment ?> ">
-                                        <button name="editReview"> Guardar</button>
-                                    </form>
-                                </section>
-                                <?php if ($session->getId() === $restaurant->idUser && $rest === 1) { ?>
-                                    <button class="fas fa-trash-alt" name="eraseComment"
-                                            onclick="window.location.href = '../eraseComment.php?id=<?= $comment->id ?>&type=<?= $rest ?>&idRestaurant=<?= $review->idRestaurant ?>';">
-                                    </button>
-                                    <button onclick="editComment(<?= $comment->id ?>)" name="editReview"
-                                            class="fas fa-pencil"></button>
-                                <?php } ?>
-                            </div>
-                        <?php } else { ?>
-                            <div class="flex-left">
-                                <img src="https://picsum.photos/100/100?.<?= $user->username ?>" alt="">
-                                <div class="review-profile-info">
-                                    <h2> <?= $user->username ?> </h2>
-                                    <h3> <?= $comment->date ?> </h3>
-                                </div>
-                            </div>
+                    <div class="flex-right">
+                        <section class="showComment" id="<?= $comment->id ?>" style="display: block">
+                            <p> <?= $comment->comment ?> </p>
+                        </section>
+                        <section class="editComment" id="<?= $comment->id ?>" style="display: none">
+                            <form action="../editComment.php?idComment=<?= $comment->id ?>&idRestaurant=<?= $review->idRestaurant ?>&type=<?=$rest?>" method="post"
+                                  class="review">
+                                <input id="edit_comment" type="text" name="edit_comment" value=" <?= $comment->comment ?> ">
+                                <button  name="editComment"> Guardar</button>
+                            </form>
+                        </section>
+                        <?php if ($session->getId() === $user->id && $rest === 0) { ?>
+                            <button class="fas fa-trash-alt" name="eraseComment"
+                                    onclick="window.location.href = '../eraseComment.php?id=<?= $comment->id ?>&type=<?= $rest ?>&idRestaurant=<?= $review->idRestaurant ?>';">
+                            </button>
+                            <button onclick="editComment(<?= $comment->id ?>)" name="editReview"> Editar</button>
+                        <?php } ?>
 
                             <div class="flex-right">
                                 <section class="showComment" id="<?= $comment->id ?>" style="display: block">
@@ -152,11 +159,11 @@ require_once(__DIR__ . '/../database/review.class.php');
 
             <div class="add-comment">
 
-                <?php if ($session->getId() === $user->id || $rest === 1) { ?>
-                    <form action="../addComment.php?type=<?= $rest ?>&idRestaurant=<?= $review->idRestaurant ?>&id=<?= $review->id ?>"
-                          method="post" class="add-comment" enctype="multipart/form-data">
-                        <input class="form-control" placeholder="Adicione um comentário..."
-                               name="comment" id="comment" required/>
+    <?php if ($session->getId() === $user->id || $rest === 1) { ?>
+        <form action="../addComment.php?type=<?= $rest ?>&idRestaurant=<?= $review->idRestaurant ?>&id=<?= $review->id ?>"
+              method="post" class="add-comment" enctype="multipart/form-data">
+            <input class="form-control" placeholder="Adicione um comentário..."
+                   name="comment" id="comment" required/>
 
                         <button type="submit">Publicar</button>
                     </form>

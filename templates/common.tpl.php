@@ -95,41 +95,32 @@ function drawProfileHeader($restaurant) { ?>
     <script src="../javascript/scriptFavorites.js" defer></script>
     <script src="../javascript/script.js" defer></script>
 <body>
-<header>
-    <div class="header-left">
-        <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
-    </div>
-    <nav class="navbar">
-        <a class="active" id="profile" href="../profile.php">Perfil de utilizador</a>
-        <a class="active" id="latest-orders" href="../latest_orders.php">Pedidos anteriores</a>
-        <?php if ($restaurant === false) { ?>
-            <div class="active" id="add-restaurant">
-                <button class="add-restaurant-btn" name="addRestaurantButton"
-                        onclick="window.location.href = '../addRestaurant.php';">Adicionar restaurante
-                </button>
-            </div>
-        <?php } else {
-            ?>
-            <div class="active" id="restaurant-page">
-                <button class="restaurant-page-btn" name="restaurantPageButton"
-                        onclick="window.location.href = '../restView.php?id=<?= $restaurant->id ?>';">Página do
-                    restaurante
-                </button>
-            </div>
-        <?php } ?>
-        <a class="active" href="../main_page.php">Restaurantes</a>
-        <a class="active" href="../about.php">Sobre</a>
-    </nav>
-    <div class="icons">
-        <i class="fas fa-bars" id="menu-bars"></i>
-        <a href="../favorites.php" class="fas fa-heart"></a>
-        <a href="../profile.php" class="fas fa-user"></a>
-        <a href="../cart.php" class="fas fa-shopping-cart"></a>
-        <button class="logout-btn" onclick="window.location.href = '../logout_action.php';">Sair</button>
-    </div>
-</header>
-</body>
-<?php }
+    <header>
+        <div class="header-left">
+            <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
+        </div>
+        <nav class="navbar">
+            <a class="active" id="profile" href="../profile.php">Perfil de utilizador</a>
+            <a class="active" id="latest-orders" href="../latest_orders.php">Pedidos anteriores</a>
+            <?php if($restaurant===false){?>
+                <div class="active" id="add-restaurant"><button class="add-restaurant-btn" name="addRestaurantButton" onclick="window.location.href = '../addRestaurant.php';">Adicionar restaurante</button></div>
+            <?php }
+            else{?>
+                <div class="active" id="restaurant-page"><button class="restaurant-page-btn" name="restaurantPageButton" onclick="window.location.href = '../restView.php?id=<?=$restaurant->id?>';">Página do restaurante</button></div>
+            <?php } ?>
+            <a class="active" href="../main_page.php">Restaurantes</a>
+            <a class="active" href="../about.php">Sobre</a>
+        </nav>
+        <div class="icons">
+            <i class="fas fa-bars" id="menu-bars"></i>
+            <a href="../favorites.php" class="fas fa-heart"></a>
+            <a href="../profile.php" class="fas fa-user"></a>
+            <a href="../cart.php" class="fas fa-shopping-cart"></a>
+            <button class="logout-btn" onclick="window.location.href = '../logout_action.php';">Sair</button>
+        </div>
+    </header>
+  </body>
+  <?php }
 
 function drawRestViewHeader($id) { ?>
 <!DOCTYPE html>
@@ -165,7 +156,7 @@ function drawRestViewHeader($id) { ?>
 <body>
 
 <header>
-    <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
+    <a href="../index.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
     <nav class="navbar">
         <a href="restView.php?id=<?= $id ?>">Menu</a>
         <a href="state.php?id=<?= $id ?>">Estado dos Pedidos</a>
@@ -241,7 +232,7 @@ function drawAboutUs()
             <div class="box-container">
                 <div class="box">
                     <h3>Links</h3>
-                    <a href="../main_page.php">Página inicial</a>
+                    <a href="../index.php">Página inicial</a>
                     <a href="#">Sobre</a>
                     <a href="#">Carrinho</a>
                 </div>
@@ -318,79 +309,77 @@ function drawLoginRegisterForm(Session $session)
         <link rel="stylesheet" href="../css/login_register.css"/>
     </head>
     <body>
-    <div class="container">
-        <div class="forms-container">
-            <div class="signin">
-                <form action="../formLoginRegister.php" method="post" class="sign-in-form">
-                    <h2 class="title">Iniciar sessão</h2>
-                    <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="text" name="email" placeholder="Email"/>
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" name="password" placeholder="Palavra-passe"/>
-                    </div>
-                    <input type="submit" name="LoginButton" class="btn solid" value="Entrar" formmethod="post">
-                </form>
-            </div>
-            <div class="signup">
-                <form action="../formLoginRegister.php" method="post" class="sign-up-form">
-                    <h2 class="title">Crie a sua nova conta</h2>
-                    <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="text" name="username" placeholder="Nome de utilizador" autocomplete="off"
-                               required/>
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-envelope"></i>
-                        <input type="email" name="email" placeholder="Email" autocomplete="off" required/>
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-phone"></i>
-                        <input type="text" name="phoneNumber" placeholder="Número de telemóvel" autocomplete="off"
-                               required/>
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-home"></i>
-                        <input type="text" name="address" placeholder="Morada" autocomplete="off" required/>
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-map-pin"></i>
-                        <input type="text" name="city" placeholder="Cidade" autocomplete="off" required/>
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-flag"></i>
-                        <select id="country" name="country" class="form-control">
-                            <option value="Afghanistan">Afghanistan</option>
-                            <option value="Åland Islands">Åland Islands</option>
-                            <option value="Albania">Albania</option>
-                            <option value="Algeria">Algeria</option>
-                            <option value="American Samoa">American Samoa</option>
-                            <option value="Andorra">Andorra</option>
-                            <option value="Angola">Angola</option>
-                            <option value="Anguilla">Anguilla</option>
-                            <option value="Antarctica">Antarctica</option>
-                            <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-                            <option value="Argentina">Argentina</option>
-                            <option value="Armenia">Armenia</option>
-                            <option value="Aruba">Aruba</option>
-                            <option value="Australia">Australia</option>
-                            <option value="Austria">Austria</option>
-                            <option value="Azerbaijan">Azerbaijan</option>
-                            <option value="Bahamas">Bahamas</option>
-                            <option value="Bahrain">Bahrain</option>
-                            <option value="Bangladesh">Bangladesh</option>
-                            <option value="Barbados">Barbados</option>
-                            <option value="Belarus">Belarus</option>
-                            <option value="Belgium">Belgium</option>
-                            <option value="Belize">Belize</option>
-                            <option value="Benin">Benin</option>
-                            <option value="Bermuda">Bermuda</option>
-                            <option value="Bhutan">Bhutan</option>
-                            <option value="Bolivia">Bolivia</option>
-                            <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
-                            <option value="Botswana">Botswana</option>
+        <div class="container">
+            <div class="forms-container">
+                <div class="signin">
+                    <form action="../formLoginRegister.php" method="post" class="sign-in-form">
+                        <h2 class="title">Iniciar sessão</h2>
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" name="email" placeholder="Email"/>
+                        </div>
+                        <div class="input-field">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" name="password" placeholder="Palavra-passe"/>
+                        </div>
+                        <input type="submit" name="LoginButton" class="btn solid" value="Entrar" formmethod="post">
+                    </form>
+                </div>
+                <div class="signup">
+                    <form action="../formLoginRegister.php" method="post" class="sign-up-form">
+                        <h2 class="title">Crie a sua nova conta</h2>
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" name="username" placeholder="Nome de utilizador" autocomplete="off" required />
+                        </div>
+                        <div class="input-field">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" name="email" placeholder="Email" autocomplete="off" required />
+                        </div>
+                        <div class="input-field">
+                            <i class="fas fa-phone"></i>
+                            <input type="text" name="phoneNumber" placeholder="Número de telemóvel" autocomplete="off" required />
+                        </div>
+                        <div class="input-field">
+                            <i class="fas fa-home"></i>
+                            <input type="text" name="address" placeholder="Morada" autocomplete="off" required />
+                        </div>
+                        <div class="input-field">
+                            <i class="fas fa-map-pin"></i>
+                            <input type="text" name="city" placeholder="Cidade" autocomplete="off" required />
+                        </div>
+                        <div class="input-field">
+                            <i class="fas fa-flag"></i>
+                            <select id="country" name="country" class="form-control">
+                                <option value="Afghanistan">Afghanistan</option>
+                                <option value="Åland Islands">Åland Islands</option>
+                                <option value="Albania">Albania</option>
+                                <option value="Algeria">Algeria</option>
+                                <option value="American Samoa">American Samoa</option>
+                                <option value="Andorra">Andorra</option>
+                                <option value="Angola">Angola</option>
+                                <option value="Anguilla">Anguilla</option>
+                                <option value="Antarctica">Antarctica</option>
+                                <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                                <option value="Argentina">Argentina</option>
+                                <option value="Armenia">Armenia</option>
+                                <option value="Aruba">Aruba</option>
+                                <option value="Australia">Australia</option>
+                                <option value="Austria">Austria</option>
+                                <option value="Azerbaijan">Azerbaijan</option>
+                                <option value="Bahamas">Bahamas</option>
+                                <option value="Bahrain">Bahrain</option>
+                                <option value="Bangladesh">Bangladesh</option>
+                                <option value="Barbados">Barbados</option>
+                                <option value="Belarus">Belarus</option>
+                                <option value="Belgium">Belgium</option>
+                                <option value="Belize">Belize</option>
+                                <option value="Benin">Benin</option>
+                                <option value="Bermuda">Bermuda</option>
+                                <option value="Bhutan">Bhutan</option>
+                                <option value="Bolivia">Bolivia</option>
+                                <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                                <option value="Botswana">Botswana</option>
                             <option value="Bouvet Island">Bouvet Island</option>
                             <option value="Brazil">Brazil</option>
                             <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>

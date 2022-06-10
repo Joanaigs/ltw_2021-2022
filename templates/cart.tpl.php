@@ -40,6 +40,7 @@ require_once('database/cart.class.php');
                             <p id="price">TOTAL : <?= $total ?>€</p>
                         </div>
                         <form action="../makeOrder.php?idRestaurant=<?= $res->id ?>" method="post" class="edit-profile">
+                            <input type="hidden" name="csrf" value="<?=$session->getcsrf()?>">
                             <label><i class="fa-solid fa-location-dot"></i>Morada de entrega: <input type="text"
                                                                                                      name="address"
                                                                                                      placeholder="<?= $session->getAddress() ?>"/></label>

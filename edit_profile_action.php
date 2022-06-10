@@ -16,6 +16,6 @@ $user = User::getUser($db, $session->getId());
 $restaurant = Restaurant::hasRestaurant($db, $session->getId());
 
 drawProfileHeader($restaurant);
-editProfileForm($user, $restaurant);
+editProfileForm($user, $restaurant, $session);
 drawFooter();
 

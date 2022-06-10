@@ -2,8 +2,8 @@ const filterMeal = document.querySelectorAll('#typeOfDish input[type=\'radio\']'
 console.log(filterMeal);
 for (let i = 0; i < filterMeal.length; i++) {
     if (filterMeal) {
-        filterMeal[i].addEventListener('change', async function () {
-            const response = await fetch('../api/api_restaurant.php?filter=' + value + '&' + 'id=' + id)
+        filterMeal[i].addEventListener('change', async function(){
+            const response = await fetch('../api/api_restaurant.php?filter=' + filterMeal[i].value + '&' + 'id=' + filterMeal[i].id)
             const meals = await response.json()
             get_meals(meals)
         })
@@ -72,9 +72,9 @@ async function get_meals(meals) {
             hearts.classList.add("hearts")
             const div2 = document.createElement("div")
             div2.classList.add("heart")
-            div2.id = dish.id
-            if (dish.heart) {
-                div2.classList.add("heart-liked")
+            div2.id=dish.id
+            if(dish.heart){
+                div2.classList.add("liked")
             }
             hearts.appendChild(div2)
             cartButton.appendChild(hearts)

@@ -5,9 +5,12 @@ require_once('templates/common.tpl.php');
 require_once('database/connection.db.php');
 require_once('database/restaurant.class.php');
 require_once('database/filter.class.php');
+if ($session->getcsrf() !== $_POST['csrf']) {
+    $session->addMessage('error',"Não tem premissões para esta págian");
+    header("Location: index.php");
+}
 drawHeader($session, $hasSearch = false);
 $db = getDatabaseConnection();
-
 $dbh = new PDO('sqlite:example.db');
 $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -27,12 +30,11 @@ if (isset($_POST["nameRestaurant"], $_POST["addressRestaurant"], $_POST['restaur
         Restaurant::addRestaurants($db, $session->getId(), $_POST["nameRestaurant"], $_POST["addressRestaurant"], $id);
         $idRestaurant = Restaurant::hasRestaurant($db, $session->getId());
         Filter::addCategoryRestaurant($db, $idRestaurant->id, intval($_POST['restaurantCategory']));
-        header("Location: restView.php?id=$idRestaurant->id");
     } else {
         Restaurant::addRestaurants($db, $session->getId(), $_POST["nameRestaurant"], $_POST["addressRestaurant"], null);
         $idRestaurant = Restaurant::hasRestaurant($db, $session->getId());
         Filter::addCategoryRestaurant($db, $idRestaurant->id, intval($_POST['restaurantCategory']));
-        header("Location: restView.php?id=$idRestaurant->id");
     }
 
 }
+header("Location: restView.php?id=$idRestaurant->id");

@@ -39,12 +39,15 @@ const icon1 = document.querySelector('.search-icon1');
 const icon2 = document.querySelector('.search-icon2');
 const search1 = document.querySelector('.search1');
 const search2 = document.querySelector('.search2');
-
-icon1.onclick = function (){
-    search1.classList.toggle('active');
+if(icon1) {
+    icon1.onclick = function () {
+        search1.classList.toggle('active');
+    }
 }
-icon2.onclick = function (){
-    search2.classList.toggle('active');
+if(icon2) {
+    icon2.onclick = function () {
+        search2.classList.toggle('active');
+    }
 }
 
 

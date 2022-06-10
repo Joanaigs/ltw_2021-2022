@@ -81,13 +81,14 @@ function drawProfile($user, $restaurant)
     </div>
 <?php }
 
-function editProfileForm(User $user, $restaurant)
+function editProfileForm(User $user, $restaurant, $session)
 { ?>
     <link rel="stylesheet" href="../css/profile.css"/>
     <div class="grid-container-profile">
         <?php drawSidebar($restaurant); ?>
         <div class="edit-profile-info">
             <form action="../formEditProfile.php" method="post" class="edit-profile" enctype="multipart/form-data">
+                <input type="hidden" name="csrf" value="<?=$session->getcsrf()?>">
                 <h2 class="title">Editar Perfil</h2>
                 <div class="input-field">
                     <label for="imageRestaurant"><i class="fas fa-camera"></i>Imagem:</label>

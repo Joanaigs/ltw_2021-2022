@@ -23,6 +23,13 @@ if (editRestaurant) {
         form.enctype="multipart/form-data"
         form.id="editRestaurant-popup"
 
+        const csrf=document.createElement("input")
+        csrf.type="hidden"
+        csrf.name="csrf"
+        csrf.value=article.dataset.token
+        form.appendChild(csrf)
+
+
         const imageRestaurant=document.createElement("label")
         imageRestaurant.for="photoRestaurant"
         const file=document.createElement("input")

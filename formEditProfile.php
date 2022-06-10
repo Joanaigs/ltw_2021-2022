@@ -9,7 +9,10 @@
     require_once('database/user.class.php');
     require_once('templates/common.tpl.php');
     require_once('templates/user.tpl.php');
-
+if ($session->getcsrf() !== $_POST['csrf']) {
+    $session->addMessage('error',"Não tem premissões para esta págian");
+    header("Location: index.php");
+}
     $db = getDatabaseConnection();
 
     $user = User::getUser($db, $session->getId());
@@ -49,6 +52,6 @@
                 echo('save');
             }
         }
-        exit(header('Location: profile.php'));
-    }
-
+    }else
+        $session->addMessage('error', 'Perfil não foi editado');
+exit(header('Location: profile.php'));

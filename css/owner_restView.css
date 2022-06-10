@@ -323,8 +323,10 @@ input{
     justify-content: space-evenly;
     margin: 30px;
 }
+.acceptButtons .erase-restaurant-btn{
 
-.acceptButtons > a {
+}
+.acceptButtons > a,.acceptButtons .erase-restaurant-btn {
     width: 100px;
     border-radius: 5px;
     border:2px;
