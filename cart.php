@@ -12,7 +12,7 @@ require_once('templates/cart.tpl.php');
 
 $db = getDatabaseConnection();
 $restaurants = Restaurant::getRestaurants($db, $session);
-drawHeader($session);
+drawHeader($session, $hasSearch = false);
 drawCart($db, $session, $restaurants);
 drawFooter();
 

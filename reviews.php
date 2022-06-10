@@ -24,7 +24,7 @@ $filterTypes=Filter::getTypeDish($db);
 $reviews=Review::getReview($db, $idRestaurant);
 
 
-drawHeader($session); ?>
+drawHeader($session, $hasSearch = false); ?>
 
 
 <div class="reviews-flex-container">

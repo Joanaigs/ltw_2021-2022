@@ -9,7 +9,7 @@ if ($session->getcsrf() !== $_POST['csrf']) {
     $session->addMessage('error',"Não tem premissões para esta págian");
     header("Location: index.php");
 }
-drawHeader($session);
+drawHeader($session, $hasSearch = false);
 $db = getDatabaseConnection();
 $dbh = new PDO('sqlite:example.db');
 $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);

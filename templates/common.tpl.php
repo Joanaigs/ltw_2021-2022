@@ -1,75 +1,89 @@
-<?php declare(strict_types = 1); ?>
+<?php declare(strict_types=1); ?>
 
-<?php function drawHeader(Session $session) { ?>
+<?php function drawHeader(Session $session, bool $hasSearch) { ?>
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-      <title>Larica-Food Delivery Website</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-      <link rel="stylesheet" href="../css/style.css">
-      <link rel="stylesheet" href="../css/comments.css">
-      <script src="../javascript/heartDish.js" defer></script>
-      <script src="../javascript/heart.js" defer></script>
-      <script src="../javascript/restaurantPage.js" defer></script>
-      <script src="../javascript/scriptsMealFilter.js" defer></script>
-      <script src="../javascript/restaurantFilter.js" defer></script>
-      <script src="../javascript/restaurantSearch.js" defer></script>
-      <script src="../javascript/scriptFavorites.js" defer></script>
-      <script src="../javascript/script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <title>Larica-Food Delivery Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/comments.css">
+    <script src="../javascript/heartDish.js" defer></script>
+    <script src="../javascript/heart.js" defer></script>
+    <script src="../javascript/restaurantPage.js" defer></script>
+    <script src="../javascript/scriptsMealFilter.js" defer></script>
+    <script src="../javascript/restaurantFilter.js" defer></script>
+    <script src="../javascript/restaurantSearch.js" defer></script>
+    <script src="../javascript/scriptFavorites.js" defer></script>
+    <script src="../javascript/script.js" defer></script>
 
 
-  </head>
-  <body>
-    <header>
-        <div class="header-left">
-            <a href="../index.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
-            <section class="search1">
-                <div class="search-icon1"></div>
-                <div class="input">
-                    <input id="searchRest1" type="text" placeholder="Procurar">
-                </div>
-                <span class="clear1" onclick="document.getElementById('searchRest1').value=''"></span>
-            </section>
-        </div>
-        <nav class="navbar">
-            <div class="search2">
-                <div class="search-icon2"></div>
-                <div class="input">
-                    <input id="searchRest2" type="text" placeholder="Procurar restaurantes">
-                </div>
-                <span class="clear2" onclick="document.getElementById('searchRest2').value=''"></span>
+</head>
+<body>
+<header>
+    <div class="header-left">
+        <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
+        <?php if ($hasSearch) {?>
+        <section class="search1">
+            <div class="search-icon1"></div>
+            <div class="input">
+                <input id="searchRest1" type="text" placeholder="Procurar">
             </div>
-            <a class="active" href="../index.php">Restaurantes</a>
-            <a class="active" href="../about.php">Sobre</a>
-        </nav>
-        <div class="icons">
-            <i class="fas fa-bars" id="menu-bars"></i>
-            <?php if($session->isLoggedIn()){?>
+            <span class="clear1" onclick="document.getElementById('searchRest1').value=''"></span>
+        </section>
+        <?php } ?>
+    </div>
+    <nav class="navbar">
+        <?php if ($hasSearch) {?>
+        <div class="search2">
+            <div class="search-icon2"></div>
+            <div class="input">
+                <input id="searchRest2" type="text" placeholder="Procurar restaurantes">
+            </div>
+            <span class="clear2" onclick="document.getElementById('searchRest2').value=''"></span>
+        </div>
+        <?php } ?>
+        <a class="active" href="../main_page.php">Restaurantes</a>
+        <a class="active" href="../about.php">Sobre</a>
+    </nav>
+    <div class="icons">
+        <i class="fas fa-bars" id="menu-bars"></i>
+        <?php if ($session->isLoggedIn()) { ?>
             <a href="../favorites.php" class="fas fa-heart"></a>
             <a href="../profile.php" class="fas fa-user"></a>
-            <a href="../cart.php" class="fas fa-shopping-cart"></a><?php ;}?>
-            <?php if(!$session->isLoggedIn()){?>
-            <button class="login-register-btn" onclick="window.location.href = '../login_register_action.php';">Entrar</button><?php ;}
-            else{?>
-            <button class="logout-btn" onclick="window.location.href = '../logout_action.php';">Sair</button><?php ;}?>
-        </div>
-    </header>
+            <a href="../cart.php" class="fas fa-shopping-cart"></a><?php ;
+        } ?>
+        <?php if (!$session->isLoggedIn()) { ?>
+            <button class="login-register-btn" onclick="window.location.href = '../login_register_action.php';">Entrar
+            </button><?php ;
+        } else {
+            ?>
+            <button class="logout-btn" onclick="window.location.href = '../logout_action.php';">Sair</button><?php ;
+        } ?>
+    </div>
+</header>
 
-  </body>
+</body>
 <?php }
 
 function drawProfileHeader($restaurant) { ?>
-  <!DOCTYPE html>
-  <html lang="en-US">
-  <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="../css/profile.css"/>
     <link rel="stylesheet" href="../css/comments.css">
     <script src="../javascript/heartDish.js" defer></script>
@@ -83,7 +97,7 @@ function drawProfileHeader($restaurant) { ?>
 <body>
     <header>
         <div class="header-left">
-            <a href="../index.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
+            <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
         </div>
         <nav class="navbar">
             <a class="active" id="profile" href="../profile.php">Perfil de utilizador</a>
@@ -94,7 +108,7 @@ function drawProfileHeader($restaurant) { ?>
             else{?>
                 <div class="active" id="restaurant-page"><button class="restaurant-page-btn" name="restaurantPageButton" onclick="window.location.href = '../restView.php?id=<?=$restaurant->id?>';">Página do restaurante</button></div>
             <?php } ?>
-            <a class="active" href="../index.php">Restaurantes</a>
+            <a class="active" href="../main_page.php">Restaurantes</a>
             <a class="active" href="../about.php">Sobre</a>
         </nav>
         <div class="icons">
@@ -122,11 +136,13 @@ function drawRestViewHeader($id) { ?>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/comments.css">
     <link rel="stylesheet" href="../css/profile.css"/>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="../javascript/addDish.js" defer></script>
     <script src="../javascript/editDish.js" defer></script>
     <script src="../javascript/editRestaurant.js" defer></script>
     <script src="../javascript/eraseRestaurant.js" defer></script>
+
     <script src="../javascript/heartDish.js" defer></script>
     <script src="../javascript/heart.js" defer></script>
     <script src="../javascript/restaurantPage.js" defer></script>
@@ -142,9 +158,9 @@ function drawRestViewHeader($id) { ?>
 <header>
     <a href="../index.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
     <nav class="navbar">
-        <a href="restView.php?id=<?=$id?>">Menu</a>
-        <a href="state.php?id=<?=$id?>">Estado dos Pedidos</a>
-        <a href="../comments.php?id=<?=$id?>">Avaliações e comentários</a>
+        <a href="restView.php?id=<?= $id ?>">Menu</a>
+        <a href="state.php?id=<?= $id ?>">Estado dos Pedidos</a>
+        <a href="../comments.php?id=<?= $id ?>">Avaliações e comentários</a>
     </nav>
     <div class="icons">
         <i class="fas fa-bars" id="menu-bars"></i>
@@ -158,17 +174,20 @@ function drawRestViewHeader($id) { ?>
 <?php }
 
 
-function drawFooter() { ?>
+function drawFooter()
+{ ?>
     <link rel="stylesheet" href="css/style.css">
     <footer class="credit" id="real">&copy; Larica LTW 2021/2022 - All rights reserved</footer>
 <?php }
 
-function drawAboutUs() { ?>
+function drawAboutUs()
+{ ?>
     <link rel="stylesheet" href="../css/style.css">
     <div class="about">
         <div class="about-site">
             <p>
-                Somos uma empresa que trabalha com os restaurantes da sua zona, levando os seus pedidos <br> diretamente à sua porta,
+                Somos uma empresa que trabalha com os restaurantes da sua zona, levando os seus pedidos <br> diretamente
+                à sua porta,
                 sem ter de mexer algo mais que um dedo.
             </p>
             <h3>
@@ -178,28 +197,31 @@ function drawAboutUs() { ?>
         <div class="how-to-use">
             <div class="box-container">
                 <div class="box">
-                    <img src="../images/about1.jpg" alt="burger" class="image" />
+                    <img src="../images/about1.jpg" alt="burger" class="image"/>
                     <h3>Procurar</h3>
                     <p>
-                        Larica tem centenas de restaurantes à sua escolha. Quando abre o website, pode procurar um restaurante ou cozinha em particular.
+                        Larica tem centenas de restaurantes à sua escolha. Quando abre o website, pode procurar um
+                        restaurante ou cozinha em particular.
                     </p>
                 </div>
 
 
                 <div class="box">
-                    <img src="../images/about2.jpg" alt="burger" class="image" />
+                    <img src="../images/about2.jpg" alt="burger" class="image"/>
                     <h3>Pedir</h3>
                     <p>
-                        Quando decidir o que quer encomendar basta tocar no '+' para que o pedido seja adicionado ao seu carrinho de compras.
+                        Quando decidir o que quer encomendar basta tocar no '+' para que o pedido seja adicionado ao seu
+                        carrinho de compras.
                         No entanto, apenas poderá realizar pedidos de restaurantes diferentes, separadamente.
                     </p>
                 </div>
 
                 <div class="box">
-                    <img src="../images/about3.jpg" alt="burger" class="image" />
+                    <img src="../images/about3.jpg" alt="burger" class="image"/>
                     <h3>Pagar</h3>
                     <p>
-                        Quando estiver pronto para fazer check-out, irá ver o seu endereço (com possibilidade de modificá-lo para esse pedido específico) e o preço do pedido.
+                        Quando estiver pronto para fazer check-out, irá ver o seu endereço (com possibilidade de
+                        modificá-lo para esse pedido específico) e o preço do pedido.
                         Se estiver tudo bem, toque em Checkout e já está.
                     </p>
                 </div>
@@ -235,34 +257,54 @@ function drawAboutUs() { ?>
     </div>
 <?php }
 
-    function drawSidebar($restaurant) { ?>
-        <link rel="stylesheet" href="../css/profile.css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-            <div class="sidebar">
-                <h3>Conta</h3>
-                <ul class="sidebar-options">
-                    <li class="profile-page"><a href="../profile.php"> Perfil de utilizador <div class="icon"><i class="fas fa-chevron-right" id="chevron-right"></i></div></a></li>
-                    <li class="last-orders-page"><a href="../latest_orders.php">Pedidos anteriores <div class="icon"><i class="fas fa-chevron-right" id="chevron-right"></i></div></a></li>
-                    <?php if($restaurant===false){?>
-                        <li class="add-restaurant"><button class="add-restaurant-btn" name="addRestaurantButton" onclick="window.location.href = '../addRestaurant.php';">Adicionar restaurante <div class="icon"><i class="fas fa-chevron-right" id="chevron-right"></i></div></button></li>
-                    <?php }
-                    else{?>
-                        <li class="restaurant-page"><button class="restaurant-page-btn" name="restaurantPageButton" onclick="window.location.href = '../restView.php?id=<?=$restaurant->id?>';">Página do restaurante <div class="icon"><i class="fas fa-chevron-right" id="chevron-right"></i></div></button></li>
-                    <?php } ?>
-                </ul>
-            </div>
-        <?php }
-
-function drawLoginRegisterForm(Session $session) { ?>
-<!DOCTYPE html>
-<html lang="en-US">
-    <head>
-    <title></title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+function drawSidebar($restaurant)
+{ ?>
+    <link rel="stylesheet" href="../css/profile.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    <div class="sidebar">
+        <h3>Conta</h3>
+        <ul class="sidebar-options">
+            <li class="profile-page"><a href="../profile.php"> Perfil de utilizador
+                    <div class="icon"><i class="fas fa-chevron-right" id="chevron-right"></i></div>
+                </a></li>
+            <li class="last-orders-page"><a href="../latest_orders.php">Pedidos anteriores
+                    <div class="icon"><i class="fas fa-chevron-right" id="chevron-right"></i></div>
+                </a></li>
+            <?php if ($restaurant === false) { ?>
+                <li class="add-restaurant">
+                    <button class="add-restaurant-btn" name="addRestaurantButton"
+                            onclick="window.location.href = '../addRestaurant.php';">Adicionar restaurante
+                        <div class="icon"><i class="fas fa-chevron-right" id="chevron-right"></i></div>
+                    </button>
+                </li>
+            <?php } else {
+                ?>
+                <li class="restaurant-page">
+                    <button class="restaurant-page-btn" name="restaurantPageButton"
+                            onclick="window.location.href = '../restView.php?id=<?= $restaurant->id ?>';">Página do
+                        restaurante
+                        <div class="icon"><i class="fas fa-chevron-right" id="chevron-right"></i></div>
+                    </button>
+                </li>
+            <?php } ?>
+        </ul>
+    </div>
+<?php }
+
+function drawLoginRegisterForm(Session $session)
+{ ?>
+    <!DOCTYPE html>
+    <html lang="en-US">
+    <head>
+        <title></title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+              integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+              crossorigin="anonymous" referrerpolicy="no-referrer"/>
         <title>Sign in/Sign up Form</title>
         <link rel="stylesheet" href="../css/login_register.css"/>
     </head>
@@ -271,7 +313,6 @@ function drawLoginRegisterForm(Session $session) { ?>
             <div class="forms-container">
                 <div class="signin">
                     <form action="../formLoginRegister.php" method="post" class="sign-in-form">
-                        <input type="hidden" name="csrf" value="<?=$session->getcsrf()?>">
                         <h2 class="title">Iniciar sessão</h2>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
@@ -360,7 +401,9 @@ function drawLoginRegisterForm(Session $session) { ?>
                             <option value="Colombia">Colombia</option>
                             <option value="Comoros">Comoros</option>
                             <option value="Congo">Congo</option>
-                            <option value="Congo, The Democratic Republic of The">Congo, The Democratic Republic of The</option>
+                            <option value="Congo, The Democratic Republic of The">Congo, The Democratic Republic of
+                                The
+                            </option>
                             <option value="Cook Islands">Cook Islands</option>
                             <option value="Costa Rica">Costa Rica</option>
                             <option value="Cote D'ivoire">Cote D'ivoire</option>
@@ -425,7 +468,9 @@ function drawLoginRegisterForm(Session $session) { ?>
                             <option value="Kazakhstan">Kazakhstan</option>
                             <option value="Kenya">Kenya</option>
                             <option value="Kiribati">Kiribati</option>
-                            <option value="Korea, Democratic People's Republic of">Korea, Democratic People's Republic of</option>
+                            <option value="Korea, Democratic People's Republic of">Korea, Democratic People's Republic
+                                of
+                            </option>
                             <option value="Korea, Republic of">Korea, Republic of</option>
                             <option value="Kuwait">Kuwait</option>
                             <option value="Kyrgyzstan">Kyrgyzstan</option>
@@ -439,7 +484,9 @@ function drawLoginRegisterForm(Session $session) { ?>
                             <option value="Lithuania">Lithuania</option>
                             <option value="Luxembourg">Luxembourg</option>
                             <option value="Macao">Macao</option>
-                            <option value="Macedonia, The Former Yugoslav Republic of">Macedonia, The Former Yugoslav Republic of</option>
+                            <option value="Macedonia, The Former Yugoslav Republic of">Macedonia, The Former Yugoslav
+                                Republic of
+                            </option>
                             <option value="Madagascar">Madagascar</option>
                             <option value="Malawi">Malawi</option>
                             <option value="Malaysia">Malaysia</option>
@@ -486,7 +533,7 @@ function drawLoginRegisterForm(Session $session) { ?>
                             <option value="Philippines">Philippines</option>
                             <option value="Pitcairn">Pitcairn</option>
                             <option value="Poland">Poland</option>
-                            <option value="Portugal" selected>Portugal </option>
+                            <option value="Portugal" selected>Portugal</option>
                             <option value="Puerto Rico">Puerto Rico</option>
                             <option value="Qatar">Qatar</option>
                             <option value="Reunion">Reunion</option>
@@ -512,7 +559,9 @@ function drawLoginRegisterForm(Session $session) { ?>
                             <option value="Solomon Islands">Solomon Islands</option>
                             <option value="Somalia">Somalia</option>
                             <option value="South Africa">South Africa</option>
-                            <option value="South Georgia and The South Sandwich Islands">South Georgia and The South Sandwich Islands</option>
+                            <option value="South Georgia and The South Sandwich Islands">South Georgia and The South
+                                Sandwich Islands
+                            </option>
                             <option value="Spain">Spain</option>
                             <option value="Sri Lanka">Sri Lanka</option>
                             <option value="Sudan">Sudan</option>
@@ -541,7 +590,8 @@ function drawLoginRegisterForm(Session $session) { ?>
                             <option value="United Arab Emirates">United Arab Emirates</option>
                             <option value="United Kingdom">United Kingdom</option>
                             <option value="United States">United States</option>
-                            <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
+                            <option value="United States Minor Outlying Islands">United States Minor Outlying Islands
+                            </option>
                             <option value="Uruguay">Uruguay</option>
                             <option value="Uzbekistan">Uzbekistan</option>
                             <option value="Vanuatu">Vanuatu</option>
@@ -554,22 +604,23 @@ function drawLoginRegisterForm(Session $session) { ?>
                             <option value="Yemen">Yemen</option>
                             <option value="Zambia">Zambia</option>
                             <option value="Zimbabwe">Zimbabwe</option>
-                            </select>
-                        </div>
-                        <div class="input-field">
-                            <i class="fas fa-lock"></i>
-                            <input type="password" name="password" placeholder="Palavra-passe" autocomplete="off" required />
-                        </div>
-                        <p class="warning">A palavra-passe deve conter no mínimo 5 caracteres e incluir letras e números</p>
-                        <div class="input-field">
-                            <i class="fas fa-lock"></i>
-                            <input type="password" name="password_confirm" placeholder="Confirmar palavra-passe" autocomplete="off" required />
+                        </select>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="password" placeholder="Palavra-passe" autocomplete="off" required/>
+                    </div>
+                    <p class="warning">A palavra-passe deve conter no mínimo 5 caracteres e incluir letras e números</p>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="password_confirm" placeholder="Confirmar palavra-passe"
+                               autocomplete="off" required/>
                         <?php $messages = $session->getMessages();
-                        foreach($messages as $message) {
-                        ?><p <?php $message;
-                        }?> </p>
-                        </div>
-                        <input type="submit" name="RegisterButton" class="btn solid" value="Registar" formmethod="post">
+                        foreach ($messages as $message) {
+                            ?><p <?php $message;
+                        } ?> </p>
+                    </div>
+                    <input type="submit" name="RegisterButton" class="btn solid" value="Registar" formmethod="post">
                 </form>
             </div>
         </div>
@@ -581,7 +632,7 @@ function drawLoginRegisterForm(Session $session) { ?>
                     <br>
                     <button id="sign-up-button" class="btn transparent">Criar conta</button>
                 </div>
-                <img src="../images/pizza_sharing.svg" alt="burger" class="image" />
+                <img src="../images/pizza_sharing.svg" alt="burger" class="image"/>
             </div>
             <div class="panel right-panel">
                 <div class="content">
@@ -592,7 +643,7 @@ function drawLoginRegisterForm(Session $session) { ?>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
     <script src="../javascript/script.js"></script>
     </body>
     </html>
