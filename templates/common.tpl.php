@@ -30,7 +30,7 @@
 <body>
 <header>
     <div class="header-left">
-        <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
+        <a href="../index.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
         <?php if ($hasSearch) {?>
         <section class="search1">
             <div class="search-icon1"></div>
@@ -51,7 +51,7 @@
             <span class="clear2" onclick="document.getElementById('searchRest2').value=''"></span>
         </div>
         <?php } ?>
-        <a class="active" href="../main_page.php">Restaurantes</a>
+        <a class="active" href="../index.php">Restaurantes</a>
         <a class="active" href="../about.php">Sobre</a>
     </nav>
     <div class="icons">
@@ -97,7 +97,7 @@ function drawProfileHeader($restaurant) { ?>
 <body>
     <header>
         <div class="header-left">
-            <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
+            <a href="../index.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
         </div>
         <nav class="navbar">
             <a class="active" id="profile" href="../profile.php">Perfil de utilizador</a>
@@ -108,7 +108,7 @@ function drawProfileHeader($restaurant) { ?>
             else{?>
                 <div class="active" id="restaurant-page"><button class="restaurant-page-btn" name="restaurantPageButton" onclick="window.location.href = '../restView.php?id=<?=$restaurant->id?>';">Página do restaurante</button></div>
             <?php } ?>
-            <a class="active" href="../main_page.php">Restaurantes</a>
+            <a class="active" href="../index.php">Restaurantes</a>
             <a class="active" href="../about.php">Sobre</a>
         </nav>
         <div class="icons">
@@ -627,7 +627,7 @@ function drawLoginRegisterForm(Session $session)
         <div class="panels-container">
             <div class="panel left-panel">
                 <div class="content">
-                    <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
+                    <a href="../index.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
                     <h3>Não tem conta?</h3>
                     <br>
                     <button id="sign-up-button" class="btn transparent">Criar conta</button>
@@ -636,7 +636,7 @@ function drawLoginRegisterForm(Session $session)
             </div>
             <div class="panel right-panel">
                 <div class="content">
-                    <a href="../main_page.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
+                    <a href="../index.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
                     <h3>Já tem conta?</h3>
                     <br>
                     <button id="sign-in-button" class="btn transparent">Iniciar sessão</button>
