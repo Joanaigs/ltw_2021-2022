@@ -26,7 +26,7 @@ if (isset($_POST["nameRestaurant"], $_POST["addressRestaurant"], $_POST['restaur
         header("Location: restView.php?id=$idRest");
     }
 } else {
-    header("Location: editRestaurant.php?id=$idRest");
+    header("Location: restView.php?id=$idRest");
     exit();
 }
 

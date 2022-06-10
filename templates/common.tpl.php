@@ -118,10 +118,15 @@ function drawRestViewHeader($id) { ?>
     <script src="../javascript/script.js" defer></script>
     <script src="javascript/heart.js" defer></script>
     <script src="javascript/orderSelect.js" defer></script>
+
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/comments.css">
     <link rel="stylesheet" href="../css/profile.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="../javascript/addDish.js" defer></script>
+    <script src="../javascript/editDish.js" defer></script>
+    <script src="../javascript/editRestaurant.js" defer></script>
+    <script src="../javascript/eraseRestaurant.js" defer></script>
     <script src="../javascript/heartDish.js" defer></script>
     <script src="../javascript/heart.js" defer></script>
     <script src="../javascript/restaurantPage.js" defer></script>
@@ -130,6 +135,7 @@ function drawRestViewHeader($id) { ?>
     <script src="../javascript/restaurantSearch.js" defer></script>
     <script src="../javascript/scriptFavorites.js" defer></script>
     <script src="../javascript/script.js" defer></script>
+
 </head>
 <body>
 
