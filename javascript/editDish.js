@@ -3,9 +3,9 @@ console.log(editDish)
 for (let i = 0; i < editDish.length; i++) {
     if (editDish[i]) {
         editDish[i].addEventListener('click', async function () {
-            const section = document.querySelectorAll('#editDishBox')
+            const section = document.querySelectorAll('#popup')
             console.log(section)
-            const article = (section[i]).closest(".info-dish")
+            const article = document.querySelector(".info-dish")
             console.log(article.dataset.iddish)
             if (editDish[i].id === article.dataset.iddish) {
                 console.log(article)
@@ -65,13 +65,16 @@ for (let i = 0; i < editDish.length; i++) {
                 form.appendChild(priceDishLabel)
 
                 const radio_class_buttons = document.createElement('div')
+                radio_class_buttons.className = "radio-class-buttons"
 
                 const mealDishLabel = document.createElement("div")
+                mealDishLabel.className = "mealCategory"
                 mealDishLabel.textContent = "Categoria:"
                 mealDishLabel.for = "mealDish"
                 for (const meal of meals) {
-                    const span1 = document.createElement("label")
+                    const label = document.createElement("label")
                     const mealDish = document.createElement("input")
+                    const span = document.createElement('span')
                     mealDish.type = "radio"
                     mealDish.classList.add("radio")
                     mealDish.name = "mealDish"
@@ -80,18 +83,21 @@ for (let i = 0; i < editDish.length; i++) {
                     if (dish.idMeal === meal.id) {
                         mealDish.checked = true
                     }
-                    span1.textContent= meal.name
-                    span1.appendChild(mealDish)
-                    mealDishLabel.appendChild(span1)
+                    span.textContent = meal.name
+                    label.appendChild(mealDish)
+                    label.appendChild(span)
+                    mealDishLabel.appendChild(label)
                 }
                 radio_class_buttons.appendChild(mealDishLabel)
 
                 const mealDishLabel2 = document.createElement("div")
+                mealDishLabel2.className = "typeOfDishCategory"
                 mealDishLabel2.textContent = "Tipo de refeição:"
                 mealDishLabel2.for = "mealDish"
                 for (const type of typeDishes) {
-                    const span2 = document.createElement("label")
+                    const label = document.createElement("label")
                     const mealDish2 = document.createElement("input")
+                    const span = document.createElement('span')
                     mealDish2.type = "radio"
                     mealDish2.classList.add("radio")
                     mealDish2.name = "typeDish"
@@ -100,9 +106,10 @@ for (let i = 0; i < editDish.length; i++) {
                     if (dish.idTypeOfDish === type.id) {
                         mealDish2.checked = true
                     }
-                    span2.textContent= type.name
-                    span2.appendChild(mealDish2)
-                    mealDishLabel2.appendChild(span2)
+                    span.textContent= type.name
+                    label.appendChild(mealDish2)
+                    label.appendChild(span)
+                    mealDishLabel2.appendChild(label)
                 }
                 radio_class_buttons.appendChild(mealDishLabel2)
                 form.appendChild(radio_class_buttons)
@@ -114,22 +121,22 @@ for (let i = 0; i < editDish.length; i++) {
                 popup_box_content.appendChild(form)
 
                 const a = document.createElement("a")
-                a.id = "popupClose"
-                a.text = "/&times;";
+                a.id="popupClose"
+                a.className = "fa-solid fa-xmark";
                 popup_box_content.appendChild(a)
                 section[i].appendChild(popup_box_content)
             }
-            removeEditDish()
+            closeEditDPopup()
         })
     }
 }
-async function removeEditDish() {
+async function closeEditDPopup() {
     const removeeditDish = document.querySelectorAll('#popupClose')
     console.log(removeeditDish)
     for (let i = 0; i < removeeditDish.length; i++) {
         if (removeeditDish[i]) {
             removeeditDish[i].addEventListener('click', async function () {
-                const section = document.querySelector('#editDishBox')
+                const section = document.querySelector('#popup')
                 section.classList.add("hidden")
             })
         }

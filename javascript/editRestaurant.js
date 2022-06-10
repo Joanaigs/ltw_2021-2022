@@ -2,20 +2,22 @@ const editRestaurant= document.querySelector('.button-edit-rest ')
 console.log(editRestaurant)
 if (editRestaurant) {
     editRestaurant.addEventListener('click', async function () {
-        const section = document.querySelector('#editRestaurantInfo')
+        const section = document.querySelector('#popup')
         console.log(section.dataset.id)
+        const article = document.querySelector(".rest-name")
+        console.log(article.dataset.iddish)
         section.classList.remove("hidden")
         section.innerHTML = ''
         const response = await fetch('../api/api_getFilterRestaurant.php')
         const category = await response.json()
-        const response2 = await fetch('../api/api_getRestaurant.php?id='+section.dataset.id)
+        const response2 = await fetch('../api/api_getRestaurant.php?id='+article.dataset.id)
         const restaurant = await response2.json()
 
         const popup_box_content = document.createElement('div')
         popup_box_content.classList.add("popup-box-content")
 
         const form=document.createElement("form")
-        form.action="updateRestaurant.php?id="+section.dataset.id
+        form.action="updateRestaurant.php?id="+article.dataset.id
         form.method="post"
         form.classList="popupBox"
         form.enctype="multipart/form-data"
@@ -53,23 +55,28 @@ if (editRestaurant) {
         form.appendChild(addressRestaurantLabel)
 
         const categoryRadioButtons = document.createElement('div')
+        categoryRadioButtons.className = "radio-class-buttons"
 
         const mealDishLabel=document.createElement("div")
+        mealDishLabel.className = "mealCategory";
         mealDishLabel.textContent="Categoria:"
         mealDishLabel.for="mealDish"
         for(const c of category){
-            const span=document.createElement("label")
+            const label = document.createElement("label")
             const restaurantCategory=document.createElement("input")
+            const span = document.createElement('span')
             restaurantCategory.type="radio"
             restaurantCategory.classList.add("radio")
             restaurantCategory.name="restaurantCategory"
             restaurantCategory.value=c.id
+            restaurantCategory.textContent = c.name
             if (restaurant.filt === c.name) {
                 restaurantCategory.checked = true
             }
             span.textContent=c.name
-            span.appendChild(restaurantCategory)
-            mealDishLabel.appendChild(span)
+            label.appendChild(restaurantCategory)
+            label.appendChild(span)
+            mealDishLabel.appendChild(label)
         }
         categoryRadioButtons.appendChild(mealDishLabel)
         form.appendChild(categoryRadioButtons)
@@ -82,19 +89,19 @@ if (editRestaurant) {
 
         const a=document.createElement("a")
         a.id="popupClose"
-        a.text="/&times;";
+        a.className = "fa-solid fa-xmark";
         popup_box_content.appendChild(a)
         section.appendChild(popup_box_content)
 
-        removeEditRestaurant()
+        closeEditPopoup()
     })
 }
-async function removeEditRestaurant() {
+async function closeEditPopoup() {
     const removeeditRestaurant = document.querySelector('#popupClose')
     if (removeeditRestaurant) {
         removeeditRestaurant.addEventListener('click', async function () {
             console.log('hi')
-            const section = document.querySelector('#editRestaurantInfo')
+            const section = document.querySelector('#popup')
             section.classList.add("hidden")
         })
     }

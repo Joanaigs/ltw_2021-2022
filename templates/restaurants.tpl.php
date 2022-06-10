@@ -37,23 +37,20 @@ function drawRestaurantView(PDO $db, int $idRestaurant, array $dishes)
         <link rel="stylesheet" href="../css/owner_restView.css"/>
         <link rel="stylesheet" href="../css/profile.css"/>
         <div class="grid-container-rest">
-            <span class="rest-image" style='background-image:url("../images/restaurants/<?= $restaurant->image ?>.jpg")'></span>
-            <div class="rest-name">
+            <span class="rest-image"
+                  style='background-image:url("../images/restaurants/<?= $restaurant->image ?>.jpg")'></span>
+            <article class="rest-name" data-id = "<?= $idRestaurant?>">
                 <h1><?= $restaurant->name ?></h1>
-                <a class="button-edit-rest"><i
-                            class="fas fa-pencil"></i> Editar dados</a>
-                <article id="editRestaurantInfo" class="popup hidden" data-id="<?=$idRestaurant?>">
-                </article>
+
                 <div class="erase-restaurant">
-                    <button class="erase-restaurant-btn" name="eraseRestaurantButton"
-                            onclick="window.location.href = '../eraseRestaurant.php';">Eliminar restaurante
-                    </button>
+                    <button class="erase-restaurant-btn" name="eraseRestaurantButton">Eliminar restaurante</button>
                 </div>
             </article>
             <h3><?= $restaurant->address ?></h3>
             <?php $category = Filter::getFilterRestaurants($db); ?>
-            <h4><?= $restaurant->filt;
-                drawRestaurantViewDishes($idRestaurant, $dishes, $db); ?></h4>
+            <h4>Tipo de restaurante:  <?= $restaurant->filt; ?></h4>
+            <a class="button-edit-rest"><i class="fas fa-pencil"></i> Editar dados</a>
+            <?php drawRestaurantViewDishes($idRestaurant, $dishes, $db); ?>
         </div>
     </div>
 
@@ -62,14 +59,11 @@ function drawRestaurantView(PDO $db, int $idRestaurant, array $dishes)
 function drawRestaurantViewDishes($idRestaurant, $dishes, $db)
 {
     ?>
-    <div id="menu">
-    <h2>Menu</h2>
-    <a class="button-add" ><i class="fas fa-plus">
-            Adicionar prato ao menu</i></a>
-        <article id="addDish" class="popup hidden" data-id="<?= $idRestaurant ?>">
-        </article>
-        <?php $meal = $dishes[0]->meal; ?>
-        <h2 class="type"><?= $meal ?></h2>
+    <article id="menu" data-id = "<?= $idRestaurant?>">
+        <h2>Menu</h2>
+        <a class="button-add"><i class="fas fa-plus"> Adicionar prato ao menu</i></a>
+
+        <?php $meal = null ?>
         <div class="order">
             <?php foreach ($dishes as $dish) { ?>
                 <?php if ($dish->meal != $meal) {
@@ -84,20 +78,22 @@ function drawRestaurantViewDishes($idRestaurant, $dishes, $db)
                         <h4> <?= $dish->name ?></h4>
                         <p class="info"> <?= $dish->price ?> €</p>
                         <section class="edit">
-                            <a class="button-edit" id="<?= $dish->id ?>"><i
-                                        class="fas fa-pencil"></i> Editar prato</a>
+                            <a class="button-edit" id="<?= $dish->id ?>"><i class="fas fa-pencil"></i> Editar prato</a>
                             <a class="button-minus"
                                href="../removeDish.php?idDish=<?= $dish->id ?>&idRestaurant=<?= $idRestaurant ?>">
                                 Eliminar prato do menu</a>
                         </section>
-                        <div id="editDishBox" class="popup hidden">
 
-                        </div>
                     </section>
-                    </article>
-
+                </article>
             <?php } ?>
         </div>
-    </section>
+    </article>
+
+    <div class="popup hidden" id ="popup">
+        <div class="popupBox">
+
+
+        </div>
     </div>
 <?php }

@@ -2,8 +2,10 @@ const addDish = document.querySelector('.button-add ')
 console.log(addDish)
 if (addDish) {
     addDish.addEventListener('click', async function () {
-        const section = document.querySelector('#addDish')
+        const section = document.querySelector('#popup')
         console.log(section)
+        const article = document.querySelector("#menu")
+        console.log(article.dataset.iddish)
         section.classList.remove("hidden")
         section.innerHTML = ''
         const response = await fetch('../api/api_getMeals.php')
@@ -15,7 +17,7 @@ if (addDish) {
         popup_box_content.classList.add("popup-box-content")
 
         const form=document.createElement("form")
-        form.action="addDishDatabase.php?idRestaurant="+section.dataset.id
+        form.action="addDishDatabase.php?idRestaurant="+article.dataset.id
         form.method="post"
         form.classList="popupBox"
         form.enctype="multipart/form-data"
@@ -56,38 +58,45 @@ if (addDish) {
         form.appendChild(priceDishLabel)
 
         const radio_class_buttons = document.createElement('div')
+        radio_class_buttons.className = "radio-class-buttons"
 
         const mealDishLabel=document.createElement("div")
+        mealDishLabel.className = "mealCategory";
         mealDishLabel.textContent="Categoria:"
         mealDishLabel.for="mealDish"
         for(const meal of meals){
-            const span1=document.createElement("label")
+            const label = document.createElement("label")
             const mealDish=document.createElement("input")
+            const span = document.createElement('span')
             mealDish.type="radio"
             mealDish.classList.add("radio")
             mealDish.name="mealDish"
             mealDish.value=meal.id
             mealDish.textContent=meal.name
-            span1.textContent= meal.name
-            span1.appendChild(mealDish)
-            mealDishLabel.appendChild(span1)
+            span.textContent = meal.name
+            label.appendChild(mealDish)
+            label.appendChild(span)
+            mealDishLabel.appendChild(label)
         }
         radio_class_buttons.appendChild(mealDishLabel)
 
         const mealDishLabel2=document.createElement("div")
+        mealDishLabel2.className = "typeOfDishCategory"
         mealDishLabel2.textContent="Tipo de refeição:"
         mealDishLabel2.for="mealDish"
         for(const type of typeDishes){
-            const span2=document.createElement("label")
+            const label=document.createElement("label")
             const mealDish2=document.createElement("input")
+            const span = document.createElement('span')
             mealDish2.type="radio"
             mealDish2.classList.add("radio")
             mealDish2.name="typeDish"
             mealDish2.value=type.id
             mealDish2.textContent=type.name
-            span2.textContent= type.name
-            span2.appendChild(mealDish2)
-            mealDishLabel2.appendChild(span2)
+            span.textContent= type.name
+            label.appendChild(mealDish2)
+            label.appendChild(span)
+            mealDishLabel2.appendChild(label)
         }
         radio_class_buttons.appendChild(mealDishLabel2)
         form.appendChild(radio_class_buttons)
@@ -100,19 +109,19 @@ if (addDish) {
 
         const a=document.createElement("a")
         a.id="popupClose"
-        a.text="/&times;";
+        a.className = "fa-solid fa-xmark";
         popup_box_content.appendChild(a)
         section.appendChild(popup_box_content)
 
-        removeAddDish()
+        closeAddPopup();
     })
 }
-async function removeAddDish() {
+async function closeAddPopup() {
     const removeaddDish = document.querySelector('#popupClose')
     if (removeaddDish) {
         removeaddDish.addEventListener('click', async function () {
             console.log('hi')
-            const section = document.querySelector('#addDish')
+            const section = document.querySelector('#popup')
             section.classList.add("hidden")
         })
     }

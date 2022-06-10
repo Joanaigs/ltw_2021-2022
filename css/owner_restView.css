@@ -92,10 +92,12 @@ body{
 
 
 .grid-container-rest #menu h2{
+    grid-column-start: 1;
+    grid-column-end: -1;
     font-size: 24px;
     color: var(--dark-color);
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 4rem;
+
 }
 
 .grid-container-rest #menu > a{
@@ -105,7 +107,13 @@ body{
 .grid-container-rest #menu .order{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 30px;
+    grid-column-gap: 30px;
+    grid-row-gap: 15px;
+
+}
+
+.order .info-dish{
+    margin-top: 0;
 }
 
 .grid-container-rest #menu .order .edit{
@@ -122,6 +130,7 @@ body{
     font-weight: bold;
     text-decoration: none;
     font-size: 12px;
+    cursor: pointer;
 }
 
 
@@ -130,16 +139,23 @@ body{
     font-family: var(--body-font-family);
     font-size: 16px;
     color: var(--accent-color);
+    cursor: pointer;
 }
 
-#entrada .type, #pratoPrincipal .type, #sobremesa .type, #bebida .type{
+#menu > section .type{
     margin-top: 1rem;
 }
 
-#entrada , #pratoPrincipal , #sobremesa {
+#menu > section {
     padding-bottom: 2rem;
 }
 
+
+.popup.hidden{
+
+    visibility: hidden;
+
+}
 
 .popup{
     position: fixed;
@@ -155,15 +171,11 @@ body{
     background-color: rgba(67, 67, 67, 0.61);
     backdrop-filter: blur(5px);
     transition: all 0.4s;
-    visibility: hidden;
-
-}
-
-.popup:target{
     visibility: visible;
     opacity: 1;
-
 }
+
+
 
 .popup-box-content{
     position: relative;
@@ -171,16 +183,18 @@ body{
     width: 500px;
     border-radius: 15px;
 
+
 }
 
 #popupClose{
     position: absolute;
-    top: 0;
-    right: 15px;
+    top: 15px;
+    right: 20px;
     color: var(--body-font-color);
     text-decoration: none;
     font-size: 30px;
     margin: 0;
+    cursor: pointer;
 }
 
 .popupBox{
@@ -238,7 +252,7 @@ body{
     padding-top: 20px;
 }
 
-.radio-class-buttons > label{
+.radio-class-buttons > div{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -246,8 +260,7 @@ body{
     font-size: 15px;
 }
 
-
-.radio-class-buttons > label > span{
+.radio-class-buttons > div > label{
     padding: 5px;
     font-weight: normal;
     color: var(--body-font-color);
@@ -260,11 +273,26 @@ body{
 
 }
 
+label{
+    font-weight: bold;
+}
+
+.mealCategory, .typeOfDishCategory {
+    font-weight: bold;
+}
+
 .popupBox > button{
     margin-left: 10px;
     margin-bottom: 10px;
 }
 
+.mealCategory > label, .typeOfDishCategory > label{
+    cursor: pointer;
+}
+
+input{
+    margin-right: 5px;
+}
 
 #editRestaurant-popup{
     padding-top: 0;
@@ -273,6 +301,53 @@ body{
 .categoryRadioButtons{
     display: flex;
     flex-direction: row;
-
 }
+
+.button-edit-rest{
+    color: #444444;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+
+.popup-box-content > p{
+    font-size: 20px;
+    justify-content: center;
+    margin: 30px;
+    color: var(--body-font-color);
+}
+
+.acceptButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 30px;
+}
+
+.acceptButtons > a {
+    width: 100px;
+    border-radius: 5px;
+    border:2px;
+    border-color: #444444;
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--body-font-color);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.acceptButtons > a:first-child:hover{
+    background-color: var(--accent-color);
+    color: var(--light-color);
+}
+
+.acceptButtons > a:last-child:hover{
+    background-color: #FA5F55;
+    color: var(--light-color);
+}
+
+
+
 
