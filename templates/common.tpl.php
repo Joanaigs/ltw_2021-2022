@@ -271,6 +271,7 @@ function drawLoginRegisterForm(Session $session) { ?>
             <div class="forms-container">
                 <div class="signin">
                     <form action="../formLoginRegister.php" method="post" class="sign-in-form">
+                        <input type="hidden" name="csrf" value="<?=$session->getcsrf()?>">
                         <h2 class="title">Iniciar sessão</h2>
                         <div class="input-field">
                             <i class="fas fa-user"></i>

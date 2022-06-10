@@ -39,10 +39,14 @@ async function get_restaurants(restaurants) {
         section_filter.classList.add('section-filter')
         section_filter.append(filter)
         text.append(section_filter)
+        const a=document.createElement("a")
+        a.href="restaurant.php?id="+ restaurant.id
         img.src = '../images/restaurants/' + restaurant.image +'.jpg'
+
         article.append(ratingFixed)
         article.append(div)
-        article.appendChild(img)
+        a.appendChild(img)
+        article.appendChild(a)
         h3.appendChild(link)
         article.append(text)
         section.appendChild(article)

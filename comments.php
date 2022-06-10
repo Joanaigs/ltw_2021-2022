@@ -17,8 +17,13 @@ require_once('database/connection.db.php');
 
 $db = getDatabaseConnection();
 $idRestaurant = $_GET['id'];
-$reviews = Review::getReview($db, $idRestaurant);
-drawRestViewHeader($idRestaurant);
-drawComments($reviews, $db, $session, 1);
-drawFooter();
-
+$restaurant = Restaurant::getRestaurant($db, intval($idRestaurant));
+if ($session->getId() == $restaurant->idUser) {
+    $reviews = Review::getReview($db, $idRestaurant);
+    drawRestViewHeader($idRestaurant);
+    drawComments($reviews, $db, $session, 1);
+    drawFooter();
+}
+else{
+    header("Location: index.php");
+}

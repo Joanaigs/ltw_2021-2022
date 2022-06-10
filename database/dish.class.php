@@ -207,7 +207,7 @@ class Dish{
 
     static function filterDish(PDO $db, $filter, $idRestaurant, Session $session)
     {
-        $stmt = $db->prepare('SELECT Dish.id as id, idRestaurant, Dish.name as name, price, image, idMeal, idTypeOfDish, Meal.name as mealName
+        $stmt = $db->prepare('SELECT DISTINCT Dish.id as id, idRestaurant, Dish.name as name, price, image, idMeal, idTypeOfDish, Meal.name as mealName
             FROM Dish, Meal WHERE idTypeOfDish=? and idRestaurant=? and idMeal=Meal.id');
         $stmt->execute(array($filter, $idRestaurant));
 
@@ -237,7 +237,6 @@ class Dish{
                     $temp->loggedIn = true;
                 } else
                     $temp->loggedIn = false;
-                $dishes[] = $temp;
             }
             $dishes[] = $temp;
         }

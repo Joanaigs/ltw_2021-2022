@@ -3,26 +3,26 @@ console.log(editDish)
 for (let i = 0; i < editDish.length; i++) {
     if (editDish[i]) {
         editDish[i].addEventListener('click', async function () {
-            const section = document.querySelectorAll('#popup')
+            const section = document.querySelector('#popup')
             console.log(section)
-            const article = document.querySelector(".info-dish")
-            console.log(article.dataset.iddish)
-            if (editDish[i].id === article.dataset.iddish) {
+            const article = document.querySelectorAll(".info-dish")
+            console.log(article[i].dataset.iddish)
+            if (editDish[i].id === article[i].dataset.iddish) {
                 console.log(article)
-                section[i].classList.remove("hidden")
-                section[i].innerHTML = ''
+                section.classList.remove("hidden")
+                section.innerHTML = ''
                 const response = await fetch('../api/api_getMeals.php')
                 const meals = await response.json()
                 const response2 = await fetch('../api/api_getCategories.php')
                 const typeDishes = await response2.json()
-                const response3 = await fetch('../api/api_getDish.php?id=' + article.dataset.iddish)
+                const response3 = await fetch('../api/api_getDish.php?id=' + article[i].dataset.iddish)
                 const dish = await response3.json()
 
                 const popup_box_content = document.createElement('div')
                 popup_box_content.classList.add("popup-box-content")
 
                 const form = document.createElement("form")
-                form.action = "editDishDatabase.php?idRestaurant=" + article.dataset.idrestaurant + "&idDish=" + article.dataset.iddish
+                form.action = "editDishDatabase.php?idRestaurant=" + article[i].dataset.idrestaurant + "&idDish=" + article[i].dataset.iddish
                 form.method = "post"
                 form.classList = "popupBox"
                 form.enctype = "multipart/form-data"
@@ -31,6 +31,13 @@ for (let i = 0; i < editDish.length; i++) {
                 img.src = "images/dishes/" + dish.image + ".jpg"
                 img.alt = ""
                 form.appendChild(img)
+
+                const csrf=document.createElement("input")
+                csrf.type="hidden"
+                csrf.name="csrf"
+                csrf.value=article[i].dataset.token
+                form.appendChild(csrf)
+
 
                 const imageRestaurant = document.createElement("label")
                 imageRestaurant.for = "imageRestaurant"
@@ -124,7 +131,7 @@ for (let i = 0; i < editDish.length; i++) {
                 a.id="popupClose"
                 a.className = "fa-solid fa-xmark";
                 popup_box_content.appendChild(a)
-                section[i].appendChild(popup_box_content)
+                section.appendChild(popup_box_content)
             }
             closeEditDPopup()
         })

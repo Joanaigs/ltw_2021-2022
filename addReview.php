@@ -22,4 +22,4 @@ if (isset($_POST["rate"], $_POST["remark"])) {
 }
 else
     $session->addMessage('error', "A avaliação n foi adicionada");
-header("Location: reviews.phsp?id=$idRestaurant");
+header("Location: reviews.php?id=$idRestaurant");

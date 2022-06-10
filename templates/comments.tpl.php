@@ -48,6 +48,7 @@ require_once(__DIR__ . '/../database/review.class.php');
     <section class="editReview" id="<?= $review->id ?>" style="display: none">
         <form action="../editReview.php?idReview=<?= $review->id ?>&idRestaurant=<?= $review->idRestaurant ?>" method="post"
               class="review">
+            <input type="hidden" name="csrf" value="<?=$session->getcsrf()?>">
             <input id="edit_review" type="text" name="edit_review" value="<?= $review->review ?>">
             <div id="editRate">
                 <input type="radio" id="star5<?= $review->id ?>" name="rating" value=5  <?php if ($review->rating == 5) echo "checked" ?>/>
@@ -92,6 +93,7 @@ require_once(__DIR__ . '/../database/review.class.php');
                         <section class="editComment" id="<?= $comment->id ?>" style="display: none">
                             <form action="../editComment.php?idComment=<?= $comment->id ?>&idRestaurant=<?= $review->idRestaurant ?>&type=<?=$rest?>" method="post"
                                   class="review">
+                                <input type="hidden" name="csrf" value="<?=$session->getcsrf()?>">
                                 <input id="edit_comment" type="text" name="edit_comment" value=" <?= $comment->comment ?> ">
                                 <button  name="editComment"> Guardar</button>
                             </form>
@@ -117,6 +119,7 @@ require_once(__DIR__ . '/../database/review.class.php');
                             <p> <?= $comment->comment ?> </p>
                         </section>
                         <section class="editComment" id="<?= $comment->id ?>" style="display: none">
+                            <input type="hidden" name="csrf" value="<?=$session->getcsrf()?>">
                             <form action="../editComment.php?idComment=<?= $comment->id ?>&idRestaurant=<?= $review->idRestaurant ?>&type=<?=$rest?>" method="post"
                                   class="review">
                                 <input id="edit_comment" type="text" name="edit_comment" value=" <?= $comment->comment ?> ">
@@ -143,6 +146,7 @@ require_once(__DIR__ . '/../database/review.class.php');
     <?php if ($session->getId() === $user->id || $rest === 1) { ?>
         <form action="../addComment.php?type=<?= $rest ?>&idRestaurant=<?= $review->idRestaurant ?>&id=<?= $review->id ?>"
               method="post" class="add-comment" enctype="multipart/form-data">
+            <input type="hidden" name="csrf" value="<?=$session->getcsrf()?>">
             <input class="form-control" placeholder="Adicione um comentário..."
                    name="comment" id="comment" required/>
 
