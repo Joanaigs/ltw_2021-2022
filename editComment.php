@@ -5,7 +5,7 @@ $session = new Session();
 require_once('database/comment.class.php');
 require_once ('database/connection.db.php');
 if ($session->getcsrf() !== $_POST['csrf']) {
-    $session->addMessage('error',"Não tem premissões para esta págian");
+    $session->addMessage('error',"Não tem permissões para esta página");
     header("Location: index.php");
 }
 $db = getDatabaseConnection();

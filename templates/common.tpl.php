@@ -142,6 +142,7 @@ function drawRestViewHeader($id) { ?>
     <script src="../javascript/editDish.js" defer></script>
     <script src="../javascript/editRestaurant.js" defer></script>
     <script src="../javascript/eraseRestaurant.js" defer></script>
+    <script src="../javascript/eraseDish.js" defer></script>
 
     <script src="../javascript/heartDish.js" defer></script>
     <script src="../javascript/heart.js" defer></script>

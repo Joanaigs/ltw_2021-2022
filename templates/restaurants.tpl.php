@@ -84,11 +84,8 @@ function drawRestaurantViewDishes($idRestaurant, $dishes, $db, Session $session)
                         <p class="info"> <?= $dish->price ?> €</p>
                         <section class="edit">
                             <a class="button-edit" id="<?= $dish->id ?>"><i class="fas fa-pencil"></i> Editar prato</a>
-                            <form action="../removeDish.php?idDish=<?= $dish->id ?>&idRestaurant=<?= $idRestaurant ?>" method="post">
-                                <input type="hidden" name="csrf" value="<?=$session->getcsrf()?>">
-                                <button class="button-minus" type="submit">
-                                    Eliminar prato do menu</button>
-                            </form>
+                            <a class="button-minus" id ="eraseDish">Eliminar prato do menu</a>
+
                         </section>
 
                     </section>

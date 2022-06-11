@@ -900,7 +900,8 @@ h1{
 .buttons .cartButton a{
     text-decoration: none;
     color: #444444;
-    font-size: 10px;
+    font-size: 13px;
+    font-family: 'Poppins', sans-serif;
 
 }
 
@@ -923,7 +924,7 @@ h1{
 .dish .content{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+
 }
 
 
@@ -938,12 +939,12 @@ h1{
 
 .dish .content .text{
     color: #444444;
-    margin-right: 30px;
-    margin-left: 30px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    margin: auto;
 }
 
 .dish .content .text h3{
@@ -1070,6 +1071,13 @@ h1{
     box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
 }
 
+.add-review h2{
+    color: var(--body-font-color);
+    font-size: 16px;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
 .review-profile-info h2{
     color: var(--body-font-color);
     font-size: 16px;
@@ -1124,7 +1132,7 @@ button.erase-comment-btn{
 }
 
 
-form button{
+form button:not(#nostyle){
     width: 90px;
     height: 40px;
     outline: none;
@@ -1135,7 +1143,7 @@ form button{
     font-size: 1.4rem;
     text-transform: uppercase;
     font-weight: bold;
-    transition: all 0.5s;
+
 }
 
 
@@ -1242,7 +1250,6 @@ form button{
 .comment{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     margin-left: 100px;
 }
 
@@ -1250,7 +1257,7 @@ form button{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    margin-left: 40px;
+    margin-left: auto;
 }
 
 .comment p{
@@ -1306,7 +1313,7 @@ form button{
 
     border: none;
     border-bottom: 2px solid var(--accent-color);
-    width: 100%;
+    width: 350px;
     height: auto;
     font-family: 'Poppins', sans-serif;
     color: var(--body-font-color);
@@ -1325,6 +1332,7 @@ form button{
     text-transform: uppercase;
     font-weight: bold;
     transition: all 0.5s;
+    align-items: center;
 
 
 }
@@ -1432,8 +1440,15 @@ form button{
 
 #favoritesPage article .text div span i{
     margin-left: .5rem;
+
 }
 
+
+@media (max-width: 1353px) {
+    #restaurantPage{
+        grid-template-columns: .3fr 1fr;
+    }
+}
 @media (max-height: 1272px) {
     .reviews-flex-container .image {
         height: 300px;
@@ -1445,11 +1460,6 @@ form button{
 
 }
 
-@media (max-width: 1272px){
-    #restaurantPage{
-        grid-template-columns: .3fr 1fr;
-    }
-}
 
 @media (max-width: 1162px){
     .grid-container{

@@ -1,9 +1,9 @@
-const eraseRestaurant = document.querySelector('.erase-restaurant-btn')
-console.log(eraseRestaurant)
-if (eraseRestaurant) {
-    eraseRestaurant.addEventListener('click', async function () {
+const eraseDish = document.querySelector('#eraseDish')
+console.log(eraseDish)
+if (eraseDish) {
+    eraseDish.addEventListener('click', async function () {
         const section = document.querySelector('#popup')
-        const article = document.querySelector(".rest-name")
+        const article = document.querySelector(".info-dish")
         console.log(section)
         section.classList.remove("hidden")
         section.innerHTML = ''
@@ -12,7 +12,7 @@ if (eraseRestaurant) {
         popup_box_content.classList.add("popup-box-content")
 
         const p = document.createElement('p');
-        p.textContent = "Tem a certeza que deseja eliminar este restaurante? ";
+        p.textContent = "Tem a certeza que deseja eliminar este prato? ";
 
 
         popup_box_content.appendChild(p);
@@ -21,14 +21,14 @@ if (eraseRestaurant) {
         acceptButtons.className = "acceptButtons"
         const yesButton = document.createElement('button');
         yesButton.type="submit"
-        yesButton.classList.add("eraseRestaurant-btn")
+        yesButton.classList.add("eraseDish-btn")
         yesButton.id = "nostyle"
         const noButton = document.createElement('button');
 
 
 
         const form=document.createElement("form")
-        form.action="../eraseRestaurant.php"
+        form.action="../removeDish.php?idDish=" + article.dataset.iddish + "&idRestaurant=" + article.dataset.idrestaurant;
         form.method="post"
         form.classList="yesButton"
 
@@ -49,10 +49,10 @@ if (eraseRestaurant) {
         popup_box_content.appendChild(acceptButtons);
         section.appendChild(popup_box_content)
 
-        closeErasePopup();
+        closeEraseDishPopup();
     })
 }
-async function closeErasePopup() {
+async function closeEraseDishPopup() {
     const removeaddDish = document.querySelector('#noButton')
     if (removeaddDish) {
         removeaddDish.addEventListener('click', async function () {
