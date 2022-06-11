@@ -21,9 +21,9 @@
                 <h2 class="title">Adicionar restaurante</h2>
                 <div class="input-field">
                     <label for="imageRestaurant"><i class="fas fa-camera"></i>Imagem:</label>
-                    <label id="image-button-label">
-                        <input class="image-input" type="file" name="image" accept="image/png,image/jpeg">Escolha uma
-                        imagem</label>
+                    <label>
+                        <input type="file" name="image" accept="image/png,image/jpeg,image/jpg,image/JPG"><input class="image-input" type="file" name="image" accept="image/png,image/jpeg">
+                    </label>
                 </div>
 
                 <div class="input-field">

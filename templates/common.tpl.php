@@ -23,7 +23,7 @@
     <script src="../javascript/restaurantFilter.js" defer></script>
     <script src="../javascript/restaurantSearch.js" defer></script>
     <script src="../javascript/scriptFavorites.js" defer></script>
-    <script src="../javascript/script.js" defer></script>
+    <script src="../javascript/search.js" defer></script>
 
 
 </head>
@@ -93,7 +93,7 @@ function drawProfileHeader($restaurant) { ?>
     <script src="../javascript/restaurantFilter.js" defer></script>
     <script src="../javascript/restaurantSearch.js" defer></script>
     <script src="../javascript/scriptFavorites.js" defer></script>
-    <script src="../javascript/script.js" defer></script>
+    <script src="../javascript/search.js" defer></script>
 <body>
     <header>
         <div class="header-left">
@@ -129,7 +129,7 @@ function drawRestViewHeader($id) { ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="../javascript/script.js" defer></script>
+    <script src="../javascript/search.js" defer></script>
     <script src="javascript/heart.js" defer></script>
     <script src="javascript/orderSelect.js" defer></script>
 
@@ -151,7 +151,7 @@ function drawRestViewHeader($id) { ?>
     <script src="../javascript/restaurantFilter.js" defer></script>
     <script src="../javascript/restaurantSearch.js" defer></script>
     <script src="../javascript/scriptFavorites.js" defer></script>
-    <script src="../javascript/script.js" defer></script>
+    <script src="../javascript/search.js" defer></script>
 
 </head>
 <body>
@@ -645,7 +645,7 @@ function drawLoginRegisterForm(Session $session)
             </div>
         </div>
     </div>
-    <script src="../javascript/script.js"></script>
+    <script src="../javascript/search.js"></script>
     </body>
     </html>
 <?php } ?>

@@ -1460,10 +1460,15 @@ form button:not(#nostyle){
 
 }
 
-
 @media (max-width: 1162px){
     .grid-container{
         grid-template-columns: .3fr 1fr;
+    }
+}
+
+@media (max-width: 1100px){
+    header{
+        padding: 1rem 2rem;
     }
 }
 
@@ -1491,10 +1496,6 @@ form button:not(#nostyle){
     .search1 .search-icon1::after{
         height: 10px;
         transform: translate(4px, 4px) rotate(315deg);
-    }
-
-    header{
-        padding: 1rem 2rem;
     }
 
     #favoritesPage article .text{
@@ -1592,7 +1593,7 @@ form button:not(#nostyle){
 
 
 /* responsive design */
-@media (max-width: 773px) {
+@media (max-width: 780px) {
 
     /* navbar */
     header .icons #menu-bars{
