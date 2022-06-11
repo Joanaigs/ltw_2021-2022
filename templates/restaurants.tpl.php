@@ -6,6 +6,7 @@ require_once(__DIR__ . '/../database/restaurant.class.php');
 
 function drawRestaurants(array $restaurants, array $filterRestaurants, PDO $db, Session $session) { ?><!DOCTYPE html>
 <div class="grid-container" id="mainPage">
+    <?php showMessage($session)?>
     <div class="filter">
         <section id="typeOfRestaurant">
             <h2>Comida:</h2>
@@ -57,7 +58,7 @@ function drawRestaurantView(PDO $db, int $idRestaurant, array $dishes, Session $
 
     <?php }
     else
-        header("Location: index.php");
+        header("Location: ../index.php");
 } ?>
 <?php
 function drawRestaurantViewDishes($idRestaurant, $dishes, $db, Session $session)

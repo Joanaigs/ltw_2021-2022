@@ -1,14 +1,14 @@
 <?php
 declare(strict_types = 1);
-require_once('../session.php');
+require_once(__DIR__ . '/../uteis/session.php');
 $session = new Session();
-require_once('../database/dish.class.php');
-require_once('../database/restaurant.class.php');
-require_once('../database/filter.class.php');
-require_once('../templates/common.tpl.php');
-require_once('../templates/restaurants.tpl.php');
-
-$db = new PDO('sqlite:../example.db');
+require_once(__DIR__ . '/../database/dish.class.php');
+require_once(__DIR__ . '/../database/restaurant.class.php');
+require_once(__DIR__ . '/../database/filter.class.php');
+require_once(__DIR__ . '/../templates/common.tpl.php');
+require_once(__DIR__ . '/../templates/restaurants.tpl.php');
+require_once(__DIR__ .'/../database/connection.db.php');
+$db = getDatabaseConnection();
 if ($_GET['filter'] == "restaurants") {
     $array = Restaurant::getFavoriteRestaurants($db, $session, $session->getId());
 } else {

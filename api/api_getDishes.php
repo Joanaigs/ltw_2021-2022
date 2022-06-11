@@ -1,9 +1,10 @@
 <?php
 declare(strict_types = 1);
-require_once('../session.php');
+require_once(__DIR__ . '/../uteis/session.php');
 $session = new Session();
-require_once('../database/dish.class.php');
-$db = new PDO('sqlite:../example.db');
+require_once(__DIR__ . '/../database/dish.class.php');
+require_once(__DIR__ .'/../database/connection.db.php');
+$db = getDatabaseConnection();
 $dishes=Dish::getDishesRestaurant($db, $_GET['id'], $session);
 
 

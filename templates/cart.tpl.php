@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require_once('database/cart.class.php');
+require_once(__DIR__ .'/../database/cart.class.php');
 
 
     function drawCart(PDO $db, Session $session, array $restaurants) {
@@ -17,7 +17,7 @@ require_once('database/cart.class.php');
                 if(!empty($cart)){
                     $carrinho_vazio=false;?>
                     <div class="each-rest">
-                        <h2><a href="../restaurant.php?id=<?= $res->id ?>"><?= $res->name ?></a></h2>
+                        <h2><a href="../pages/restaurant.php?id=<?= $res->id ?>"><?= $res->name ?></a></h2>
                         <?php $total = 0; ?>
                         <div class="total-price">
                             <div class="orders">
@@ -25,21 +25,21 @@ require_once('database/cart.class.php');
                                 <article id="item">
                                     <?php $total += $dish->price*$dish->number?>
                                     <div class="name-price">
-                                        <a href="../restaurant.php?id=<?=$dish->idRestaurant?>#<?=$dish->name?>"><?=$dish->name?> <span> x<?=$dish->number?></span></a>
+                                        <a href="../pages/restaurant.php?id=<?=$dish->idRestaurant?>#<?=$dish->name?>"><?=$dish->name?> <span> x<?=$dish->number?></span></a>
                                         <p><?=$dish->price*$dish->number?> €</p>
                                     </div>
                                     <div class="edit-cart">
-                                        <a href="../updadeCartNumber.php?idDish=<?= $dish->id ?>&number=<?=$dish->number+1?>&idRestaurant=<?=$dish->idRestaurant?>" class="fa-solid fa-plus"></a>
-                                        <a href="../updadeCartNumber.php?idDish=<?= $dish->id ?>&number=<?=$dish->number-1?>&idRestaurant=<?=$dish->idRestaurant?>" class="minus">-</a>
+                                        <a href="../actions/updadeCartNumber.php?idDish=<?= $dish->id ?>&number=<?=$dish->number+1?>&idRestaurant=<?=$dish->idRestaurant?>" class="fa-solid fa-plus"></a>
+                                        <a href="../actions/updadeCartNumber.php?idDish=<?= $dish->id ?>&number=<?=$dish->number-1?>&idRestaurant=<?=$dish->idRestaurant?>" class="minus">-</a>
                                     </div>
-                                    <button class="erase-fromCart-btn" name="eraseFromButton" onclick="window.location.href = '../removeFromCart.php?idRestaurant=<?=$dish->idRestaurant?>&idDish=<?=$dish->id?>&cart=true';"><i class="fas fa-trash-alt"></i></button>
+                                    <button class="erase-fromCart-btn" name="eraseFromButton" onclick="window.location.href = '../actions/removeFromCart.php?idRestaurant=<?=$dish->idRestaurant?>&idDish=<?=$dish->id?>&cart=true';"><i class="fas fa-trash-alt"></i></button>
                                 </article>
                             <?php } ?>
 
                             </div>
                             <p id="price">TOTAL : <?= $total ?>€</p>
                         </div>
-                        <form action="../makeOrder.php?idRestaurant=<?= $res->id ?>" method="post" class="edit-profile">
+                        <form action="../actions/makeOrder.php?idRestaurant=<?= $res->id ?>" method="post" class="edit-profile">
                             <input type="hidden" name="csrf" value="<?=$session->getcsrf()?>">
                             <label><i class="fa-solid fa-location-dot"></i>Morada de entrega: <input type="text"
                                                                                                      name="address"

@@ -51,7 +51,7 @@ async function get_meals(meals) {
         if(dish.loggedIn){
             if (!dish.cart){
             const a = document.createElement("a")
-            a.href="addToCart.php?idDish=" + +dish.id + "&idRestaurant=" + dish.idRestaurant + "&favorites=0"
+            a.href="../actions/addToCart.php?idDish=" + +dish.id + "&idRestaurant=" + dish.idRestaurant + "&favorites=0"
             const i = document.createElement('i');
             i.className = "fa-solid fa-plus";
             a.textContent = "Adicionar ao carrinho"
@@ -59,7 +59,7 @@ async function get_meals(meals) {
             cartButton.appendChild(a)
             }else{
                 const a1 = document.createElement("a")
-                a1.href="removeFromCart.php?idDish=" + +dish.id + "&idRestaurant=" + dish.idRestaurant + "&favorites=0"
+                a1.href="../actions/removeFromCart.php?idDish=" + +dish.id + "&idRestaurant=" + dish.idRestaurant + "&favorites=0"
                 const i = document.createElement('i');
                 i.className = "fa-solid fa-minus";
 

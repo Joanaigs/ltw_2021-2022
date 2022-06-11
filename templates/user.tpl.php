@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-require_once('database/user.class.php');
-require_once('database/dish.class.php');
-require_once('database/order.class.php');
-require_once('database/restaurant.class.php');
-require_once('templates/common.tpl.php');
+require_once(__DIR__ . '/../database/user.class.php');
+require_once(__DIR__ . '/../database/dish.class.php');
+require_once(__DIR__ . '/../database/order.class.php');
+require_once(__DIR__ . '/../database/restaurant.class.php');
+require_once(__DIR__ . '/../templates/common.tpl.php');
 
 function drawLatestOrders(Session $session, PDO $db, User $user)
 { ?>
@@ -75,7 +75,7 @@ function drawProfile($user, $restaurant)
                 <span><label><i class="fas fa-phone"></i>Número telemóvel:</label><?= $user->phoneNumber ?></span>
             </div>
             <button class="edit-profile-btn" name="editProfileButton"
-                    onclick="window.location.href = '../edit_profile_action.php';">Editar
+                    onclick="window.location.href = '../pages/edit_profile_action.php';">Editar
             </button>
         </div>
     </div>
@@ -87,7 +87,7 @@ function editProfileForm(User $user, $restaurant, $session)
     <div class="grid-container-profile">
         <?php drawSidebar($restaurant); ?>
         <div class="edit-profile-info">
-            <form action="../formEditProfile.php" method="post" class="edit-profile" enctype="multipart/form-data">
+            <form action="../actions/formEditProfile.php" method="post" class="edit-profile" enctype="multipart/form-data">
                 <input type="hidden" name="csrf" value="<?=$session->getcsrf()?>">
                 <h2 class="title">Editar Perfil</h2>
                 <div class="input-field">
@@ -128,7 +128,7 @@ function editProfileForm(User $user, $restaurant, $session)
                     <input type="submit" name="saveEdit" class="btn-solid" value="Salvar" formmethod="post">
 
                     <span><button class="erase-profile-btn" name="eraseProfileButton"
-                        onclick="window.location.href = '../eraseProfile.php';">Apagar Conta</button></span>
+                        onclick="window.location.href = '../actions/eraseProfile.php';">Apagar Conta</button></span>
                 </div>
             </form>
         </div>

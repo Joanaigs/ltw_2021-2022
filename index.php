@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-require_once('session.php');
+require_once('uteis/session.php');
 $session = new Session();
 
 require_once('database/restaurant.class.php');

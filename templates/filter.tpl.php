@@ -8,7 +8,7 @@ require_once(__DIR__ . '/../database/filter.class.php');
     <section id="filter">
         <?php foreach ($filters as $filter) { ?>
             <header>
-                <input type="checkbox"><a href="item.html"><?= $filter->name ?></a>
+                <input type="checkbox"><a><?= $filter->name ?></a>
             </header>
         <?php } ?>
     </section>

@@ -17,7 +17,7 @@ if (editRestaurant) {
         popup_box_content.classList.add("popup-box-content")
 
         const form=document.createElement("form")
-        form.action="updateRestaurant.php?id="+article.dataset.id
+        form.action="../actions/updateRestaurant.php?id="+article.dataset.id
         form.method="post"
         form.classList="popupBox"
         form.enctype="multipart/form-data"

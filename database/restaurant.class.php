@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
-require_once('review.class.php');
-require_once('filter.class.php');
+require_once(__DIR__ .'/../database/review.class.php');
+require_once(__DIR__ .'/../database/filter.class.php');
 class Restaurant {
     public int $id;
     public int $idUser;

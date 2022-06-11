@@ -10,7 +10,8 @@ require_once(__DIR__ . '/../database/review.class.php');
 { ?><!DOCTYPE html>
 
     <section class="reviews">
-        <?php foreach ($reviews as $review) { ?>
+        <?php showMessage($session);
+        foreach ($reviews as $review) { ?>
             <article class="review">
 
                 <?php $user = User::getUser($db, $review->idUser);
@@ -36,7 +37,7 @@ require_once(__DIR__ . '/../database/review.class.php');
                         <?php if ($session->getId() === $user->id && $rest === 0) { ?>
 
                             <button class="fas fa-trash-alt" name="eraseReview"
-                                    onclick="window.location.href = '../eraseReview.php?id=<?= $review->id ?>&idRestaurant=<?= $review->idRestaurant ?>';"></button>
+                                    onclick="window.location.href = '../actions/eraseReview.php?id=<?= $review->id ?>&idRestaurant=<?= $review->idRestaurant ?>';"></button>
                             <button onclick="editReview(<?= $review->id ?>)" name="editReview"
                                     class="fas fa-pencil"></button>
                         <?php } ?>
@@ -47,7 +48,7 @@ require_once(__DIR__ . '/../database/review.class.php');
                     <p> <?= $review->review ?> </p>
                 </section>
                 <section class="editReview" id="<?= $review->id ?>" style="display: none">
-                    <form action="../editReview.php?idReview=<?= $review->id ?>&idRestaurant=<?= $review->idRestaurant ?>"
+                    <form action="../actions/editReview.php?idReview=<?= $review->id ?>&idRestaurant=<?= $review->idRestaurant ?>"
                           method="post"
                           class="editReview">
                         <input type="hidden" name="csrf" value="<?= $session->getcsrf() ?>">
@@ -99,7 +100,7 @@ require_once(__DIR__ . '/../database/review.class.php');
                                             <p> <?= $comment->comment ?> </p>
                                         </section>
                                         <section class="editComment" id="<?= $comment->id ?>" style="display: none">
-                                            <form action="../editComment.php?idComment=<?= $comment->id ?>&idRestaurant=<?= $review->idRestaurant ?>&type=<?= $rest ?>"
+                                            <form action="../actions/editComment.php?idComment=<?= $comment->id ?>&idRestaurant=<?= $review->idRestaurant ?>&type=<?= $rest ?>"
                                                   method="post"
                                                   class="review">
                                                 <input id="edit_comment" type="text" name="edit_comment"
@@ -109,7 +110,7 @@ require_once(__DIR__ . '/../database/review.class.php');
                                         </section>
                                         <?php if ($session->getId() === $restaurant->idUser && $rest === 1) { ?>
                                             <button class="fas fa-trash-alt" name="eraseComment"
-                                                    onclick="window.location.href = '../eraseComment.php?id=<?= $comment->id ?>&type=<?= $rest ?>&idRestaurant=<?= $review->idRestaurant ?>';">
+                                                    onclick="window.location.href = '../actions/eraseComment.php?id=<?= $comment->id ?>&type=<?= $rest ?>&idRestaurant=<?= $review->idRestaurant ?>';">
                                             </button>
                                             <button onclick="editComment(<?= $comment->id ?>)" name="editReview"> Editar
                                             </button>
@@ -130,7 +131,7 @@ require_once(__DIR__ . '/../database/review.class.php');
                                             <p> <?= $comment->comment ?> </p>
                                         </section>
                                         <section class="editComment" id="<?= $comment->id ?>" style="display: none">
-                                            <form action="../editComment.php?idComment=<?= $comment->id ?>&idRestaurant=<?= $review->idRestaurant ?>&type=<?= $rest ?>"
+                                            <form action="../actions/editComment.php?idComment=<?= $comment->id ?>&idRestaurant=<?= $review->idRestaurant ?>&type=<?= $rest ?>"
                                                   method="post"
                                                   class="editComment" id="comment">
                                                 <input id="edit_comment" type="text" name="edit_comment"
@@ -140,7 +141,7 @@ require_once(__DIR__ . '/../database/review.class.php');
                                         </section>
                                         <?php if ($session->getId() === $user->id && $rest === 0) { ?>
                                             <button class="fas fa-trash-alt" name="eraseComment"
-                                                    onclick="window.location.href = '../eraseComment.php?id=<?= $comment->id ?>&type=<?= $rest ?>&idRestaurant=<?= $review->idRestaurant ?>';">
+                                                    onclick="window.location.href = '../actions/eraseComment.php?id=<?= $comment->id ?>&type=<?= $rest ?>&idRestaurant=<?= $review->idRestaurant ?>';">
                                             </button>
                                             <button onclick="editComment(<?= $comment->id ?>)" name="editReview"
                                                     class="fas fa-pencil"></button>
@@ -154,7 +155,7 @@ require_once(__DIR__ . '/../database/review.class.php');
                     <?php } ?>
                     <div class="add-comment">
                         <?php if ($session->getId() === $user->id || $rest === 1) { ?>
-                            <form action="../addComment.php?type=<?= $rest ?>&idRestaurant=<?= $review->idRestaurant ?>&id=<?= $review->id ?>"
+                            <form action="../actions/addComment.php?type=<?= $rest ?>&idRestaurant=<?= $review->idRestaurant ?>&id=<?= $review->id ?>"
                                   method="post" class="add-comment" enctype="multipart/form-data">
                                 <input class="form-control" placeholder="Adicione um comentário..."
                                        name="comment" id="comment" required/>

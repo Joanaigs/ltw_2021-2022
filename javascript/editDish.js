@@ -22,7 +22,7 @@ for (let i = 0; i < editDish.length; i++) {
                 popup_box_content.classList.add("popup-box-content")
 
                 const form = document.createElement("form")
-                form.action = "editDishDatabase.php?idRestaurant=" + article[i].dataset.idrestaurant + "&idDish=" + article[i].dataset.iddish
+                form.action = "../actions/editDishDatabase.php?idRestaurant=" + article[i].dataset.idrestaurant + "&idDish=" + article[i].dataset.iddish
                 form.method = "post"
                 form.classList = "popupBox"
                 form.enctype = "multipart/form-data"

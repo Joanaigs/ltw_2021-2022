@@ -28,7 +28,7 @@ if (eraseDish) {
 
 
         const form=document.createElement("form")
-        form.action="../removeDish.php?idDish=" + article.dataset.iddish + "&idRestaurant=" + article.dataset.idrestaurant;
+        form.action="../actions/removeDish.php?idDish=" + article.dataset.iddish + "&idRestaurant=" + article.dataset.idrestaurant;
         form.method="post"
         form.classList="yesButton"
 

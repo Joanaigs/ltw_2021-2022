@@ -26,7 +26,7 @@ async function get_favoriteRestaurants(value) {
         const article = document.createElement('article')
         const text = document.createElement('a')
         text.classList.add('text');
-        text.href="restaurant.php?id="+ restaurant.id
+        text.href="../pages/restaurant.php?id="+ restaurant.id
         const link = document.createElement('h3')
         link.textContent = restaurant.name
         text.append(link)
@@ -87,7 +87,7 @@ async function get_favoriteDishes(value) {
         const article = document.createElement('article')
         const text = document.createElement('a')
         text.classList.add('text');
-        text.href="restaurant.php?id="+ dish.idRestaurant
+        text.href="../pages/restaurant.php?id="+ dish.idRestaurant
         const img = document.createElement('img')
         const h3 = document.createElement('h3')
         h3.textContent = dish.name
@@ -108,7 +108,7 @@ async function get_favoriteDishes(value) {
         if (!dish.cart) {
             const a = document.createElement("a")
             const i = document.createElement("i");
-            a.href = "addToCart.php?idDish=" + +dish.id + "&idRestaurant=" + dish.idRestaurant + "&favorites=1"
+            a.href = "../actions/addToCart.php?idDish=" + +dish.id + "&idRestaurant=" + dish.idRestaurant + "&favorites=1"
             i.className = "fa-solid fa-plus"
             a.text = "Adicionar ao carrinho"
             a.appendChild(i)
@@ -116,7 +116,7 @@ async function get_favoriteDishes(value) {
         } else {
             const a1 = document.createElement("a")
             const i = document.createElement("i");
-            a1.href = "removeFromCart.php?idDish=" + +dish.id + "&idRestaurant=" + dish.idRestaurant + "&favorites=1"
+            a1.href = "../actions/removeFromCart.php?idDish=" + +dish.id + "&idRestaurant=" + dish.idRestaurant + "&favorites=1"
             i.className = "fa-solid fa-minus"
             a1.text = "Remover do carrinho"
             a1.appendChild(i)

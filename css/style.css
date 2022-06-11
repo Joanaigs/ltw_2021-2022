@@ -686,9 +686,13 @@ body > footer{
     grid-area: main;
     display: grid;
     grid-template-areas:
+            'side message'
             'side page';
     grid-template-columns: .2fr 1fr;
     width: 100%;
+}
+#messages{
+    grid-area: message;
 }
 
 .grid-container.side{

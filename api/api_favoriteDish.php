@@ -1,11 +1,12 @@
 <?php
 declare(strict_types = 1);
 session_start();
-require_once('../database/dish.class.php');
-require_once('../database/filter.class.php');
-require_once('../templates/common.tpl.php');
-require_once('../templates/restaurants.tpl.php');
-$db = new PDO('sqlite:../example.db');
+require_once(__DIR__ . '/../database/dish.class.php');
+require_once(__DIR__ . '/../database/filter.class.php');
+require_once(__DIR__ . '/../templates/common.tpl.php');
+require_once(__DIR__ . '/../templates/restaurants.tpl.php');
+require_once(__DIR__ .'/../database/connection.db.php');
+$db = getDatabaseConnection();
 
 if (isset($_SESSION['id'])){
     if($_GET['add']=="true"){

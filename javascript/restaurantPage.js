@@ -1,5 +1,3 @@
-console.log('hi')
-
 async function get_restaurants(restaurants) {
     const section = document.querySelector('#restaurants')
     section.innerHTML = ''
@@ -7,7 +5,7 @@ async function get_restaurants(restaurants) {
         const article = document.createElement('article')
         const h3 = document.createElement('h3')
         const link = document.createElement('a')
-        link.href = '../restaurant.php?id=' + restaurant.id
+        link.href = '../pages/restaurant.php?id=' + restaurant.id
         link.textContent = restaurant.name
         const text = document.createElement('div')
         text.classList.add('text')
@@ -40,7 +38,7 @@ async function get_restaurants(restaurants) {
         section_filter.append(filter)
         text.append(section_filter)
         const a=document.createElement("a")
-        a.href="restaurant.php?id="+ restaurant.id
+        a.href="../pages/restaurant.php?id="+ restaurant.id
         img.src = '../images/restaurants/' + restaurant.image +'.jpg'
 
         article.append(ratingFixed)

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
-require_once('cart.class.php');
-require_once('connection.db.php');
+require_once(__DIR__ .'/../database/cart.class.php');
+require_once(__DIR__ .'/../database/connection.db.php');
 class Dish{
     public int $id;
     public int $idRestaurant;

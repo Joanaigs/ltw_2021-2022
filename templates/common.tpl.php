@@ -52,26 +52,36 @@
         </div>
         <?php } ?>
         <a class="active" href="../index.php">Restaurantes</a>
-        <a class="active" href="../about.php">Sobre</a>
+        <a class="active" href="../pages/about.php">Sobre</a>
     </nav>
     <div class="icons">
         <i class="fas fa-bars" id="menu-bars"></i>
         <?php if ($session->isLoggedIn()) { ?>
-            <a href="../favorites.php" class="fas fa-heart"></a>
-            <a href="../profile.php" class="fas fa-user"></a>
-            <a href="../cart.php" class="fas fa-shopping-cart"></a><?php ;
+            <a href="../pages/favorites.php" class="fas fa-heart"></a>
+            <a href="../pages/profile.php" class="fas fa-user"></a>
+            <a href="../pages/cart.php" class="fas fa-shopping-cart"></a><?php ;
         } ?>
         <?php if (!$session->isLoggedIn()) { ?>
-            <button class="login-register-btn" onclick="window.location.href = '../login_register_action.php';">Entrar
+            <button class="login-register-btn" onclick="window.location.href = '../pages/login_register_action.php';">Entrar
             </button><?php ;
         } else {
             ?>
-            <button class="logout-btn" onclick="window.location.href = '../logout_action.php';">Sair</button><?php ;
+            <button class="logout-btn" onclick="window.location.href = '../actions/logout_action.php';">Sair</button><?php ;
         } ?>
     </div>
 </header>
 
 </body>
+<?php }
+
+function showMessage($session){?>
+<section id="messages">
+    <?php foreach ($session->getMessages() as $messsage) { ?>
+        <article class="<?=$messsage['type']?>">
+            <?=$messsage['text']?>
+        </article>
+    <?php } ?>
+</section>
 <?php }
 
 function drawProfileHeader($restaurant) { ?>
@@ -100,23 +110,23 @@ function drawProfileHeader($restaurant) { ?>
             <a href="../index.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
         </div>
         <nav class="navbar">
-            <a class="active" id="profile" href="../profile.php">Perfil de utilizador</a>
-            <a class="active" id="latest-orders" href="../latest_orders.php">Pedidos anteriores</a>
+            <a class="active" id="profile" href="../pages/profile.php">Perfil de utilizador</a>
+            <a class="active" id="latest-orders" href="../pages/latest_orders.php">Pedidos anteriores</a>
             <?php if($restaurant===false){?>
-                <div class="active" id="add-restaurant"><button class="add-restaurant-btn" name="addRestaurantButton" onclick="window.location.href = '../addRestaurant.php';">Adicionar restaurante</button></div>
+                <div class="active" id="add-restaurant"><button class="add-restaurant-btn" name="addRestaurantButton" onclick="window.location.href = '../pages/addRestaurant.php';">Adicionar restaurante</button></div>
             <?php }
             else{?>
-                <div class="active" id="restaurant-page"><button class="restaurant-page-btn" name="restaurantPageButton" onclick="window.location.href = '../restView.php?id=<?=$restaurant->id?>';">Página do restaurante</button></div>
+                <div class="active" id="restaurant-page"><button class="restaurant-page-btn" name="restaurantPageButton" onclick="window.location.href = '../pages/restView.php?id=<?=$restaurant->id?>';">Página do restaurante</button></div>
             <?php } ?>
             <a class="active" href="../index.php">Restaurantes</a>
-            <a class="active" href="../about.php">Sobre</a>
+            <a class="active" href="../pages/about.php">Sobre</a>
         </nav>
         <div class="icons">
             <i class="fas fa-bars" id="menu-bars"></i>
-            <a href="../favorites.php" class="fas fa-heart"></a>
-            <a href="../profile.php" class="fas fa-user"></a>
-            <a href="../cart.php" class="fas fa-shopping-cart"></a>
-            <button class="logout-btn" onclick="window.location.href = '../logout_action.php';">Sair</button>
+            <a href="../pages/favorites.php" class="fas fa-heart"></a>
+            <a href="../pages/profile.php" class="fas fa-user"></a>
+            <a href="../pages/cart.php" class="fas fa-shopping-cart"></a>
+            <button class="logout-btn" onclick="window.location.href = '../actions/logout_action.php';">Sair</button>
         </div>
     </header>
   </body>
@@ -130,8 +140,8 @@ function drawRestViewHeader($id) { ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="../javascript/script.js" defer></script>
-    <script src="javascript/heart.js" defer></script>
-    <script src="javascript/orderSelect.js" defer></script>
+    <script src="../javascript/heart.js" defer></script>
+    <script src="../javascript/orderSelect.js" defer></script>
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/comments.css">
@@ -159,16 +169,16 @@ function drawRestViewHeader($id) { ?>
 <header>
     <a href="../index.php" class="logo"><i class="fas fa-utensils"></i>Larica</a>
     <nav class="navbar">
-        <a href="restView.php?id=<?= $id ?>">Menu</a>
-        <a href="state.php?id=<?= $id ?>">Estado dos Pedidos</a>
-        <a href="../comments.php?id=<?= $id ?>">Avaliações e comentários</a>
+        <a href="../pages/restView.php?id=<?= $id ?>">Menu</a>
+        <a href="../pages/state.php?id=<?= $id ?>">Estado dos Pedidos</a>
+        <a href="../pages/comments.php?id=<?= $id ?>">Avaliações e comentários</a>
     </nav>
     <div class="icons">
         <i class="fas fa-bars" id="menu-bars"></i>
-        <a href="../favorites.php" class="fas fa-heart"></a>
-        <a href="../profile.php" class="fas fa-user"></a>
-        <a href="../cart.php" class="fas fa-shopping-cart"></a>
-        <button class="logout-btn" onclick="window.location.href = '../logout_action.php';">Sair</button>
+        <a href="../pages/favorites.php" class="fas fa-heart"></a>
+        <a href="../pages/profile.php" class="fas fa-user"></a>
+        <a href="../pages/cart.php" class="fas fa-shopping-cart"></a>
+        <button class="logout-btn" onclick="window.location.href = '../actions/logout_action.php';">Sair</button>
     </div>
 </header>
 </body>
@@ -177,7 +187,7 @@ function drawRestViewHeader($id) { ?>
 
 function drawFooter()
 { ?>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <footer class="credit" id="real">&copy; Larica LTW 2021/2022 - All rights reserved</footer>
 <?php }
 
@@ -268,16 +278,16 @@ function drawSidebar($restaurant)
     <div class="sidebar">
         <h3>Conta</h3>
         <ul class="sidebar-options">
-            <li class="profile-page"><a href="../profile.php"> Perfil de utilizador
+            <li class="profile-page"><a href="../pages/profile.php"> Perfil de utilizador
                     <div class="icon"><i class="fas fa-chevron-right" id="chevron-right"></i></div>
                 </a></li>
-            <li class="last-orders-page"><a href="../latest_orders.php">Pedidos anteriores
+            <li class="last-orders-page"><a href="../pages/latest_orders.php">Pedidos anteriores
                     <div class="icon"><i class="fas fa-chevron-right" id="chevron-right"></i></div>
                 </a></li>
             <?php if ($restaurant === false) { ?>
                 <li class="add-restaurant">
                     <button class="add-restaurant-btn" name="addRestaurantButton"
-                            onclick="window.location.href = '../addRestaurant.php';">Adicionar restaurante
+                            onclick="window.location.href = '../pages/addRestaurant.php';">Adicionar restaurante
                         <div class="icon"><i class="fas fa-chevron-right" id="chevron-right"></i></div>
                     </button>
                 </li>
@@ -285,7 +295,7 @@ function drawSidebar($restaurant)
                 ?>
                 <li class="restaurant-page">
                     <button class="restaurant-page-btn" name="restaurantPageButton"
-                            onclick="window.location.href = '../restView.php?id=<?= $restaurant->id ?>';">Página do
+                            onclick="window.location.href = '../pages/restView.php?id=<?= $restaurant->id ?>';">Página do
                         restaurante
                         <div class="icon"><i class="fas fa-chevron-right" id="chevron-right"></i></div>
                     </button>
@@ -313,7 +323,7 @@ function drawLoginRegisterForm(Session $session)
         <div class="container">
             <div class="forms-container">
                 <div class="signin">
-                    <form action="../formLoginRegister.php" method="post" class="sign-in-form">
+                    <form action="../actions/formLoginRegister.php" method="post" class="sign-in-form">
                         <h2 class="title">Iniciar sessão</h2>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
@@ -327,7 +337,7 @@ function drawLoginRegisterForm(Session $session)
                     </form>
                 </div>
                 <div class="signup">
-                    <form action="../formLoginRegister.php" method="post" class="sign-up-form">
+                    <form action="../actions/formLoginRegister.php" method="post" class="sign-up-form">
                         <h2 class="title">Crie a sua nova conta</h2>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
