@@ -1,56 +1,58 @@
-const eraseDish = document.querySelector('#eraseDish')
+const eraseDish = document.querySelectorAll('#eraseDish')
 console.log(eraseDish)
-if (eraseDish) {
-    eraseDish.addEventListener('click', async function () {
-        const section = document.querySelector('#popup')
-        const article = document.querySelector(".info-dish")
-        console.log(section)
-        section.classList.remove("hidden")
-        section.innerHTML = ''
+for (let i = 0; i < editDish.length; i++) {
+        if (eraseDish[i]) {
+            eraseDish[i].addEventListener('click', async function () {
+                const section = document.querySelector('#popup')
+                const article = document.querySelectorAll(".info-dish")
+                console.log(section)
+                if (editDish[i].id === article[i].dataset.iddish) {
+                    section.classList.remove("hidden")
+                    section.innerHTML = ''
 
-        const popup_box_content = document.createElement('div')
-        popup_box_content.classList.add("popup-box-content")
+                    const popup_box_content = document.createElement('div')
+                    popup_box_content.classList.add("popup-box-content")
 
-        const p = document.createElement('p');
-        p.textContent = "Tem a certeza que deseja eliminar este prato? ";
-
-
-        popup_box_content.appendChild(p);
-
-        const acceptButtons = document.createElement('div');
-        acceptButtons.className = "acceptButtons"
-        const yesButton = document.createElement('button');
-        yesButton.type="submit"
-        yesButton.classList.add("eraseDish-btn")
-        yesButton.id = "nostyle"
-        const noButton = document.createElement('button');
+                    const p = document.createElement('p');
+                    p.textContent = "Tem a certeza que deseja eliminar este prato? ";
 
 
+                    popup_box_content.appendChild(p);
 
-        const form=document.createElement("form")
-        form.action="../actions/removeDish.php?idDish=" + article.dataset.iddish + "&idRestaurant=" + article.dataset.idrestaurant;
-        form.method="post"
-        form.classList="yesButton"
-
-        yesButton.textContent = "Sim";
-        const csrf=document.createElement("input")
-        csrf.type="hidden"
-        csrf.name="csrf"
-        csrf.value=article.dataset.token
-        form.appendChild(csrf)
-        form.appendChild(yesButton)
+                    const acceptButtons = document.createElement('div');
+                    acceptButtons.className = "acceptButtons"
+                    const yesButton = document.createElement('button');
+                    yesButton.type = "submit"
+                    yesButton.classList.add("eraseDish-btn")
+                    yesButton.id = "nostyle"
+                    const noButton = document.createElement('button');
 
 
-        noButton.textContent = "Não"
-        noButton.id = "noButton";
+                    const form = document.createElement("form")
+                    form.action = "../actions/removeDish.php?idDish=" + article[i].dataset.iddish + "&idRestaurant=" + article[i].dataset.idrestaurant;
+                    form.method = "post"
+                    form.classList = "yesButton"
 
-        acceptButtons.appendChild(form);
-        acceptButtons.appendChild(noButton);
-        popup_box_content.appendChild(acceptButtons);
-        section.appendChild(popup_box_content)
+                    yesButton.textContent = "Sim";
+                    const csrf = document.createElement("input")
+                    csrf.type = "hidden"
+                    csrf.name = "csrf"
+                    csrf.value = article[i].dataset.token
+                    form.appendChild(csrf)
+                    form.appendChild(yesButton)
 
-        closeEraseDishPopup();
-    })
+
+                    noButton.textContent = "Não"
+                    noButton.id = "noButton";
+
+                    acceptButtons.appendChild(form);
+                    acceptButtons.appendChild(noButton);
+                    popup_box_content.appendChild(acceptButtons);
+                    section.appendChild(popup_box_content)
+                }
+                closeEraseDishPopup();
+            })
+        }
 }
 async function closeEraseDishPopup() {
     const removeaddDish = document.querySelector('#noButton')

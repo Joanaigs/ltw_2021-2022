@@ -137,6 +137,7 @@ for (let i = 0; i < editDish.length; i++) {
         })
     }
 }
+
 async function closeEditDPopup() {
     const removeeditDish = document.querySelectorAll('#popupClose')
     console.log(removeeditDish)

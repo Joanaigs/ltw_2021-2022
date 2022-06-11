@@ -28,7 +28,7 @@ if (eraseProfile) {
 
 
         const form=document.createElement("form")
-        form.action="../eraseProfile.php"
+        form.action="../actions/eraseProfile.php"
         form.method="post"
         form.classList="yesButton"
 
