@@ -48,10 +48,13 @@ function drawRestaurantView(PDO $db, int $idRestaurant, array $dishes, Session $
                         <button class="erase-restaurant-btn" name="eraseRestaurantButton">Eliminar restaurante</button>
                     </div>
                 </article>
-                <h3><?= $restaurant->address ?></h3>
-                <?php $category = Filter::getFilterRestaurants($db); ?>
-                <h4>Tipo de restaurante: <?= $restaurant->filt; ?></h4>
-                <a class="button-edit-rest"><i class="fas fa-pencil"></i> Editar dados</a>
+                <section id="rest-info">
+                    <?php showMessage($session); ?>
+                    <h3><?= $restaurant->address ?></h3>
+                    <?php $category = Filter::getFilterRestaurants($db); ?>
+                    <h4>Comida: <?= $restaurant->filt; ?></h4>
+                    <a class="button-edit-rest"><i class="fas fa-pencil"></i> Editar dados</a>
+                </section>
                 <?php drawRestaurantViewDishes($idRestaurant, $dishes, $db, $session); ?>
             </div>
         </div>

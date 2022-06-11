@@ -10,7 +10,7 @@
     require_once(__DIR__ . '/../templates/common.tpl.php');
     require_once(__DIR__ . '/../templates/user.tpl.php');
 if ($session->getcsrf() !== $_POST['csrf']) {
-    $session->addMessage('error',"Não tem premissões para esta página");
+    $session->addMessage('error',"Não tem premissões para aceder a esta página");
     exit(header("Location: ../index.php"));
 }
     $db = getDatabaseConnection();
@@ -32,24 +32,25 @@ if ($session->getcsrf() !== $_POST['csrf']) {
             if(!empty($_POST['phoneNumber']))
                 $user->phoneNumber = $_POST['phoneNumber'];
             if($_FILES['image']['name']){
-                $dbh = new PDO('sqlite:../example.db');
+                $dbh = new PDO('sqlite:../database/basedados.db');
                 $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
                 $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $stmt = $dbh->prepare("INSERT INTO images VALUES(NULL, ?)");
                 $stmt->execute(array('profile'));
                 $id = $dbh->lastInsertId();
 
-                if (!is_dir('images')) mkdir('images');
-                if (!is_dir('images/profiles')) mkdir('images/profiles');
+                if (!is_dir('../images')) mkdir('../images');
+                if (!is_dir('../images/profiles')) mkdir('../images/profiles');
 
-                $originalFileName = "images/profiles/$id.jpg";
+                $originalFileName = "../images/profiles/$id.jpg";
                 move_uploaded_file($_FILES['image']['tmp_name'], $originalFileName);
                 $user->image=intval($id);
             }
             if(!empty($_POST)){
 
+                if(!empty($_POST['password']) && !empty($_POST['confirm_password']) && $_POST['password']!==$_POST['confirm_password'])
+                    $session->addMessage('error', 'As palavras-passes não coincidem');
                 $user->save($db, $_POST['password'], $_POST['confirm_password']);
-                echo('save');
             }
         }
     }else

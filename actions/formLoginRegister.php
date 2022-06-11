@@ -22,12 +22,14 @@ if (isset($_POST['RegisterButton'])) {
     if ($username !== "" && $password !== "" && $password_confirm !== "" && $address !== "") {
         if ($password === $password_confirm) {
             if (strlen($password) >= 5 && strpbrk($password, "123456789") != false && strpbrk($password, "abcdefghijklmnopqrstuvwyxz") != false) {
-                if (!User::getUserWithEmail($session, $db, $username, $email)){
-                    User::addNewUser($success, $db, $username, $email, $password, $phoneNumber, $address, $city, $country);
-                    $session->addMessage('success', 'Conta criada com sucesso.');
-                    exit(header("Location: ../pages/login_register_action.php"));
-
+                if(preg_match('/^[0-9]{9}+$/', $phoneNumber)){
+                    if (!User::getUserWithEmail($session, $db, $username, $email)) {
+                        User::addNewUser($success, $db, $username, $email, $password, $phoneNumber, $address, $city, $country);
+                        $session->addMessage('success', 'Conta criada com sucesso.');
+                        exit(header("Location: ../pages/login_register.php"));
+                    }
                 }
+                $session->addMessage('error', 'Introduza um número de telefone válido.');
             } else
                 $session->addMessage('error', 'A palavra-passe não cumpre os requisitos. Escolha outra.');
         } else
@@ -40,9 +42,7 @@ if (isset($_POST['RegisterButton'])) {
 
     if ($email !== "" && $password !== "") {
         $user = User::getUserWithPassword($session, $db, $email, $password);
-        if ($user == null)
-            $session->addMessage('error', 'Não existe nenhuma conta com este email associado.');
-        else {
+        if ($user !== null) {
             $session->setId($user->id);
             $session->setUsername($user->username);
             $session->setAddress($user->address);
@@ -51,4 +51,4 @@ if (isset($_POST['RegisterButton'])) {
     } else
         $session->addMessage('error', 'Por favor preencha os campos necessários.');
 }
-exit(header("Location: ../pages/login_register_action.php"));
+exit(header("Location: ../pages/login_register.php"));

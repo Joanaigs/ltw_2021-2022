@@ -62,7 +62,7 @@
             <a href="../pages/cart.php" class="fas fa-shopping-cart"></a><?php ;
         } ?>
         <?php if (!$session->isLoggedIn()) { ?>
-            <button class="login-register-btn" onclick="window.location.href = '../pages/login_register_action.php';">Entrar
+            <button class="login-register-btn" onclick="window.location.href = '../pages/login_register.php';">Entrar
             </button><?php ;
         } else {
             ?>
@@ -74,15 +74,16 @@
 </body>
 <?php }
 
-function showMessage($session){?>
-<section id="messages">
-    <?php foreach ($session->getMessages() as $messsage) { ?>
+function showMessage($session){
+    if (!empty($session->getMessages())){?>
+    <section id="messages">
+        <?php foreach ($session->getMessages() as $messsage) { ?>
         <article class="<?=$messsage['type']?>">
             <?=$messsage['text']?>
         </article>
-    <?php } ?>
-</section>
-<?php }
+        <?php } ?>
+    </section>
+<?php }}
 
 function drawProfileHeader($restaurant) { ?>
 <!DOCTYPE html>
@@ -319,6 +320,7 @@ function drawLoginRegisterForm(Session $session)
         <title>Sign in/Sign up Form</title>
         <link rel="stylesheet" href="../css/login_register.css"/>
     </head>
+    <?php showMessage($session); ?>
     <body>
         <div class="container">
             <div class="forms-container">

@@ -5,7 +5,7 @@ $session = new Session();
 require_once(__DIR__ . '/../database/restaurant.class.php');
 require_once(__DIR__ . '/../database/user.class.php');
 if ($session->getcsrf() !== $_POST['csrf']) {
-    $session->addMessage('error',"Não tem premissões para esta página");
+    $session->addMessage('error',"Não tem premissões para aceder a esta página");
     exit(header("Location: ../index.php"));
 }
 $dbh = getDatabaseConnection();
@@ -18,10 +18,10 @@ if (isset($_POST["nameRestaurant"], $_POST["addressRestaurant"], $_POST['restaur
         $stmt->execute(array($_POST["nameRestaurant"]));
         $id = $dbh->lastInsertId();
 
-        if (!is_dir('images')) mkdir('images');
-        if (!is_dir('images/restaurants')) mkdir('images/restaurants');
+        if (!is_dir('../images')) mkdir('../images');
+        if (!is_dir('../images/restaurants')) mkdir('../images/restaurants');
 
-        $originalFileName = "images/restaurants/$id.jpg";
+        $originalFileName = "../images/restaurants/$id.jpg";
         move_uploaded_file($_FILES['image']['tmp_name'], $originalFileName);
         Restaurant::updateRestaurants($dbh, intval($idRest), $_POST["nameRestaurant"], $_POST["addressRestaurant"], $_POST['restaurantCategory'], $id);
         header("Location: ../pages/restView.php?id=$idRest");

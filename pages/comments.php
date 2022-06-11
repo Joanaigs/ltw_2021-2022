@@ -20,7 +20,7 @@ $idRestaurant = $_GET['id'];
 $restaurant = Restaurant::getRestaurant($db, intval($idRestaurant));
 if ($session->getId() == $restaurant->idUser) {
     $reviews = Review::getReview($db, $idRestaurant);
-    drawRestViewHeader($idRestaurant, $session);
+    drawRestViewHeader($idRestaurant);
     drawComments($reviews, $db, $session, 1);
     drawFooter();
 }

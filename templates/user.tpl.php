@@ -77,7 +77,7 @@ function drawProfile($user, $restaurant, $session)
                 <span><label><i class="fas fa-phone"></i>Número telemóvel:</label><?= $user->phoneNumber ?></span>
             </div>
             <button class="edit-profile-btn" name="editProfileButton"
-                    onclick="window.location.href = '../pages/edit_profile_action.php';">Editar
+                    onclick="window.location.href = '../pages/edit_profile.php';">Editar
             </button>
         </div>
     </div>
@@ -97,7 +97,7 @@ function editProfileForm(User $user, $restaurant, $session)
                 <div class="input-field">
                     <label for="imageProfile"><i class="fas fa-camera"></i>Imagem:</label>
                         <label>
-                            <input type="file" name="image" accept="image/png,image/jpeg,image/jpg,image/JPG"><input class="image-input" type="file" name="image" accept="image/png,image/jpeg">
+                            <input type="file" name="image" accept="image/png,image/jpeg,image/jpg,image/JPG">
                         </label>
                 </div>
                 <div class="input-field">

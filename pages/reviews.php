@@ -31,9 +31,9 @@ drawHeader($session, $hasSearch = false); ?>
 
         <span class="image" style='background-image:url("../images/restaurants/<?=$restaurant->image?>.jpg"') ></span>
         <h1>O que achou de <?=$restaurant->name?> ?</h1>
+        <?php showMessage($session);
 
-
-<?php if($session->isLoggedIn()){?>
+     if($session->isLoggedIn()){?>
 
 
         <section class="add-review">

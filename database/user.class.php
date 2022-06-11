@@ -26,7 +26,7 @@ class User
 
     function save($db, string $password, string $confirm_password)
     {
-        if ($password != NULL && $password === $confirm_password) {
+        if ($password != NULL && $confirm_password != NULL && $password === $confirm_password) {
             $cost = [
                 'cost' => 11
             ];
@@ -103,8 +103,6 @@ class User
 
         if ($user = $stmt->fetch()) {
 
-
-
             if (password_verify($password, $user['password'])) {
 
                 return new User(
@@ -119,6 +117,9 @@ class User
                 );
             } else $session->addMessage('error', 'A palavra-passe está incorreta.');
         }
+        else
+            $session->addMessage('error', 'Não existe nenhuma conta com este email associado.');
+
         return null;
     }
 

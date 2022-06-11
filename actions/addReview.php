@@ -6,7 +6,7 @@ $session = new Session();
 require_once(__DIR__ .'/../database/review.class.php');
 require_once(__DIR__ .'/../database/connection.db.php');
 if ($session->getcsrf() !== $_POST['csrf']) {
-    $session->addMessage('error',"Não tem premissões para esta página");
+    $session->addMessage('error',"Não tem premissões para aceder a esta página");
     exit(header("Location: ../index.php"));
 }
 $db = getDatabaseConnection();

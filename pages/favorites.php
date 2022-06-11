@@ -14,8 +14,7 @@ $db = getDatabaseConnection();
 
 drawHeader($session, $hasSearch = false);
 if ($session->isLoggedIn()) {
-    $restaurants=Restaurant::getFavoriteRestaurants($db, $session, $session->getId());
-    ?>
+    $restaurants=Restaurant::getFavoriteRestaurants($db, $session, $session->getId()); ?>
     <div class="favorites-grid-container">
         <div id = "favoriteFilter">
             <label>

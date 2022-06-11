@@ -9,8 +9,10 @@ require_once(__DIR__ . '/../database/review.class.php');
 <?php function drawComments(array $reviews, PDO $db, Session $session, int $rest)
 { ?><!DOCTYPE html>
 
+    <?php if($rest === 1)  showMessage($session); ?>
+
     <section class="reviews">
-        <?php showMessage($session);
+        <?php
         foreach ($reviews as $review) { ?>
             <article class="review">
 
