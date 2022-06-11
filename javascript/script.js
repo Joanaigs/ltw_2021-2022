@@ -23,7 +23,7 @@ if(menu) {
 
 function editReview(id){
     let showReview = document.querySelectorAll('.showReview')
-    let editReview = document.querySelectorAll('.editReview')
+    let editReview = document.querySelectorAll('.editReviews')
     for(let i=0; i<showReview.length;i++ ) {
         if (parseInt(showReview[i].id) === id) {
             let showReviewDisplay=showReview[i].style.display;
@@ -40,7 +40,7 @@ function editReview(id){
 
 function editComment(id){
     let showComment = document.querySelectorAll('.showComment')
-    let editComment = document.querySelectorAll('.editComment')
+    let editComment = document.querySelectorAll('.editComments')
     for(let i=0; i<showComment.length;i++ ) {
         if (parseInt(showComment[i].id) === id) {
             let showCommentDisplay=showComment[i].style.display;

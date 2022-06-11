@@ -47,7 +47,7 @@ require_once(__DIR__ . '/../database/review.class.php');
                 <section class="showReview" id="<?= $review->id ?>">
                     <p> <?= $review->review ?> </p>
                 </section>
-                <section class="editReview" id="<?= $review->id ?>" style="display: none">
+                <section class="editReviews" id="<?= $review->id ?>" style="display: none">
                     <form action="../actions/editReview.php?idReview=<?= $review->id ?>&idRestaurant=<?= $review->idRestaurant ?>"
                           method="post"
                           class="editReview">
@@ -99,10 +99,11 @@ require_once(__DIR__ . '/../database/review.class.php');
                                         <section class="showComment" id="<?= $comment->id ?>" style="display: block">
                                             <p> <?= $comment->comment ?> </p>
                                         </section>
-                                        <section class="editComment" id="<?= $comment->id ?>" style="display: none">
+                                        <section class="editComments" id="<?= $comment->id ?>" style="display: none">
                                             <form action="../actions/editComment.php?idComment=<?= $comment->id ?>&idRestaurant=<?= $review->idRestaurant ?>&type=<?= $rest ?>"
                                                   method="post"
-                                                  class="review">
+                                                  class="editComment">
+                                                <input type="hidden" name="csrf" value="<?=$session->getcsrf()?>">
                                                 <input id="edit_comment" type="text" name="edit_comment"
                                                        value=" <?= $comment->comment ?> ">
                                                 <button name="editComment"> Guardar</button>
@@ -130,10 +131,11 @@ require_once(__DIR__ . '/../database/review.class.php');
                                         <section class="showComment" id="<?= $comment->id ?>" style="display: block">
                                             <p> <?= $comment->comment ?> </p>
                                         </section>
-                                        <section class="editComment" id="<?= $comment->id ?>" style="display: none">
+                                        <section class="editComments" id="<?= $comment->id ?>" style="display: none">
                                             <form action="../actions/editComment.php?idComment=<?= $comment->id ?>&idRestaurant=<?= $review->idRestaurant ?>&type=<?= $rest ?>"
                                                   method="post"
                                                   class="editComment" id="comment">
+                                                <input type="hidden" name="csrf" value="<?=$session->getcsrf()?>">
                                                 <input id="edit_comment" type="text" name="edit_comment"
                                                        value=" <?= $comment->comment ?> ">
                                                 <button name="editReview">Guardar</button>

@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/../uteis/session.php');
+require_once(__DIR__ . '/../utils/session.php');
 $session = new Session();
 require_once(__DIR__ .'/../database/connection.db.php');
 require_once(__DIR__ .'/../database/restaurant.class.php');
