@@ -6,7 +6,7 @@ require_once(__DIR__ . '/../database/comment.class.php');
 require_once(__DIR__ . '/../database/connection.db.php');
 if ($session->getcsrf() !== $_POST['csrf']) {
     $session->addMessage('error',"Não tem permissões para esta página");
-    header("Location: ../index.php");
+    exit(header("Location: ../index.php"));
 }
 $db = getDatabaseConnection();
 

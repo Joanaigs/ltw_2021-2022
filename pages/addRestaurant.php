@@ -18,6 +18,7 @@
         <div class="restaurant-profile-info">
             <form action="../actions/addRestaurantDatabase.php" method="post" class="restaurant-profile"
                   enctype="multipart/form-data">
+                <input type="hidden" name="csrf" value="<?=$session->getcsrf()?>">
                 <h2 class="title">Adicionar restaurante</h2>
                 <div class="input-field">
                     <label for="imageRestaurant"><i class="fas fa-camera"></i>Imagem:</label>

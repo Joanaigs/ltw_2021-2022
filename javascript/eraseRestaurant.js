@@ -28,7 +28,7 @@ if (eraseRestaurant) {
 
 
         const form=document.createElement("form")
-        form.action="../eraseRestaurant.php"
+        form.action="../actions/eraseRestaurant.php"
         form.method="post"
         form.classList="yesButton"
 

@@ -157,6 +157,7 @@ require_once(__DIR__ . '/../database/review.class.php');
                         <?php if ($session->getId() === $user->id || $rest === 1) { ?>
                             <form action="../actions/addComment.php?type=<?= $rest ?>&idRestaurant=<?= $review->idRestaurant ?>&id=<?= $review->id ?>"
                                   method="post" class="add-comment" enctype="multipart/form-data">
+                                <input type="hidden" name="csrf" value="<?=$session->getcsrf()?>">
                                 <input class="form-control" placeholder="Adicione um comentário..."
                                        name="comment" id="comment" required/>
 

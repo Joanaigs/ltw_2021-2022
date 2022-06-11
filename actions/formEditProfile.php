@@ -11,7 +11,7 @@
     require_once(__DIR__ . '/../templates/user.tpl.php');
 if ($session->getcsrf() !== $_POST['csrf']) {
     $session->addMessage('error',"Não tem premissões para esta página");
-    header("Location: ../index.php");
+    exit(header("Location: ../index.php"));
 }
     $db = getDatabaseConnection();
 

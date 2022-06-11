@@ -6,7 +6,7 @@ require_once(__DIR__ .'/../database/restaurant.class.php');
 require_once(__DIR__ .'/../database/filter.class.php');
 if ($session->getcsrf() !== $_POST['csrf']) {
     $session->addMessage('error',"Não tem premissões para esta página");
-    header("Location: ../index.php");
+    exit(header("Location: ../index.php"));
 }
 $db = getDatabaseConnection();
 $dbh = new PDO('sqlite:../example.db');
@@ -33,6 +33,9 @@ if (isset($_POST["nameRestaurant"], $_POST["addressRestaurant"], $_POST['restaur
         $idRestaurant = Restaurant::hasRestaurant($db, $session->getId());
         Filter::addCategoryRestaurant($db, $idRestaurant->id, intval($_POST['restaurantCategory']));
     }
+    header("Location: ../pages/restView.php?id=$idRestaurant->id");
 
 }
-header("Location: ../pages/restView.php?id=$idRestaurant->id");
+else{
+    $session->addMessage("error","O restaurante não foi adicionado");
+header("Location: ../pages/profile.php");}

@@ -6,7 +6,7 @@ require_once(__DIR__ . '/../database/restaurant.class.php');
 require_once(__DIR__ . '/../database/user.class.php');
 if ($session->getcsrf() !== $_POST['csrf']) {
     $session->addMessage('error',"Não tem premissões para esta página");
-    header("Location: ../index.php");
+    exit(header("Location: ../index.php"));
 }
 $dbh = getDatabaseConnection();
 

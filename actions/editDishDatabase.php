@@ -9,7 +9,7 @@ require_once(__DIR__ . '/../templates/filter.tpl.php');
 require_once(__DIR__ . '/../templates/restaurants.tpl.php');
 if ($session->getcsrf() !== $_POST['csrf']) {
     $session->addMessage('error',"Não tem premissões para esta página");
-    header("Location: ../index.php");
+    exit(header("Location: ../index.php"));
 }
 $dbh = new PDO('sqlite:../example.db');
 $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);

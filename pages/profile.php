@@ -17,6 +17,6 @@ $user = User::getUser($db, $session->getId());
 $restaurant=Restaurant::hasRestaurant($db, $session->getId());
 
 drawProfileHeader($restaurant, $session);
-drawProfile($user, $restaurant);
+drawProfile($user, $restaurant, $session);
 drawFooter();
 

@@ -9,7 +9,7 @@ require_once(__DIR__ . '/../database/order.class.php');
 require_once(__DIR__ . '/../database/user.class.php');
 if ($session->getcsrf() !== $_POST['csrf']) {
     $session->addMessage('error',"Não tem premissões para esta página");
-    header("Location: ../index.php");
+    exit(header("Location: ../index.php"));
 }
 $db = getDatabaseConnection();
 $idRestaurant = $_GET['idRestaurant'];

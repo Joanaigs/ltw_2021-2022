@@ -12,6 +12,7 @@ function drawLatestOrders(Session $session, PDO $db, User $user)
 { ?>
     <link rel="stylesheet" href="../css/profile.css"/>
     <div class="grid-container-profile">
+
         <?php $restaurant = Restaurant::hasRestaurant($db, $session->getId());
         drawSidebar($restaurant); ?>
         <div class="last-orders">
@@ -55,7 +56,7 @@ function drawLatestOrders(Session $session, PDO $db, User $user)
 <?php }
 
 
-function drawProfile($user, $restaurant)
+function drawProfile($user, $restaurant, $session)
 { ?>
     <link rel="stylesheet" href="../css/profile.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -66,6 +67,7 @@ function drawProfile($user, $restaurant)
     <div class="grid-container-profile">
         <?php drawSidebar($restaurant); ?>
         <div class="profile-info">
+            <?php showMessage($session);?>
             <h2>Perfil</h2>
             <img src="../images/profiles/<?= $user->image ?>.jpg" alt="Profile picture">
             <div class="info">
