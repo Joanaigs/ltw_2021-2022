@@ -84,6 +84,8 @@ function drawProfile($user, $restaurant)
 function editProfileForm(User $user, $restaurant, $session)
 { ?>
     <link rel="stylesheet" href="../css/profile.css"/>
+    <link rel="stylesheet" href="../css/owner_restView.css"/>
+    <script src="../javascript/eraseProfile.js" defer></script>
     <div class="grid-container-profile">
         <?php drawSidebar($restaurant); ?>
         <div class="edit-profile-info">
@@ -91,9 +93,10 @@ function editProfileForm(User $user, $restaurant, $session)
                 <input type="hidden" name="csrf" value="<?=$session->getcsrf()?>">
                 <h2 class="title">Editar Perfil</h2>
                 <div class="input-field">
-                    <label for="imageRestaurant"><i class="fas fa-camera"></i>Imagem:</label>
-                    <label id="image-button-label">
-                    <input class="image-input" type="file" name="image" accept="image/png,image/jpeg">Escolha uma imagem<span class="file-custom"></span></label>
+                    <label for="imageProfile"><i class="fas fa-camera"></i>Imagem:</label>
+                        <label>
+                            <input type="file" name="image" accept="image/png,image/jpeg,image/jpg,image/JPG"><input class="image-input" type="file" name="image" accept="image/png,image/jpeg">
+                        </label>
                 </div>
                 <div class="input-field">
                     <label><i class="fas fa-user"></i>Nome utilizador:</label>
@@ -124,13 +127,19 @@ function editProfileForm(User $user, $restaurant, $session)
                     <label><i class="fas fa-lock"></i>Palavra-passe: </label>
                     <input class="info-input" type="password" name="confirm_password" placeholder="Confirmar palavra-passe"/>
                 </div>
-                <div class="buttons">
                     <input type="submit" name="saveEdit" class="btn-solid" value="Salvar" formmethod="post">
 
-                    <span><button class="erase-profile-btn" name="eraseProfileButton"
-                        onclick="window.location.href = '../actions/eraseProfile.php';">Apagar Conta</button></span>
-                </div>
             </form>
+            <div class="buttons" id="buttons-edit">
+            <span><button class="erase-profile-btn" name="eraseProfileButton">Apagar Conta</button></span>
+            </div>
+
+            <div class="popup hidden" id="popup">
+                <div class="popupBox">
+
+
+                </div>
+            </div>
         </div>
     </div>
     <?php

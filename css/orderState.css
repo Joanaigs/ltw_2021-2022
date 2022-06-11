@@ -39,40 +39,27 @@ html, body{
 }
 
 .grid-container-orders{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     margin-top: 4rem;
     border-top: 2px solid var(--section-background-color);
     position: sticky;
-    height: 100vh;
 }
 
 .grid-container-orders .recebido, .grid-container-orders .preparar, .grid-container-orders .pronto, .grid-container-orders .entregar{
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     border-right: 1px solid var(--section-background-color);
-}
-
-.grid-container-orders .recebido{
-    grid-column-start: 1;
-}
-
-.grid-container-orders .preparar{
-    grid-column-start: 2;
-}
-
-.grid-container-orders .pronto{
-    grid-column-start: 3;
-}
-
-.grid-container-orders .entregar{
-    grid-column-start: 4;
+    padding-bottom: 4rem;
 }
 
 .grid-container-orders .entregue{
-    grid-column-start: 5;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
+    padding-bottom: 4rem;
 }
 
 .page-orderState h1{
@@ -156,7 +143,7 @@ html, body{
     }
 }
 
-@media (max-width: 928px){
+@media (max-width: 1038px){
     .grid-container-orders h2{
         font-size: 16px;
         text-align: center;
@@ -168,10 +155,10 @@ html, body{
     }
 }
 
-@media (max-width: 848px){
+@media (max-width: 936px){
     .grid-container-orders h2{
-        margin-left: 3rem;
-        margin-right: 3rem;
+        margin-left: 3.2rem;
+        margin-right: 3.2rem;
     }
 
     .grid-container-orders #no-orders{
