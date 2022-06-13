@@ -20,17 +20,20 @@ if ($session->getcsrf() !== $_POST['csrf']) {
     if(isset($_POST['saveEdit'])){
         if ($user) {
             if(!empty($_POST['username'])) {
-                $user->username = $_POST['username'];
+                $username=preg_replace("/[^A-zÀ-ú\d\s.!?:)(%;+-]/", '', $_POST['username']);
+                $user->username = $username;
                 $session->setUsername($user->username);
             }
             if(!empty($_POST['email']))
-                $user->email = $_POST['email'];
+                $email=preg_replace("/[^A-zÀ-ú\d\s@.!?:)(%;+-]/", '', $_POST['email']);
+                $user->email = $email;
             if(!empty($_POST['address'])) {
-                $user->address = $_POST['address'];
+                $address=preg_replace("/[^A-zÀ-ú\d\s@.!?:)(%;+-]/", '', $_POST['address']);
+                $user->address = $address;
                 $session->setAddress($user->address);
             }
             if(!empty($_POST['phoneNumber']))
-                $user->phoneNumber = $_POST['phoneNumber'];
+                $user->phoneNumber = preg_replace("/\D/", '', $_POST['phoneNumber']);;
             if($_FILES['image']['name']){
                 $dbh = new PDO('sqlite:../database/basedados.db');
                 $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
@@ -47,7 +50,6 @@ if ($session->getcsrf() !== $_POST['csrf']) {
                 $user->image=intval($id);
             }
             if(!empty($_POST)){
-
                 if(!empty($_POST['password']) && !empty($_POST['confirm_password']) && $_POST['password']!==$_POST['confirm_password'])
                     $session->addMessage('error', 'As palavras-passes não coincidem');
                 $user->save($db, $_POST['password'], $_POST['confirm_password']);

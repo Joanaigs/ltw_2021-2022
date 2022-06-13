@@ -12,6 +12,9 @@ $dbh = getDatabaseConnection();
 
 $idRest = $_GET['id'];
 if (isset($_POST["nameRestaurant"], $_POST["addressRestaurant"], $_POST['restaurantCategory'])) {
+    $name = preg_replace("/[^A-zÀ-ú\d\s.!?:)(%;+-]/", '', $_POST["nameRestaurant"]);
+    $address = preg_replace("/[^A-zÀ-ú\d\s.!?:)(%;+-]/", '', $_POST["addressRestaurant"]);
+    $category = preg_replace("/\D/", '', $_POST['restaurantCategory']);
     if ($_FILES['image']['name']) {
         // Insert image data into database
         $stmt = $dbh->prepare("INSERT INTO images VALUES(NULL, ?)");
@@ -23,10 +26,10 @@ if (isset($_POST["nameRestaurant"], $_POST["addressRestaurant"], $_POST['restaur
 
         $originalFileName = "../images/restaurants/$id.jpg";
         move_uploaded_file($_FILES['image']['tmp_name'], $originalFileName);
-        Restaurant::updateRestaurants($dbh, intval($idRest), $_POST["nameRestaurant"], $_POST["addressRestaurant"], $_POST['restaurantCategory'], $id);
+        Restaurant::updateRestaurants($dbh, intval($idRest), $name, $address, $category, $id);
         header("Location: ../pages/restView.php?id=$idRest");
     } else {
-        Restaurant::updateRestaurants($dbh, intval($idRest), $_POST["nameRestaurant"], $_POST["addressRestaurant"], $_POST['restaurantCategory'], null);
+        Restaurant::updateRestaurants($dbh, intval($idRest), $name, $address, $category, null);
         header("Location: ../pages/restView.php?id=$idRest");
     }
 } else {

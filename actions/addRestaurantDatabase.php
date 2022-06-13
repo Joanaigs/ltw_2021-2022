@@ -19,6 +19,9 @@ if(!isset($_POST['restaurantCategory'])){
 }
 
 if (isset($_POST["nameRestaurant"], $_POST["addressRestaurant"], $_POST['restaurantCategory'])) {
+    $name = preg_replace("/[^A-zÀ-ú\d\s.!?:)(%;+-]/", '', $_POST["nameRestaurant"]);
+    $address = preg_replace("/[^A-zÀ-ú\d\s.!?:)(%;+-]/", '', $_POST["addressRestaurant"]);
+    $category = preg_replace("/\D/", '', $_POST['restaurantCategory']);
     if ($_FILES['image']['name']) {
         // Insert image data into database
         $stmt = $dbh->prepare("INSERT INTO images VALUES(NULL, ?)");
@@ -30,13 +33,13 @@ if (isset($_POST["nameRestaurant"], $_POST["addressRestaurant"], $_POST['restaur
 
         $originalFileName = "../images/restaurants/$id.jpg";
         move_uploaded_file($_FILES['image']['tmp_name'], $originalFileName);
-        Restaurant::addRestaurants($db, $session->getId(), $_POST["nameRestaurant"], $_POST["addressRestaurant"], $id);
+        Restaurant::addRestaurants($db, $session->getId(), $name, $address, $id);
         $idRestaurant = Restaurant::hasRestaurant($db, $session->getId());
-        Filter::addCategoryRestaurant($db, $idRestaurant->id, intval($_POST['restaurantCategory']));
+        Filter::addCategoryRestaurant($db, $idRestaurant->id, intval($category));
     } else {
-        Restaurant::addRestaurants($db, $session->getId(), $_POST["nameRestaurant"], $_POST["addressRestaurant"], null);
+        Restaurant::addRestaurants($db, $session->getId(), $name, $address, null);
         $idRestaurant = Restaurant::hasRestaurant($db, $session->getId());
-        Filter::addCategoryRestaurant($db, $idRestaurant->id, intval($_POST['restaurantCategory']));
+        Filter::addCategoryRestaurant($db, $idRestaurant->id, intval($category));
     }
     header("Location: ../pages/restView.php?id=$idRestaurant->id");
 

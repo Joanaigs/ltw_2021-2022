@@ -14,11 +14,18 @@ if ($session->getcsrf() !== $_POST['csrf']) {
 $dbh = new PDO('sqlite:../database/basedados.db');
 $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+if ( preg_match ("/\D/", $_GET['idRestaurant']) || preg_match ("/\D/", $_GET['idDish'])) {
+    $session->addMessage('error', "Não conseguiu abrir a página");
+    exit(header("Location: ../index.php"));
+}
 $idRestaurant = $_GET['idRestaurant'];
 $idDish = $_GET['idDish'];
 
-if (isset($_POST["nameDish"], $_POST["priceDish"], $_POST['mealDish'], $_POST['typeDish'])){
+if (isset($_POST["nameDish"], $_POST["priceDish"], $_POST['mealDish'], $_POST['typeDish']) && !empty($_POST["priceDish"])){
+    $name = preg_replace("/[^A-zÀ-ú\d\s.!?:)(%;+-]/", '', $_POST['nameDish']);
+    $mealDish = preg_replace("/\D/", '', $_POST['mealDish']);
+    $price=preg_replace("/[^\d,.]/", '', $_POST['priceDish']);
+    $typeDish=preg_replace("/\D/", '', $_POST['typeDish']);
     if($_FILES['image']['name']) {
         // Insert image data into database
         $stmt = $dbh->prepare("INSERT INTO images VALUES(NULL, ?)");
@@ -30,10 +37,10 @@ if (isset($_POST["nameDish"], $_POST["priceDish"], $_POST['mealDish'], $_POST['t
 
         $originalFileName = "../images/dishes/$id.jpg";
         move_uploaded_file($_FILES['image']['tmp_name'], $originalFileName);
-        Dish::updateDish($dbh, intval($idDish),$_POST["nameDish"], $_POST["priceDish"], $_POST['mealDish'], intval($idRestaurant), $_POST['typeDish'], intval($id));
+        Dish::updateDish($dbh, intval($idDish),$name, $price, $mealDish, intval($idRestaurant), $typeDish, intval($id));
     }
     else{
-        Dish::updateDish($dbh, intval($idDish), $_POST["nameDish"], $_POST["priceDish"], $_POST['mealDish'], intval($idRestaurant), $_POST['typeDish'], null);
+        Dish::updateDish($dbh, intval($idDish), $name, $price, $mealDish, intval($idRestaurant), $typeDish, null);
     }
 }else
     $session->addMessage('error', "Não foi possivel editar o prato");

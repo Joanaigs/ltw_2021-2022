@@ -12,11 +12,16 @@ if ($session->getcsrf() !== $_POST['csrf']) {
     exit(header("Location: ../index.php"));
 }
 $db = getDatabaseConnection();
+if ( preg_match ("/\D/", $_GET['idRestaurant'])) {
+    $session->addMessage('error', "Não conseguiu abrir a página");
+    exit(header("Location: ../index.php"));
+}
 $idRestaurant = $_GET['idRestaurant'];
 $cart = Cart::getCart($db, $session->getId(), intval($idRestaurant));
 $user = User::getUser($db, $session->getId());
 if (!empty($_POST['address'])) {
-    Order::addOrder($db, $session->getId(), $_POST['address']);
+    $address = preg_replace("/[^A-zÀ-ú\d\s@.!?:)(%;+-]/", '', $_POST['address']);
+    Order::addOrder($db, $session->getId(), $address);
 } else {
     Order::addOrder($db, $session->getId(), $user->address);
 }
