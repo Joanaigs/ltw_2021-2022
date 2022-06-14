@@ -42,11 +42,11 @@ sqlite3
 ```
 
 - email: admin@hotmail.com -- pass: admin1 
-- email: joana@hotmail.com -- pass: joana1 -- Dono do restaurante Lareira
-- email: mariana@hotmail.com -- pass: mariana1 -- Dono do restaurante Burri
-- email: matilde@hotmail.com -- pass: matilde1 -- Dono do restaurante Pizzaria Luzzo
-- email: maria@hotmail.com -- pass: maria1 -- Dono do restaurante Capa Negra II
-- email: tiago@hotmail.com -- pass: tiago1 -- Dono do restaurante DeGema
+- email: joana@hotmail.com -- pass: joana1 -- Lareira's restaurant owner
+- email: mariana@hotmail.com -- pass: mariana1 -- Buri's restaurant owner
+- email: matilde@hotmail.com -- pass: matilde1 -- Pizzaria Luzzo's restaurant owner
+- email: maria@hotmail.com -- pass: maria1 -- Capa Negra II's restaurant owner
+- email: tiago@hotmail.com -- pass: tiago1 -- DeGema's restaurant owner
 
 ## Group Members - t05g02
 
