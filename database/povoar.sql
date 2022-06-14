@@ -1,10 +1,3 @@
-
-INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Joana Santos', 'joana@hotmail.com', '$2y$11$ig6lALuUwertb7wDTnMCkOlhfD944DBvIwGZCYa91VnkU6Jeq02h2', 'Rua Jorge Coelho nº 45', 'Porto', 'Portugal', '5050-444', '987876435');
-INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Mariana Carvalho', 'mariana@hotmail.com', '$2y$11$pxgEKx0DuUbXYm4XTzUJwO9bs4nf9QUhmdzDFbqIuIOJ4q7YD9OK.', 'Rua das Andorinhas',  'Porto', 'Portugal', '5050-443', '923456435');
-INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Matilde Sequeira', 'matilde@hotmail.com', '$2y$11$1yH5VERRVNWEEFEXyE5JT.nWM912h7pkiUV9DFOTpAyNg1lADAg4q', 'Rua Cascata Verde',  'Porto', 'Portugal', '5050-442', '926796345');
-INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Maria', 'maria@hotmail.com', '$2y$11$zP1DiXSpjFinqgC656auY.pzTzrryqrmBoAj2kQCyTHAtc0PD/qqG', 'Rua da Alegria',  'Porto', 'Portugal', '5050-452', '34523488');
-INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Tiago Gonçalves', 'tiago@hotmail.com', '$2y$11$YGW8LRvkCqhTficDVSuBUOlH.KiCjMZs1HWtd9KBTVovjM0Is4cie', 'Rua das Camélias',  'Porto', 'Portugal', '5050-108', '919191919');
-INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Admin', 'admin@gmail.com', '$2y$11$06tTVJrhpeaAHI04PCa.OuOgdsNE7Y.hUoX85kCI1DIceGY/WGLiC', 'Rua Admin 35', 'Porto', 'Portugal', '4100-000', '999999999');
 --Lareira
 INSERT INTO Images(title) VALUES ('Tábua de presunto');
 INSERT INTO Images(title) VALUES ('Tábua de enchidos');
@@ -97,7 +90,17 @@ INSERT INTO Images(title) Values ('Caipirinha'); --76
 INSERT INTO Images(title) Values ('Pastel de Enchidos'); --77
 INSERT INTO Images(title) Values ('Bolinhas de queijo'); --78
 
+INSERT INTO Images(title) Values ('user1');
+INSERT INTO Images(title) Values ('user2');
+INSERT INTO Images(title) Values ('user3');
+INSERT INTO Images(title) Values ('user4');
 
+INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber, image) VALUES ('Joana Santos', 'joana@hotmail.com', '$2y$11$ig6lALuUwertb7wDTnMCkOlhfD944DBvIwGZCYa91VnkU6Jeq02h2', 'Rua Jorge Coelho nº 45', 'Porto', 'Portugal', '5050-444', '987876435', 79);
+INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber, image) VALUES ('Mariana Carvalho', 'mariana@hotmail.com', '$2y$11$pxgEKx0DuUbXYm4XTzUJwO9bs4nf9QUhmdzDFbqIuIOJ4q7YD9OK.', 'Rua das Andorinhas',  'Porto', 'Portugal', '5050-443', '923456435', 80);
+INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber, image) VALUES ('Matilde Sequeira', 'matilde@hotmail.com', '$2y$11$1yH5VERRVNWEEFEXyE5JT.nWM912h7pkiUV9DFOTpAyNg1lADAg4q', 'Rua Cascata Verde',  'Porto', 'Portugal', '5050-442', '926796345', 82);
+INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Maria', 'maria@hotmail.com', '$2y$11$zP1DiXSpjFinqgC656auY.pzTzrryqrmBoAj2kQCyTHAtc0PD/qqG', 'Rua da Alegria',  'Porto', 'Portugal', '5050-452', '34523488');
+INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber, image) VALUES ('Tiago Gonçalves', 'tiago@hotmail.com', '$2y$11$YGW8LRvkCqhTficDVSuBUOlH.KiCjMZs1HWtd9KBTVovjM0Is4cie', 'Rua das Camélias',  'Porto', 'Portugal', '5050-108', '919191919', 81);
+INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Admin', 'admin@gmail.com', '$2y$11$06tTVJrhpeaAHI04PCa.OuOgdsNE7Y.hUoX85kCI1DIceGY/WGLiC', 'Rua Admin 35', 'Porto', 'Portugal', '4100-000', '999999999');
 
 INSERT INTO Restaurant(idUser, name, address, image) VALUES (1, 'Lareira-Serralves', 'R. Jorge Reinel 7, 4150-436 Porto', 53);
 INSERT INTO Restaurant(idUser, name, address, image) VALUES (2, 'Buri', 'R. Caldas Xavier 145, Porto', 54);
@@ -239,4 +242,23 @@ INSERT INTO Cart(idDish,  idUser, number) VALUES (3, 2, 3);
 INSERT INTO Cart(idDish,  idUser, number) VALUES (5, 2, 4);
 INSERT INTO Cart(idDish, idUser, number) VALUES (7, 1, 5);
 INSERT INTO Cart(idDish, idUser, number) VALUES (11, 1, 1);
+
+INSERT INTO Review(idRestaurant, idUser, review, date, rating) VALUES (1,3,'Adorei muito! Foi a melhor experiencia da minha vida!','14-06-2022',5);
+INSERT INTO Review(idRestaurant, idUser, review, date, rating) VALUES(2,1,'Não gostei o sushi vinha frio! Staff muito simpático','14-06-2022',2);
+INSERT INTO Review(idRestaurant, idUser, review, date, rating) VALUES(3,1,'A pizza de abacate é a melhor do mundo!!!','14-06-2022',3);
+INSERT INTO Review(idRestaurant, idUser, review, date, rating) VALUES(1,1,'A minha sandes tinha um cabelo!!!!','14-06-2022',1);
+INSERT INTO Review(idRestaurant, idUser, review, date, rating) VALUES(3,2,'Odiei!! A comida estava gelada e tinha pó como se tivesse caído ao chão. Chamei a ASAE espero que fechem esta espelunca de uma vez por todas!!','14-06-2022',1);
+INSERT INTO Review(idRestaurant, idUser, review, date, rating) VALUES(1,2,'Muito bom preços muito acessíveis. Staff ranhoso','14-06-2022',3);
+INSERT INTO Review(idRestaurant, idUser, review, date, rating) VALUES(5,2,'Bom!','14-06-2022',4);
+INSERT INTO Review(idRestaurant, idUser, review, date, rating) VALUES(3,5,'Espaço agradabilíssimo! Voltarei em breve!','14-06-2022',5);
+
+INSERT INTO Comment(idReview, fromRestaurant, date, comment) VALUES (8,1,'14-06-2022', 'Muito obrigado pela sua avaliação.');
+INSERT INTO Comment(idReview, fromRestaurant, date, comment) VALUES (4,1,'14-06-2022', 'Pedimos imensa desculpa pelo sucedido. Já apuramos responsabilidades.');
+INSERT INTO Comment(idReview, fromRestaurant, date, comment) VALUES (1,1,'14-06-2022', 'Agradecemos as suas palavras gentis.');
+INSERT INTO Comment(idReview, fromRestaurant, date, comment) VALUES (2,1,'14-06-2022', 'O sushi costuma ser frio.');
+INSERT INTO Comment(idReview, fromRestaurant, date, comment) VALUES (6,1,'14-06-2022', 'Pedimos desculpa pelo que aconteceu com o nosso STAFF estamos a trabalhar para melhorar.');
+
+
+
+
 
