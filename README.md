@@ -1,3 +1,4 @@
+![Sem título](https://user-images.githubusercontent.com/72507444/173649296-ea2f0395-e372-4d03-9c8b-595fbfb3e1ad.png)<br> <br>
 Larica is a food delivery website we developed for LTW's 21/22 project. <br> <br>
 Larica has several restaurants to choose from. When you open the website, you can search for a particular restaurant or cuisine.
 When you've decided what you want to order, just tap the '+' and the order will be added to your shopping cart.
