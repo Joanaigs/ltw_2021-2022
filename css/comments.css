@@ -1,0 +1,97 @@
+
+.editReview #editRate {
+    float: left;
+    height: 2em;
+    padding: 0 10px;
+}
+.editReview #editRate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.editReview #editRate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:2em;
+    color:#ccc;
+}
+.editReview #editRate:not(:checked) > label:before {
+    content: '★ ';
+}
+.editReview #editRate > input:checked ~ label {
+    color: #ffc700;
+}
+.editReview #editRate:not(:checked) > label:hover,
+.editReview #editRate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+.editReview #editRate > input:checked + label:hover,
+.editReview #editRate > input:checked + label:hover ~ label,
+.editReview #editRate > input:checked ~ label:hover,
+.editReview #editRate > input:checked ~ label:hover ~ label,
+.editReview #editRate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+.ratingFixed .fa-star {
+    color: #ccc;
+}
+.ratingFixed .checked {
+    color: orange;
+}
+.fa-star{
+    color: orange;
+}
+
+
+.rate {
+    float: left;
+    height: 2em;
+}
+
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:2em;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+#empty-reviews{
+    padding-top: 3rem;
+    font-size: 18px;
+    color: #acacac;
+    text-align: center;
+}
+
+@media (max-width: 1016px){
+    .rate:not(:checked) > label{
+        font-size: 1.8em;
+    }
+}
+

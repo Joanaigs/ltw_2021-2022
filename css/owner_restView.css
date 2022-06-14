@@ -1,0 +1,406 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+:root{
+    --body-font-family: 'Poppins', sans-serif;
+    --body-font-color: #676767;
+    --dark-color: #272157;
+    --light-color: #FFFF;
+    --accent-color: #97C0A0;
+    --section-background-color: #EDEDE9;
+    --box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+body, input{
+    font-family: var(--body-font-family);
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 5.5rem;
+    scroll-behavior: smooth;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto auto auto;
+}
+
+.grid-container-rest{
+    grid-row-start: 2;
+    min-height: 100%;
+    height: auto;
+    position: relative;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    display: grid;
+    grid-template-rows: .3fr .3fr auto auto;
+    font-size: 15px;
+    color: #444444;
+}
+
+.grid-container-rest .rest-image{
+    grid-row-start: 1;
+    margin-bottom: 1rem;
+    height: 300px;
+}
+
+.grid-container-rest .rest-name{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid var(--section-background-color);
+}
+
+.grid-container-rest .rest-name h1{
+    width: 100%;
+}
+
+.grid-container-rest .rest-name .erase-restaurant{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.grid-container-rest .rest-name .erase-restaurant-btn {
+    margin-top: 1rem;
+    width: 200px;
+    height: 40px;
+    outline: none;
+    border: none;
+    border-radius: 48px;
+    background-color: #2f286b;
+    color: var(--light-color);
+    font-size: 1.4rem;
+    font-weight: bold;
+    transition: all 0.5s;
+}
+
+.grid-container-rest .rest-name .erase-restaurant-btn:hover{
+    background-color: #2f2396;
+}
+
+.grid-container-rest #rest-info h3{
+    margin-top: 2rem;
+}
+
+.grid-container-rest #rest-info h4{
+    margin-top: 1rem;
+}
+
+.grid-container-rest #rest-info .button-edit-rest{
+    margin-top: 4rem;
+}
+
+.grid-container-rest #menu h2{
+    grid-column-start: 1;
+    grid-column-end: -1;
+    font-size: 24px;
+    color: var(--dark-color);
+    margin-top: 4rem;
+
+}
+
+.grid-container-rest #menu > a{
+    margin-top: 2rem;
+}
+
+.grid-container-rest #menu .order{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 30px;
+    grid-row-gap: 15px;
+}
+
+.order .info-dish{
+    margin-top: 0;
+}
+
+.grid-container-rest #menu .order .edit{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+
+.grid-container-rest #menu .order .button-minus, .grid-container-rest #menu .order .button-edit{
+    font-family: var(--body-font-family);
+    color: var(--body-font-color);
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 12px;
+    cursor: pointer;
+    margin-top: 5px;
+    text-align: center;
+}
+
+
+.grid-container-rest #menu .button-add i{
+    margin-bottom: 4rem;
+    font-family: var(--body-font-family);
+    font-size: 16px;
+    color: var(--accent-color);
+    cursor: pointer;
+}
+
+#menu > section .type{
+    margin-top: 1rem;
+}
+
+#menu > section {
+    padding-bottom: 2rem;
+}
+
+
+.popup.hidden{
+
+    visibility: hidden;
+}
+
+.popup{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(67, 67, 67, 0.61);
+    backdrop-filter: blur(5px);
+    transition: all 0.4s;
+    visibility: visible;
+    opacity: 1;
+}
+
+
+
+.popup-box-content{
+    position: relative;
+    background: var(--light-color);
+    width: 500px;
+    border-radius: 15px;
+}
+
+#popupClose{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: var(--body-font-color);
+    text-decoration: none;
+    font-size: 30px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.popupBox{
+    padding: 120px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.popupBox > label{
+    padding: 10px;
+    color: var(--body-font-color);
+    font-size: 15px;
+
+}
+
+.popupBox img{
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    left: 50%;
+    top: -50px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+
+}
+
+
+.popupBox > label > input[type = 'text']{
+    width: 60%;
+    border: none;
+    border-bottom: 2px solid var(--body-font-color);
+    color: var(--body-font-color);
+    margin-left: 10px ;
+
+}
+
+.popupBox > label > input[type = 'number']{
+    width: 15%;
+    border: none;
+    border-bottom: 2px solid var(--body-font-color);
+    color: var(--body-font-color);
+    margin-left: 80px ;
+}
+
+.popupBox > label > span{
+    width: 15%;
+    font-weight: normal;
+    color: var(--body-font-color);
+}
+
+.popupBox .radio-class-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 20px;
+}
+
+.radio-class-buttons > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: var(--body-font-color);
+    font-size: 15px;
+}
+
+.radio-class-buttons > div > label{
+    padding: 5px;
+    font-weight: normal;
+    color: var(--body-font-color);
+    display: inline-block;
+
+}
+
+.radio-class-buttons > label > span > input[type = 'radio']:checked{
+    background-color: var(--accent-color);
+
+}
+
+label{
+    font-weight: bold;
+}
+
+.mealCategory, .typeOfDishCategory {
+    font-weight: bold;
+}
+
+.popupBox > button{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    transition: all 0s;
+}
+
+
+
+.mealCategory > label, .typeOfDishCategory > label{
+    cursor: pointer;
+}
+
+input{
+    margin-right: 5px;
+}
+
+#editRestaurant-popup{
+    padding-top: 0;
+}
+
+.categoryRadioButtons{
+    display: flex;
+    flex-direction: row;
+}
+
+.button-edit-rest{
+    color: #444444;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+
+.popup-box-content > p{
+    font-size: 20px;
+    justify-content: center;
+    margin: 30px;
+    color: var(--body-font-color);
+}
+
+.acceptButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 30px;
+}
+
+.yesButton > button,.acceptButtons > button {
+    width: 100px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 2px #444444;
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--body-font-color);
+    background-color: var(--light-color);
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0s;
+}
+
+.acceptButtons > form > button:hover{
+    background-color: var(--accent-color);
+    color: var(--light-color);
+}
+
+.acceptButtons > button:hover{
+    background-color: #FA5F55;
+    color: var(--light-color);
+}
+
+@media (max-width: 1175px){
+    .grid-container-rest .rest-name h1{
+        font-size: 34px;
+    }
+}
+
+@media (max-width: 885px){
+    .grid-container-rest #menu .order{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row-gap: 15px;
+    }
+}
+
+@media (max-width: 678px) {
+    .grid-container-rest .rest-name .erase-restaurant-btn {
+        width: 150px;
+        height: 30px;
+        margin: 1rem auto .5rem 0;
+    }
+
+    .grid-container-rest .rest-name{
+        flex-direction: column;
+    }
+
+    .grid-container-rest h3{
+        padding-top: 3rem;
+    }
+}
+
+@media (max-width: 507px) {
+    .popup-box-content{
+        width: 400px;
+    }
+
+    .popup-box-content > p{
+        margin: 20px 15px;
+        font-size: 18px;
+    }
+}

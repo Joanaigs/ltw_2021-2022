@@ -1,0 +1,526 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+:root{
+    --body-font-family: 'Poppins', sans-serif;
+    --body-font-color: #676767;
+    --dark-color: #272157;
+    --light-color: #FFFF;
+    --accent-color: #97C0A0;
+    --section-background-color: #EDEDE9;
+}
+
+body, input{
+    font-family: var(--body-font-family);
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        'header'
+        'main'
+        'footer';
+}
+
+body > header{
+    grid-area: header;
+}
+
+body > footer{
+    grid-area: footer;
+}
+
+.navbar #profile, .navbar #latest-orders, .navbar #add-restaurant, .navbar #restaurant-page{
+    display: none;
+}
+
+.grid-container-profile{
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 0.4fr 1.6fr;
+}
+
+.grid-container-profile .sidebar{
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+.grid-container-profile .profile-info{
+    grid-column-start: 2;
+    grid-column-end: -1;
+}
+
+.grid-container-profile .edit-profile-info{
+    grid-column-start: 2;
+    grid-column-end: -1;
+}
+
+.grid-container-profile .last-orders{
+    grid-column-start: 2;
+    grid-column-end: -1;
+}
+
+.grid-container-profile .restaurant-profile-info {
+    grid-column-start: 2;
+    grid-column-end: -1;
+}
+
+.sidebar{
+    list-style: none;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    background-color: var(--section-background-color);
+    display: flex;
+    padding-right: 2rem;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 35px;
+}
+
+.sidebar h3{
+    padding-top: 4rem;
+    font-size: 20px;
+    line-height: 22px;
+    user-select: none;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+}
+
+.sidebar ul{
+    list-style-type: none;
+}
+
+.sidebar ul .profile-page, .sidebar ul .last-orders-page{
+    width: 100%;
+    line-height: 22px;
+    font-size: 18px;
+    color: var(--body-font-color);
+    padding-left: 4rem;
+    transition: all 0.3s;
+    text-decoration: none;
+    margin-top: 1rem;
+}
+
+.sidebar ul li a, .sidebar ul li button{
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.sidebar ul li .icon{
+    text-align: center;
+}
+
+.sidebar ul li a i, .sidebar ul li button i{
+    display: inline-block;
+    width: 100%;
+}
+
+.sidebar ul .restaurant-page, .sidebar ul .add-restaurant{
+    margin-top: .9rem;
+    padding-left: 4rem;
+}
+
+.sidebar ul li .add-restaurant-btn, .sidebar ul li .restaurant-page-btn{
+    border: none;
+    width: 100%;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: left;
+    transition: all 0.3s;
+    color: var(--body-font-color);
+    background-color: var(--section-background-color);
+    font-family: var(--body-font-family);
+}
+
+.sidebar ul li a{
+    text-decoration: none;
+    color: var(--body-font-color);
+}
+
+.sidebar ul li .last-orders-page:active{
+    background-color: #f5f5f0;
+}
+
+.sidebar ul #chevron-right{
+    padding-left: 1rem;
+    font-size: 14px;
+}
+
+.sidebar ul li a:hover{
+    color: var(--dark-color);
+}
+
+.sidebar ul li .add-restaurant-btn:hover, .sidebar ul li .restaurant-page-btn:hover{
+    color: var(--dark-color);
+}
+
+.profile-info, .edit-profile, .restaurant-profile{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    padding: 6rem 2rem 0;
+    margin-left: 2rem;
+    margin-right: 3rem;
+}
+
+.profile-info img{
+    margin-top: 3rem;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 3rem;
+    border-radius: 50%;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
+}
+
+.edit-profile, .restaurant-profile{
+    padding: 0 2rem;
+    margin: 2rem 3rem 2rem 2rem;
+}
+
+.profile-info h2, .edit-profile h2, .last-orders h2, .restaurant-profile h2{
+    font-size: 30px;
+    border-bottom: 1px solid var(--section-background-color);
+    color: var(--dark-color);
+}
+
+.profile-info .info, .edit-profile .input-field, .restaurant-profile .input-field{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.profile-info .info span, .edit-profile .input-field, .restaurant-profile .input-field{
+    max-width: 100%;
+    line-height: 50px;
+    color: var(--body-font-color);
+    font-size: 1.8rem;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    align-items: center;
+    border-bottom: 1px solid var(--section-background-color);
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.input-field .info-input, #image-button-label{
+    max-width: 500px;
+    width: 100%;
+    height: 50px;
+    background-color: var(--section-background-color);
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+    border-radius: 55px;
+    border-color: var(--section-background-color);
+    line-height: 1;
+    font-size: 1.6rem;
+    color: #787878;
+}
+
+.input-field i{
+    text-align: center;
+    line-height: 50px;
+    font-size: 1.6rem;
+}
+
+.edit-profile p, .restaurant-profile p{
+    color: #9c9a9a;
+    font-size: 13px;
+}
+
+.profile-info .info label, .edit-profile .input-field label, .restaurant-profile .input-field label{
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-right: 2rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+}
+
+.profile-info .info label i, .edit-profile .input-field label i, .restaurant-profile .input-field label i{
+    margin-right: 1rem;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+}
+
+.edit-profile span{
+    width: 100%;
+}
+
+.edit-profile-btn, .edit-profile .btn-solid, .erase-profile-btn, .restaurant-profile .btn-solid{
+    width: 80px;
+    height: 40px;
+    outline: none;
+    border: none;
+    border-radius: 48px;
+    background-color: #2f286b;
+    color: var(--light-color);
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    transition: all 0.5s;
+}
+
+.erase-profile-btn{
+    width: 140px;
+    margin-left: 2rem;
+}
+
+#image-button-label{
+    width: 200px;
+    padding-left: 10px;
+}
+
+#image-button-label:hover{
+   color: var(--dark-color);
+}
+
+.restaurant-profile .input-field{
+    box-shadow: none;
+}
+
+.buttons span{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.edit-profile .btn-solid, .edit-profile .erase-profile-btn, .restaurant-profile .btn-solid{
+    margin-top: 1.5rem;
+}
+
+.edit-profile-btn:hover, .edit-profile .btn-solid:hover, .erase-profile-btn:hover, .restaurant-profile .btn-solid:hover{
+    background-color: #2f2396;
+}
+
+.image-input{
+    display: none;
+}
+
+.restaurant-profile .category{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-bottom: 2rem;
+}
+.restaurant-profile .category #each-option{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    justify-content: space-between;
+}
+
+.restaurant-profile .category .radio{
+    margin-right: .5rem;
+}
+
+.restaurant-profile .category label{
+    margin-right: 2rem;
+    font-weight: normal;
+    line-height: 20px;
+}
+
+.last-orders{
+    margin-top: 2rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+}
+
+
+.last-orders .dishes-lt .order {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.last-orders .dishes-lt .info-order {
+    padding-top: 4rem;
+    border-top: 1px solid var(--section-background-color);
+}
+
+.last-orders .dishes-lt .info-order h3{
+    font-size: 22px;
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+}
+
+.last-orders .dishes-lt .info-order p{
+    margin-top: 0.5rem;
+    font-size: 16px;
+    color: var(--body-font-color);
+}
+
+.last-orders .dishes-lt .info-order label, .last-orders .dishes-lt #price label{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.last-orders .dishes-lt #price{
+    font-size: 16px;
+    color: var(--body-font-color);
+    margin-bottom: 1rem;
+}
+
+
+.last-orders .dishes-lt .info-dish, .grid-container-rest #menu .order .info-dish{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-around;
+    margin: 10px 0 30px;
+    border-radius: 15px;
+    height: 260px;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+.last-orders .info-dish h4, .grid-container-rest #menu .order .info-dish h4{
+    color: var(--body-font-color);
+    font-size: 16px;
+    line-height: 17px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.last-orders .info-dish .image, .grid-container-rest #menu .order .info-dish .image{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.last-orders .info-dish img,.grid-container-rest #menu .order .info-dish img{
+    grid-column-start: 1;
+    margin-left: 2rem;
+    width: 260px;
+    height: 200px;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+.last-orders .info-dish .text, .grid-container-rest #menu .order .info-dish .text{
+    grid-column-start: 2.25;
+    color: var(--body-font-color);
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2rem;
+    margin-left: 2rem;
+}
+
+
+
+.last-orders .info-dish:hover, .grid-container-rest #menu .order .info-dish:hover{
+    background-color: var(--section-background-color);
+}
+
+@media (max-width: 1517px) {
+    .last-orders .dishes-lt .order{
+        justify-content: normal;
+    }
+}
+
+@media (max-width: 1314px) {
+    .sidebar ul .profile-page, .sidebar ul .last-orders-page, .sidebar ul li .add-restaurant-btn, .sidebar ul li .restaurant-page-btn{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 733px){
+    .profile-info .info label, .edit-profile .input-field label, .restaurant-profile .input-field label{
+        line-height: 20px;
+    }
+}
+
+@media (max-width: 760px){
+    .sidebar{
+        display: none;
+    }
+
+    .grid-container-profile, .grid-container-profile .edit-profile-info, .grid-container-profile .restaurant-profile-info{
+        display: block;
+        background-color: var(--section-background-color);
+    }
+
+    .profile-info, .edit-profile, .last-orders, .restaurant-profile{
+        background-color: var(--light-color);
+        padding: 2rem;
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.06);
+    }
+
+    header .icons #menu-bars{
+        display: inline-block;
+    }
+
+    header .navbar{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--light-color);
+        border-top: 0.1rem solid rgb(0, 0, 0, 0.2);
+        border-bottom: 0.1rem solid rgb(0, 0, 0, 0.2);
+        padding: 1rem;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+    header .navbar.active{
+        transition-duration: 0.3s;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header .navbar a, header .navbar #profile, header .navbar #latest-orders, header .navbar #add-restaurant, header .navbar #restaurant-page{
+        display: block;
+        text-align: center;
+        width: 100%;
+        padding: 1.5rem;
+        font-size: 2rem;
+        background-color: var(--section-background-color);
+    }
+
+    header .navbar a:hover, header .navbar #profile:hover, header .navbar #latest-orders:hover, header .navbar #add-restaurant:hover, header .navbar #restaurant-page:hover{
+        text-decoration: none;
+        color: var(--light-color);
+        background-color: var(--accent-color);
+    }
+
+    header .navbar #add-restaurant, header .navbar #restaurant-page{
+        padding: 0;
+        margin: 8px;
+    }
+
+    header .navbar .add-restaurant-btn, header .navbar .restaurant-page-btn{
+        padding:12px;
+        width: 100%;
+        height: 100%;
+        border: none;
+        font-family: var(--body-font-family);
+        font-size: 2rem;
+        color: #606060;
+        background-color: var(--section-background-color);
+    }
+
+    header .navbar .add-restaurant-btn:hover, header .navbar .restaurant-page-btn:hover{
+        text-decoration: none;
+        color: var(--light-color);
+        background-color: var(--accent-color);
+    }
+
+
+}
