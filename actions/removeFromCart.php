@@ -9,7 +9,10 @@ require_once(__DIR__ . '/../templates/filter.tpl.php');
 require_once(__DIR__ . '/../templates/restaurants.tpl.php');
 require_once(__DIR__ . '/../database/user.class.php');
 $db = getDatabaseConnection();
-
+if ( preg_match ("/\D/", $_GET['idRestaurant']) || preg_match ("/\D/", $_GET['idDish'])|| preg_match ("/\D/", $_GET['favorites'])) {
+    $session->addMessage('error', "Não conseguiu abrir a página");
+    exit(header("Location: ../index.php"));
+}
 $idRestaurant = $_GET['idRestaurant'];
 $idDish = $_GET['idDish'];
 $favorites=$_GET['favorites'];

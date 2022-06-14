@@ -10,11 +10,17 @@ if ($session->getcsrf() !== $_POST['csrf']) {
     exit(header("Location: ../index.php"));
 }
 $db = getDatabaseConnection();
+if ( preg_match ("/\D/", $_GET['idRestaurant'])) {
+    $session->addMessage('error', "Não conseguiu abrir a página");
+    exit(header("Location: ../index.php"));
+}
 $idRestaurant = $_GET['idRestaurant'];
 
 if (isset($_POST["rate"], $_POST["remark"])) {
+    $rate=preg_replace("/[^\d,.]/", '', $_POST['rate']);
+    $remark=preg_replace("/[^A-zÀ-ú\d\s.!?:)(%;+-]/", '', $_POST['remark']);
     $date = date("d-m-Y");
-    Review::addReview($db, $idRestaurant, $session->getId(), $_POST["remark"], $date, intval($_POST["rate"]));
+    Review::addReview($db, $idRestaurant, $session->getId(), $remark, $date, intval($rate));
 }
 else
     $session->addMessage('error', "A avaliação não foi adicionada");

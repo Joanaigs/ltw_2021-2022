@@ -11,7 +11,10 @@ require_once(__DIR__ . '/../templates/restaurants.tpl.php');
 require_once(__DIR__ . '/../database/user.class.php');
 $db = getDatabaseConnection();
 
-
+if ( preg_match ("/\D/", $_GET['id'])) {
+    $session->addMessage('error', "Não conseguiu abrir a página");
+    exit(header("Location: ../index.php"));
+}
 $idRestaurant=$_GET['id'];
 drawRestViewHeader($idRestaurant);
 $dishes=Dish::getDishesRestaurant($db, $idRestaurant, $session);

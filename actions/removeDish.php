@@ -9,6 +9,10 @@ if ($session->getcsrf() !== $_POST['csrf']) {
     exit(header("Location: ../index.php"));
 }
 $db = getDatabaseConnection();
+if ( preg_match ("/\D/", $_GET['idRestaurant']) || preg_match ("/\D/", $_GET['idDish'])) {
+    $session->addMessage('error', "Não conseguiu abrir a página");
+    exit(header("Location: ../index.php"));
+}
 $idDish = $_GET['idDish'];
 $idRestaurant = $_GET['idRestaurant'];
 Dish::removeDish($db, $idDish);
