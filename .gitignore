@@ -4,3 +4,4 @@ out/
 build/
 *.iml
 images/
+database/basedados.db

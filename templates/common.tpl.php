@@ -246,7 +246,7 @@ function drawAboutUs()
                     <h3>Links</h3>
                     <a href="../index.php">Página inicial</a>
                     <a href="#">Sobre</a>
-                    <a href="#">Carrinho</a>
+                    <a href="../pages/cart.php">Carrinho</a>
                 </div>
 
 
@@ -285,7 +285,7 @@ function drawSidebar($restaurant)
             <li class="last-orders-page"><a href="../pages/latest_orders.php">Pedidos anteriores
                     <div class="icon"><i class="fas fa-chevron-right" id="chevron-right"></i></div>
                 </a></li>
-            <?php if ($restaurant === false) { ?>
+            <?php if ($restaurant == false) { ?>
                 <li class="add-restaurant">
                     <button class="add-restaurant-btn" name="addRestaurantButton"
                             onclick="window.location.href = '../pages/addRestaurant.php';">Adicionar restaurante

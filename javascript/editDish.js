@@ -28,7 +28,7 @@ for (let i = 0; i < editDish.length; i++) {
                 form.enctype = "multipart/form-data"
 
                 const img = document.createElement("img")
-                img.src = "images/dishes/" + dish.image + ".jpg"
+                img.src = "../images/dishes/" + dish.image + ".jpg"
                 img.alt = ""
                 form.appendChild(img)
 

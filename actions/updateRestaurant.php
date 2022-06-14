@@ -11,7 +11,7 @@ if ($session->getcsrf() !== $_POST['csrf']) {
 $dbh = getDatabaseConnection();
 
 $idRest = $_GET['id'];
-if (isset($_POST["nameRestaurant"], $_POST["addressRestaurant"], $_POST['restaurantCategory'])) {
+if (isset($_POST["nameRestaurant"], $_POST["addressRestaurant"], $_POST['restaurantCategory']) && !empty($_POST["nameRestaurant"]) && !empty($_POST["addressRestaurant"])) {
     $name = preg_replace("/[^A-zÀ-ú\d\s.!?:)(%;+-]/", '', $_POST["nameRestaurant"]);
     $address = preg_replace("/[^A-zÀ-ú\d\s.!?:)(%;+-]/", '', $_POST["addressRestaurant"]);
     $category = preg_replace("/\D/", '', $_POST['restaurantCategory']);
@@ -33,6 +33,7 @@ if (isset($_POST["nameRestaurant"], $_POST["addressRestaurant"], $_POST['restaur
         header("Location: ../pages/restView.php?id=$idRest");
     }
 } else {
+    $session->addMessage('error', "Não foi possivel editar restaurante, por favor preencha todos os campos");
     header("Location: ../pages/restView.php?id=$idRest");
     exit();
 }

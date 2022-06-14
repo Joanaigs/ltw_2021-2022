@@ -21,6 +21,12 @@ async function get_favoriteRestaurants(value) {
     const array = await response.json();
     const section = document.querySelector('#favoritesPage')
     section.innerHTML = ''
+
+    if (array.length === 0) {
+        const h3 = document.createElement('h3')
+        h3.textContent = "Ainda não tem restaurantes favoritos..."
+        section.appendChild(h3);
+    }
     for (const restaurant of array) {
 
         const article = document.createElement('article')
@@ -82,6 +88,12 @@ async function get_favoriteDishes(value) {
     const array = await response.json();
     const section = document.querySelector('#favoritesPage')
     section.innerHTML = ''
+
+    if (array.length === 0) {
+        const h3 = document.createElement('h3')
+        h3.textContent = "Ainda não tem pratos favoritos..."
+        section.appendChild(h3);
+    }
     for (const dish of array) {
 
         const article = document.createElement('article')

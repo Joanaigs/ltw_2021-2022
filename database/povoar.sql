@@ -1,9 +1,9 @@
 
-INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Joana Santos', 'dweferg@hotmail.com', '88888888', 'rua da joana', 'Porto', 'Portugal', '5050-444', '987876435');
-INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Mariana Carvalho', 'ajsdf@hotmail.com', '123456767', 'rua da mariana',  'Porto', 'Portugal', '5050-443', '923456435');
-INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Matilde Sequeira', 'jutyjeyt@hotmail.com', '9876543', 'rua da matilde',  'Porto', 'Portugal', '5050-442', '926796345');
-INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Judy Maria', 'top@hotmail.com', '123567543', 'rua da alegria',  'Porto', 'Portugal', '5050-452', '34523488');
-
+INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Joana Santos', 'joana@hotmail.com', '88888888', 'Rua Jorge Coelho nº 45', 'Porto', 'Portugal', '5050-444', '987876435');
+INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Mariana Carvalho', 'mariana@hotmail.com', '123456767', 'Rua das Andorinhas',  'Porto', 'Portugal', '5050-443', '923456435');
+INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Matilde Sequeira', 'matilde@hotmail.com', '9876543', 'Rua Cascata Verde',  'Porto', 'Portugal', '5050-442', '926796345');
+INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Maria', 'maria@hotmail.com', '123567543', 'Rua da Alegria',  'Porto', 'Portugal', '5050-452', '34523488');
+INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Tiago Gonçalves', 'tiago@hotmail.com', 'tiago1', 'Rua das Camélias',  'Porto', 'Portugal', '5050-108', '919191919');
 
 --Lareira
 INSERT INTO Images(title) VALUES ('Tábua de presunto');

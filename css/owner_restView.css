@@ -225,8 +225,9 @@ body{
 .popupBox img{
     position: absolute;
     width: 160px;
+    height: 160px;
     left: 50%;
-    top: -80px;
+    top: -50px;
     transform: translateX(-50%);
     border-radius: 50%;
 
