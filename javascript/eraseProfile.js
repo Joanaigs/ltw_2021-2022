@@ -1,10 +1,9 @@
 const eraseProfile = document.querySelector('.erase-profile-btn')
-console.log(eraseProfile)
+
 if (eraseProfile) {
     eraseProfile.addEventListener('click', async function () {
         const section = document.querySelector('#popup')
         const div = document.querySelector("#buttons-edit")
-        console.log(section)
         section.classList.remove("hidden")
         section.innerHTML = ''
 
@@ -56,7 +55,6 @@ async function closeEraseProfilePopup() {
     const removeProfile = document.querySelector('#noButton')
     if (removeProfile) {
         removeProfile.addEventListener('click', async function () {
-            console.log('hi')
             const section = document.querySelector('#popup')
             section.classList.add("hidden")
         })

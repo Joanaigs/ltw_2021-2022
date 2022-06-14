@@ -1,10 +1,10 @@
 
-INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Joana Santos', 'dweferg@hotmail.com', '88888888', 'rua da joana', 'Porto', 'Portugal', '5050-444', '987876435');
-INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Mariana Carvalho', 'ajsdf@hotmail.com', '123456767', 'rua da mariana',  'Porto', 'Portugal', '5050-443', '923456435');
-INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Matilde Sequeira', 'jutyjeyt@hotmail.com', '9876543', 'rua da matilde',  'Porto', 'Portugal', '5050-442', '926796345');
-INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Judy Maria', 'top@hotmail.com', '123567543', 'rua da alegria',  'Porto', 'Portugal', '5050-452', '34523488');
-
-
+INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Joana Santos', 'joana@hotmail.com', '$2y$11$ig6lALuUwertb7wDTnMCkOlhfD944DBvIwGZCYa91VnkU6Jeq02h2', 'Rua Jorge Coelho nº 45', 'Porto', 'Portugal', '5050-444', '987876435');
+INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Mariana Carvalho', 'mariana@hotmail.com', '$2y$11$pxgEKx0DuUbXYm4XTzUJwO9bs4nf9QUhmdzDFbqIuIOJ4q7YD9OK.', 'Rua das Andorinhas',  'Porto', 'Portugal', '5050-443', '923456435');
+INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Matilde Sequeira', 'matilde@hotmail.com', '$2y$11$1yH5VERRVNWEEFEXyE5JT.nWM912h7pkiUV9DFOTpAyNg1lADAg4q', 'Rua Cascata Verde',  'Porto', 'Portugal', '5050-442', '926796345');
+INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Maria', 'maria@hotmail.com', '$2y$11$zP1DiXSpjFinqgC656auY.pzTzrryqrmBoAj2kQCyTHAtc0PD/qqG', 'Rua da Alegria',  'Porto', 'Portugal', '5050-452', '34523488');
+INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Tiago Gonçalves', 'tiago@hotmail.com', '$2y$11$YGW8LRvkCqhTficDVSuBUOlH.KiCjMZs1HWtd9KBTVovjM0Is4cie', 'Rua das Camélias',  'Porto', 'Portugal', '5050-108', '919191919');
+INSERT INTO User (username, email, password, address, city, country, postcode, phoneNumber) VALUES ('Admin', 'admin@gmail.com', '$2y$11$06tTVJrhpeaAHI04PCa.OuOgdsNE7Y.hUoX85kCI1DIceGY/WGLiC', 'Rua Admin 35', 'Porto', 'Portugal', '4100-000', '999999999');
 --Lareira
 INSERT INTO Images(title) VALUES ('Tábua de presunto');
 INSERT INTO Images(title) VALUES ('Tábua de enchidos');

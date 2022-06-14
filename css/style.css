@@ -682,7 +682,7 @@ body > footer{
     grid-area: footer;
 }
 
-.grid-container{
+#mainPage{
     grid-area: main;
     display: grid;
     grid-template-areas:
@@ -691,6 +691,16 @@ body > footer{
     grid-template-columns: .2fr 1fr;
     width: 100%;
 }
+
+#restaurantPage {
+    grid-area: main;
+    display: grid;
+    grid-template-areas:
+            'side page';
+    grid-template-columns: .2fr 1fr;
+    width: 100%;
+}
+
 #messages{
     grid-area: message;
 }
@@ -759,7 +769,6 @@ body > footer{
     flex-direction: column;
     justify-content: space-around;
     margin-bottom: 30px;
-
 }
 
 
@@ -856,10 +865,7 @@ body > footer{
 
 .page, #restaurant-page{
     grid-area: page;
-    padding-top: 50px;
-    padding-left: 4rem;
-    padding-right: 2rem;
-    padding-bottom: 4rem;
+    padding: 50px 2rem 4rem 4rem;
 }
 
 h2{
@@ -1121,7 +1127,7 @@ form .form-control{
 
 }
 
-button.erase-comment-btn{
+button.erase-comment-btn, form button:not(#nostyle){
     width: 90px;
     height: 40px;
     outline: none;
@@ -1132,22 +1138,11 @@ button.erase-comment-btn{
     font-size: 1.4rem;
     text-transform: uppercase;
     font-weight: bold;
-    transition: all 0.5s;
 }
 
 
-form button:not(#nostyle){
-    width: 90px;
-    height: 40px;
-    outline: none;
-    border: none;
-    border-radius: 48px;
-    background-color: var(--accent-color);
-    color: var(--light-color);
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    font-weight: bold;
-
+button.erase-comment-btn{
+    transition: all 0.5s;
 }
 
 
@@ -1492,6 +1487,11 @@ form button:not(#nostyle){
     header{
         padding: 1rem 2rem;
     }
+
+    .buttons .cartButton span{
+        display: none;
+    }
+
 }
 
 @media (max-width: 991px) {
@@ -1779,11 +1779,20 @@ form button:not(#nostyle){
         grid-template-rows: .3fr 1fr auto;
     }
 
-    .grid-container, #restaurantPage{
+    #mainPage{
         grid-template-areas:
                 'side'
                 'page';
         grid-template-columns: auto auto;
+        grid-template-rows: 0.2fr auto;
+    }
+
+    #restaurantPage{
+        grid-template-areas:
+                'side'
+                'page';
+        grid-template-columns: 1fr auto;
+        grid-template-rows: 0.3fr auto;
     }
 
     .filter #filter{
@@ -1839,7 +1848,6 @@ form button:not(#nostyle){
     .page h2{
         font-size: 24px;
     }
-
 }
 
 @media (max-width: 667px) {

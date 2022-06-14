@@ -30,7 +30,8 @@ if (searchRestaurants2) {
         else{
             const response = await fetch('../api/api_dishSearch.php?search=' + this.value + '&id=' + id)
             const meals = await response.json()
-            get_meals(meals)
+            if(meals.length!==0)
+                get_meals(meals)
         }
     })
 }

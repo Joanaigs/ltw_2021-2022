@@ -21,7 +21,7 @@ if ( preg_match ("/\D/", $_GET['idRestaurant']) || preg_match ("/\D/", $_GET['id
 $idRestaurant = $_GET['idRestaurant'];
 $idDish = $_GET['idDish'];
 
-if (isset($_POST["nameDish"], $_POST["priceDish"], $_POST['mealDish'], $_POST['typeDish']) && !empty($_POST["priceDish"])){
+if (isset($_POST["nameDish"], $_POST["priceDish"], $_POST['mealDish'], $_POST['typeDish']) && !empty($_POST["priceDish"]) && !empty($_POST["nameDish"])){
     $name = preg_replace("/[^A-zÀ-ú\d\s.!?:)(%;+-]/", '', $_POST['nameDish']);
     $mealDish = preg_replace("/\D/", '', $_POST['mealDish']);
     $price=preg_replace("/[^\d,.]/", '', $_POST['priceDish']);

@@ -9,9 +9,9 @@ class Order {
     public string $address;
     public int $idRestaurant;
     public string $date;
-    public string $number;
 
-    public function __construct(int $id, int $idUser, string $state, $address, string $date, int $number)
+
+    public function __construct(int $id, int $idUser, string $state, $address, string $date)
     {
         $this->id = $id;
         $this->idUser = $idUser;
@@ -22,7 +22,7 @@ class Order {
 
     static function getOrdersRestaurant(PDO $db, string $id) : array {
         $stmt = $db->prepare('
-        SELECT distinct Orders.id as id, Orders.idUser as idUser, state, address, date, number
+        SELECT distinct Orders.id as id, Orders.idUser as idUser, state, address, date
         FROM Orders, DishOrder, Dish
         WHERE Dish.idRestaurant = ? and DishOrder.idDish=Dish.id and Orders.id=DishOrder.idOrder
         ORDER BY date asc, Orders.id desc
@@ -37,8 +37,7 @@ class Order {
                 $order['idUser'],
                 $order['state'],
                 $order['address'],
-                $order['date'],
-                $order['number']
+                $order['date']
             );
 
         }
@@ -47,10 +46,11 @@ class Order {
 
     static function getOrdersUser(PDO $db, int $id) : array {
         $stmt = $db->prepare('
-        SELECT distinct Orders.id as id, Orders.idUser as idUser, state, address, idRestaurant, date, number
+        SELECT distinct Orders.id as id, Orders.idUser as idUser, state, address, idRestaurant, date
         FROM Orders, DishOrder, Dish
         WHERE Orders.idUser = ? and DishOrder.idDish=Dish.id and Orders.id=DishOrder.idOrder
         ORDER BY date asc, Orders.id desc
+
       ');
         $stmt->execute(array($id));
 
@@ -62,8 +62,7 @@ class Order {
                 $order['idUser'],
                 $order['state'],
                 $order['address'],
-                $order['date'],
-                $order['number']
+                $order['date']
             );
             $temp->idRestaurant=$order['idRestaurant'];
             $orders[]=$temp;
@@ -104,7 +103,7 @@ class Order {
                 $order['idUser'],
                 $order['state'],
                 $order['address'],
-                $order['date'], 0
+                $order['date']
             );
         }
         return end($orders);

@@ -1,14 +1,10 @@
 const editDish = document.querySelectorAll('.button-edit ')
-console.log(editDish)
 for (let i = 0; i < editDish.length; i++) {
     if (editDish[i]) {
         editDish[i].addEventListener('click', async function () {
             const section = document.querySelector('#popup')
-            console.log(section)
             const article = document.querySelectorAll(".info-dish")
-            console.log(article[i].dataset.iddish)
             if (editDish[i].id === article[i].dataset.iddish) {
-                console.log(article)
                 section.classList.remove("hidden")
                 section.innerHTML = ''
                 const response = await fetch('../api/api_getMeals.php')
@@ -28,7 +24,7 @@ for (let i = 0; i < editDish.length; i++) {
                 form.enctype = "multipart/form-data"
 
                 const img = document.createElement("img")
-                img.src = "images/dishes/" + dish.image + ".jpg"
+                img.src = "../images/dishes/" + dish.image + ".jpg"
                 img.alt = ""
                 form.appendChild(img)
 
@@ -140,7 +136,6 @@ for (let i = 0; i < editDish.length; i++) {
 
 async function closeEditDPopup() {
     const removeeditDish = document.querySelectorAll('#popupClose')
-    console.log(removeeditDish)
     for (let i = 0; i < removeeditDish.length; i++) {
         if (removeeditDish[i]) {
             removeeditDish[i].addEventListener('click', async function () {

@@ -1,10 +1,8 @@
 const eraseRestaurant = document.querySelector('.erase-restaurant-btn')
-console.log(eraseRestaurant)
 if (eraseRestaurant) {
     eraseRestaurant.addEventListener('click', async function () {
         const section = document.querySelector('#popup')
         const article = document.querySelector(".rest-name")
-        console.log(section)
         section.classList.remove("hidden")
         section.innerHTML = ''
 
@@ -56,7 +54,6 @@ async function closeErasePopup() {
     const removeaddDish = document.querySelector('#noButton')
     if (removeaddDish) {
         removeaddDish.addEventListener('click', async function () {
-            console.log('hi')
             const section = document.querySelector('#popup')
             section.classList.add("hidden")
         })

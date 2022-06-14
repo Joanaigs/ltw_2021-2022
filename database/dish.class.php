@@ -173,7 +173,7 @@ class Dish{
         $stmtk = $db->prepare('Select title from images where id=?' );
         $stmtk->execute(array($dish->image));
         $image=$stmtk->fetch();
-        echo $image['title'];
+        echo $dish->image;
         if($image['title']!=='Default') {
             $stmt = $db->prepare('DELETE FROM Images where id=?');
             $stmt->execute(array($dish->image));

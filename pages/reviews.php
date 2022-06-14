@@ -62,7 +62,11 @@ drawHeader($session, $hasSearch = false); ?>
                 <button type="submit">Publicar</button>
             </form>
         </section>
-<?php  } drawComments($reviews, $db, $session, 0);?>
+<?php  }
+     if (empty($reviews)){ ?>
+         <h3 id="empty-reviews">Ainda não há comentários e avaliações...</h3>
+     <?php }
+     drawComments($reviews, $db, $session, 0);?>
 
 </div>
 

@@ -11,6 +11,7 @@ require_once(__DIR__ . '/../database/review.class.php');
 
     <?php if($rest === 1)  showMessage($session); ?>
 
+
     <section class="reviews">
         <?php
         foreach ($reviews as $review) { ?>

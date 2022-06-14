@@ -18,7 +18,7 @@ if(!isset($_POST['restaurantCategory'])){
     exit(header("Location: ../pages/profile.php"));
 }
 
-if (isset($_POST["nameRestaurant"], $_POST["addressRestaurant"], $_POST['restaurantCategory'])) {
+if (isset($_POST["nameRestaurant"], $_POST["addressRestaurant"], $_POST['restaurantCategory']) && !empty($_POST["nameRestaurant"]) && !empty($_POST["addressRestaurant"])) {
     $name = preg_replace("/[^A-zÀ-ú\d\s.!?:)(%;+-]/", '', $_POST["nameRestaurant"]);
     $address = preg_replace("/[^A-zÀ-ú\d\s.!?:)(%;+-]/", '', $_POST["addressRestaurant"]);
     $category = preg_replace("/\D/", '', $_POST['restaurantCategory']);

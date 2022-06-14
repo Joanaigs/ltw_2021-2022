@@ -1,11 +1,8 @@
 const editRestaurant= document.querySelector('.button-edit-rest ')
-console.log(editRestaurant)
 if (editRestaurant) {
     editRestaurant.addEventListener('click', async function () {
         const section = document.querySelector('#popup')
-        console.log(section.dataset.id)
         const article = document.querySelector(".rest-name")
-        console.log(article.dataset.iddish)
         section.classList.remove("hidden")
         section.innerHTML = ''
         const response = await fetch('../api/api_getFilterRestaurant.php')
@@ -107,7 +104,6 @@ async function closeEditPopoup() {
     const removeeditRestaurant = document.querySelector('#popupClose')
     if (removeeditRestaurant) {
         removeeditRestaurant.addEventListener('click', async function () {
-            console.log('hi')
             const section = document.querySelector('#popup')
             section.classList.add("hidden")
         })

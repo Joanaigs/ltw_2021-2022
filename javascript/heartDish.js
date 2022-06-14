@@ -1,6 +1,5 @@
 function heartsDishClick(){
     const button = document.querySelectorAll('.hearts .heart');
-    console.log(button)
     for(let i=0; i<button.length; i++) {
         button[i].addEventListener('click', async function () {
             if (button[i].classList.contains("liked")) {

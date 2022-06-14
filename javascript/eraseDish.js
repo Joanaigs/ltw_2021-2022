@@ -1,11 +1,9 @@
 const eraseDish = document.querySelectorAll('#eraseDish')
-console.log(eraseDish)
 for (let i = 0; i < editDish.length; i++) {
         if (eraseDish[i]) {
             eraseDish[i].addEventListener('click', async function () {
                 const section = document.querySelector('#popup')
                 const article = document.querySelectorAll(".info-dish")
-                console.log(section)
                 if (editDish[i].id === article[i].dataset.iddish) {
                     section.classList.remove("hidden")
                     section.innerHTML = ''
@@ -58,7 +56,6 @@ async function closeEraseDishPopup() {
     const removeaddDish = document.querySelector('#noButton')
     if (removeaddDish) {
         removeaddDish.addEventListener('click', async function () {
-            console.log('hi')
             const section = document.querySelector('#popup')
             section.classList.add("hidden")
         })
