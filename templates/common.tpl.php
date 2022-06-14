@@ -61,7 +61,7 @@
             <a href="../pages/profile.php" class="fas fa-user"></a>
             <a href="../pages/cart.php" class="fas fa-shopping-cart"></a><?php ;
         } ?>
-        <?php if (!$session->isLoggedIn()) { ?>
+        <?php if (!$session->isLoggedIn() || $session->getId()===null) { ?>
             <button class="login-register-btn" onclick="window.location.href = '../pages/login_register.php';">Entrar
             </button><?php ;
         } else {
@@ -162,7 +162,6 @@ function drawRestViewHeader($id) { ?>
     <script src="../javascript/restaurantFilter.js" defer></script>
     <script src="../javascript/restaurantSearch.js" defer></script>
     <script src="../javascript/scriptFavorites.js" defer></script>
-    <script src="../javascript/script.js" defer></script>
 
 </head>
 <body>

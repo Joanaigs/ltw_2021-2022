@@ -23,7 +23,7 @@
                 <div class="input-field">
                     <label for="imageRestaurant"><i class="fas fa-camera"></i>Imagem:</label>
                     <label>
-                        <input type="file" name="image" accept="image/png,image/jpeg,image/jpg,image/JPG"><input class="image-input" type="file" name="image" accept="image/png,image/jpeg">
+                        <input  type="file" name="image" accept="image/png,image/jpeg,image/jpg,image/JPG">
                     </label>
                 </div>
 
