@@ -1,11 +1,8 @@
 const addDish = document.querySelector('.button-add ')
-console.log(addDish)
 if (addDish) {
     addDish.addEventListener('click', async function () {
         const section = document.querySelector('#popup')
-        console.log(section)
         const article = document.querySelector("#menu")
-        console.log(article.dataset.iddish)
         section.classList.remove("hidden")
         section.innerHTML = ''
         const response = await fetch('../api/api_getMeals.php')
@@ -126,7 +123,6 @@ async function closeAddPopup() {
     const removeaddDish = document.querySelector('#popupClose')
     if (removeaddDish) {
         removeaddDish.addEventListener('click', async function () {
-            console.log('hi')
             const section = document.querySelector('#popup')
             section.classList.add("hidden")
         })

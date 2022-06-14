@@ -1,5 +1,5 @@
 const filterFavorites = document.querySelectorAll('#favoriteFilter input[type=\'radio\']')
-console.log(filterFavorites);
+
 
 for (let i = 0; i < filterFavorites.length; i++) {
     if (filterFavorites) {
@@ -17,7 +17,7 @@ for (let i = 0; i < filterFavorites.length; i++) {
 
 async function get_favoriteRestaurants(value) {
     const response = await fetch('../api/api_filterFavorites.php?filter=' + value)
-    console.log('../api/api_filterFavorites.php?filter=' + value);
+
     const array = await response.json();
     const section = document.querySelector('#favoritesPage')
     section.innerHTML = ''
@@ -84,7 +84,6 @@ async function get_favoriteRestaurants(value) {
 
 async function get_favoriteDishes(value) {
     const response = await fetch('../api/api_filterFavorites.php?filter=' + value)
-    console.log('../api/api_filterFavorites.php?filter=' + value);
     const array = await response.json();
     const section = document.querySelector('#favoritesPage')
     section.innerHTML = ''

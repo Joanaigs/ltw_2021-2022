@@ -57,8 +57,7 @@ async function get_restaurants(restaurants) {
     heartsClick();
 
 }
-console.log('hi')
-console.log(document.querySelector('#restaurants'))
+
 
 async function get_r() {
     const response = await fetch('../api/api_getRestaurants.php')

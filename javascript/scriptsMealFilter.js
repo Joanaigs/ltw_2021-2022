@@ -1,5 +1,4 @@
 const filterMeal = document.querySelectorAll('#typeOfDish input[type=\'radio\']')
-console.log(filterMeal);
 for (let i = 0; i < filterMeal.length; i++) {
     if (filterMeal) {
         filterMeal[i].addEventListener('change', async function () {
