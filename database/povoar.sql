@@ -76,26 +76,26 @@ INSERT INTO Images(title) Values ('Default'); --58 Profile
 
 
 --DeGema
-INSERT INTO Images(title) Values ('DeGema'); --64
-INSERT INTO Images(title) Values ('De Génio'); --65
-INSERT INTO Images(title) Values ('Andor Bioleta'); --66
-INSERT INTO Images(title) Values ('É só Bitaites'); --67
-INSERT INTO Images(title) Values ('Botar Corpo'); --68
-INSERT INTO Images(title) Values ('Lauriar A Pevide'); --69
-INSERT INTO Images(title) Values ('Tripeiro'); --70
-INSERT INTO Images(title) Values ('Traz àgua no bico'); --71
-INSERT INTO Images(title) Values ('Fino como o Alho'); --72
-INSERT INTO Images(title) Values ('Come e Cala'); --73
-INSERT INTO Images(title) Values ('Que Larica'); --74
-INSERT INTO Images(title) Values ('Copo com Bola de Gelado'); --75
-INSERT INTO Images(title) Values ('Crepe com Nutella'); --76
-INSERT INTO Images(title) Values ('Letra A (Cerveja Artesanal)'); --77
-INSERT INTO Images(title) Values ('Letra B (Cerveja Artesanal)'); --78
-INSERT INTO Images(title) Values ('Letra C (Cerveja Artesanal)'); --79
-INSERT INTO Images(title) Values ('Letra D (Cerveja Artesanal)'); --80
-INSERT INTO Images(title) Values ('Caipirinha'); --81
-INSERT INTO Images(title) Values ('Pastel de Enchidos'); --82
-INSERT INTO Images(title) Values ('Bolinhas de queijo'); --83
+INSERT INTO Images(title) Values ('DeGema'); --59
+INSERT INTO Images(title) Values ('De Génio'); --60
+INSERT INTO Images(title) Values ('Andor Bioleta'); --61
+INSERT INTO Images(title) Values ('É só Bitaites'); --62
+INSERT INTO Images(title) Values ('Botar Corpo'); --63
+INSERT INTO Images(title) Values ('Lauriar A Pevide'); --64
+INSERT INTO Images(title) Values ('Tripeiro'); --65
+INSERT INTO Images(title) Values ('Traz àgua no bico'); --66
+INSERT INTO Images(title) Values ('Fino como o Alho'); --67
+INSERT INTO Images(title) Values ('Come e Cala'); --68
+INSERT INTO Images(title) Values ('Que Larica'); --69
+INSERT INTO Images(title) Values ('Copo com Bola de Gelado'); --70
+INSERT INTO Images(title) Values ('Crepe com Nutella'); --71
+INSERT INTO Images(title) Values ('Letra A (Cerveja Artesanal)'); --72
+INSERT INTO Images(title) Values ('Letra B (Cerveja Artesanal)'); --73
+INSERT INTO Images(title) Values ('Letra C (Cerveja Artesanal)'); --74
+INSERT INTO Images(title) Values ('Letra D (Cerveja Artesanal)'); --75
+INSERT INTO Images(title) Values ('Caipirinha'); --76
+INSERT INTO Images(title) Values ('Pastel de Enchidos'); --77
+INSERT INTO Images(title) Values ('Bolinhas de queijo'); --78
 
 
 
@@ -103,7 +103,7 @@ INSERT INTO Restaurant(idUser, name, address, image) VALUES (1, 'Lareira-Serralv
 INSERT INTO Restaurant(idUser, name, address, image) VALUES (2, 'Buri', 'R. Caldas Xavier 145, Porto', 54);
 INSERT INTO Restaurant(idUser, name, address, image) VALUES (3, 'Pizzaria Luzzo', 'Av. da Boavista 831, 4100-128 Porto', 55);
 INSERT INTO Restaurant(idUser, name, address, image) VALUES (4, 'Capa Negra II', 'Rua do Campo Alegre 191, 4150-177 Porto', 56);
-INSERT INTO Restaurant(idUser, name, address, image) VALUES (5, 'DeGema', 'Rua do Almada, n.º249, 4050-038 Porto', 64);
+INSERT INTO Restaurant(idUser, name, address, image) VALUES (5, 'DeGema', 'Rua do Almada, n.º249, 4050-038 Porto', 59);
 
 INSERT INTO Category(name) VALUES ('Burger');
 INSERT INTO Category(name) VALUES ('Pizza');
@@ -192,25 +192,25 @@ INSERT INTO Dish(image, idRestaurant, name, price, idMeal) VALUES (52, 4, 'Refri
 
 
 --DeGema
-INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (82, 5, 'Pastel de Enchidos', 7.90, 1, 1);
-INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (83, 5, 'Bolinhas de queijo', 7.90, 1, 1);
-INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (65, 5, 'De Génio', 7.90, 1, 2);
-INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (66, 5, 'Andor Bioleta', 8.25, 1, 2);
-INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (67, 5, 'É só Bitaites', 8.25, 1, 2);
-INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (68, 5, 'Botar Corpo', 8.25, 1, 2);
-INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (69, 5, 'Lauriar A Pevide', 5.45, 1, 2);
-INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (70, 5, 'Tripeiro', 8.90, 1, 2);
-INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (71, 5, 'Traz àgua no bico', 7.90, 2, 2);
-INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (72, 5, 'Fino como o Alho', 7.65, 3, 2);
-INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (73, 5, 'Come e Cala', 7.90, 4, 2);
-INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (74, 5, 'Que Larica', 7.65, 4, 2);
-INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (75, 5, 'Copo com Bola de Gelado', 2.15, 3, 3);
-INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (76, 5, 'Crepe com Nutella', 3.30, 3, 3);
-INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (77, 5, 'Letra A (Cerveja Artesanal)', 6.10, 3, 4);
-INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (78, 5, 'Letra B (Cerveja Artesanal)', 6.10, 3, 4);
-INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (79, 5, 'Letra C (Cerveja Artesanal)', 6.10, 3, 4);
-INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (80, 5, 'Letra D (Cerveja Artesanal)', 6.10, 3, 4);
-INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (81, 5, 'Caipirinha', 3.90, 3, 4);
+INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (77, 5, 'Pastel de Enchidos', 7.90, 1, 1);
+INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (78, 5, 'Bolinhas de queijo', 7.90, 1, 1);
+INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (60, 5, 'De Génio', 7.90, 1, 2);
+INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (61, 5, 'Andor Bioleta', 8.25, 1, 2);
+INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (62, 5, 'É só Bitaites', 8.25, 1, 2);
+INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (63, 5, 'Botar Corpo', 8.25, 1, 2);
+INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (64, 5, 'Lauriar A Pevide', 5.45, 1, 2);
+INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (65, 5, 'Tripeiro', 8.90, 1, 2);
+INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (66, 5, 'Traz àgua no bico', 7.90, 2, 2);
+INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (67, 5, 'Fino como o Alho', 7.65, 3, 2);
+INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (68, 5, 'Come e Cala', 7.90, 4, 2);
+INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (69, 5, 'Que Larica', 7.65, 4, 2);
+INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (70, 5, 'Copo com Bola de Gelado', 2.15, 3, 3);
+INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (71, 5, 'Crepe com Nutella', 3.30, 3, 3);
+INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (72, 5, 'Letra A (Cerveja Artesanal)', 6.10, 3, 4);
+INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (73, 5, 'Letra B (Cerveja Artesanal)', 6.10, 3, 4);
+INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (74, 5, 'Letra C (Cerveja Artesanal)', 6.10, 3, 4);
+INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (75, 5, 'Letra D (Cerveja Artesanal)', 6.10, 3, 4);
+INSERT INTO Dish(image, idRestaurant, name, price, idTypeOfDish, idMeal) VALUES (76, 5, 'Caipirinha', 3.90, 3, 4);
 
 
 
