@@ -82,6 +82,12 @@
     color: #c59b08;
 }
 
+#empty-reviews{
+    padding-top: 3rem;
+    font-size: 18px;
+    color: #acacac;
+    text-align: center;
+}
 
 @media (max-width: 1016px){
     .rate:not(:checked) > label{
